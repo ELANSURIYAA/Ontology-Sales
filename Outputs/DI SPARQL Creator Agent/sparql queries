@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "totalQueries": 5,
+  "queries": [
+    {
+      "question": "What are all declared classes in the Cisco Bookings Enterprise Ontology, along with their labels and comments?",
+      "sparql": "PREFIX : <http://example.org/cisco/bookings-ontology#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?class ?label ?comment\nWHERE {\n  ?class a owl:Class .\n  OPTIONAL { ?class rdfs:label ?label . }\n  OPTIONAL { ?class rdfs:comment ?comment . }\n}\nORDER BY ?class"
+    },
+    {
+      "question": "How is the class hierarchy structured for business entities and dimensions, including all subclasses of BusinessEntity and BusinessDimension?",
+      "sparql": "PREFIX : <http://example.org/cisco/bookings-ontology#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?parentClass ?childClass ?childLabel\nWHERE {\n  VALUES ?parentClass { :BusinessEntity :BusinessDimension }\n  ?childClass rdfs:subClassOf ?parentClass .\n  OPTIONAL { ?childClass rdfs:label ?childLabel . }\n}\nORDER BY ?parentClass ?childClass"
+    },
+    {
+      "question": "Which individuals (if any) are currently asserted for BookingTransactionFact, and what is their booking ID?",
+      "sparql": "PREFIX : <http://example.org/cisco/bookings-ontology#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?booking ?bookingId\nWHERE {\n  ?booking a :BookingTransactionFact .\n  OPTIONAL { ?booking :bookingId ?bookingId . }\n}\nORDER BY ?booking"
+    },
+    {
+      "question": "For each booking transaction, which customer, product, partner, sales representative, contract, and geography are linked via object properties?",
+      "sparql": "PREFIX : <http://example.org/cisco/bookings-ontology#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?booking ?customer ?product ?partner ?salesRep ?contract ?geography\nWHERE {\n  ?booking a :BookingTransactionFact .\n  OPTIONAL { ?booking :placedByCustomer ?customer . }\n  OPTIONAL { ?booking :includesProduct ?product . }\n  OPTIONAL { ?booking :involvesPartner ?partner . }\n  OPTIONAL { ?booking :ownedBySalesRepresentative ?salesRep . }\n  OPTIONAL { ?booking :classifiedByContract ?contract . }\n  OPTIONAL { ?booking :classifiedByGeography ?geography . }\n}\nORDER BY ?booking"
+    },
+    {
+      "question": "What key financial and identifying datatype properties are recorded for each booking transaction (booking ID, booking amount, quantity sold, and total contract value)?",
+      "sparql": "PREFIX : <http://example.org/cisco/bookings-ontology#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?booking ?bookingId ?bookingAmountUSD ?quantitySold ?totalContractValueUSD\nWHERE {\n  ?booking a :BookingTransactionFact .\n  OPTIONAL { ?booking :bookingId ?bookingId . }\n  OPTIONAL { ?booking :bookingAmountUSD ?bookingAmountUSD . }\n  OPTIONAL { ?booking :quantitySold ?quantitySold . }\n  OPTIONAL { ?booking :totalContractValueUSD ?totalContractValueUSD . }\n}\nORDER BY ?booking"
+    }
+  ]
+}
