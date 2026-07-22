@@ -1,0 +1,557 @@
+@prefix : <http://example.org/cisco/bookings-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/cisco/bookings-ontology> a owl:Ontology ;
+    rdfs:label "Cisco Bookings Enterprise Ontology"@en ;
+    rdfs:comment "An OWL 2 ontology generated from the validated OSI Semantic Model and Cisco Quote-to-Booking business process documentation. It models booking transactions at order-line grain together with customer, product, partner, geography, sales representative, contract, and date dimensions for semantic reasoning, governed analytics, and knowledge graph use."@en ;
+    owl:versionInfo "1.0.0" ;
+    skos:note "Validation warnings from source: some business definitions are inferred because native source comments are unavailable; source tables are empty so instance-level validation is not possible; geography and contract dimensions lack explicit natural business identifiers; coded indicators require business-approved code-set documentation."@en .
+
+:accountTier a owl:DatatypeProperty ;
+    rdfs:label "account tier"@en ;
+    rdfs:comment "Tier classification assigned to the customer account."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range xsd:string .
+
+:annualContractValueUSD a owl:DatatypeProperty ;
+    rdfs:label "annual contract value USD"@en ;
+    rdfs:comment "Annualized value of the contract or subscription associated with the booking in U.S. dollars."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:decimal .
+
+:autoRenewIndicator a owl:DatatypeProperty ;
+    rdfs:label "auto renew indicator"@en ;
+    rdfs:comment "Flag indicating whether the contract is configured to renew automatically. Source code set documentation is not supplied."@en ;
+    rdfs:domain :ContractDimension ;
+    rdfs:range xsd:string .
+
+:bookingType a owl:DatatypeProperty ;
+    rdfs:label "booking type"@en ;
+    rdfs:comment "Classification of the booking event such as New, Renewal, or Upsell."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:string .
+
+:businessEntityName a owl:DatatypeProperty ;
+    rdfs:label "business entity"@en ;
+    rdfs:comment "Internal Cisco business entity or portfolio owning the product."@en ;
+    rdfs:domain :ProductDimension ;
+    rdfs:range xsd:string .
+
+:calendarYear a owl:DatatypeProperty ;
+    rdfs:label "calendar year"@en ;
+    rdfs:comment "Calendar year associated with the date."@en ;
+    rdfs:domain :DateDimension ;
+    rdfs:range xsd:integer .
+
+:contractKey a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "contract key"@en ;
+    rdfs:comment "Surrogate key that uniquely identifies a contract dimension record."@en ;
+    rdfs:domain :ContractDimension ;
+    rdfs:range xsd:integer .
+
+:contractTermMonths a owl:DatatypeProperty ;
+    rdfs:label "contract term months"@en ;
+    rdfs:comment "Number of months covered by the contract term."@en ;
+    rdfs:domain :ContractDimension ;
+    rdfs:range xsd:integer .
+
+:contractType a owl:DatatypeProperty ;
+    rdfs:label "contract type"@en ;
+    rdfs:comment "Classification of the commercial or service agreement associated with a booking."@en ;
+    rdfs:domain :ContractDimension ;
+    rdfs:range xsd:string .
+
+:country a owl:DatatypeProperty ;
+    rdfs:label "country"@en ;
+    rdfs:comment "Country associated with the geography dimension row."@en ;
+    rdfs:domain :GeographyDimension ;
+    rdfs:range xsd:string .
+
+:coverageLevel a owl:DatatypeProperty ;
+    rdfs:label "coverage level"@en ;
+    rdfs:comment "Service or support coverage level associated with the contract."@en ;
+    rdfs:domain :ContractDimension ;
+    rdfs:range xsd:string .
+
+:coveredSegment a owl:DatatypeProperty ;
+    rdfs:label "covered segment"@en ;
+    rdfs:comment "Customer segment or market segment assigned to the sales representative for coverage."@en ;
+    rdfs:domain :SalesRepresentativeDimension ;
+    rdfs:range xsd:string .
+
+:customerIndustry a owl:DatatypeProperty ;
+    rdfs:label "customer industry"@en ;
+    rdfs:comment "Industry classification of the customer."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range xsd:string .
+
+:customerKey a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "customer key"@en ;
+    rdfs:comment "Surrogate key that uniquely identifies a customer dimension record."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range xsd:integer .
+
+:customerName a owl:DatatypeProperty ;
+    rdfs:label "customer name"@en ;
+    rdfs:comment "Official name of the customer account."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range xsd:string .
+
+:customerSegment a owl:DatatypeProperty ;
+    rdfs:label "customer segment"@en ;
+    rdfs:comment "Market segment to which the customer belongs."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range xsd:string .
+
+:dateKey a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "date key"@en ;
+    rdfs:comment "Surrogate key that uniquely identifies a date dimension record."@en ;
+    rdfs:domain :DateDimension ;
+    rdfs:range xsd:integer .
+
+:discountPercentage a owl:DatatypeProperty ;
+    rdfs:label "discount percentage"@en ;
+    rdfs:comment "Percentage discount applied relative to list price. Weighted average use is preferred over summation."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:decimal .
+
+:fiscalPeriodSequence a owl:DatatypeProperty ;
+    rdfs:label "fiscal period sequence"@en ;
+    rdfs:comment "Sequential numeric ordering of fiscal periods."@en ;
+    rdfs:domain :DateDimension ;
+    rdfs:range xsd:integer .
+
+:fiscalQuarter a owl:DatatypeProperty ;
+    rdfs:label "fiscal quarter"@en ;
+    rdfs:comment "Fiscal quarter associated with the date."@en ;
+    rdfs:domain :DateDimension ;
+    rdfs:range xsd:string .
+
+:fiscalYear a owl:DatatypeProperty ;
+    rdfs:label "fiscal year"@en ;
+    rdfs:comment "Cisco fiscal year associated with the date."@en ;
+    rdfs:domain :DateDimension ;
+    rdfs:range xsd:string .
+
+:geographyKey a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "geography key"@en ;
+    rdfs:comment "Surrogate key that uniquely identifies a geography dimension record."@en ;
+    rdfs:domain :GeographyDimension ;
+    rdfs:range xsd:integer .
+
+:headquartersCountry a owl:DatatypeProperty ;
+    rdfs:label "headquarters country"@en ;
+    rdfs:comment "Country where the customer's headquarters is located."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range xsd:string .
+
+:headquartersRegion a owl:DatatypeProperty ;
+    rdfs:label "headquarters region"@en ;
+    rdfs:comment "Region where the customer's headquarters is located."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range xsd:string .
+
+:isRenewal a owl:DatatypeProperty ;
+    rdfs:label "renewal indicator"@en ;
+    rdfs:comment "Indicator showing whether the booking represents a renewal transaction. Source code set documentation is not supplied."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:integer .
+
+:monthName a owl:DatatypeProperty ;
+    rdfs:label "month name"@en ;
+    rdfs:comment "Name of the calendar month for the date."@en ;
+    rdfs:domain :DateDimension ;
+    rdfs:range xsd:string .
+
+:offerType a owl:DatatypeProperty ;
+    rdfs:label "offer type"@en ;
+    rdfs:comment "Commercial type of the product offer."@en ;
+    rdfs:domain :ProductDimension ;
+    rdfs:range xsd:string .
+
+:orderNumber a owl:DatatypeProperty ;
+    rdfs:label "order number"@en ;
+    rdfs:comment "Business order number associated with the booking transaction."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:string .
+
+:partnerKey a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "partner key"@en ;
+    rdfs:comment "Surrogate key that uniquely identifies a partner dimension record."@en ;
+    rdfs:domain :PartnerDimension ;
+    rdfs:range xsd:integer .
+
+:partnerName a owl:DatatypeProperty ;
+    rdfs:label "partner name"@en ;
+    rdfs:comment "Official name of the partner organization."@en ;
+    rdfs:domain :PartnerDimension ;
+    rdfs:range xsd:string .
+
+:partnerTier a owl:DatatypeProperty ;
+    rdfs:label "partner tier"@en ;
+    rdfs:comment "Tier or level assigned to the partner within the partner program."@en ;
+    rdfs:domain :PartnerDimension ;
+    rdfs:range xsd:string .
+
+:partnerType a owl:DatatypeProperty ;
+    rdfs:label "partner type"@en ;
+    rdfs:comment "Classification of the partner organization."@en ;
+    rdfs:domain :PartnerDimension ;
+    rdfs:range xsd:string .
+
+:productFamily a owl:DatatypeProperty ;
+    rdfs:label "product family"@en ;
+    rdfs:comment "Higher-level product grouping used to categorize related offers."@en ;
+    rdfs:domain :ProductDimension ;
+    rdfs:range xsd:string .
+
+:productKey a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "product key"@en ;
+    rdfs:comment "Surrogate key that uniquely identifies a product dimension record."@en ;
+    rdfs:domain :ProductDimension ;
+    rdfs:range xsd:integer .
+
+:productName a owl:DatatypeProperty ;
+    rdfs:label "product name"@en ;
+    rdfs:comment "Business name of the product or offer."@en ;
+    rdfs:domain :ProductDimension ;
+    rdfs:range xsd:string .
+
+:quantitySold a owl:DatatypeProperty ;
+    rdfs:label "quantity sold"@en ;
+    rdfs:comment "Number of units, licenses, or items booked on the order line."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:integer .
+
+:region a owl:DatatypeProperty ;
+    rdfs:label "region"@en ;
+    rdfs:comment "Broad geographic region associated with the booking or business activity."@en ;
+    rdfs:domain :GeographyDimension ;
+    rdfs:range xsd:string .
+
+:routeToMarket a owl:DatatypeProperty ;
+    rdfs:label "route to market"@en ;
+    rdfs:comment "Selling motion or channel path through which the booking was transacted, such as direct, two-tier, or reseller."@en ;
+    rdfs:domain :PartnerDimension ;
+    rdfs:range xsd:string .
+
+:salesRepresentativeKey a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "sales representative key"@en ;
+    rdfs:comment "Surrogate key that uniquely identifies a sales representative dimension record."@en ;
+    rdfs:domain :SalesRepresentativeDimension ;
+    rdfs:range xsd:integer .
+
+:salesRepresentativeName a owl:DatatypeProperty ;
+    rdfs:label "sales representative name"@en ;
+    rdfs:comment "Full name of the sales representative."@en ;
+    rdfs:domain :SalesRepresentativeDimension ;
+    rdfs:range xsd:string .
+
+:salesRole a owl:DatatypeProperty ;
+    rdfs:label "sales role"@en ;
+    rdfs:comment "Role performed by the sales representative in the sales organization."@en ;
+    rdfs:domain :SalesRepresentativeDimension ;
+    rdfs:range xsd:string .
+
+:salesTeam a owl:DatatypeProperty ;
+    rdfs:label "sales team"@en ;
+    rdfs:comment "Team or organizational unit to which the sales representative belongs."@en ;
+    rdfs:domain :SalesRepresentativeDimension ;
+    rdfs:range xsd:string .
+
+:technologyDomain a owl:DatatypeProperty ;
+    rdfs:label "technology domain"@en ;
+    rdfs:comment "Technology category or solution domain associated with the product."@en ;
+    rdfs:domain :ProductDimension ;
+    rdfs:range xsd:string .
+
+:theater a owl:DatatypeProperty ;
+    rdfs:label "theater"@en ;
+    rdfs:comment "Intermediate sales geography grouping used within Cisco regional organization structures."@en ;
+    rdfs:domain :GeographyDimension ;
+    rdfs:range xsd:string .
+
+:totalContractValueUSD a owl:DatatypeProperty ;
+    rdfs:label "total contract value USD"@en ;
+    rdfs:comment "Total value of the contract associated with the booking in U.S. dollars over the full contract term."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:decimal .
+
+:unitListPriceUSD a owl:DatatypeProperty ;
+    rdfs:label "unit list price USD"@en ;
+    rdfs:comment "Standard list price per unit in U.S. dollars before discounts. Non-additive or cautionary aggregate measure."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:decimal .
+
+:SalesTransactionEntity a owl:Class ;
+    rdfs:label "Sales Transaction Entity"@en ;
+    rdfs:comment "A business entity representing a measurable sales transaction event."@en ;
+    rdfs:subClassOf :BusinessEntity .
+
+:appearsInBooking a owl:ObjectProperty ;
+    rdfs:label "appears in booking"@en ;
+    rdfs:comment "Inverse of includesProduct."@en ;
+    rdfs:domain :ProductDimension ;
+    rdfs:range :BookingTransactionFact .
+
+:bookingAmountUSD a owl:DatatypeProperty ;
+    rdfs:label "booking amount USD"@en ;
+    rdfs:comment "Net booked transaction amount in U.S. dollars."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:decimal .
+
+:bookingId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "booking ID"@en ;
+    rdfs:comment "Unique identifier for a booking transaction record."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:integer .
+
+:classifiedByContract a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "classified by contract"@en ;
+    rdfs:comment "Links a booking transaction to the contract associated with the booking."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range :ContractDimension ;
+    owl:inverseOf :classifiesBookingByContract .
+
+:classifiedByGeography a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "classified by geography"@en ;
+    rdfs:comment "Links a booking transaction to the geography used to classify it."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range :GeographyDimension ;
+    owl:inverseOf :classifiesBookingByGeography .
+
+:classifiesBookingByContract a owl:ObjectProperty ;
+    rdfs:label "classifies booking by contract"@en ;
+    rdfs:comment "Inverse of classifiedByContract."@en ;
+    rdfs:domain :ContractDimension ;
+    rdfs:range :BookingTransactionFact .
+
+:classifiesBookingByGeography a owl:ObjectProperty ;
+    rdfs:label "classifies booking by geography"@en ;
+    rdfs:comment "Inverse of classifiedByGeography."@en ;
+    rdfs:domain :GeographyDimension ;
+    rdfs:range :BookingTransactionFact .
+
+:customerId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "customer ID"@en ;
+    rdfs:comment "Business identifier assigned to a customer account."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range xsd:string .
+
+:fullDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "full date"@en ;
+    rdfs:comment "Actual calendar date represented by the date dimension row."@en ;
+    rdfs:domain :DateDimension ;
+    rdfs:range xsd:date .
+
+:includesProduct a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "includes product"@en ;
+    rdfs:comment "Links a booking transaction to the product associated with the booking."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range :ProductDimension ;
+    owl:inverseOf :appearsInBooking .
+
+:involvesPartner a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "involves partner"@en ;
+    rdfs:comment "Links a booking transaction to the partner participating in the booking."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range :PartnerDimension ;
+    owl:inverseOf :participatesInBooking .
+
+:isDateOfBooking a owl:ObjectProperty ;
+    rdfs:label "is date of booking"@en ;
+    rdfs:comment "Inverse of occursOnDate."@en ;
+    rdfs:domain :DateDimension ;
+    rdfs:range :BookingTransactionFact .
+
+:occursOnDate a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "occurs on date"@en ;
+    rdfs:comment "Links a booking transaction to the date dimension member that classifies when the booking occurred."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range :DateDimension ;
+    owl:inverseOf :isDateOfBooking .
+
+:orderLineNumber a owl:DatatypeProperty ;
+    rdfs:label "order line number"@en ;
+    rdfs:comment "Line number within the order representing the booking grain."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range xsd:integer .
+
+:ownedBySalesRepresentative a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "owned by sales representative"@en ;
+    rdfs:comment "Links a booking transaction to the sales representative that owns the booking."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range :SalesRepresentativeDimension ;
+    owl:inverseOf :ownsBooking .
+
+:ownsBooking a owl:ObjectProperty ;
+    rdfs:label "owns booking"@en ;
+    rdfs:comment "Inverse of ownedBySalesRepresentative."@en ;
+    rdfs:domain :SalesRepresentativeDimension ;
+    rdfs:range :BookingTransactionFact .
+
+:participatesInBooking a owl:ObjectProperty ;
+    rdfs:label "participates in booking"@en ;
+    rdfs:comment "Inverse of involvesPartner."@en ;
+    rdfs:domain :PartnerDimension ;
+    rdfs:range :BookingTransactionFact .
+
+:partnerId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "partner ID"@en ;
+    rdfs:comment "Business identifier assigned to a partner organization."@en ;
+    rdfs:domain :PartnerDimension ;
+    rdfs:range xsd:string .
+
+:placedByCustomer a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "placed by customer"@en ;
+    rdfs:comment "Links a booking transaction to the customer associated with the booking."@en ;
+    rdfs:domain :BookingTransactionFact ;
+    rdfs:range :CustomerDimension ;
+    owl:inverseOf :placesBooking .
+
+:placesBooking a owl:ObjectProperty ;
+    rdfs:label "places booking"@en ;
+    rdfs:comment "Inverse of placedByCustomer."@en ;
+    rdfs:domain :CustomerDimension ;
+    rdfs:range :BookingTransactionFact .
+
+:productId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "product ID"@en ;
+    rdfs:comment "Business identifier assigned to a Cisco product or offer."@en ;
+    rdfs:domain :ProductDimension ;
+    rdfs:range xsd:string .
+
+:salesRepresentativeId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "sales representative ID"@en ;
+    rdfs:comment "Business identifier assigned to a sales representative."@en ;
+    rdfs:domain :SalesRepresentativeDimension ;
+    rdfs:range xsd:string .
+
+:BusinessEntity a owl:Class ;
+    rdfs:label "Business Entity"@en ;
+    rdfs:comment "Generic business entity represented in the Cisco bookings semantic model."@en .
+
+:BusinessDimension a owl:Class ;
+    rdfs:label "Business Dimension"@en ;
+    rdfs:comment "A descriptive business dimension used to classify booking transactions."@en ;
+    rdfs:subClassOf :BusinessEntity .
+
+:GeographyDimension a owl:Class ;
+    rdfs:label "Geography Dimension"@en ;
+    rdfs:comment "Dimension containing geographic attributes such as region, theater, and country for sales analysis."@en ;
+    rdfs:subClassOf :BusinessDimension .
+
+:ContractDimension a owl:Class ;
+    rdfs:label "Contract Dimension"@en ;
+    rdfs:comment "Dimension containing descriptive attributes of service, support, or subscription contracts associated with bookings."@en ;
+    rdfs:subClassOf :BusinessDimension .
+
+:PartnerDimension a owl:Class ;
+    rdfs:label "Partner Dimension"@en ;
+    rdfs:comment "Dimension containing channel partner master data including type, tier, and route-to-market attributes."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :partnerId ],
+        :BusinessDimension .
+
+:SalesRepresentativeDimension a owl:Class ;
+    rdfs:label "Sales Representative Dimension"@en ;
+    rdfs:comment "Dimension containing sales representative master data and coverage attributes."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :salesRepresentativeId ],
+        :BusinessDimension .
+
+:DateDimension a owl:Class ;
+    rdfs:label "Date Dimension"@en ;
+    rdfs:comment "Dimension containing calendar and fiscal attributes for time-based analysis of bookings."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :fullDate ],
+        :BusinessDimension .
+
+:ProductDimension a owl:Class ;
+    rdfs:label "Product Dimension"@en ;
+    rdfs:comment "Dimension containing Cisco product master attributes such as product family, technology domain, offer type, and business entity."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :productId ],
+        :BusinessDimension .
+
+:CustomerDimension a owl:Class ;
+    rdfs:label "Customer Dimension"@en ;
+    rdfs:comment "Dimension containing descriptive customer master data used to analyze bookings by customer identity, segment, industry, and headquarters location."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :customerId ],
+        :BusinessDimension .
+
+:BookingTransactionFact a owl:Class ;
+    rdfs:label "Booking Transaction Fact"@en ;
+    rdfs:comment "Central fact class capturing booking transactions at order-line grain with financial and operational measures. A booking is recorded when Cisco accepts a valid order with committed value."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :orderLineNumber ],
+        [ a owl:Restriction ;
+            owl:onProperty :bookingAmountUSD ;
+            owl:someValuesFrom xsd:decimal ],
+        [ a owl:Restriction ;
+            owl:onClass :DateDimension ;
+            owl:onProperty :occursOnDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :bookingId ],
+        [ a owl:Restriction ;
+            owl:onClass :CustomerDimension ;
+            owl:onProperty :placedByCustomer ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass :ProductDimension ;
+            owl:onProperty :includesProduct ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass :PartnerDimension ;
+            owl:onProperty :involvesPartner ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass :ContractDimension ;
+            owl:onProperty :classifiedByContract ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass :SalesRepresentativeDimension ;
+            owl:onProperty :ownedBySalesRepresentative ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass :GeographyDimension ;
+            owl:onProperty :classifiedByGeography ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        :SalesTransactionEntity ;
+    skos:definition "Booking transaction fact representing one booking event at order-line grain."@en .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :CustomerDimension :ProductDimension :PartnerDimension :GeographyDimension :SalesRepresentativeDimension :ContractDimension :DateDimension ) .
