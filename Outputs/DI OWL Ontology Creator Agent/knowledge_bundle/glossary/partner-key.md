@@ -17,39 +17,30 @@ Surrogate key that uniquely identifies a partner record in the partner dimension
 
 ## Business Meaning
 
-Partner Key is a system-generated unique identifier used to link partner records to booking transactions. It serves as the primary key for the partner dimension and enables efficient joins and referential integrity in the data model.
+Partner Key is a system-generated unique identifier used to establish relationships between the partner dimension and booking transaction fact records. It serves as the primary key for partner records and enables efficient data integration and referential integrity.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_partner  
-**Source Column**: partner_key  
-**Entity**: [Partner](../entities/partner.md)  
-**Attribute**: Partner Key  
-**Data Type**: integer  
-**Nullable**: No  
-**Primary Key**: Yes  
+**Source Table**: QuoteToBooking.dim_partner
+
+**Source Column**: partner_key
+
+**Entity**: [Partner](../entities/partner.md)
+
+**Attribute**: Partner Key
+
+**Data Type**: Integer
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Partner Identifier
-- Partner Surrogate Key
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Partner](../entities/partner.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Relationships
-- [Partner to Booking Transaction](../relationships/partner-to-booking-transaction.md)
+- [Partner](partner.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
@@ -58,23 +49,14 @@ Partner Key is a system-generated unique identifier used to link partner records
 Partner Key is used to:
 - Uniquely identify partner records
 - Link booking transactions to partners
-- Enable dimensional analysis by partner attributes
 - Maintain referential integrity
+- Enable efficient joins between fact and dimension tables
+- Support data warehouse operations
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Partner Entity](../entities/partner.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Partner  
-**Source Attribute**: Partner Key  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Partner](../entities/partner.md)
+- [Back to Main Index](../index.md)
