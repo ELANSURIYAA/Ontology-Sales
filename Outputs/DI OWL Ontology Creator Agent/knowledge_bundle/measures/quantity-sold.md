@@ -3,7 +3,7 @@ title: Quantity Sold
 type: measure
 description: Number of units, licenses, or subscriptions included in the booking transaction
 resource: measures
-tags: [measure, volume, quantity, units, sales]
+tags: [measure, quantity, volume, units, licenses]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,49 +11,51 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Number of units, licenses, or subscriptions included in the booking transaction. This measure tracks the volume of products sold and supports analysis of sales adoption, market penetration, and product usage patterns.
-
----
-
-## Measure Details
-
-**Measure ID**: MEA001  
-**Measure Type**: Volume Metric  
-**Aggregation Type**: SUM  
-**Unit of Measure**: Units/Licenses/Subscriptions
+Number of units, licenses, or subscriptions included in the booking transaction.
 
 ---
 
 ## Technical Mapping
 
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Source Table**: QuoteToBooking.fact_bookings  
-**Source Column**: quantity  
-**Data Type**: integer
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)
+
+**Technical Column**: quantity
+
+**Data Type**: Integer
+
+**Aggregation Type**: SUM
 
 ---
 
 ## Formula
 
-```
-Quantity Sold = SUM(quantity)
-```
+This is a base measure captured directly from the booking transaction.
 
-No calculation required - direct aggregation of quantity values from booking transactions.
+---
+
+## Aggregation
+
+**Default Aggregation**: SUM
+
+**Valid Aggregations**:
+- SUM: Total quantity sold across all transactions
+- COUNT: Number of transactions with quantity
+- AVG: Average quantity per transaction
+- MIN: Minimum quantity in a transaction
+- MAX: Maximum quantity in a transaction
 
 ---
 
 ## Related Entities
 
-### Source Entity
-- [Booking Transaction](../entities/booking-transaction.md) - Fact table containing quantity values
-
-### Analysis Dimensions
-- [Product](../entities/product.md) - Analyze quantities by product, family, and technology domain
-- [Customer](../entities/customer.md) - Analyze quantities by customer segment and industry
-- [Date](../entities/date.md) - Track quantity trends over time
-- [Geography](../entities/geography.md) - Compare quantities across regions
-- [Partner](../entities/partner.md) - Evaluate partner volume performance
+- [Booking Transaction](../entities/booking-transaction.md): Source entity for this measure
+- [Customer](../entities/customer.md): Analyze quantity by customer attributes
+- [Product](../entities/product.md): Analyze quantity by product attributes
+- [Partner](../entities/partner.md): Analyze quantity by partner attributes
+- [Geography](../entities/geography.md): Analyze quantity by geographic attributes
+- [Sales Representative](../entities/sales-representative.md): Analyze quantity by sales representative
+- [Contract](../entities/contract.md): Analyze quantity by contract attributes
+- [Date](../entities/date.md): Analyze quantity trends over time
 
 ---
 
@@ -65,79 +67,56 @@ No calculation required - direct aggregation of quantity values from booking tra
 
 ## Business Rules
 
-1. **Aggregation**: Always use SUM aggregation for quantity sold
-2. **Granularity**: Quantity is recorded at the booking transaction level
-3. **Unit Type**: Represents units, licenses, or subscriptions depending on product type
-4. **Non-Negative**: Quantity values should be positive integers
-5. **Analysis Context**: Meaningful when analyzed by product, customer, or time dimensions
+1. Quantity Sold represents the number of units, licenses, or subscriptions
+2. Quantity is always a positive integer
+3. Quantity can vary by product type (hardware units, software licenses, SaaS subscriptions)
+4. Aggregation is typically SUM to calculate total volume
+5. Quantity is used in pricing calculations along with unit price
 
 ---
 
 ## Usage Examples
 
-### Total Quantity by Product Family
-Analyze total units sold by product family to understand volume distribution across the portfolio.
+**Total Volume Analysis**:
+- Calculate total units/licenses/subscriptions sold
+- Measure volume trends over time
 
-### Quantity Trend Analysis
-Track quantity sold over fiscal quarters to identify growth patterns and seasonal trends.
+**Product Volume Analysis**:
+- Identify highest-volume products
+- Compare volume by product family
 
-### Customer Volume Analysis
-Compare quantities purchased by customer segment to assess adoption rates.
+**Customer Volume Analysis**:
+- Measure purchase volume by customer segment
+- Identify high-volume customers
 
-### Product Adoption
-Identify products with highest quantities sold to understand market acceptance.
+**Geographic Volume Analysis**:
+- Compare volume by sales region
+- Analyze volume distribution by country
+
+**Average Deal Size**:
+- Calculate average quantity per transaction
+- Compare average quantity by dimension
 
 ---
 
 ## Related Measures
 
-### Complementary Measures
-- [Booking Amount USD](booking-amount-usd.md) - Revenue associated with quantities sold
-- [Unit List Price USD](unit-list-price-usd.md) - Pricing per unit
-- [Discount Percentage](discount-percentage.md) - Discount levels affecting unit sales
-
-### Calculated Metrics
-- **Average Unit Price** = Booking Amount USD / Quantity Sold
-- **Average Quantity per Transaction** = SUM(Quantity Sold) / COUNT(Booking ID)
+- [Booking Amount USD](booking-amount-usd.md): Revenue measure related to quantity
+- [Unit List Price USD](unit-list-price-usd.md): Pricing measure used with quantity
+- [Discount Percentage](discount-percentage.md): Discount applied to quantity pricing
 
 ---
 
-## Related Glossary Terms
+## Related Concepts
 
 - [Quantity Sold](../glossary/quantity-sold.md)
 - [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
-## Analysis Guidelines
-
-### Best Practices
-- Use SUM aggregation across all dimensions
-- Analyze by product to understand volume drivers
-- Compare with revenue measures to assess pricing effectiveness
-- Track trends over time to identify growth patterns
-
-### Common Analysis Patterns
-- Volume by product family and technology domain
-- Quantity trends by fiscal period
-- Customer adoption by segment
-- Geographic volume distribution
-
----
-
 ## Navigation
 
-- [View Measures Index](index.md)
-- [View Booking Transaction Entity](../entities/booking-transaction.md)
-- [View Related Measures](index.md#volume-measures)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Measure ID**: MEA001  
-**Category**: Volume Metric  
-**Source Entity**: Booking Transaction  
-**Aggregation**: SUM  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Measures Index](index.md)
+- [Back to Main Index](../index.md)
+- [View Entity: Booking Transaction](../entities/booking-transaction.md)
+- [View Metrics](../metrics.md)
