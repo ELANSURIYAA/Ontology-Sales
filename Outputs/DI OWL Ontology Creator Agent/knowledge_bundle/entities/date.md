@@ -1,7 +1,7 @@
 ---
 title: Date
 type: entity
-description: Business entity representing calendar and fiscal date attributes for time-based analysis
+description: Calendar and fiscal date attributes used to analyze bookings over time
 resource: entities
 tags: [entity, dimension, date, time, calendar, fiscal]
 timestamp: 2026-07-28T00:00:00Z
@@ -11,28 +11,29 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Stores calendar and fiscal date attributes used to analyze bookings over time. The Date entity enables time-based analysis across calendar and fiscal periods, supporting trending, period-over-period comparisons, and fiscal reporting.
+Stores calendar and fiscal date attributes used to analyze bookings over time.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_date  
-**Entity Type**: Dimension  
-**Entity ID**: ENT003
+**Source Table**: QuoteToBooking.dim_date
+
+**Source System**: QuoteToBooking
+
+**Entity Type**: Dimension
 
 ---
 
 ## Attributes
 
-- **Date Key** (date_key) - integer, NOT NULL
-- **Full Date** (full_date) - date, NOT NULL
-- **Month Name** (month_name) - character varying(12), NULL
-- **Calendar Year** (calendar_year) - integer, NULL
-- **Fiscal Year** (fiscal_year) - character varying(6), NULL
-- **Fiscal Quarter** (fiscal_quarter) - character varying(10), NULL
-- **Fiscal Period Sequence** (fiscal_period_seq) - integer, NULL
+- **Date Key** (date_key): Encoded key that uniquely identifies a reporting date in the date dimension
+- **Full Date** (full_date): Actual calendar date represented by the date record
+- **Month Name** (month_name): Name of the calendar month for the date
+- **Calendar Year** (calendar_year): Four-digit calendar year associated with the date
+- **Fiscal Year** (fiscal_year): Fiscal year used by the business for financial and performance reporting
+- **Fiscal Quarter** (fiscal_quarter): Fiscal quarter used by the business for periodic reporting and analysis
+- **Fiscal Period Sequence** (fiscal_period_seq): Sequential number representing the fiscal reporting period in ordered time analysis
 
 ---
 
@@ -52,31 +53,29 @@ None
 
 ### Outgoing Relationships
 
-- [Date to Booking Transaction](../relationships/date-to-booking-transaction.md) - Links dates to booking transactions (One-to-Many)
+- **[Date to Booking Transaction](../relationships/date-to-booking-transaction.md)**: One-to-Many relationship linking dates to booking transactions
+
+### Related Entities
+
+- [Booking Transaction](booking-transaction.md): Fact entity that references this dimension
 
 ---
 
 ## Measures
 
-Dates are used to analyze time-based trends for all booking measures:
+This dimension supports analysis of the following measures:
 
 - [Booking Amount USD](../measures/booking-amount-usd.md)
 - [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
 - [Total Contract Value USD](../measures/total-contract-value-usd.md)
 - [Quantity Sold](../measures/quantity-sold.md)
-- [Discount Percentage](../measures/discount-percentage.md)
 - [Unit List Price USD](../measures/unit-list-price-usd.md)
+- [Discount Percentage](../measures/discount-percentage.md)
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](booking-transaction.md) - Booking transactions occurring on specific dates
-- [Customer](customer.md) - Customer bookings analyzed over time
-- [Product](product.md) - Product bookings analyzed over time
-
-### Related Glossary Terms
 - [Date](../glossary/date.md)
 - [Date Key](../glossary/date-key.md)
 - [Full Date](../glossary/full-date.md)
@@ -86,66 +85,61 @@ Dates are used to analyze time-based trends for all booking measures:
 - [Fiscal Quarter](../glossary/fiscal-quarter.md)
 - [Fiscal Period Sequence](../glossary/fiscal-period-sequence.md)
 
-### Related Domains
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-
 ---
 
 ## Business Rules
 
-1. **Uniqueness**: Each date record is uniquely identified by Date Key
-2. **Date Representation**: Full Date contains the actual calendar date
-3. **Calendar Attributes**: Calendar Year and Month Name support calendar-based reporting
-4. **Fiscal Attributes**: Fiscal Year and Fiscal Quarter support fiscal period reporting
-5. **Period Sequencing**: Fiscal Period Sequence enables ordered time-series analysis
-6. **Time Granularity**: Date dimension supports daily-level analysis with aggregation to higher periods
+1. Date Key is a surrogate key and must be unique
+2. Full Date represents the actual calendar date
+3. Month Name provides the calendar month name
+4. Calendar Year is a four-digit year value
+5. Fiscal Year represents the business fiscal year for financial reporting
+6. Fiscal Quarter represents the business fiscal quarter
+7. Fiscal Period Sequence enables ordered time-series analysis
+8. Every booking transaction must reference a valid date
+9. Date dimension supports both calendar and fiscal reporting hierarchies
 
 ---
 
 ## Usage Examples
 
-### Fiscal Period Reporting
-Analyze booking amounts by fiscal year and fiscal quarter to support financial reporting and planning.
+**Analysis by Fiscal Year**:
+- Compare booking revenue across fiscal years
+- Analyze year-over-year growth trends
+- Measure annual performance against targets
 
-### Trend Analysis
-Use Fiscal Period Sequence to create time-series visualizations and identify booking trends over time.
+**Analysis by Fiscal Quarter**:
+- Track quarterly booking performance
+- Analyze seasonal trends
+- Compare quarter-over-quarter growth
 
-### Year-over-Year Comparison
-Compare booking performance across calendar or fiscal years to measure growth.
+**Analysis by Calendar Year**:
+- Align bookings with calendar-based planning
+- Compare calendar year performance
+- Support calendar-based forecasting
 
-### Seasonal Analysis
-Analyze booking patterns by month name to identify seasonal trends and optimize sales strategies.
+**Analysis by Month**:
+- Identify monthly booking patterns
+- Analyze month-over-month trends
+- Track monthly performance against quotas
 
-### Period-to-Date Calculations
-Calculate quarter-to-date and year-to-date booking amounts using date attributes.
+**Time Series Analysis**:
+- Use Fiscal Period Sequence for ordered trend analysis
+- Calculate moving averages and cumulative totals
+- Perform period-over-period comparisons
 
 ---
 
-## Data Quality Notes
+## Domain
 
-- Date Key is mandatory and serves as the primary key
-- Full Date is mandatory and represents the actual calendar date
-- Calendar and fiscal attributes should be consistently populated
-- Fiscal Period Sequence should be sequential and continuous
-- Date dimension should contain records for all relevant business dates
-- Future dates may be included to support forecasting and planning
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Navigation
 
-- [View Entity Index](index.md)
-- [View Related Relationships](../relationships/index.md)
-- [View Related Measures](../measures/index.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Entity ID**: ENT003  
-**Domain**: Sales Bookings and Revenue Analytics  
-**Entity Type**: Dimension  
-**Attribute Count**: 7  
-**Relationship Count**: 1  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Entities Index](index.md)
+- [Back to Main Index](../index.md)
+- [View Relationships](../relationships/index.md)
+- [View Measures](../measures/index.md)
+- [View Glossary](../glossary/index.md)
