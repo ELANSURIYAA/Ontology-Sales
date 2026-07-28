@@ -17,40 +17,30 @@ Surrogate key that uniquely identifies a geography record in the geography dimen
 
 ## Business Meaning
 
-Geography Key is a system-generated unique identifier used to link geography records to booking transactions. It serves as the primary key for the geography dimension and enables efficient joins and referential integrity in the data model.
+Geography Key is a system-generated unique identifier used to establish relationships between the geography dimension and booking transaction fact records. It serves as the primary key for geography records and enables efficient data integration and referential integrity.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_geography  
-**Source Column**: geography_key  
-**Entity**: [Geography](../entities/geography.md)  
-**Attribute**: Geography Key  
-**Data Type**: integer  
-**Nullable**: No  
-**Primary Key**: Yes  
+**Source Table**: QuoteToBooking.dim_geography
+
+**Source Column**: geography_key
+
+**Entity**: [Geography](../entities/geography.md)
+
+**Attribute**: Geography Key
+
+**Data Type**: Integer
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Geography Identifier
-- Geography Surrogate Key
-- Location Key
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Geography](../entities/geography.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Relationships
-- [Geography to Booking Transaction](../relationships/geography-to-booking-transaction.md)
+- [Geography](geography.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
@@ -59,23 +49,14 @@ Geography Key is a system-generated unique identifier used to link geography rec
 Geography Key is used to:
 - Uniquely identify geography records
 - Link booking transactions to geographies
-- Enable dimensional analysis by geographic attributes
 - Maintain referential integrity
+- Enable efficient joins between fact and dimension tables
+- Support data warehouse operations
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Geography Entity](../entities/geography.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Geography  
-**Source Attribute**: Geography Key  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Geography](../entities/geography.md)
+- [Back to Main Index](../index.md)
