@@ -17,36 +17,29 @@ Fiscal year used by the business for financial and performance reporting.
 
 ## Business Meaning
 
-Fiscal Year represents the organization's financial reporting year, which may differ from the calendar year. It enables fiscal period reporting, budget tracking, and financial performance analysis aligned with the organization's fiscal calendar.
+Fiscal Year represents the organization's financial reporting year, which may differ from the calendar year. Many organizations use fiscal years that align with their business cycles, such as FY2024 or FY2025. Fiscal year enables financial reporting, performance measurement, and alignment with corporate planning and budgeting cycles.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_date  
-**Source Column**: fiscal_year  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Fiscal Year  
-**Data Type**: character varying(6)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_date
+
+**Source Column**: fiscal_year
+
+**Entity**: [Date](../entities/date.md)
+
+**Attribute**: Fiscal Year
+
+**Data Type**: Character Varying(6)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Financial Year
-- FY
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Date](../entities/date.md)
-
-### Related Attributes
+- [Date](date.md)
 - [Calendar Year](calendar-year.md)
 - [Fiscal Quarter](fiscal-quarter.md)
 - [Fiscal Period Sequence](fiscal-period-sequence.md)
@@ -56,31 +49,16 @@ Fiscal Year represents the organization's financial reporting year, which may di
 ## Usage Context
 
 Fiscal Year is used to:
-- Support fiscal period reporting
-- Enable budget tracking
-- Align with financial planning cycles
-
----
-
-## Examples
-
-- FY2024
-- FY2025
+- Enable fiscal year-based reporting
+- Support financial performance analysis
+- Facilitate budget and forecast alignment
+- Enable fiscal year-over-year comparisons
+- Support corporate planning cycles
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Date Entity](../entities/date.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Date  
-**Source Attribute**: Fiscal Year  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Date](../entities/date.md)
+- [Back to Main Index](../index.md)
