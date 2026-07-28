@@ -17,38 +17,29 @@ Business identifier or SKU assigned to the product or offer.
 
 ## Business Meaning
 
-Product ID is the business-level identifier or Stock Keeping Unit (SKU) used to reference products in operational systems, catalogs, and business communications. Unlike the surrogate Product Key, the Product ID is a meaningful business identifier used in product management and ordering systems.
+Product ID is the business-recognized identifier or Stock Keeping Unit (SKU) used to uniquely identify products in operational systems, catalogs, and business processes. Unlike the surrogate Product Key, the Product ID is meaningful to business users and is used in product catalogs, ordering systems, and business reporting.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_product  
-**Source Column**: product_id  
-**Entity**: [Product](../entities/product.md)  
-**Attribute**: Product ID  
-**Data Type**: character varying(30)  
-**Nullable**: No  
+**Source Table**: QuoteToBooking.dim_product
+
+**Source Column**: product_id
+
+**Entity**: [Product](../entities/product.md)
+
+**Attribute**: Product ID
+
+**Data Type**: Character Varying(30)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- SKU
-- Product Number
-- Product Code
-- Part Number
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Product](../entities/product.md)
-
-### Related Attributes
+- [Product](product.md)
 - [Product Key](product-key.md)
 - [Product Name](product-name.md)
 
@@ -57,24 +48,16 @@ Product ID is the business-level identifier or Stock Keeping Unit (SKU) used to 
 ## Usage Context
 
 Product ID is used to:
-- Identify products in business operations
-- Reference products in orders and catalogs
-- Link product data across systems
+- Identify products in business processes
+- Support product lookup and reference
+- Enable cross-system product identification
+- Facilitate product catalog management
+- Support ordering and fulfillment operations
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Product Entity](../entities/product.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Product  
-**Source Attribute**: Product ID  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Product](../entities/product.md)
+- [Back to Main Index](../index.md)
