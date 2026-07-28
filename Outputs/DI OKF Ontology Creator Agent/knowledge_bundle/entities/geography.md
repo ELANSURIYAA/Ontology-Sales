@@ -1,82 +1,47 @@
 ---
 title: Geography
 type: entity
-description: Business entity describing reporting geography for sales bookings.
+description: Business entity representing reporting geography for sales performance analysis.
 resource: entities
-tags: geography,entity,region,country,sales
-timestamp: 2026-07-28T00:00:00Z
+tags: [entity, geography, region, sales]
+timestamp: 2026-07-28
 ---
 
 # Geography
 
 ## Business Definition
-
 Stores geographic attributes used to analyze bookings by sales region, theater, and country.
 
----
-
 ## Technical Mapping
-
 - Source Table: `QuoteToBooking.dim_geography`
-- Domain: [Sales Bookings and Revenue Analytics](../domains/sales_bookings_and_revenue_analytics.md)
-
----
+- Related Glossary: [Geography](../glossary/geography.md)
 
 ## Attributes
-
-- Geography Key (`geography_key`) - integer - not nullable
-- Sales Region (`region`) - character varying(20)
-- Sales Theater (`theater`) - character varying(30)
-- Country (`country`) - character varying(40)
-
----
+- Geography Key
+- Sales Region
+- Sales Theater
+- Country
 
 ## Primary Keys
-
 - Geography Key
 
----
-
 ## Foreign Keys
-
 None
-
----
 
 ## Measures
-
 None
 
----
-
 ## Relationships
-
-- [Geography to Booking Transaction](../relationships/geography_to_booking_transaction.md)
-
----
+- [Geography to Booking Transaction](../relationships/geography-to-booking-transaction.md)
 
 ## Related Concepts
-
-- [Geography](../glossary/geography.md)
-- [Geography Key](../glossary/geography_key.md)
-- [Sales Region](../glossary/sales_region.md)
-- [Sales Theater](../glossary/sales_theater.md)
+- [Sales Region](../glossary/sales-region.md)
+- [Sales Theater](../glossary/sales-theater.md)
 - [Country](../glossary/country.md)
-
----
+- [Booking Transaction](booking-transaction.md)
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ## Business Rules
-
 - Each geography record is uniquely identified by Geography Key.
-- Geography supports analysis by region, theater, and country.
-- A geography can be associated with multiple booking transactions.
-
----
-
-## Semantic Cross Links
-
-- [Entities Index](index.md)
-- [Domain](../domains/sales_bookings_and_revenue_analytics.md)
-- [Booking Transaction](booking_transaction.md)
-- [Geography to Booking Transaction](../relationships/geography_to_booking_transaction.md)
-- [Glossary: Geography](../glossary/geography.md)
+- Geography supports reporting by region, theater, and country.
+- A geography may be associated with multiple booking transactions.
