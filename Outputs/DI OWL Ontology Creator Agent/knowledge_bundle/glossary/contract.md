@@ -3,7 +3,7 @@ title: Contract
 type: glossary
 description: Commercial agreements associated with bookings including contract type, term, renewal behavior, and support coverage level
 resource: glossary
-tags: [glossary, contract, agreement, commercial-terms]
+tags: [glossary, contract, agreement, commercial]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,79 +17,47 @@ Stores the business attributes of commercial agreements associated with bookings
 
 ## Business Meaning
 
-A contract represents the formal commercial agreement between the organization and a customer that defines the terms, conditions, duration, pricing structure, and service commitments for products and services. Contracts govern the relationship and establish the framework for booking transactions.
+A contract represents the formal commercial agreement between the organization and the customer that governs the terms, conditions, pricing, duration, and support coverage for products and services sold. Contracts define the business relationship and commitment between parties.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_contract  
-**Entity**: [Contract](../entities/contract.md)  
+**Source Table**: QuoteToBooking.dim_contract
+
+**Entity**: [Contract](../entities/contract.md)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Agreement
-- Commercial Agreement
-- Service Agreement
-- Contract Agreement
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Contract](../entities/contract.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
 - [Contract Key](contract-key.md)
 - [Contract Type](contract-type.md)
 - [Contract Term Months](contract-term-months.md)
 - [Auto Renew Flag](auto-renew-flag.md)
 - [Coverage Level](coverage-level.md)
-
-### Related Measures
-- [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
-- [Total Contract Value USD](../measures/total-contract-value-usd.md)
+- [Booking Transaction](booking-transaction.md)
+- [Annual Contract Value USD](annual-contract-value-usd.md)
+- [Total Contract Value USD](total-contract-value-usd.md)
 
 ---
 
 ## Usage Context
 
 Contracts are used to:
-- Define commercial terms for customer relationships
-- Establish pricing and discount structures
-- Specify service levels and support coverage
-- Set contract duration and renewal terms
-- Govern booking transactions
-
----
-
-## Examples
-
-- SaaS Subscription Contract
-- Enterprise Agreement
-- Support Contract
-- Maintenance Agreement
-- Service Level Agreement
+- Define commercial terms and conditions
+- Specify contract duration and renewal behavior
+- Establish support and service coverage levels
+- Enable contract-based revenue analysis
+- Support contract lifecycle management
+- Facilitate renewal tracking and forecasting
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Contract Entity](../entities/contract.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Entity  
-**Source Entity**: Contract  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Contract](../entities/contract.md)
+- [Back to Main Index](../index.md)
