@@ -3,7 +3,7 @@ title: Account Tier
 type: glossary
 description: Strategic importance or service tier of the customer account
 resource: glossary
-tags: [glossary, customer, account-tier, strategic-importance]
+tags: [glossary, customer, account-tier, strategic]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,75 +17,47 @@ Indicates the strategic importance or service tier of the customer account.
 
 ## Business Meaning
 
-Account Tier classifies customers based on their strategic value, revenue potential, or service level. Tiering enables prioritization of sales and support resources, differentiated service delivery, and strategic account management. Higher-tier accounts typically receive enhanced support and dedicated resources.
+Account Tier classifies customers based on their strategic value, revenue potential, or service level. Tiers typically reflect the level of attention, resources, and specialized services allocated to the account. Common tiers include strategic, enterprise, standard, or emerging accounts. Account tiering enables prioritized account management and resource allocation.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_customer  
-**Source Column**: account_tier  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Account Tier  
-**Data Type**: character varying(20)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_customer
+
+**Source Column**: account_tier
+
+**Entity**: [Customer](../entities/customer.md)
+
+**Attribute**: Account Tier
+
+**Data Type**: Character Varying(20)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Customer Tier
-- Account Level
-- Strategic Tier
-- Service Tier
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Customer](../entities/customer.md)
-
-### Related Attributes
+- [Customer](customer.md)
 - [Customer Segment](customer-segment.md)
-- [Customer Key](customer-key.md)
+- [Industry](industry.md)
 
 ---
 
 ## Usage Context
 
 Account Tier is used to:
-- Prioritize sales and support resources
-- Differentiate service levels
-- Analyze performance by account importance
-- Guide account management strategies
-
----
-
-## Examples
-
-- Strategic
-- Tier 1
-- Tier 2
-- Standard
-- Premium
+- Prioritize account management resources
+- Enable tier-based revenue analysis
+- Support strategic account programs
+- Facilitate service level differentiation
+- Enable tier-specific engagement strategies
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Customer Entity](../entities/customer.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Customer  
-**Source Attribute**: Account Tier  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Customer](../entities/customer.md)
+- [Back to Main Index](../index.md)
