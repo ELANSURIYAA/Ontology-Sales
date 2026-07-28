@@ -1,9 +1,9 @@
 ---
 title: Partner Type
 type: glossary
-description: Classification of partner by operating model such as distributor, reseller, systems integrator, or direct
+description: Classification of partners by operating model such as distributor, reseller, systems integrator, or direct
 resource: glossary
-tags: [glossary, partner, type, classification]
+tags: [glossary, partner, type, classification, channel]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,37 +17,29 @@ Classifies the partner by operating model, such as distributor, reseller, system
 
 ## Business Meaning
 
-Partner Type categorizes partners based on their business model and role in the sales process. Different partner types have distinct capabilities, market coverage, and value propositions. This classification enables targeted partner strategies and channel performance analysis.
+Partner Type categorizes partners based on their business model and role in the sales and distribution process. Common types include distributors (wholesale partners), resellers (retail partners), systems integrators (solution providers), and direct (company-owned sales). Partner type classification enables channel strategy development, partner program design, and channel performance analysis.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_partner  
-**Source Column**: partner_type  
-**Entity**: [Partner](../entities/partner.md)  
-**Attribute**: Partner Type  
-**Data Type**: character varying(30)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_partner
+
+**Source Column**: partner_type
+
+**Entity**: [Partner](../entities/partner.md)
+
+**Attribute**: Partner Type
+
+**Data Type**: Character Varying(30)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Channel Type
-- Partner Category
-- Partner Classification
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Partner](../entities/partner.md)
-
-### Related Attributes
+- [Partner](partner.md)
 - [Partner Key](partner-key.md)
 - [Partner Tier](partner-tier.md)
 - [Route to Market](route-to-market.md)
@@ -58,34 +50,15 @@ Partner Type categorizes partners based on their business model and role in the 
 
 Partner Type is used to:
 - Classify partners by business model
-- Analyze channel performance
-- Guide partner strategies
-- Support channel planning
-
----
-
-## Examples
-
-- Distributor
-- Reseller
-- Systems Integrator
-- Direct
-- Value-Added Reseller
+- Enable channel performance analysis
+- Support channel strategy development
+- Facilitate partner program design
+- Enable direct vs. indirect analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Partner Entity](../entities/partner.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Partner  
-**Source Attribute**: Partner Type  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Partner](../entities/partner.md)
+- [Back to Main Index](../index.md)
