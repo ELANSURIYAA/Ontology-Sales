@@ -17,79 +17,50 @@ Indicates the duration of the contract in months.
 
 ## Business Meaning
 
-Contract Term Months specifies the length of time that the contract remains in effect, measured in months. This duration determines the period over which services are provided, revenue is recognized, and contractual obligations are maintained. Contract term is a key factor in calculating annualized contract values and planning renewal activities.
+Contract Term Months specifies the length of the contractual commitment between the organization and the customer. This duration determines the period over which the customer is committed to the agreement and influences revenue recognition, renewal timing, and contract value calculations. Common terms include 12 months (annual), 24 months, 36 months, or other custom durations.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_contract  
-**Source Column**: term_months  
-**Entity**: [Contract](../entities/contract.md)  
-**Attribute**: Contract Term Months  
-**Data Type**: integer  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_contract
+
+**Source Column**: term_months
+
+**Entity**: [Contract](../entities/contract.md)
+
+**Attribute**: Contract Term Months
+
+**Data Type**: Integer
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Contract Duration
-- Term Length
-- Contract Period
-- Agreement Term
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Contract](../entities/contract.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
+- [Contract](contract.md)
 - [Contract Key](contract-key.md)
-- [Contract Type](contract-type.md)
-
-### Related Measures
-- [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
-- [Total Contract Value USD](../measures/total-contract-value-usd.md)
+- [Annual Contract Value USD](annual-contract-value-usd.md)
+- [Total Contract Value USD](total-contract-value-usd.md)
+- [Auto Renew Flag](auto-renew-flag.md)
 
 ---
 
 ## Usage Context
 
 Contract Term Months is used to:
+- Define contract duration
 - Calculate annualized contract values
-- Plan renewal activities
-- Forecast future revenue
-- Analyze contract duration patterns
-
----
-
-## Examples
-
-- 12 months (annual contract)
-- 24 months (two-year contract)
-- 36 months (three-year contract)
-- 60 months (five-year contract)
+- Determine renewal timing
+- Support revenue recognition
+- Analyze contract term preferences
+- Forecast contract expirations
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Contract Entity](../entities/contract.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Contract  
-**Source Attribute**: Contract Term Months  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Contract](../entities/contract.md)
+- [Back to Main Index](../index.md)
