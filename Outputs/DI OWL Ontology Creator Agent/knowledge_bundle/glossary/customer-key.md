@@ -17,40 +17,30 @@ Surrogate key that uniquely identifies a customer record in the customer dimensi
 
 ## Business Meaning
 
-Customer Key is a system-generated unique identifier used to link customer records to booking transactions. It serves as the primary key for the customer dimension and enables efficient joins and referential integrity in the data model.
+Customer Key is a system-generated unique identifier used to establish relationships between the customer dimension and booking transaction fact records. It serves as the primary key for customer records and enables efficient data integration and referential integrity.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_customer  
-**Source Column**: customer_key  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Customer Key  
-**Data Type**: integer  
-**Nullable**: No  
-**Primary Key**: Yes  
+**Source Table**: QuoteToBooking.dim_customer
+
+**Source Column**: customer_key
+
+**Entity**: [Customer](../entities/customer.md)
+
+**Attribute**: Customer Key
+
+**Data Type**: Integer
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Customer Identifier
-- Customer Surrogate Key
-- Customer Record ID
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Customer](../entities/customer.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Relationships
-- [Customer to Booking Transaction](../relationships/customer-to-booking-transaction.md)
+- [Customer](customer.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
@@ -59,23 +49,14 @@ Customer Key is a system-generated unique identifier used to link customer recor
 Customer Key is used to:
 - Uniquely identify customer records
 - Link booking transactions to customers
-- Enable dimensional analysis by customer attributes
 - Maintain referential integrity
+- Enable efficient joins between fact and dimension tables
+- Support data warehouse operations
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Customer Entity](../entities/customer.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Customer  
-**Source Attribute**: Customer Key  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Customer](../entities/customer.md)
+- [Back to Main Index](../index.md)
