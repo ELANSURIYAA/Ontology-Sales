@@ -1,521 +1,271 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://example.org/ontology/sales-bookings#"
-     xml:base="http://example.org/ontology/sales-bookings"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:ex="http://example.com/ontology/sales-bookings#"
+    xml:base="http://example.com/ontology/sales-bookings">
 
-    <owl:Ontology rdf:about="http://example.org/ontology/sales-bookings">
-        <rdfs:label xml:lang="en">Sales Bookings and Revenue Analytics Ontology</rdfs:label>
-        <rdfs:comment xml:lang="en">OWL 2 ontology generated from the OSI Semantic Model for the Sales Bookings and Revenue Analytics domain. The business process document could not be parsed from the provided repository input, so ontology enrichment from process documentation was not applied. The ontology preserves only concepts and relationships explicitly supported by the readable semantic model.</rdfs:comment>
+    <owl:Ontology rdf:about="http://example.com/ontology/sales-bookings">
+        <rdfs:label xml:lang="en">Enterprise Sales Bookings Ontology</rdfs:label>
+        <rdfs:comment xml:lang="en">OWL 2 ontology generated from the validated OSI Semantic Model for Sales Bookings and Revenue Analytics. The business process document could not be read from the repository, so ontology enrichment from that source was not applied. This ontology preserves the explicit semantics available from the OSI semantic model only.</rdfs:comment>
         <owl:versionInfo>1.0.0</owl:versionInfo>
-        <skos:note xml:lang="en">Validation warning: Business process document Inputs/QuoteToBooking.docx was not readable due to UTF-8 decoding error. Semantic enrichment from the business process source was therefore not performed.</skos:note>
-        <skos:note xml:lang="en">Validation result: OSI Semantic Model was readable and contained domains, entities, attributes, measures, relationships, and glossary mappings.</skos:note>
-        <skos:note xml:lang="en">Validation result: No duplicate entities were detected in the OSI Semantic Model.</skos:note>
-        <skos:note xml:lang="en">Validation result: Required semantic components for ontology generation were present in the OSI Semantic Model.</skos:note>
     </owl:Ontology>
 
-    <!-- Classes -->
-
-    <owl:Class rdf:about="#Contract">
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Contract">
         <rdfs:label>Contract</rdfs:label>
         <rdfs:comment>Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.</rdfs:comment>
     </owl:Class>
 
-    <owl:Class rdf:about="#Customer">
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Customer">
         <rdfs:label>Customer</rdfs:label>
         <rdfs:comment>Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.</rdfs:comment>
     </owl:Class>
 
-    <owl:Class rdf:about="#Date">
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Date">
         <rdfs:label>Date</rdfs:label>
         <rdfs:comment>Stores calendar and fiscal date attributes used to analyze bookings over time.</rdfs:comment>
     </owl:Class>
 
-    <owl:Class rdf:about="#Geography">
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Geography">
         <rdfs:label>Geography</rdfs:label>
         <rdfs:comment>Stores geographic attributes used to analyze bookings by sales region, theater, and country.</rdfs:comment>
     </owl:Class>
 
-    <owl:Class rdf:about="#Partner">
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Partner">
         <rdfs:label>Partner</rdfs:label>
         <rdfs:comment>Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.</rdfs:comment>
     </owl:Class>
 
-    <owl:Class rdf:about="#Product">
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Product">
         <rdfs:label>Product</rdfs:label>
         <rdfs:comment>Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.</rdfs:comment>
     </owl:Class>
 
-    <owl:Class rdf:about="#SalesRepresentative">
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#SalesRepresentative">
         <rdfs:label>Sales Representative</rdfs:label>
         <rdfs:comment>Stores information about sales personnel responsible for managing customer relationships and booking transactions.</rdfs:comment>
     </owl:Class>
 
-    <owl:Class rdf:about="#BookingTransaction">
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#BookingTransaction">
         <rdfs:label>Booking Transaction</rdfs:label>
         <rdfs:comment>Stores individual completed sales booking transactions with related financial measures and links to customer, product, partner, geography, sales representative, contract, and date dimensions.</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="#hasContract"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="#Contract"/>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasContract"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="#hasCustomer"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="#Customer"/>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasCustomer"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="#hasBookingDate"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="#Date"/>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasBookingDate"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="#hasGeography"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="#Geography"/>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasGeography"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="#hasPartner"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="#Partner"/>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasPartner"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="#hasProduct"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="#Product"/>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasProduct"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="#hasSalesRepresentative"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="#SalesRepresentative"/>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasSalesRepresentative"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
 
-    <!-- Object Properties -->
-
-    <owl:ObjectProperty rdf:about="#hasContract">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasContract">
         <rdfs:label>has contract</rdfs:label>
         <rdfs:comment>Links a booking transaction to the contract associated with the booking.</rdfs:comment>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="#Contract"/>
-        <owl:inverseOf rdf:resource="#isContractOfBookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isContractOfBookingTransaction"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#isContractOfBookingTransaction">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isContractOfBookingTransaction">
         <rdfs:label>is contract of booking transaction</rdfs:label>
-        <rdfs:domain rdf:resource="#Contract"/>
-        <rdfs:range rdf:resource="#BookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#hasCustomer">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasCustomer">
         <rdfs:label>has customer</rdfs:label>
         <rdfs:comment>Links a booking transaction to the customer that placed the order.</rdfs:comment>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="#Customer"/>
-        <owl:inverseOf rdf:resource="#isCustomerOfBookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isCustomerOfBookingTransaction"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#isCustomerOfBookingTransaction">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isCustomerOfBookingTransaction">
         <rdfs:label>is customer of booking transaction</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="#BookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#hasBookingDate">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasBookingDate">
         <rdfs:label>has booking date</rdfs:label>
-        <rdfs:comment>Links a booking transaction to its reporting date.</rdfs:comment>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="#Date"/>
-        <owl:inverseOf rdf:resource="#isBookingDateOfTransaction"/>
+        <rdfs:comment>Links a booking transaction to the reporting date used for time analysis.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isBookingDateOfTransaction"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#isBookingDateOfTransaction">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isBookingDateOfTransaction">
         <rdfs:label>is booking date of transaction</rdfs:label>
-        <rdfs:domain rdf:resource="#Date"/>
-        <rdfs:range rdf:resource="#BookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#hasGeography">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasGeography">
         <rdfs:label>has geography</rdfs:label>
-        <rdfs:comment>Links a booking transaction to the geography used for reporting.</rdfs:comment>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="#Geography"/>
-        <owl:inverseOf rdf:resource="#isGeographyOfBookingTransaction"/>
+        <rdfs:comment>Links a booking transaction to the geography used for reporting and market analysis.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isGeographyOfBookingTransaction"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#isGeographyOfBookingTransaction">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isGeographyOfBookingTransaction">
         <rdfs:label>is geography of booking transaction</rdfs:label>
-        <rdfs:domain rdf:resource="#Geography"/>
-        <rdfs:range rdf:resource="#BookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#hasPartner">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasPartner">
         <rdfs:label>has partner</rdfs:label>
-        <rdfs:comment>Links a booking transaction to the partner involved in the sale.</rdfs:comment>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="#Partner"/>
-        <owl:inverseOf rdf:resource="#isPartnerOfBookingTransaction"/>
+        <rdfs:comment>Links a booking transaction to the partner involved in the sales process.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isPartnerOfBookingTransaction"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#isPartnerOfBookingTransaction">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isPartnerOfBookingTransaction">
         <rdfs:label>is partner of booking transaction</rdfs:label>
-        <rdfs:domain rdf:resource="#Partner"/>
-        <rdfs:range rdf:resource="#BookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#hasProduct">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasProduct">
         <rdfs:label>has product</rdfs:label>
         <rdfs:comment>Links a booking transaction to the product or offer sold.</rdfs:comment>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="#Product"/>
-        <owl:inverseOf rdf:resource="#isProductOfBookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isProductOfBookingTransaction"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#isProductOfBookingTransaction">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isProductOfBookingTransaction">
         <rdfs:label>is product of booking transaction</rdfs:label>
-        <rdfs:domain rdf:resource="#Product"/>
-        <rdfs:range rdf:resource="#BookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#hasSalesRepresentative">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasSalesRepresentative">
         <rdfs:label>has sales representative</rdfs:label>
-        <rdfs:comment>Links a booking transaction to the sales representative responsible for the transaction.</rdfs:comment>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="#SalesRepresentative"/>
-        <owl:inverseOf rdf:resource="#isSalesRepresentativeOfBookingTransaction"/>
+        <rdfs:comment>Links a booking transaction to the sales representative associated with the booking.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isSalesRepresentativeOfBookingTransaction"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="#isSalesRepresentativeOfBookingTransaction">
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isSalesRepresentativeOfBookingTransaction">
         <rdfs:label>is sales representative of booking transaction</rdfs:label>
-        <rdfs:domain rdf:resource="#SalesRepresentative"/>
-        <rdfs:range rdf:resource="#BookingTransaction"/>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
     </owl:ObjectProperty>
 
-    <!-- Datatype Properties -->
-
-    <owl:DatatypeProperty rdf:about="#contractKey">
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#contractKey">
         <rdfs:label>contract key</rdfs:label>
-        <rdfs:domain rdf:resource="#Contract"/>
+        <rdfs:comment>Surrogate key that uniquely identifies a contract record in the contract dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#contractType">
-        <rdfs:label>contract type</rdfs:label>
-        <rdfs:domain rdf:resource="#Contract"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#termMonths">
-        <rdfs:label>contract term months</rdfs:label>
-        <rdfs:domain rdf:resource="#Contract"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#autoRenewFlag">
-        <rdfs:label>auto renew flag</rdfs:label>
-        <rdfs:domain rdf:resource="#Contract"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#coverageLevel">
-        <rdfs:label>coverage level</rdfs:label>
-        <rdfs:domain rdf:resource="#Contract"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#contractType"><rdfs:label>contract type</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Describes the type of commercial agreement attached to the booking, such as SaaS subscription, Enterprise Agreement, or support contract.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#termMonths"><rdfs:label>contract term months</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Indicates the duration of the contract in months.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#autoRenewFlag"><rdfs:label>auto renew flag</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Indicates whether the contract is set to renew automatically at the end of its term.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#coverageLevel"><rdfs:label>coverage level</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Describes the level of service or support coverage provided under the contract.</rdfs:comment></owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="#customerKey">
-        <rdfs:label>customer key</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#customerId">
-        <rdfs:label>customer ID</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#customerName">
-        <rdfs:label>customer name</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#customerSegment">
-        <rdfs:label>customer segment</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#industry">
-        <rdfs:label>industry</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#accountTier">
-        <rdfs:label>account tier</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#headquartersCountry">
-        <rdfs:label>headquarters country</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#headquartersRegion">
-        <rdfs:label>headquarters region</rdfs:label>
-        <rdfs:domain rdf:resource="#Customer"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#customerKey"><rdfs:label>customer key</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Surrogate key that uniquely identifies a customer record in the customer dimension.</rdfs:comment><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#customerId"><rdfs:label>customer ID</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Business identifier assigned to the customer account.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#customerName"><rdfs:label>customer name</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Official name of the customer organization that purchased products or services.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#customerSegment"><rdfs:label>customer segment</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Classifies the customer into a business segment such as Enterprise, Service Provider, or Public Sector.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#industry"><rdfs:label>industry</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Identifies the industry in which the customer operates.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#accountTier"><rdfs:label>account tier</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Indicates the strategic importance or service tier of the customer account.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#headquartersCountry"><rdfs:label>headquarters country</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Country where the customer organization's headquarters is located.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#headquartersRegion"><rdfs:label>headquarters region</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Global region where the customer organization's headquarters is located.</rdfs:comment></owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="#dateKey">
-        <rdfs:label>date key</rdfs:label>
-        <rdfs:domain rdf:resource="#Date"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#fullDate">
-        <rdfs:label>full date</rdfs:label>
-        <rdfs:domain rdf:resource="#Date"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#monthName">
-        <rdfs:label>month name</rdfs:label>
-        <rdfs:domain rdf:resource="#Date"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#calendarYear">
-        <rdfs:label>calendar year</rdfs:label>
-        <rdfs:domain rdf:resource="#Date"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#fiscalYear">
-        <rdfs:label>fiscal year</rdfs:label>
-        <rdfs:domain rdf:resource="#Date"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#fiscalQuarter">
-        <rdfs:label>fiscal quarter</rdfs:label>
-        <rdfs:domain rdf:resource="#Date"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#fiscalPeriodSequence">
-        <rdfs:label>fiscal period sequence</rdfs:label>
-        <rdfs:domain rdf:resource="#Date"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#dateKey"><rdfs:label>date key</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Encoded key that uniquely identifies a reporting date in the date dimension.</rdfs:comment><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#fullDate"><rdfs:label>full date</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/><rdfs:comment>Actual calendar date represented by the date record.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#monthName"><rdfs:label>month name</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Name of the calendar month for the date.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#calendarYear"><rdfs:label>calendar year</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Four-digit calendar year associated with the date.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#fiscalYear"><rdfs:label>fiscal year</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Fiscal year used by the business for financial and performance reporting.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#fiscalQuarter"><rdfs:label>fiscal quarter</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Fiscal quarter used by the business for periodic reporting and analysis.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#fiscalPeriodSequence"><rdfs:label>fiscal period sequence</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Sequential number representing the fiscal reporting period in ordered time analysis.</rdfs:comment></owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="#geographyKey">
-        <rdfs:label>geography key</rdfs:label>
-        <rdfs:domain rdf:resource="#Geography"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#salesRegion">
-        <rdfs:label>sales region</rdfs:label>
-        <rdfs:domain rdf:resource="#Geography"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#salesTheater">
-        <rdfs:label>sales theater</rdfs:label>
-        <rdfs:domain rdf:resource="#Geography"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#country">
-        <rdfs:label>country</rdfs:label>
-        <rdfs:domain rdf:resource="#Geography"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#geographyKey"><rdfs:label>geography key</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Surrogate key that uniquely identifies a geography record in the geography dimension.</rdfs:comment><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRegion"><rdfs:label>sales region</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>High-level geographic region used for reporting and performance analysis.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesTheater"><rdfs:label>sales theater</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Subregional sales area or theater used to organize market coverage and reporting.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#country"><rdfs:label>country</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Country associated with the geography record.</rdfs:comment></owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="#partnerKey">
-        <rdfs:label>partner key</rdfs:label>
-        <rdfs:domain rdf:resource="#Partner"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#partnerId">
-        <rdfs:label>partner ID</rdfs:label>
-        <rdfs:domain rdf:resource="#Partner"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#partnerName">
-        <rdfs:label>partner name</rdfs:label>
-        <rdfs:domain rdf:resource="#Partner"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#partnerType">
-        <rdfs:label>partner type</rdfs:label>
-        <rdfs:domain rdf:resource="#Partner"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#partnerTier">
-        <rdfs:label>partner tier</rdfs:label>
-        <rdfs:domain rdf:resource="#Partner"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#routeToMarket">
-        <rdfs:label>route to market</rdfs:label>
-        <rdfs:domain rdf:resource="#Partner"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerKey"><rdfs:label>partner key</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Surrogate key that uniquely identifies a partner record in the partner dimension.</rdfs:comment><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerId"><rdfs:label>partner ID</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Business identifier assigned to the partner organization.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerName"><rdfs:label>partner name</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Name of the partner organization involved in the transaction.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerType"><rdfs:label>partner type</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Classifies the partner by operating model, such as distributor, reseller, systems integrator, or direct.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerTier"><rdfs:label>partner tier</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Indicates the certification, authorization, or strategic tier assigned to the partner.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#routeToMarket"><rdfs:label>route to market</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Describes the sales delivery path through which the product or service reached the customer.</rdfs:comment></owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="#productKey">
-        <rdfs:label>product key</rdfs:label>
-        <rdfs:domain rdf:resource="#Product"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#productId">
-        <rdfs:label>product ID</rdfs:label>
-        <rdfs:domain rdf:resource="#Product"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#productName">
-        <rdfs:label>product name</rdfs:label>
-        <rdfs:domain rdf:resource="#Product"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#productFamily">
-        <rdfs:label>product family</rdfs:label>
-        <rdfs:domain rdf:resource="#Product"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#technologyDomain">
-        <rdfs:label>technology domain</rdfs:label>
-        <rdfs:domain rdf:resource="#Product"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#offerType">
-        <rdfs:label>offer type</rdfs:label>
-        <rdfs:domain rdf:resource="#Product"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#businessEntity">
-        <rdfs:label>business entity</rdfs:label>
-        <rdfs:domain rdf:resource="#Product"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#productKey"><rdfs:label>product key</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Surrogate key that uniquely identifies a product record in the product dimension.</rdfs:comment><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#productId"><rdfs:label>product ID</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Business identifier or SKU assigned to the product or offer.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#productName"><rdfs:label>product name</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Commercial name of the product or subscription offer sold to the customer.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#productFamily"><rdfs:label>product family</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Higher-level product grouping used for portfolio and performance analysis.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#technologyDomain"><rdfs:label>technology domain</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Technology area or solution domain to which the product belongs.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#offerType"><rdfs:label>offer type</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Indicates whether the item is sold as hardware, software subscription, or SaaS subscription.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#businessEntity"><rdfs:label>business entity</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Internal business unit or portfolio responsible for the product.</rdfs:comment></owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="#salesRepresentativeKey">
-        <rdfs:label>sales representative key</rdfs:label>
-        <rdfs:domain rdf:resource="#SalesRepresentative"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#salesRepresentativeId">
-        <rdfs:label>sales representative ID</rdfs:label>
-        <rdfs:domain rdf:resource="#SalesRepresentative"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#salesRepresentativeName">
-        <rdfs:label>sales representative name</rdfs:label>
-        <rdfs:domain rdf:resource="#SalesRepresentative"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#salesRole">
-        <rdfs:label>sales role</rdfs:label>
-        <rdfs:domain rdf:resource="#SalesRepresentative"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#salesTeam">
-        <rdfs:label>sales team</rdfs:label>
-        <rdfs:domain rdf:resource="#SalesRepresentative"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#coveredSegment">
-        <rdfs:label>covered segment</rdfs:label>
-        <rdfs:domain rdf:resource="#SalesRepresentative"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRepresentativeKey"><rdfs:label>sales representative key</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Surrogate key that uniquely identifies a sales representative record in the sales representative dimension.</rdfs:comment><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRepresentativeId"><rdfs:label>sales representative ID</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Business identifier assigned to the sales representative.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRepresentativeName"><rdfs:label>sales representative name</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Full name of the sales representative associated with the booking.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRole"><rdfs:label>sales role</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Job role or account responsibility of the sales representative.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesTeam"><rdfs:label>sales team</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Team or organizational unit to which the sales representative belongs.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#coveredSegment"><rdfs:label>covered segment</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Customer segment for which the sales representative is responsible.</rdfs:comment></owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="#bookingId">
-        <rdfs:label>booking ID</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#orderNumber">
-        <rdfs:label>order number</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#orderLineNumber">
-        <rdfs:label>order line number</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#bookingType">
-        <rdfs:label>booking type</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#renewalIndicator">
-        <rdfs:label>renewal indicator</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#quantitySold">
-        <rdfs:label>quantity sold</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#unitListPriceUSD">
-        <rdfs:label>unit list price USD</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#discountPercentage">
-        <rdfs:label>discount percentage</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#bookingAmountUSD">
-        <rdfs:label>booking amount USD</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#annualContractValueUSD">
-        <rdfs:label>annual contract value USD</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-    <owl:DatatypeProperty rdf:about="#totalContractValueUSD">
-        <rdfs:label>total contract value USD</rdfs:label>
-        <rdfs:domain rdf:resource="#BookingTransaction"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    </owl:DatatypeProperty>
-
-    <!-- Disjointness -->
-    <owl:AllDisjointClasses>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="#Contract"/>
-            <rdf:Description rdf:about="#Customer"/>
-            <rdf:Description rdf:about="#Date"/>
-            <rdf:Description rdf:about="#Geography"/>
-            <rdf:Description rdf:about="#Partner"/>
-            <rdf:Description rdf:about="#Product"/>
-            <rdf:Description rdf:about="#SalesRepresentative"/>
-            <rdf:Description rdf:about="#BookingTransaction"/>
-        </owl:members>
-    </owl:AllDisjointClasses>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingId"><rdfs:label>booking ID</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Unique identifier for an individual booking transaction record.</rdfs:comment><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#orderNumber"><rdfs:label>order number</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Business order number associated with the booking transaction.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#orderLineNumber"><rdfs:label>order line number</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Line item number within the order associated with the booking.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingType"><rdfs:label>booking type</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/><rdfs:comment>Indicates whether the booking is a new sale or a renewal.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#renewalIndicator"><rdfs:label>renewal indicator</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Indicates whether the booking transaction is classified as a renewal.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#quantitySold"><rdfs:label>quantity sold</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/><rdfs:comment>Number of units, licenses, or subscriptions included in the booking transaction.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#unitListPriceUSD"><rdfs:label>unit list price USD</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/><rdfs:comment>Standard list price per unit in U.S. dollars before discounts are applied.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#discountPercentage"><rdfs:label>discount percentage</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/><rdfs:comment>Percentage discount applied to the list price for the booking transaction.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingAmountUSD"><rdfs:label>booking amount USD</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/><rdfs:comment>Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#acvUSD"><rdfs:label>annual contract value USD</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/><rdfs:comment>Annualized value of the contract associated with the booking in U.S. dollars.</rdfs:comment></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#tcvUSD"><rdfs:label>total contract value USD</rdfs:label><rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/><rdfs:comment>Total value of the full contract associated with the booking in U.S. dollars.</rdfs:comment></owl:DatatypeProperty>
 
 </rdf:RDF>
