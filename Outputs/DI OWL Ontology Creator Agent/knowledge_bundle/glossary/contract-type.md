@@ -1,9 +1,9 @@
 ---
 title: Contract Type
 type: glossary
-description: Type of commercial agreement attached to the booking such as SaaS subscription, Enterprise Agreement, or support contract
+description: Type of commercial agreement attached to the booking
 resource: glossary
-tags: [glossary, contract, type, agreement-type]
+tags: [glossary, contract, type, agreement]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,40 +17,32 @@ Describes the type of commercial agreement attached to the booking, such as SaaS
 
 ## Business Meaning
 
-Contract Type classifies the nature and structure of the commercial agreement between the organization and the customer. Different contract types have different terms, pricing models, and service commitments that impact revenue recognition and customer relationship management.
+Contract Type classifies the nature of the commercial agreement between the organization and the customer. Different contract types have different terms, pricing models, and business implications. Common types include SaaS subscriptions for cloud services, Enterprise Agreements for large organizational commitments, and support contracts for maintenance and service coverage.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_contract  
-**Source Column**: contract_type  
-**Entity**: [Contract](../entities/contract.md)  
-**Attribute**: Contract Type  
-**Data Type**: character varying(40)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_contract
+
+**Source Column**: contract_type
+
+**Entity**: [Contract](../entities/contract.md)
+
+**Attribute**: Contract Type
+
+**Data Type**: Character Varying(40)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Agreement Type
-- Contract Category
-- Contract Classification
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Contract](../entities/contract.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
+- [Contract](contract.md)
 - [Contract Key](contract-key.md)
-- [Contract Term Months](contract-term-months.md)
+- [Offer Type](offer-type.md)
+- [Coverage Level](coverage-level.md)
 
 ---
 
@@ -58,34 +50,15 @@ Contract Type classifies the nature and structure of the commercial agreement be
 
 Contract Type is used to:
 - Classify commercial agreements
-- Analyze booking performance by contract structure
-- Support revenue recognition processes
-- Guide contract management workflows
-
----
-
-## Examples
-
-- SaaS Subscription
-- Enterprise Agreement
-- Support Contract
-- Maintenance Agreement
-- Professional Services Agreement
+- Analyze revenue by contract model
+- Support contract lifecycle management
+- Enable contract type-specific reporting
+- Facilitate pricing and terms analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Contract Entity](../entities/contract.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Contract  
-**Source Attribute**: Contract Type  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Contract](../entities/contract.md)
+- [Back to Main Index](../index.md)
