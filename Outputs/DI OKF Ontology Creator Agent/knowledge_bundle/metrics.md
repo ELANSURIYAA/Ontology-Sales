@@ -1,27 +1,46 @@
 ---
-title: Metrics Overview
-type: metrics_index
-domain: Sales Bookings and Revenue Analytics
-version: 1.0
-status: generated
+title: Metrics
+type: index
+description: Navigation and definitions for all analytical measures in the sales bookings knowledge bundle.
+resource: knowledge_bundle
+tags: metrics,measures,sales,revenue,okf
+timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Metrics Overview
+# Metrics
 
 ## Measure Inventory
 
-| Measure | Aggregation Type | Related Entity | Related Domain |
-| --- | --- | --- | --- |
-| [Quantity Sold](measures/quantity-sold.md) | Sum | [Booking Transaction](entities/booking-transaction.md) | [Sales Bookings and Revenue Analytics](domains/sales-bookings-and-revenue-analytics.md) |
-| [Unit List Price USD](measures/unit-list-price-usd.md) | Average | [Booking Transaction](entities/booking-transaction.md) | [Sales Bookings and Revenue Analytics](domains/sales-bookings-and-revenue-analytics.md) |
-| [Discount Percentage](measures/discount-percentage.md) | Average | [Booking Transaction](entities/booking-transaction.md) | [Sales Bookings and Revenue Analytics](domains/sales-bookings-and-revenue-analytics.md) |
-| [Booking Amount USD](measures/booking-amount-usd.md) | Sum | [Booking Transaction](entities/booking-transaction.md) | [Sales Bookings and Revenue Analytics](domains/sales-bookings-and-revenue-analytics.md) |
-| [Annual Contract Value USD](measures/annual-contract-value-usd.md) | Sum | [Booking Transaction](entities/booking-transaction.md) | [Sales Bookings and Revenue Analytics](domains/sales-bookings-and-revenue-analytics.md) |
-| [Total Contract Value USD](measures/total-contract-value-usd.md) | Sum | [Booking Transaction](entities/booking-transaction.md) | [Sales Bookings and Revenue Analytics](domains/sales-bookings-and-revenue-analytics.md) |
+- [Quantity Sold](measures/quantity_sold.md)
+- [Unit List Price USD](measures/unit_list_price_usd.md)
+- [Discount Percentage](measures/discount_percentage.md)
+- [Booking Amount USD](measures/booking_amount_usd.md)
+- [Annual Contract Value USD](measures/annual_contract_value_usd.md)
+- [Total Contract Value USD](measures/total_contract_value_usd.md)
 
-## Observations
+---
 
-- Revenue-oriented measures are concentrated in the booking fact entity.
-- Quantity is additive across transactions.
-- Price and discount measures are modeled as average-oriented analytical measures.
-- ACV and TCV support contract value analysis across time, product, customer, and partner dimensions.
+## Measure Usage Context
+
+All measures originate from the [Booking Transaction](entities/booking_transaction.md) entity in the [Sales Bookings and Revenue Analytics](domains/sales_bookings_and_revenue_analytics.md) domain.
+
+---
+
+## Aggregation Summary
+
+- Quantity Sold: SUM
+- Unit List Price USD: SUM
+- Discount Percentage: AVG
+- Booking Amount USD: SUM
+- Annual Contract Value USD: SUM
+- Total Contract Value USD: SUM
+
+---
+
+## Semantic Cross Links
+
+- [Knowledge Bundle Index](index.md)
+- [Semantic Summary](semantic_summary.md)
+- [Measures Index](measures/index.md)
+- [Booking Transaction](entities/booking_transaction.md)
+- [Sales Bookings and Revenue Analytics](domains/sales_bookings_and_revenue_analytics.md)
