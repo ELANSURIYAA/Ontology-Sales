@@ -3,7 +3,7 @@ title: Geography
 type: glossary
 description: Geographic attributes used to analyze bookings by sales region, theater, and country
 resource: glossary
-tags: [glossary, geography, location, region]
+tags: [glossary, geography, location, region, territory]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,65 +17,44 @@ Stores geographic attributes used to analyze bookings by sales region, theater, 
 
 ## Business Meaning
 
-Geography represents the location-based organizational structure used for sales operations and performance analysis. It enables regional sales analysis, market coverage evaluation, and geographic performance tracking across different levels of geographic hierarchy.
+Geography represents the spatial dimension for sales and booking analysis, organizing markets into hierarchical geographic structures. It enables territory-based performance measurement, regional strategy development, and market penetration analysis across different geographic levels from broad regions to specific countries.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_geography  
-**Entity**: [Geography](../entities/geography.md)  
+**Source Table**: QuoteToBooking.dim_geography
+
+**Entity**: [Geography](../entities/geography.md)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Location
-- Sales Territory
-- Geographic Region
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Geography](../entities/geography.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
 - [Geography Key](geography-key.md)
 - [Sales Region](sales-region.md)
 - [Sales Theater](sales-theater.md)
 - [Country](country.md)
-
-### Related Measures
-- [Booking Amount USD](../measures/booking-amount-usd.md)
+- [Headquarters Country](headquarters-country.md)
+- [Headquarters Region](headquarters-region.md)
 
 ---
 
 ## Usage Context
 
 Geography is used to:
-- Analyze sales performance by region
-- Track market coverage
-- Support territory planning
-- Enable geographic segmentation
+- Enable geographic sales analysis
+- Support territory-based performance measurement
+- Facilitate regional strategy development
+- Enable market penetration analysis
+- Support geographic resource allocation
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Geography Entity](../entities/geography.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Entity  
-**Source Entity**: Geography  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Geography](../entities/geography.md)
+- [Back to Main Index](../index.md)
