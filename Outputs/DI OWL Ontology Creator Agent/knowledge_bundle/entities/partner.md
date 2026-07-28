@@ -1,7 +1,7 @@
 ---
 title: Partner
 type: entity
-description: Business entity representing channel and direct partners involved in the sales process
+description: Channel and direct partners involved in the sales process including partner type, partner tier, and route to market
 resource: entities
 tags: [entity, dimension, partner, channel, reseller, distributor]
 timestamp: 2026-07-28T00:00:00Z
@@ -11,27 +11,28 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market. The Partner entity enables analysis of partner ecosystem performance, channel effectiveness, and route-to-market strategies.
+Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_partner  
-**Entity Type**: Dimension  
-**Entity ID**: ENT005
+**Source Table**: QuoteToBooking.dim_partner
+
+**Source System**: QuoteToBooking
+
+**Entity Type**: Dimension
 
 ---
 
 ## Attributes
 
-- **Partner Key** (partner_key) - integer, NOT NULL
-- **Partner ID** (partner_id) - character varying(20), NOT NULL
-- **Partner Name** (partner_name) - character varying(60), NULL
-- **Partner Type** (partner_type) - character varying(30), NULL
-- **Partner Tier** (partner_tier) - character varying(30), NULL
-- **Route to Market** (route_to_market) - character varying(20), NULL
+- **Partner Key** (partner_key): Surrogate key that uniquely identifies a partner record in the partner dimension
+- **Partner ID** (partner_id): Business identifier assigned to the partner organization
+- **Partner Name** (partner_name): Name of the partner organization involved in the transaction
+- **Partner Type** (partner_type): Classifies the partner by operating model, such as distributor, reseller, systems integrator, or direct
+- **Partner Tier** (partner_tier): Indicates the certification, authorization, or strategic tier assigned to the partner
+- **Route to Market** (route_to_market): Describes the sales delivery path through which the product or service reached the customer
 
 ---
 
@@ -51,30 +52,31 @@ None
 
 ### Outgoing Relationships
 
-- [Partner to Booking Transaction](../relationships/partner-to-booking-transaction.md) - Links partners to booking transactions (One-to-Many)
+- **[Partner to Booking Transaction](../relationships/partner-to-booking-transaction.md)**: One-to-Many relationship linking partners to booking transactions
+
+### Related Entities
+
+- [Booking Transaction](booking-transaction.md): Fact entity that references this dimension
+- [Customer](customer.md): Related through sales transactions
+- [Product](product.md): Related through product sales
 
 ---
 
 ## Measures
 
-Partners are analyzed using measures from related booking transactions:
+This dimension supports analysis of the following measures:
 
 - [Booking Amount USD](../measures/booking-amount-usd.md)
 - [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
 - [Total Contract Value USD](../measures/total-contract-value-usd.md)
 - [Quantity Sold](../measures/quantity-sold.md)
+- [Unit List Price USD](../measures/unit-list-price-usd.md)
 - [Discount Percentage](../measures/discount-percentage.md)
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](booking-transaction.md) - Booking transactions involving this partner
-- [Customer](customer.md) - Customers served through partners
-- [Product](product.md) - Products sold through partners
-
-### Related Glossary Terms
 - [Partner](../glossary/partner.md)
 - [Partner Key](../glossary/partner-key.md)
 - [Partner ID](../glossary/partner-id.md)
@@ -83,66 +85,60 @@ Partners are analyzed using measures from related booking transactions:
 - [Partner Tier](../glossary/partner-tier.md)
 - [Route to Market](../glossary/route-to-market.md)
 
-### Related Domains
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-
 ---
 
 ## Business Rules
 
-1. **Uniqueness**: Each partner record is uniquely identified by Partner Key
-2. **Business Identifier**: Partner ID serves as the business identifier for the partner organization
-3. **Partner Classification**: Partner Type classifies partners by operating model (distributor, reseller, systems integrator, direct)
-4. **Partner Tiering**: Partner Tier indicates certification, authorization, or strategic level assigned to the partner
-5. **Route to Market**: Describes the sales delivery path through which products reach customers
-6. **Partner Ecosystem**: Partners play a critical role in extending market reach and customer coverage
+1. Partner Key is a surrogate key and must be unique
+2. Partner ID is the business identifier for the partner organization
+3. Partner Name is the official organization name
+4. Partner Type classifies partners by operating model (distributor, reseller, systems integrator, direct)
+5. Partner Tier indicates certification, authorization, or strategic level
+6. Route to Market describes the sales delivery path
+7. Every booking transaction must reference a valid partner
+8. Partner attributes support channel performance analysis
 
 ---
 
 ## Usage Examples
 
-### Partner Performance Analysis
-Analyze booking amounts by partner to identify top-performing partners and assess partner contribution to revenue.
+**Analysis by Partner Type**:
+- Compare booking revenue across distributors, resellers, and systems integrators
+- Analyze direct vs. indirect sales performance
+- Measure channel mix and contribution
 
-### Partner Type Analysis
-Compare booking performance across partner types (distributor, reseller, systems integrator, direct) to evaluate channel effectiveness.
+**Analysis by Partner Tier**:
+- Evaluate performance by partner certification level
+- Compare strategic vs. standard partner revenue
+- Analyze partner tier effectiveness
 
-### Partner Tier Analysis
-Evaluate booking amounts and average deal sizes by partner tier to assess the impact of partner certification and investment.
+**Analysis by Route to Market**:
+- Measure booking amounts by sales delivery path
+- Compare direct vs. channel routes
+- Analyze route effectiveness by product or geography
 
-### Route to Market Analysis
-Analyze booking performance by route to market to optimize channel strategy and resource allocation.
+**Partner Performance**:
+- Identify top-performing partners by booking revenue
+- Analyze partner product mix
+- Compare discount rates by partner type
 
-### Partner Discount Analysis
-Monitor average discount percentages by partner type and tier to ensure pricing discipline and margin protection.
+**Channel Strategy**:
+- Evaluate channel coverage by geography
+- Analyze partner distribution by customer segment
+- Measure partner engagement and productivity
 
 ---
 
-## Data Quality Notes
+## Domain
 
-- Partner Key is mandatory and serves as the primary key
-- Partner ID is mandatory and serves as the business identifier
-- Partner Name should be populated for all active partner records
-- Partner Type, Tier, and Route to Market classifications support channel analysis
-- NULL values in descriptive attributes may indicate incomplete partner profiles
-- Partner dimension should include both channel partners and direct sales representation
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Navigation
 
-- [View Entity Index](index.md)
-- [View Related Relationships](../relationships/index.md)
-- [View Related Measures](../measures/index.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Entity ID**: ENT005  
-**Domain**: Sales Bookings and Revenue Analytics  
-**Entity Type**: Dimension  
-**Attribute Count**: 6  
-**Relationship Count**: 1  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Entities Index](index.md)
+- [Back to Main Index](../index.md)
+- [View Relationships](../relationships/index.md)
+- [View Measures](../measures/index.md)
+- [View Glossary](../glossary/index.md)
