@@ -17,38 +17,29 @@ Unique identifier for an individual booking transaction record.
 
 ## Business Meaning
 
-Booking ID is the system-generated unique identifier that distinguishes each booking transaction. It serves as the primary key for the booking transaction fact table and ensures that each sales transaction can be uniquely identified and tracked throughout the system.
+Booking ID is the unique identifier that distinguishes each individual booking transaction in the system. It serves as the primary key for booking records and enables precise transaction tracking, auditing, and reference. Each booking transaction has exactly one Booking ID that remains constant throughout its lifecycle.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: fact_bookings  
-**Source Column**: booking_id  
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Attribute**: Booking ID  
-**Data Type**: integer  
-**Nullable**: No  
-**Primary Key**: Yes  
+**Source Table**: QuoteToBooking.fact_bookings
+
+**Source Column**: booking_id
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)
+
+**Attribute**: Booking ID
+
+**Data Type**: Integer
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Transaction ID
-- Booking Identifier
-- Booking Record ID
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
+- [Booking Transaction](booking-transaction.md)
 - [Order Number](order-number.md)
 - [Order Line Number](order-line-number.md)
 
@@ -58,24 +49,15 @@ Booking ID is the system-generated unique identifier that distinguishes each boo
 
 Booking ID is used to:
 - Uniquely identify booking transactions
-- Support transaction-level analysis
-- Enable drill-down to transaction details
-- Maintain data integrity
+- Support transaction tracking and auditing
+- Enable transaction-level analysis
+- Facilitate data quality verification
+- Support transaction reconciliation
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Booking Transaction Entity](../entities/booking-transaction.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Booking Transaction  
-**Source Attribute**: Booking ID  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Booking Transaction](../entities/booking-transaction.md)
+- [Back to Main Index](../index.md)
