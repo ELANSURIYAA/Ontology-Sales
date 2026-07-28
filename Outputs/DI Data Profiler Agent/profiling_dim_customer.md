@@ -8,7 +8,7 @@
 # Column Summary
 
 | Column Name | Data Type | Nullable | Distinct Count | Null Count | Null % | Min | Max | Average |
-| --- | --- | --- | ---: | ---: | ---: | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | customer_key | integer | NO | 8 | 0 | 0.00 | 1 | 8 | 4.50 |
 | customer_id | character varying | NO | 8 | 0 | 0.00 | CUST-1001 | CUST-1008 |  |
 | customer_name | character varying | YES | 8 | 0 | 0.00 | AT&T | Vodafone |  |
@@ -20,17 +20,33 @@
 
 # Value Distribution Summary
 
+## segment
+
+| Value | Frequency |
+| --- | --- |
+| Service Provider | 6 |
+| Enterprise | 1 |
+| Public Sector | 1 |
+
+## industry
+
+| Value | Frequency |
+| --- | --- |
+| Telecommunications | 6 |
+| Financial Services | 1 |
+| Government | 1 |
+
 ## account_tier
 
 | Value | Frequency |
-| --- | ---: |
+| --- | --- |
 | Growth | 4 |
 | Strategic | 4 |
 
 ## hq_country
 
 | Value | Frequency |
-| --- | ---: |
+| --- | --- |
 | United States | 4 |
 | Germany | 1 |
 | India | 1 |
@@ -40,26 +56,10 @@
 ## hq_region
 
 | Value | Frequency |
-| --- | ---: |
+| --- | --- |
 | Americas | 4 |
 | APJC | 2 |
 | EMEA | 2 |
-
-## industry
-
-| Value | Frequency |
-| --- | ---: |
-| Telecommunications | 6 |
-| Financial Services | 1 |
-| Government | 1 |
-
-## segment
-
-| Value | Frequency |
-| --- | ---: |
-| Service Provider | 6 |
-| Enterprise | 1 |
-| Public Sector | 1 |
 
 # Date Statistics
 
@@ -68,7 +68,7 @@ No date/timestamp columns.
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
-| --- | ---: | ---: | ---: |
+| --- | --- | --- | --- |
 | customer_id | 9 | 9 | 9.00 |
 | customer_name | 3 | 26 | 11.25 |
 | segment | 10 | 16 | 14.88 |
