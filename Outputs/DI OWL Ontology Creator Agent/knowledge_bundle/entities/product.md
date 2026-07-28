@@ -1,9 +1,9 @@
 ---
 title: Product
 type: entity
-description: Business entity representing products and offers sold to customers
+description: Products and offers sold to customers including product family, technology domain, offer type, and business entity
 resource: entities
-tags: [entity, dimension, product, offer, portfolio, sku]
+tags: [entity, dimension, product, offer, sku, portfolio]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,28 +11,29 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity. The Product entity enables analysis of product portfolio performance, technology domain effectiveness, and offer type strategies.
+Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_product  
-**Entity Type**: Dimension  
-**Entity ID**: ENT006
+**Source Table**: QuoteToBooking.dim_product
+
+**Source System**: QuoteToBooking
+
+**Entity Type**: Dimension
 
 ---
 
 ## Attributes
 
-- **Product Key** (product_key) - integer, NOT NULL
-- **Product ID** (product_id) - character varying(30), NOT NULL
-- **Product Name** (product_name) - character varying(80), NULL
-- **Product Family** (product_family) - character varying(30), NULL
-- **Technology Domain** (technology_domain) - character varying(40), NULL
-- **Offer Type** (offer_type) - character varying(30), NULL
-- **Business Entity** (business_entity) - character varying(30), NULL
+- **Product Key** (product_key): Surrogate key that uniquely identifies a product record in the product dimension
+- **Product ID** (product_id): Business identifier or SKU assigned to the product or offer
+- **Product Name** (product_name): Commercial name of the product or subscription offer sold to the customer
+- **Product Family** (product_family): Higher-level product grouping used for portfolio and performance analysis
+- **Technology Domain** (technology_domain): Technology area or solution domain to which the product belongs
+- **Offer Type** (offer_type): Indicates whether the item is sold as hardware, software subscription, or SaaS subscription
+- **Business Entity** (business_entity): Internal business unit or portfolio responsible for the product
 
 ---
 
@@ -52,13 +53,19 @@ None
 
 ### Outgoing Relationships
 
-- [Product to Booking Transaction](../relationships/product-to-booking-transaction.md) - Links products to booking transactions (One-to-Many)
+- **[Product to Booking Transaction](../relationships/product-to-booking-transaction.md)**: One-to-Many relationship linking products to booking transactions
+
+### Related Entities
+
+- [Booking Transaction](booking-transaction.md): Fact entity that references this dimension
+- [Customer](customer.md): Related through product purchases
+- [Partner](partner.md): Related through product sales
 
 ---
 
 ## Measures
 
-Products are analyzed using measures from related booking transactions:
+This dimension supports analysis of the following measures:
 
 - [Booking Amount USD](../measures/booking-amount-usd.md)
 - [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
@@ -71,12 +78,6 @@ Products are analyzed using measures from related booking transactions:
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](booking-transaction.md) - Booking transactions for this product
-- [Customer](customer.md) - Customers purchasing products
-- [Contract](contract.md) - Contracts covering products
-
-### Related Glossary Terms
 - [Product](../glossary/product.md)
 - [Product Key](../glossary/product-key.md)
 - [Product ID](../glossary/product-id.md)
@@ -86,66 +87,66 @@ Products are analyzed using measures from related booking transactions:
 - [Offer Type](../glossary/offer-type.md)
 - [Business Entity](../glossary/business-entity.md)
 
-### Related Domains
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-
 ---
 
 ## Business Rules
 
-1. **Uniqueness**: Each product record is uniquely identified by Product Key
-2. **Business Identifier**: Product ID serves as the business identifier or SKU for the product
-3. **Product Hierarchy**: Products are organized into Product Families for portfolio analysis
-4. **Technology Classification**: Technology Domain identifies the solution area (networking, security, collaboration, observability)
-5. **Offer Classification**: Offer Type indicates whether the product is hardware, software subscription, or SaaS subscription
-6. **Business Ownership**: Business Entity identifies the internal business unit or portfolio responsible for the product
+1. Product Key is a surrogate key and must be unique
+2. Product ID is the business identifier or SKU for the product
+3. Product Name is the commercial name of the product or offer
+4. Product Family groups products for portfolio analysis
+5. Technology Domain identifies the solution area (e.g., networking, security, collaboration, observability)
+6. Offer Type classifies products as hardware, software subscription, or SaaS subscription
+7. Business Entity identifies the responsible business unit or portfolio
+8. Every booking transaction must reference a valid product
+9. Product attributes support portfolio and product mix analysis
 
 ---
 
 ## Usage Examples
 
-### Product Portfolio Analysis
-Analyze booking amounts by product family to understand which product lines drive the most revenue.
+**Analysis by Product Family**:
+- Compare booking revenue across product families
+- Analyze product family growth trends
+- Measure product family contribution to total revenue
 
-### Technology Domain Analysis
-Evaluate booking performance by technology domain (networking, security, collaboration, observability) to assess solution area effectiveness.
+**Analysis by Technology Domain**:
+- Evaluate performance by solution domain (networking, security, collaboration, observability)
+- Analyze technology domain adoption by customer segment
+- Compare technology domain growth rates
 
-### Offer Type Analysis
-Compare booking amounts across offer types (hardware, software subscription, SaaS subscription) to understand business model mix.
+**Analysis by Offer Type**:
+- Compare hardware vs. software subscription vs. SaaS subscription revenue
+- Analyze subscription adoption trends
+- Measure offer type mix by customer segment
 
-### Product Performance
-Identify top-performing products by booking amount and quantity sold to optimize product strategy and resource allocation.
+**Analysis by Business Entity**:
+- Evaluate business unit performance
+- Analyze portfolio contribution to revenue
+- Compare business entity growth rates
 
-### Business Entity Analysis
-Analyze booking performance by business entity to assess internal portfolio performance and accountability.
+**Product Performance**:
+- Identify top-performing products by booking revenue
+- Analyze product adoption by geography
+- Compare discount rates by product family
+
+**Product Mix Analysis**:
+- Evaluate product portfolio balance
+- Analyze cross-sell and upsell opportunities
+- Measure product diversification by customer
 
 ---
 
-## Data Quality Notes
+## Domain
 
-- Product Key is mandatory and serves as the primary key
-- Product ID is mandatory and serves as the business identifier (SKU)
-- Product Name should be populated for all active product records
-- Product Family, Technology Domain, Offer Type, and Business Entity classifications support portfolio analysis
-- NULL values in descriptive attributes may indicate incomplete product profiles
-- Product dimension should include all sellable products and offers
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Navigation
 
-- [View Entity Index](index.md)
-- [View Related Relationships](../relationships/index.md)
-- [View Related Measures](../measures/index.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Entity ID**: ENT006  
-**Domain**: Sales Bookings and Revenue Analytics  
-**Entity Type**: Dimension  
-**Attribute Count**: 7  
-**Relationship Count**: 1  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Entities Index](index.md)
+- [Back to Main Index](../index.md)
+- [View Relationships](../relationships/index.md)
+- [View Measures](../measures/index.md)
+- [View Glossary](../glossary/index.md)
