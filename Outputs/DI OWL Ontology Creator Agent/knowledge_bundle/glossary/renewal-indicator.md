@@ -17,37 +17,29 @@ Indicates whether the booking transaction is classified as a renewal.
 
 ## Business Meaning
 
-Renewal Indicator is a binary flag that identifies whether a booking represents a renewal of an existing customer relationship or contract. Renewal tracking is essential for measuring customer retention, calculating renewal rates, and forecasting recurring revenue.
+Renewal Indicator is a binary flag that identifies whether a booking transaction represents a renewal of an existing subscription or contract. This indicator enables precise measurement of renewal rates, customer retention, and recurring revenue. It complements the Booking Type attribute by providing a numeric flag for efficient filtering and calculation.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: fact_bookings  
-**Source Column**: is_renewal  
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Attribute**: Renewal Indicator  
-**Data Type**: integer  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.fact_bookings
+
+**Source Column**: is_renewal
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)
+
+**Attribute**: Renewal Indicator
+
+**Data Type**: Integer
+
 **Confidence Score**: 0.95
-
----
-
-## Synonyms
-
-- Is Renewal
-- Renewal Flag
-- Renewal Status
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
+- [Booking Transaction](booking-transaction.md)
 - [Booking Type](booking-type.md)
 - [Auto Renew Flag](auto-renew-flag.md)
 
@@ -58,30 +50,14 @@ Renewal Indicator is a binary flag that identifies whether a booking represents 
 Renewal Indicator is used to:
 - Identify renewal transactions
 - Calculate renewal rates
-- Track customer retention
-- Forecast recurring revenue
-
----
-
-## Examples
-
-- 1 (Yes - is a renewal)
-- 0 (No - not a renewal)
+- Measure customer retention
+- Support recurring revenue analysis
+- Enable new vs. renewal filtering
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Booking Transaction Entity](../entities/booking-transaction.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Booking Transaction  
-**Source Attribute**: Renewal Indicator  
-**Confidence Score**: 0.95  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Booking Transaction](../entities/booking-transaction.md)
+- [Back to Main Index](../index.md)
