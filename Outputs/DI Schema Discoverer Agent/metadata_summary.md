@@ -3,7 +3,7 @@
 | Metric | Value |
 | --- | --- |
 | Database Type | PostgreSQL |
-| Number of Schemas | 1 |
+| Number of Schemas | 2 |
 | Number of Tables | 8 |
 | Number of Columns | 61 |
 | Number of Primary Keys | 8 |
@@ -27,81 +27,97 @@
 
 ## DDL Definitions
 
+### Table DDL
+
 ```sql
 CREATE TABLE "QuoteToBooking".dim_contract (
   contract_key integer NOT NULL,
-  contract_type character varying,
+  contract_type character varying(40),
   term_months integer,
-  auto_renew_flag character,
-  coverage_level character varying,
+  auto_renew_flag character(1),
+  coverage_level character varying(20),
   CONSTRAINT dim_contract_pkey PRIMARY KEY (contract_key)
 );
+```
 
+```sql
 CREATE TABLE "QuoteToBooking".dim_customer (
   customer_key integer NOT NULL,
-  customer_id character varying NOT NULL,
-  customer_name character varying,
-  segment character varying,
-  industry character varying,
-  account_tier character varying,
-  hq_country character varying,
-  hq_region character varying,
+  customer_id character varying(20) NOT NULL,
+  customer_name character varying(80),
+  segment character varying(30),
+  industry character varying(40),
+  account_tier character varying(20),
+  hq_country character varying(40),
+  hq_region character varying(20),
   CONSTRAINT dim_customer_pkey PRIMARY KEY (customer_key)
 );
+```
 
+```sql
 CREATE TABLE "QuoteToBooking".dim_date (
   date_key integer NOT NULL,
   full_date date NOT NULL,
-  month_name character varying,
+  month_name character varying(12),
   calendar_year integer,
-  fiscal_year character varying,
-  fiscal_quarter character varying,
+  fiscal_year character varying(6),
+  fiscal_quarter character varying(10),
   fiscal_period_seq integer,
   CONSTRAINT dim_date_pkey PRIMARY KEY (date_key)
 );
+```
 
+```sql
 CREATE TABLE "QuoteToBooking".dim_geography (
   geography_key integer NOT NULL,
-  region character varying,
-  theater character varying,
-  country character varying,
+  region character varying(20),
+  theater character varying(30),
+  country character varying(40),
   CONSTRAINT dim_geography_pkey PRIMARY KEY (geography_key)
 );
+```
 
+```sql
 CREATE TABLE "QuoteToBooking".dim_partner (
   partner_key integer NOT NULL,
-  partner_id character varying NOT NULL,
-  partner_name character varying,
-  partner_type character varying,
-  partner_tier character varying,
-  route_to_market character varying,
+  partner_id character varying(20) NOT NULL,
+  partner_name character varying(60),
+  partner_type character varying(30),
+  partner_tier character varying(30),
+  route_to_market character varying(20),
   CONSTRAINT dim_partner_pkey PRIMARY KEY (partner_key)
 );
+```
 
+```sql
 CREATE TABLE "QuoteToBooking".dim_product (
   product_key integer NOT NULL,
-  product_id character varying NOT NULL,
-  product_name character varying,
-  product_family character varying,
-  technology_domain character varying,
-  offer_type character varying,
-  business_entity character varying,
+  product_id character varying(30) NOT NULL,
+  product_name character varying(80),
+  product_family character varying(30),
+  technology_domain character varying(40),
+  offer_type character varying(30),
+  business_entity character varying(30),
   CONSTRAINT dim_product_pkey PRIMARY KEY (product_key)
 );
+```
 
+```sql
 CREATE TABLE "QuoteToBooking".dim_sales_rep (
   sales_rep_key integer NOT NULL,
-  rep_id character varying NOT NULL,
-  rep_name character varying,
-  sales_role character varying,
-  sales_team character varying,
-  segment_covered character varying,
+  rep_id character varying(20) NOT NULL,
+  rep_name character varying(60),
+  sales_role character varying(40),
+  sales_team character varying(40),
+  segment_covered character varying(30),
   CONSTRAINT dim_sales_rep_pkey PRIMARY KEY (sales_rep_key)
 );
+```
 
+```sql
 CREATE TABLE "QuoteToBooking".fact_bookings (
   booking_id integer NOT NULL,
-  order_number character varying,
+  order_number character varying(20),
   order_line_number integer,
   date_key integer,
   customer_key integer,
@@ -110,7 +126,7 @@ CREATE TABLE "QuoteToBooking".fact_bookings (
   geography_key integer,
   sales_rep_key integer,
   contract_key integer,
-  booking_type character varying,
+  booking_type character varying(15),
   is_renewal integer,
   quantity integer,
   unit_list_price_usd numeric,
@@ -127,7 +143,11 @@ CREATE TABLE "QuoteToBooking".fact_bookings (
   CONSTRAINT fk_booking_product FOREIGN KEY (product_key) REFERENCES "QuoteToBooking".dim_product(product_key),
   CONSTRAINT fk_booking_sales_rep FOREIGN KEY (sales_rep_key) REFERENCES "QuoteToBooking".dim_sales_rep(sales_rep_key)
 );
+```
 
+### Constraint DDL
+
+```sql
 ALTER TABLE "QuoteToBooking".dim_contract ADD CONSTRAINT dim_contract_pkey PRIMARY KEY (contract_key);
 ALTER TABLE "QuoteToBooking".dim_customer ADD CONSTRAINT dim_customer_pkey PRIMARY KEY (customer_key);
 ALTER TABLE "QuoteToBooking".dim_date ADD CONSTRAINT dim_date_pkey PRIMARY KEY (date_key);
@@ -143,7 +163,11 @@ ALTER TABLE "QuoteToBooking".fact_bookings ADD CONSTRAINT fk_booking_geography F
 ALTER TABLE "QuoteToBooking".fact_bookings ADD CONSTRAINT fk_booking_partner FOREIGN KEY (partner_key) REFERENCES "QuoteToBooking".dim_partner(partner_key);
 ALTER TABLE "QuoteToBooking".fact_bookings ADD CONSTRAINT fk_booking_product FOREIGN KEY (product_key) REFERENCES "QuoteToBooking".dim_product(product_key);
 ALTER TABLE "QuoteToBooking".fact_bookings ADD CONSTRAINT fk_booking_sales_rep FOREIGN KEY (sales_rep_key) REFERENCES "QuoteToBooking".dim_sales_rep(sales_rep_key);
+```
 
+### Index DDL
+
+```sql
 CREATE UNIQUE INDEX dim_contract_pkey ON "QuoteToBooking".dim_contract USING btree (contract_key);
 CREATE UNIQUE INDEX dim_customer_pkey ON "QuoteToBooking".dim_customer USING btree (customer_key);
 CREATE UNIQUE INDEX dim_date_pkey ON "QuoteToBooking".dim_date USING btree (date_key);
