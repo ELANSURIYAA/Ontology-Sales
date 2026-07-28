@@ -17,63 +17,49 @@ Country associated with the geography record.
 
 ## Business Meaning
 
-Country represents the specific nation where sales transactions occur. It provides the most granular level of geographic analysis and enables country-specific market analysis, regulatory compliance, and localization strategies.
+Country represents the most granular level of the geographic hierarchy, identifying the specific nation where sales transactions occur. Country-level analysis enables detailed market assessment, country-specific strategy development, and precise geographic performance measurement.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_geography  
-**Source Column**: country  
-**Entity**: [Geography](../entities/geography.md)  
-**Attribute**: Country  
-**Data Type**: character varying(40)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_geography
+
+**Source Column**: country
+
+**Entity**: [Geography](../entities/geography.md)
+
+**Attribute**: Country
+
+**Data Type**: Character Varying(40)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Nation
-- Country Name
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Geography](../entities/geography.md)
-
-### Related Attributes
+- [Geography](geography.md)
+- [Geography Key](geography-key.md)
 - [Sales Region](sales-region.md)
 - [Sales Theater](sales-theater.md)
-- [Geography Key](geography-key.md)
+- [Headquarters Country](headquarters-country.md)
 
 ---
 
 ## Usage Context
 
 Country is used to:
-- Support country-level sales analysis
-- Enable market-specific strategies
-- Track country performance
+- Enable country-level performance analysis
+- Support country-specific market strategy
+- Facilitate country-based resource allocation
+- Enable detailed geographic drill-down
+- Support country-level compliance and reporting
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Geography Entity](../entities/geography.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Geography  
-**Source Attribute**: Country  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Geography](../entities/geography.md)
+- [Back to Main Index](../index.md)
