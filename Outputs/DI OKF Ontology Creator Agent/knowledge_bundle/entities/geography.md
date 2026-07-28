@@ -1,51 +1,82 @@
 ---
 title: Geography
 type: entity
-id: ENT004
-domain: Sales Bookings and Revenue Analytics
-technical_table: QuoteToBooking.dim_geography
-business_keys:
-  - geography_key
-version: 1.0
-status: generated
+description: Business entity describing reporting geography for sales bookings.
+resource: entities
+tags: geography,entity,region,country,sales
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Geography
 
 ## Business Definition
 
-Stores geographic attributes used to analyze bookings across sales regions, theaters, and countries.
+Stores geographic attributes used to analyze bookings by sales region, theater, and country.
+
+---
 
 ## Technical Mapping
 
-- Table: `QuoteToBooking.dim_geography`
-- Primary business key(s): `geography_key`
+- Source Table: `QuoteToBooking.dim_geography`
+- Domain: [Sales Bookings and Revenue Analytics](../domains/sales_bookings_and_revenue_analytics.md)
+
+---
 
 ## Attributes
 
-| Attribute | Technical Column | Data Type | Nullable | PK | FK | Description |
-| --- | --- | --- | --- | --- | --- | --- |
-| Geography Key | geography_key | integer | No | Yes | No | Surrogate key that uniquely identifies a geography record in the geography dimension. |
-| Sales Region | region | character varying | Yes | No | No | High-level geographic region used for business reporting and sales analysis. |
-| Sales Theater | theater | character varying | Yes | No | No | Intermediate geographic sales area within a region used for operational reporting. |
-| Country | country | character varying | Yes | No | No | Country associated with the geography record for booking analysis. |
+- Geography Key (`geography_key`) - integer - not nullable
+- Sales Region (`region`) - character varying(20)
+- Sales Theater (`theater`) - character varying(30)
+- Country (`country`) - character varying(40)
 
-## Keys
+---
 
-- Primary Key: `geography_key`
-- Referenced by: [Booking Transaction](booking-transaction.md)
+## Primary Keys
+
+- Geography Key
+
+---
+
+## Foreign Keys
+
+None
+
+---
 
 ## Measures
 
-- No direct measures defined for this entity.
+None
+
+---
 
 ## Relationships
 
-- Parent in [Geography to Booking Transaction](../relationships/geography-to-booking-transaction.md)
+- [Geography to Booking Transaction](../relationships/geography_to_booking_transaction.md)
+
+---
 
 ## Related Concepts
 
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-- [Booking Transaction](booking-transaction.md)
 - [Geography](../glossary/geography.md)
+- [Geography Key](../glossary/geography_key.md)
+- [Sales Region](../glossary/sales_region.md)
+- [Sales Theater](../glossary/sales_theater.md)
 - [Country](../glossary/country.md)
+
+---
+
+## Business Rules
+
+- Each geography record is uniquely identified by Geography Key.
+- Geography supports analysis by region, theater, and country.
+- A geography can be associated with multiple booking transactions.
+
+---
+
+## Semantic Cross Links
+
+- [Entities Index](index.md)
+- [Domain](../domains/sales_bookings_and_revenue_analytics.md)
+- [Booking Transaction](booking_transaction.md)
+- [Geography to Booking Transaction](../relationships/geography_to_booking_transaction.md)
+- [Glossary: Geography](../glossary/geography.md)
