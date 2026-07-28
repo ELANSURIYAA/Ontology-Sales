@@ -17,38 +17,29 @@ Indicates whether the contract is set to renew automatically at the end of its t
 
 ## Business Meaning
 
-Auto Renew Flag is a binary indicator that specifies whether a contract will automatically renew when it reaches the end of its term, or whether it requires explicit renewal action. Automatic renewal provisions help ensure continuity of service and reduce churn, while also providing predictable recurring revenue streams.
+Auto Renew Flag is a binary indicator that specifies whether a contract will automatically renew when it reaches the end of its term. Contracts with auto-renewal enabled continue without requiring explicit customer action, improving retention and reducing administrative overhead. This flag is critical for forecasting recurring revenue and managing customer retention strategies.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_contract  
-**Source Column**: auto_renew_flag  
-**Entity**: [Contract](../entities/contract.md)  
-**Attribute**: Auto Renew Flag  
-**Data Type**: character(1)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_contract
+
+**Source Column**: auto_renew_flag
+
+**Entity**: [Contract](../entities/contract.md)
+
+**Attribute**: Auto Renew Flag
+
+**Data Type**: Character(1)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Automatic Renewal Indicator
-- Auto Renewal Flag
-- Renewal Automation Flag
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Contract](../entities/contract.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
+- [Contract](contract.md)
 - [Contract Key](contract-key.md)
 - [Contract Term Months](contract-term-months.md)
 - [Renewal Indicator](renewal-indicator.md)
@@ -58,32 +49,17 @@ Auto Renew Flag is a binary indicator that specifies whether a contract will aut
 ## Usage Context
 
 Auto Renew Flag is used to:
-- Identify contracts with automatic renewal provisions
+- Identify contracts with automatic renewal
 - Forecast recurring revenue
-- Plan renewal management activities
-- Reduce customer churn risk
-
----
-
-## Examples
-
-- Y (Yes - contract auto-renews)
-- N (No - manual renewal required)
+- Manage renewal processes
+- Analyze retention strategies
+- Support customer lifecycle management
+- Reduce churn risk
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Contract Entity](../entities/contract.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Contract  
-**Source Attribute**: Auto Renew Flag  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Contract](../entities/contract.md)
+- [Back to Main Index](../index.md)
