@@ -1,52 +1,83 @@
 ---
 title: Contract
 type: entity
-id: ENT001
-domain: Sales Bookings and Revenue Analytics
-technical_table: QuoteToBooking.dim_contract
-business_keys:
-  - contract_key
-version: 1.0
-status: generated
+description: Business entity describing commercial agreements associated with bookings.
+resource: entities
+tags: contract,entity,sales,bookings
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Contract
 
 ## Business Definition
 
-Stores the contractual attributes associated with a booking, including agreement type, duration, renewal behavior, and support or service coverage level.
+Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.
+
+---
 
 ## Technical Mapping
 
-- Table: `QuoteToBooking.dim_contract`
-- Primary business key(s): `contract_key`
+- Source Table: `QuoteToBooking.dim_contract`
+- Domain: [Sales Bookings and Revenue Analytics](../domains/sales_bookings_and_revenue_analytics.md)
+
+---
 
 ## Attributes
 
-| Attribute | Technical Column | Data Type | Nullable | PK | FK | Description |
-| --- | --- | --- | --- | --- | --- | --- |
-| Contract Key | contract_key | integer | No | Yes | No | Surrogate key that uniquely identifies a contract record in the contract dimension. |
-| Contract Type | contract_type | character varying | Yes | No | No | Indicates the type of commercial agreement or service contract associated with the booking, such as SaaS Subscription or Enterprise Agreement. |
-| Contract Term Months | term_months | integer | Yes | No | No | Specifies the duration of the contract in months. |
-| Auto Renew Indicator | auto_renew_flag | character | Yes | No | No | Indicates whether the contract is configured to renew automatically. |
-| Coverage Level | coverage_level | character varying | Yes | No | No | Describes the support, service, or entitlement coverage level provided under the contract. |
+- Contract Key (`contract_key`) - integer - not nullable
+- Contract Type (`contract_type`) - character varying(40)
+- Contract Term Months (`term_months`) - integer
+- Auto Renew Flag (`auto_renew_flag`) - character(1)
+- Coverage Level (`coverage_level`) - character varying(20)
 
-## Keys
+---
 
-- Primary Key: `contract_key`
-- Referenced by: [Booking Transaction](booking-transaction.md)
+## Primary Keys
+
+- Contract Key
+
+---
+
+## Foreign Keys
+
+None
+
+---
 
 ## Measures
 
-- No direct measures defined for this entity.
+None
+
+---
 
 ## Relationships
 
-- Parent in [Contract to Booking Transaction](../relationships/contract-to-booking-transaction.md)
+- [Contract to Booking Transaction](../relationships/contract_to_booking_transaction.md)
+
+---
 
 ## Related Concepts
 
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-- [Booking Transaction](booking-transaction.md)
 - [Contract](../glossary/contract.md)
-- [Coverage Level](../glossary/coverage-level.md)
+- [Contract Type](../glossary/contract_type.md)
+- [Contract Term Months](../glossary/contract_term_months.md)
+- [Auto Renew Flag](../glossary/auto_renew_flag.md)
+- [Coverage Level](../glossary/coverage_level.md)
+
+---
+
+## Business Rules
+
+- Each contract record is uniquely identified by Contract Key.
+- Contract records may classify agreement structure, term duration, renewal behavior, and support coverage used in booking analysis.
+- A contract can relate to multiple booking transactions through the booking fact.
+
+---
+
+## Semantic Cross Links
+
+- [Entities Index](index.md)
+- [Domain](../domains/sales_bookings_and_revenue_analytics.md)
+- [Booking Transaction](booking_transaction.md)
+- [Contract to Booking Transaction](../relationships/contract_to_booking_transaction.md)
+- [Glossary: Contract Key](../glossary/contract_key.md)
