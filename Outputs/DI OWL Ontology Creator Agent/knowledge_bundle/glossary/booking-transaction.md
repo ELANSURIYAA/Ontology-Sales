@@ -1,7 +1,7 @@
 ---
 title: Booking Transaction
 type: glossary
-description: Individual completed sales booking transactions with related financial measures and links to dimensions
+description: Individual completed sales booking transactions with related financial measures and dimensional links
 resource: glossary
 tags: [glossary, booking, transaction, fact, sales]
 timestamp: 2026-07-28T00:00:00Z
@@ -17,49 +17,28 @@ Stores individual completed sales booking transactions with related financial me
 
 ## Business Meaning
 
-A booking transaction represents a completed sales order that has been recorded in the system. It captures the details of what was sold, to whom, by whom, when, where, and for how much. Booking transactions are the fundamental unit of sales analysis and serve as the basis for revenue reporting, sales performance tracking, and business analytics.
+A booking transaction represents a completed sale of products or services to a customer. Each transaction captures the financial details, quantities, pricing, and contextual information about who sold what to whom, when, where, and under what terms. Booking transactions are the fundamental unit of sales analysis and revenue measurement.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: fact_bookings  
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Source Table**: QuoteToBooking.fact_bookings
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Booking
-- Sales Transaction
-- Order
-- Sales Booking
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](../entities/booking-transaction.md)
-- [Contract](../entities/contract.md)
-- [Customer](../entities/customer.md)
-- [Date](../entities/date.md)
-- [Geography](../entities/geography.md)
-- [Partner](../entities/partner.md)
-- [Product](../entities/product.md)
-- [Sales Representative](../entities/sales-representative.md)
-
-### Related Attributes
 - [Booking ID](booking-id.md)
 - [Order Number](order-number.md)
 - [Order Line Number](order-line-number.md)
 - [Booking Date Key](booking-date-key.md)
 - [Booking Type](booking-type.md)
 - [Renewal Indicator](renewal-indicator.md)
-
-### Related Measures
 - [Quantity Sold](quantity-sold.md)
 - [Unit List Price USD](unit-list-price-usd.md)
 - [Discount Percentage](discount-percentage.md)
@@ -71,25 +50,17 @@ A booking transaction represents a completed sales order that has been recorded 
 
 ## Usage Context
 
-Booking Transactions are used to:
+Booking Transaction is used to:
 - Record completed sales
-- Track revenue and performance
-- Analyze sales patterns
-- Support financial reporting
+- Enable revenue analysis
+- Support sales performance measurement
+- Facilitate financial reporting
+- Enable multidimensional analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Booking Transaction Entity](../entities/booking-transaction.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Entity  
-**Source Entity**: Booking Transaction  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Booking Transaction](../entities/booking-transaction.md)
+- [Back to Main Index](../index.md)
