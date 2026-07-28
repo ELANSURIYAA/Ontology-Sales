@@ -5,899 +5,988 @@
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:dcterms="http://purl.org/dc/terms/"
-    xmlns:enterprise="http://example.org/ontology/sales-bookings-revenue#"
-    xml:base="http://example.org/ontology/sales-bookings-revenue">
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+    xmlns:ex="http://example.com/ontology/sales-bookings#"
+    xml:base="http://example.com/ontology/sales-bookings">
 
-  <owl:Ontology rdf:about="http://example.org/ontology/sales-bookings-revenue">
-    <rdfs:label xml:lang="en">Enterprise Sales Bookings and Revenue Ontology</rdfs:label>
-    <rdfs:comment xml:lang="en">OWL 2 ontology generated from the OSI Semantic Model for Sales Bookings and Revenue Analytics and enriched where possible from the QuoteToBooking business process input. The business process document could not be decoded from the provided repository path, so ontology generation is based on the validated OSI Semantic Model and explicit relationship semantics available therein.</rdfs:comment>
-    <owl:versionInfo>1.0.0</owl:versionInfo>
-    <dc:source>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</dc:source>
-    <dc:source>Inputs/QuoteToBooking.docx</dc:source>
-    <dcterms:created>2026-07-28</dcterms:created>
-    <dcterms:title>EnterpriseOntology.owl</dcterms:title>
-    <dcterms:description>GraphDB-compatible RDF/XML ontology representing business entities, relationships, attributes, measures, and semantic constraints for quote-to-booking sales analytics.</dcterms:description>
-  </owl:Ontology>
+    <owl:Ontology rdf:about="http://example.com/ontology/sales-bookings">
+        <rdfs:label xml:lang="en">Sales Bookings and Revenue Analytics Enterprise Ontology</rdfs:label>
+        <rdfs:comment xml:lang="en">OWL 2 ontology generated from the OSI Semantic Model for the Sales Bookings and Revenue Analytics domain. The business process document could not be read from the source repository, so ontology semantics, comments, and constraints are derived from the validated OSI Semantic Model only. This ontology is TBox-only and optimized for GraphDB and Protégé import.</rdfs:comment>
+        <owl:versionInfo>1.0.0</owl:versionInfo>
+        <oboInOwl:hasDbXref>Source Semantic Model: Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>Source Business Process Document: Inputs/QuoteToBooking.docx (readability validation failed: binary DOCX could not be decoded as UTF-8)</oboInOwl:hasDbXref>
+        <skos:definition>This ontology represents completed sales booking transactions and their analytical dimensions across customers, products, partners, geographies, sales representatives, contracts, and reporting dates.</skos:definition>
+    </owl:Ontology>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#businessDefinition">
-    <rdfs:label>business definition</rdfs:label>
-  </owl:AnnotationProperty>
+    <!-- Annotation Properties -->
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#businessDefinition">
+        <rdfs:label>business definition</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#businessDescription">
-    <rdfs:label>business description</rdfs:label>
-  </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#businessDescription">
+        <rdfs:label>business description</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#sourceEntity">
-    <rdfs:label>source entity</rdfs:label>
-  </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#businessDomain">
+        <rdfs:label>business domain</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#sourceAttribute">
-    <rdfs:label>source attribute</rdfs:label>
-  </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#sourceEntity">
+        <rdfs:label>source entity</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#sourceRelationship">
-    <rdfs:label>source relationship</rdfs:label>
-  </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#sourceAttribute">
+        <rdfs:label>source attribute</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#sourceTable">
-    <rdfs:label>source table</rdfs:label>
-  </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#sourceRelationship">
+        <rdfs:label>source relationship</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#sourceColumn">
-    <rdfs:label>source column</rdfs:label>
-  </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#sourceTable">
+        <rdfs:label>source table</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#businessDomain">
-    <rdfs:label>business domain</rdfs:label>
-  </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#sourceColumn">
+        <rdfs:label>source column</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#sourceSemanticModel">
-    <rdfs:label>source semantic model</rdfs:label>
-  </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://example.com/ontology/sales-bookings#sourceSemanticModel">
+        <rdfs:label>source semantic model</rdfs:label>
+    </owl:AnnotationProperty>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#DomainConcept">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-    <rdfs:label>Domain Concept</rdfs:label>
-    <rdfs:comment>Top-level conceptual class for all business concepts in the ontology.</rdfs:comment>
-  </owl:Class>
+    <!-- Core Classes -->
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#DomainConcept">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Domain Concept</rdfs:label>
+        <rdfs:comment>Top-level business concept in the enterprise sales bookings ontology.</rdfs:comment>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#BusinessEntity">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#DomainConcept"/>
-    <rdfs:label>Business Entity</rdfs:label>
-    <rdfs:comment>Top-level class for business entities represented in the semantic model.</rdfs:comment>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#BusinessEntity">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#DomainConcept"/>
+        <rdfs:label>Business Entity</rdfs:label>
+        <rdfs:comment>Base class for descriptive business entities represented as dimensions or master data.</rdfs:comment>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#DimensionEntity">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#BusinessEntity"/>
-    <rdfs:label>Dimension Entity</rdfs:label>
-    <rdfs:comment>Class for dimensional business entities used to describe bookings.</rdfs:comment>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Transaction">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#DomainConcept"/>
+        <rdfs:label>Transaction</rdfs:label>
+        <rdfs:comment>Base class for transactional business records and facts.</rdfs:comment>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#TransactionEntity">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#BusinessEntity"/>
-    <rdfs:label>Transaction Entity</rdfs:label>
-    <rdfs:comment>Class for transactional business entities that record measurable business events.</rdfs:comment>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Dimension">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#BusinessEntity"/>
+        <rdfs:label>Dimension</rdfs:label>
+        <rdfs:comment>Base class for analytical dimensions used to describe booking transactions.</rdfs:comment>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#Contract">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#DimensionEntity"/>
-    <rdfs:label>Contract</rdfs:label>
-    <rdfs:comment>Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.</rdfs:comment>
-    <enterprise:businessDefinition>Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.</enterprise:businessDefinition>
-    <enterprise:sourceEntity>ENT001</enterprise:sourceEntity>
-    <enterprise:sourceTable>QuoteToBooking.dim_contract</enterprise:sourceTable>
-    <enterprise:businessDomain>Sales Bookings and Revenue Analytics</enterprise:businessDomain>
-    <enterprise:sourceSemanticModel>OSI Semantic Model.md</enterprise:sourceSemanticModel>
-  </owl:Class>
+    <!-- Domain Class -->
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#SalesBookingsAndRevenueAnalyticsDomain">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#DomainConcept"/>
+        <rdfs:label>Sales Bookings and Revenue Analytics Domain</rdfs:label>
+        <rdfs:comment>This domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. It captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.</rdfs:comment>
+        <businessDefinition>This domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. It captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#Customer">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#DimensionEntity"/>
-    <rdfs:label>Customer</rdfs:label>
-    <rdfs:comment>Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.</rdfs:comment>
-    <enterprise:businessDefinition>Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.</enterprise:businessDefinition>
-    <enterprise:sourceEntity>ENT002</enterprise:sourceEntity>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:businessDomain>Sales Bookings and Revenue Analytics</enterprise:businessDomain>
-    <enterprise:sourceSemanticModel>OSI Semantic Model.md</enterprise:sourceSemanticModel>
-  </owl:Class>
+    <!-- Business Classes -->
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Contract">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#Dimension"/>
+        <rdfs:label>Contract</rdfs:label>
+        <rdfs:comment>Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.</rdfs:comment>
+        <businessDefinition>Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceEntity>ENT001</sourceEntity>
+        <sourceTable>QuoteToBooking.dim_contract</sourceTable>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#Date">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#DimensionEntity"/>
-    <rdfs:label>Date</rdfs:label>
-    <rdfs:comment>Stores calendar and fiscal date attributes used to analyze bookings over time.</rdfs:comment>
-    <enterprise:businessDefinition>Stores calendar and fiscal date attributes used to analyze bookings over time.</enterprise:businessDefinition>
-    <enterprise:sourceEntity>ENT003</enterprise:sourceEntity>
-    <enterprise:sourceTable>QuoteToBooking.dim_date</enterprise:sourceTable>
-    <enterprise:businessDomain>Sales Bookings and Revenue Analytics</enterprise:businessDomain>
-    <enterprise:sourceSemanticModel>OSI Semantic Model.md</enterprise:sourceSemanticModel>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Customer">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#Dimension"/>
+        <rdfs:label>Customer</rdfs:label>
+        <rdfs:comment>Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.</rdfs:comment>
+        <businessDefinition>Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceEntity>ENT002</sourceEntity>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#Geography">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#DimensionEntity"/>
-    <rdfs:label>Geography</rdfs:label>
-    <rdfs:comment>Stores geographic attributes used to analyze bookings by sales region, theater, and country.</rdfs:comment>
-    <enterprise:businessDefinition>Stores geographic attributes used to analyze bookings by sales region, theater, and country.</enterprise:businessDefinition>
-    <enterprise:sourceEntity>ENT004</enterprise:sourceEntity>
-    <enterprise:sourceTable>QuoteToBooking.dim_geography</enterprise:sourceTable>
-    <enterprise:businessDomain>Sales Bookings and Revenue Analytics</enterprise:businessDomain>
-    <enterprise:sourceSemanticModel>OSI Semantic Model.md</enterprise:sourceSemanticModel>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Date">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#Dimension"/>
+        <rdfs:label>Date</rdfs:label>
+        <rdfs:comment>Stores calendar and fiscal date attributes used to analyze bookings over time.</rdfs:comment>
+        <businessDefinition>Stores calendar and fiscal date attributes used to analyze bookings over time.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceEntity>ENT003</sourceEntity>
+        <sourceTable>QuoteToBooking.dim_date</sourceTable>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#Partner">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#DimensionEntity"/>
-    <rdfs:label>Partner</rdfs:label>
-    <rdfs:comment>Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.</rdfs:comment>
-    <enterprise:businessDefinition>Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.</enterprise:businessDefinition>
-    <enterprise:sourceEntity>ENT005</enterprise:sourceEntity>
-    <enterprise:sourceTable>QuoteToBooking.dim_partner</enterprise:sourceTable>
-    <enterprise:businessDomain>Sales Bookings and Revenue Analytics</enterprise:businessDomain>
-    <enterprise:sourceSemanticModel>OSI Semantic Model.md</enterprise:sourceSemanticModel>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Geography">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#Dimension"/>
+        <rdfs:label>Geography</rdfs:label>
+        <rdfs:comment>Stores geographic attributes used to analyze bookings by sales region, theater, and country.</rdfs:comment>
+        <businessDefinition>Stores geographic attributes used to analyze bookings by sales region, theater, and country.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceEntity>ENT004</sourceEntity>
+        <sourceTable>QuoteToBooking.dim_geography</sourceTable>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#Product">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#DimensionEntity"/>
-    <rdfs:label>Product</rdfs:label>
-    <rdfs:comment>Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.</rdfs:comment>
-    <enterprise:businessDefinition>Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.</enterprise:businessDefinition>
-    <enterprise:sourceEntity>ENT006</enterprise:sourceEntity>
-    <enterprise:sourceTable>QuoteToBooking.dim_product</enterprise:sourceTable>
-    <enterprise:businessDomain>Sales Bookings and Revenue Analytics</enterprise:businessDomain>
-    <enterprise:sourceSemanticModel>OSI Semantic Model.md</enterprise:sourceSemanticModel>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Partner">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#Dimension"/>
+        <rdfs:label>Partner</rdfs:label>
+        <rdfs:comment>Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.</rdfs:comment>
+        <businessDefinition>Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceEntity>ENT005</sourceEntity>
+        <sourceTable>QuoteToBooking.dim_partner</sourceTable>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#DimensionEntity"/>
-    <rdfs:label>Sales Representative</rdfs:label>
-    <rdfs:comment>Stores information about sales personnel responsible for managing customer relationships and booking transactions.</rdfs:comment>
-    <enterprise:businessDefinition>Stores information about sales personnel responsible for managing customer relationships and booking transactions.</enterprise:businessDefinition>
-    <enterprise:sourceEntity>ENT007</enterprise:sourceEntity>
-    <enterprise:sourceTable>QuoteToBooking.dim_sales_rep</enterprise:sourceTable>
-    <enterprise:businessDomain>Sales Bookings and Revenue Analytics</enterprise:businessDomain>
-    <enterprise:sourceSemanticModel>OSI Semantic Model.md</enterprise:sourceSemanticModel>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#Product">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#Dimension"/>
+        <rdfs:label>Product</rdfs:label>
+        <rdfs:comment>Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.</rdfs:comment>
+        <businessDefinition>Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceEntity>ENT006</sourceEntity>
+        <sourceTable>QuoteToBooking.dim_product</sourceTable>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings-revenue#BookingTransaction">
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#TransactionEntity"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings-revenue#hasContract"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings-revenue#hasCustomer"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings-revenue#hasBookingDate"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings-revenue#hasGeography"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings-revenue#Geography"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings-revenue#hasPartner"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings-revenue#hasProduct"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings-revenue#hasSalesRepresentative"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:label>Booking Transaction</rdfs:label>
-    <rdfs:comment>Stores individual completed sales booking transactions with related financial measures and links to customer, product, partner, geography, sales representative, contract, and date dimensions.</rdfs:comment>
-    <enterprise:businessDefinition>Stores individual completed sales booking transactions with related financial measures and links to customer, product, partner, geography, sales representative, contract, and date dimensions.</enterprise:businessDefinition>
-    <enterprise:sourceEntity>ENT008</enterprise:sourceEntity>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:businessDomain>Sales Bookings and Revenue Analytics</enterprise:businessDomain>
-    <enterprise:sourceSemanticModel>OSI Semantic Model.md</enterprise:sourceSemanticModel>
-  </owl:Class>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#SalesRepresentative">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#Dimension"/>
+        <rdfs:label>Sales Representative</rdfs:label>
+        <rdfs:comment>Stores information about sales personnel responsible for managing customer relationships and booking transactions.</rdfs:comment>
+        <businessDefinition>Stores information about sales personnel responsible for managing customer relationships and booking transactions.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceEntity>ENT007</sourceEntity>
+        <sourceTable>QuoteToBooking.dim_sales_rep</sourceTable>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:AllDisjointClasses>
-    <owl:members rdf:parseType="Collection">
-      <rdf:Description rdf:about="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-      <rdf:Description rdf:about="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-      <rdf:Description rdf:about="http://example.org/ontology/sales-bookings-revenue#Date"/>
-      <rdf:Description rdf:about="http://example.org/ontology/sales-bookings-revenue#Geography"/>
-      <rdf:Description rdf:about="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-      <rdf:Description rdf:about="http://example.org/ontology/sales-bookings-revenue#Product"/>
-      <rdf:Description rdf:about="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-      <rdf:Description rdf:about="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    </owl:members>
-  </owl:AllDisjointClasses>
+    <owl:Class rdf:about="http://example.com/ontology/sales-bookings#BookingTransaction">
+        <rdfs:subClassOf rdf:resource="http://example.com/ontology/sales-bookings#Transaction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasContract"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasCustomer"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasBookingDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasGeography"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasPartner"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasProduct"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/ontology/sales-bookings#hasSalesRepresentative"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Booking Transaction</rdfs:label>
+        <rdfs:comment>Stores individual completed sales booking transactions with related financial measures and links to customer, product, partner, geography, sales representative, contract, and date dimensions.</rdfs:comment>
+        <businessDefinition>Stores individual completed sales booking transactions with related financial measures and links to customer, product, partner, geography, sales representative, contract, and date dimensions.</businessDefinition>
+        <businessDomain>Sales Bookings and Revenue Analytics</businessDomain>
+        <sourceEntity>ENT008</sourceEntity>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceSemanticModel>Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md</sourceSemanticModel>
+    </owl:Class>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hasContract">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#isContractOfBooking"/>
-    <rdfs:label>has contract</rdfs:label>
-    <rdfs:comment>Relates a booking transaction to the contract associated with that booking.</rdfs:comment>
-    <enterprise:sourceRelationship>REL001</enterprise:sourceRelationship>
-  </owl:ObjectProperty>
+    <!-- Disjointness -->
+    <owl:AllDisjointClasses>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.com/ontology/sales-bookings#Contract"/>
+            <rdf:Description rdf:about="http://example.com/ontology/sales-bookings#Customer"/>
+            <rdf:Description rdf:about="http://example.com/ontology/sales-bookings#Date"/>
+            <rdf:Description rdf:about="http://example.com/ontology/sales-bookings#Geography"/>
+            <rdf:Description rdf:about="http://example.com/ontology/sales-bookings#Partner"/>
+            <rdf:Description rdf:about="http://example.com/ontology/sales-bookings#Product"/>
+            <rdf:Description rdf:about="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+            <rdf:Description rdf:about="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        </owl:members>
+    </owl:AllDisjointClasses>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#isContractOfBooking">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:label>is contract of booking</rdfs:label>
-    <rdfs:comment>Inverse of has contract.</rdfs:comment>
-  </owl:ObjectProperty>
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasContract">
+        <rdfs:label>has contract</rdfs:label>
+        <rdfs:comment>Relates a booking transaction to the contract associated with it.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isContractOfBookingTransaction"/>
+        <sourceRelationship>REL001</sourceRelationship>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hasCustomer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#isCustomerOfBooking"/>
-    <rdfs:label>has customer</rdfs:label>
-    <rdfs:comment>Relates a booking transaction to the customer that placed the order.</rdfs:comment>
-    <enterprise:sourceRelationship>REL002</enterprise:sourceRelationship>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isContractOfBookingTransaction">
+        <rdfs:label>is contract of booking transaction</rdfs:label>
+        <rdfs:comment>Inverse relation from contract to booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#isCustomerOfBooking">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:label>is customer of booking</rdfs:label>
-    <rdfs:comment>Inverse of has customer.</rdfs:comment>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasCustomer">
+        <rdfs:label>has customer</rdfs:label>
+        <rdfs:comment>Relates a booking transaction to the customer that placed the order.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isCustomerOfBookingTransaction"/>
+        <sourceRelationship>REL002</sourceRelationship>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hasBookingDate">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#isDateOfBooking"/>
-    <rdfs:label>has booking date</rdfs:label>
-    <rdfs:comment>Relates a booking transaction to the reporting date dimension record.</rdfs:comment>
-    <enterprise:sourceRelationship>REL003</enterprise:sourceRelationship>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isCustomerOfBookingTransaction">
+        <rdfs:label>is customer of booking transaction</rdfs:label>
+        <rdfs:comment>Inverse relation from customer to booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#isDateOfBooking">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:label>is date of booking</rdfs:label>
-    <rdfs:comment>Inverse of has booking date.</rdfs:comment>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasBookingDate">
+        <rdfs:label>has booking date</rdfs:label>
+        <rdfs:comment>Relates a booking transaction to its reporting date.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isBookingDateOfTransaction"/>
+        <sourceRelationship>REL003</sourceRelationship>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hasGeography">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#Geography"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#isGeographyOfBooking"/>
-    <rdfs:label>has geography</rdfs:label>
-    <rdfs:comment>Relates a booking transaction to the geography used for sales reporting.</rdfs:comment>
-    <enterprise:sourceRelationship>REL004</enterprise:sourceRelationship>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isBookingDateOfTransaction">
+        <rdfs:label>is booking date of transaction</rdfs:label>
+        <rdfs:comment>Inverse relation from date to booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#isGeographyOfBooking">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Geography"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:label>is geography of booking</rdfs:label>
-    <rdfs:comment>Inverse of has geography.</rdfs:comment>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasGeography">
+        <rdfs:label>has geography</rdfs:label>
+        <rdfs:comment>Relates a booking transaction to the geography used for analysis.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isGeographyOfBookingTransaction"/>
+        <sourceRelationship>REL004</sourceRelationship>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hasPartner">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#isPartnerOfBooking"/>
-    <rdfs:label>has partner</rdfs:label>
-    <rdfs:comment>Relates a booking transaction to the partner involved in the sales process.</rdfs:comment>
-    <enterprise:sourceRelationship>REL005</enterprise:sourceRelationship>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isGeographyOfBookingTransaction">
+        <rdfs:label>is geography of booking transaction</rdfs:label>
+        <rdfs:comment>Inverse relation from geography to booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#isPartnerOfBooking">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:label>is partner of booking</rdfs:label>
-    <rdfs:comment>Inverse of has partner.</rdfs:comment>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasPartner">
+        <rdfs:label>has partner</rdfs:label>
+        <rdfs:comment>Relates a booking transaction to the partner involved in the transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isPartnerOfBookingTransaction"/>
+        <sourceRelationship>REL005</sourceRelationship>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hasProduct">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#isProductOfBooking"/>
-    <rdfs:label>has product</rdfs:label>
-    <rdfs:comment>Relates a booking transaction to the product or offer booked.</rdfs:comment>
-    <enterprise:sourceRelationship>REL006</enterprise:sourceRelationship>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isPartnerOfBookingTransaction">
+        <rdfs:label>is partner of booking transaction</rdfs:label>
+        <rdfs:comment>Inverse relation from partner to booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#isProductOfBooking">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:label>is product of booking</rdfs:label>
-    <rdfs:comment>Inverse of has product.</rdfs:comment>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasProduct">
+        <rdfs:label>has product</rdfs:label>
+        <rdfs:comment>Relates a booking transaction to the product or offer sold.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isProductOfBookingTransaction"/>
+        <sourceRelationship>REL006</sourceRelationship>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hasSalesRepresentative">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings-revenue#isSalesRepresentativeOfBooking"/>
-    <rdfs:label>has sales representative</rdfs:label>
-    <rdfs:comment>Relates a booking transaction to the sales representative responsible for the booking.</rdfs:comment>
-    <enterprise:sourceRelationship>REL007</enterprise:sourceRelationship>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isProductOfBookingTransaction">
+        <rdfs:label>is product of booking transaction</rdfs:label>
+        <rdfs:comment>Inverse relation from product to booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+    </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#isSalesRepresentativeOfBooking">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:label>is sales representative of booking</rdfs:label>
-    <rdfs:comment>Inverse of has sales representative.</rdfs:comment>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#hasSalesRepresentative">
+        <rdfs:label>has sales representative</rdfs:label>
+        <rdfs:comment>Relates a booking transaction to the sales representative responsible for it.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <owl:inverseOf rdf:resource="http://example.com/ontology/sales-bookings#isSalesRepresentativeOfBookingTransaction"/>
+        <sourceRelationship>REL007</sourceRelationship>
+    </owl:ObjectProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#contractKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>contract key</rdfs:label>
-    <rdfs:comment>Surrogate key that uniquely identifies a contract record in the contract dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_contract</enterprise:sourceTable>
-    <enterprise:sourceColumn>contract_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR001</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#contractType">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>contract type</rdfs:label>
-    <rdfs:comment>Describes the type of commercial agreement attached to the booking, such as SaaS subscription, Enterprise Agreement, or support contract.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_contract</enterprise:sourceTable>
-    <enterprise:sourceColumn>contract_type</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR002</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#termMonths">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>contract term months</rdfs:label>
-    <rdfs:comment>Indicates the duration of the contract in months.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_contract</enterprise:sourceTable>
-    <enterprise:sourceColumn>term_months</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR003</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#autoRenewFlag">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>auto renew flag</rdfs:label>
-    <rdfs:comment>Indicates whether the contract is set to renew automatically at the end of its term.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_contract</enterprise:sourceTable>
-    <enterprise:sourceColumn>auto_renew_flag</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR004</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#coverageLevel">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Contract"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>coverage level</rdfs:label>
-    <rdfs:comment>Describes the level of service or support coverage provided under the contract.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_contract</enterprise:sourceTable>
-    <enterprise:sourceColumn>coverage_level</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR005</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://example.com/ontology/sales-bookings#isSalesRepresentativeOfBookingTransaction">
+        <rdfs:label>is sales representative of booking transaction</rdfs:label>
+        <rdfs:comment>Inverse relation from sales representative to booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <rdfs:range rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+    </owl:ObjectProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#customerKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>customer key</rdfs:label>
-    <rdfs:comment>Surrogate key that uniquely identifies a customer record in the customer dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:sourceColumn>customer_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR006</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#customerId">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>customer ID</rdfs:label>
-    <rdfs:comment>Business identifier assigned to the customer account.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:sourceColumn>customer_id</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR007</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#customerName">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>customer name</rdfs:label>
-    <rdfs:comment>Official name of the customer organization that purchased products or services.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:sourceColumn>customer_name</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR008</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#segment">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>customer segment</rdfs:label>
-    <rdfs:comment>Classifies the customer into a business segment such as Enterprise, Service Provider, or Public Sector.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:sourceColumn>segment</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR009</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#industry">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>industry</rdfs:label>
-    <rdfs:comment>Identifies the industry in which the customer operates.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:sourceColumn>industry</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR010</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#accountTier">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>account tier</rdfs:label>
-    <rdfs:comment>Indicates the strategic importance or service tier of the customer account.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:sourceColumn>account_tier</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR011</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hqCountry">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>headquarters country</rdfs:label>
-    <rdfs:comment>Country where the customer organization's headquarters is located.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:sourceColumn>hq_country</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR012</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#hqRegion">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Customer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>headquarters region</rdfs:label>
-    <rdfs:comment>Global region where the customer organization's headquarters is located.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_customer</enterprise:sourceTable>
-    <enterprise:sourceColumn>hq_region</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR013</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
+    <!-- Datatype Properties: Contract -->
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#contractKey">
+        <rdfs:label>contract key</rdfs:label>
+        <rdfs:comment>Surrogate key that uniquely identifies a contract record in the contract dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_contract</sourceTable>
+        <sourceColumn>contract_key</sourceColumn>
+        <sourceAttribute>ATTR001</sourceAttribute>
+    </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#dateKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>date key</rdfs:label>
-    <rdfs:comment>Encoded key that uniquely identifies a reporting date in the date dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_date</enterprise:sourceTable>
-    <enterprise:sourceColumn>date_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR014</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#fullDate">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
-    <rdfs:label>full date</rdfs:label>
-    <rdfs:comment>Actual calendar date represented by the date record.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_date</enterprise:sourceTable>
-    <enterprise:sourceColumn>full_date</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR015</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#monthName">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>month name</rdfs:label>
-    <rdfs:comment>Name of the calendar month for the date.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_date</enterprise:sourceTable>
-    <enterprise:sourceColumn>month_name</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR016</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#calendarYear">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>calendar year</rdfs:label>
-    <rdfs:comment>Four-digit calendar year associated with the date.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_date</enterprise:sourceTable>
-    <enterprise:sourceColumn>calendar_year</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR017</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#fiscalYear">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>fiscal year</rdfs:label>
-    <rdfs:comment>Fiscal year used by the business for financial and performance reporting.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_date</enterprise:sourceTable>
-    <enterprise:sourceColumn>fiscal_year</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR018</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#fiscalQuarter">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>fiscal quarter</rdfs:label>
-    <rdfs:comment>Fiscal quarter used by the business for periodic reporting and analysis.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_date</enterprise:sourceTable>
-    <enterprise:sourceColumn>fiscal_quarter</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR019</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#fiscalPeriodSeq">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Date"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>fiscal period sequence</rdfs:label>
-    <rdfs:comment>Sequential number representing the fiscal reporting period in ordered time analysis.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_date</enterprise:sourceTable>
-    <enterprise:sourceColumn>fiscal_period_seq</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR020</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#contractType">
+        <rdfs:label>contract type</rdfs:label>
+        <rdfs:comment>Describes the type of commercial agreement attached to the booking, such as SaaS subscription, Enterprise Agreement, or support contract.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_contract</sourceTable>
+        <sourceColumn>contract_type</sourceColumn>
+        <sourceAttribute>ATTR002</sourceAttribute>
+    </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#geographyKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Geography"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>geography key</rdfs:label>
-    <rdfs:comment>Surrogate key that uniquely identifies a geography record in the geography dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_geography</enterprise:sourceTable>
-    <enterprise:sourceColumn>geography_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR021</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#region">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Geography"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>sales region</rdfs:label>
-    <rdfs:comment>High-level geographic region used for reporting and performance analysis.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_geography</enterprise:sourceTable>
-    <enterprise:sourceColumn>region</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR022</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#theater">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Geography"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>sales theater</rdfs:label>
-    <rdfs:comment>Subregional sales area or theater used to organize market coverage and reporting.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_geography</enterprise:sourceTable>
-    <enterprise:sourceColumn>theater</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR023</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#country">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Geography"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>country</rdfs:label>
-    <rdfs:comment>Country associated with the geography record.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_geography</enterprise:sourceTable>
-    <enterprise:sourceColumn>country</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR024</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#termMonths">
+        <rdfs:label>contract term months</rdfs:label>
+        <rdfs:comment>Indicates the duration of the contract in months.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_contract</sourceTable>
+        <sourceColumn>term_months</sourceColumn>
+        <sourceAttribute>ATTR003</sourceAttribute>
+    </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#partnerKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>partner key</rdfs:label>
-    <rdfs:comment>Surrogate key that uniquely identifies a partner record in the partner dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_partner</enterprise:sourceTable>
-    <enterprise:sourceColumn>partner_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR025</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#partnerId">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>partner ID</rdfs:label>
-    <rdfs:comment>Business identifier assigned to the partner organization.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_partner</enterprise:sourceTable>
-    <enterprise:sourceColumn>partner_id</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR026</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#partnerName">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>partner name</rdfs:label>
-    <rdfs:comment>Name of the partner organization involved in the transaction.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_partner</enterprise:sourceTable>
-    <enterprise:sourceColumn>partner_name</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR027</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#partnerType">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>partner type</rdfs:label>
-    <rdfs:comment>Classifies the partner by operating model, such as distributor, reseller, systems integrator, or direct.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_partner</enterprise:sourceTable>
-    <enterprise:sourceColumn>partner_type</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR028</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#partnerTier">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>partner tier</rdfs:label>
-    <rdfs:comment>Indicates the certification, authorization, or strategic tier assigned to the partner.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_partner</enterprise:sourceTable>
-    <enterprise:sourceColumn>partner_tier</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR029</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#routeToMarket">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Partner"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>route to market</rdfs:label>
-    <rdfs:comment>Describes the sales delivery path through which the product or service reached the customer.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_partner</enterprise:sourceTable>
-    <enterprise:sourceColumn>route_to_market</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR030</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#autoRenewFlag">
+        <rdfs:label>auto renew flag</rdfs:label>
+        <rdfs:comment>Indicates whether the contract is set to renew automatically at the end of its term.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_contract</sourceTable>
+        <sourceColumn>auto_renew_flag</sourceColumn>
+        <sourceAttribute>ATTR004</sourceAttribute>
+    </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#productKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>product key</rdfs:label>
-    <rdfs:comment>Surrogate key that uniquely identifies a product record in the product dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_product</enterprise:sourceTable>
-    <enterprise:sourceColumn>product_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR031</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#productId">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>product ID</rdfs:label>
-    <rdfs:comment>Business identifier or SKU assigned to the product or offer.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_product</enterprise:sourceTable>
-    <enterprise:sourceColumn>product_id</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR032</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#productName">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>product name</rdfs:label>
-    <rdfs:comment>Commercial name of the product or subscription offer sold to the customer.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_product</enterprise:sourceTable>
-    <enterprise:sourceColumn>product_name</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR033</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#productFamily">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>product family</rdfs:label>
-    <rdfs:comment>Higher-level product grouping used for portfolio and performance analysis.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_product</enterprise:sourceTable>
-    <enterprise:sourceColumn>product_family</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR034</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#technologyDomain">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>technology domain</rdfs:label>
-    <rdfs:comment>Technology area or solution domain to which the product belongs.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_product</enterprise:sourceTable>
-    <enterprise:sourceColumn>technology_domain</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR035</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#offerType">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>offer type</rdfs:label>
-    <rdfs:comment>Indicates whether the item is sold as hardware, software subscription, or SaaS subscription.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_product</enterprise:sourceTable>
-    <enterprise:sourceColumn>offer_type</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR036</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#businessEntityName">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#Product"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>business entity</rdfs:label>
-    <rdfs:comment>Internal business unit or portfolio responsible for the product.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_product</enterprise:sourceTable>
-    <enterprise:sourceColumn>business_entity</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR037</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#coverageLevel">
+        <rdfs:label>coverage level</rdfs:label>
+        <rdfs:comment>Describes the level of service or support coverage provided under the contract.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_contract</sourceTable>
+        <sourceColumn>coverage_level</sourceColumn>
+        <sourceAttribute>ATTR005</sourceAttribute>
+    </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#salesRepKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>sales representative key</rdfs:label>
-    <rdfs:comment>Surrogate key that uniquely identifies a sales representative record in the sales representative dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_sales_rep</enterprise:sourceTable>
-    <enterprise:sourceColumn>sales_rep_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR038</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#repId">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>sales representative ID</rdfs:label>
-    <rdfs:comment>Business identifier assigned to the sales representative.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_sales_rep</enterprise:sourceTable>
-    <enterprise:sourceColumn>rep_id</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR039</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#repName">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>sales representative name</rdfs:label>
-    <rdfs:comment>Full name of the sales representative associated with the booking.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_sales_rep</enterprise:sourceTable>
-    <enterprise:sourceColumn>rep_name</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR040</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#salesRole">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>sales role</rdfs:label>
-    <rdfs:comment>Job role or account responsibility of the sales representative.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_sales_rep</enterprise:sourceTable>
-    <enterprise:sourceColumn>sales_role</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR041</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#salesTeam">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>sales team</rdfs:label>
-    <rdfs:comment>Team or organizational unit to which the sales representative belongs.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_sales_rep</enterprise:sourceTable>
-    <enterprise:sourceColumn>sales_team</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR042</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#segmentCovered">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#SalesRepresentative"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>covered segment</rdfs:label>
-    <rdfs:comment>Customer segment for which the sales representative is responsible.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.dim_sales_rep</enterprise:sourceTable>
-    <enterprise:sourceColumn>segment_covered</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR043</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
+    <!-- Datatype Properties: Customer -->
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#customerKey">
+        <rdfs:label>customer key</rdfs:label>
+        <rdfs:comment>Surrogate key that uniquely identifies a customer record in the customer dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceColumn>customer_key</sourceColumn>
+        <sourceAttribute>ATTR006</sourceAttribute>
+    </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingId">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>booking ID</rdfs:label>
-    <rdfs:comment>Unique identifier for an individual booking transaction record.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>booking_id</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR044</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#orderNumber">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>order number</rdfs:label>
-    <rdfs:comment>Business order number associated with the booking transaction.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>order_number</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR045</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#orderLineNumber">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>order line number</rdfs:label>
-    <rdfs:comment>Line item number within the order associated with the booking.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>order_line_number</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR046</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingDateKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>booking date key</rdfs:label>
-    <rdfs:comment>Foreign key linking the booking transaction to the reporting date dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>date_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR047</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingCustomerKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>customer key on booking transaction</rdfs:label>
-    <rdfs:comment>Foreign key linking the booking transaction to the customer dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>customer_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR048</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingProductKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>product key on booking transaction</rdfs:label>
-    <rdfs:comment>Foreign key linking the booking transaction to the product dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>product_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR049</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingPartnerKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>partner key on booking transaction</rdfs:label>
-    <rdfs:comment>Foreign key linking the booking transaction to the partner dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>partner_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR050</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingGeographyKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>geography key on booking transaction</rdfs:label>
-    <rdfs:comment>Foreign key linking the booking transaction to the geography dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>geography_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR051</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingSalesRepKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>sales representative key on booking transaction</rdfs:label>
-    <rdfs:comment>Foreign key linking the booking transaction to the sales representative dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>sales_rep_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR052</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingContractKey">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>contract key on booking transaction</rdfs:label>
-    <rdfs:comment>Foreign key linking the booking transaction to the contract dimension.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>contract_key</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR053</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingType">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:label>booking type</rdfs:label>
-    <rdfs:comment>Indicates whether the booking is a new sale or a renewal.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>booking_type</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR054</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#isRenewal">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>renewal indicator</rdfs:label>
-    <rdfs:comment>Indicates whether the booking transaction is classified as a renewal.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>is_renewal</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR055</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#quantity">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:label>quantity sold</rdfs:label>
-    <rdfs:comment>Number of units, licenses, or subscriptions included in the booking transaction.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>quantity</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR056</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#unitListPriceUSD">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    <rdfs:label>unit list price USD</rdfs:label>
-    <rdfs:comment>Standard list price per unit in U.S. dollars before discounts are applied.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>unit_list_price_usd</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR057</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#discountPct">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    <rdfs:label>discount percentage</rdfs:label>
-    <rdfs:comment>Percentage discount applied to the list price for the booking transaction.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>discount_pct</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR058</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#bookingAmountUSD">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    <rdfs:label>booking amount USD</rdfs:label>
-    <rdfs:comment>Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>booking_amount_usd</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR059</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#acvUSD">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    <rdfs:label>annual contract value USD</rdfs:label>
-    <rdfs:comment>Annualized value of the contract associated with the booking in U.S. dollars.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>acv_usd</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR060</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings-revenue#tcvUSD">
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings-revenue#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    <rdfs:label>total contract value USD</rdfs:label>
-    <rdfs:comment>Total value of the full contract associated with the booking in U.S. dollars.</rdfs:comment>
-    <enterprise:sourceTable>QuoteToBooking.fact_bookings</enterprise:sourceTable>
-    <enterprise:sourceColumn>tcv_usd</enterprise:sourceColumn>
-    <enterprise:sourceAttribute>ATTR061</enterprise:sourceAttribute>
-  </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#customerId">
+        <rdfs:label>customer id</rdfs:label>
+        <rdfs:comment>Business identifier assigned to the customer account.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceColumn>customer_id</sourceColumn>
+        <sourceAttribute>ATTR007</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#customerName">
+        <rdfs:label>customer name</rdfs:label>
+        <rdfs:comment>Official name of the customer organization that purchased products or services.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceColumn>customer_name</sourceColumn>
+        <sourceAttribute>ATTR008</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#segment">
+        <rdfs:label>customer segment</rdfs:label>
+        <rdfs:comment>Classifies the customer into a business segment such as Enterprise, Service Provider, or Public Sector.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceColumn>segment</sourceColumn>
+        <sourceAttribute>ATTR009</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#industry">
+        <rdfs:label>industry</rdfs:label>
+        <rdfs:comment>Identifies the industry in which the customer operates.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceColumn>industry</sourceColumn>
+        <sourceAttribute>ATTR010</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#accountTier">
+        <rdfs:label>account tier</rdfs:label>
+        <rdfs:comment>Indicates the strategic importance or service tier of the customer account.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceColumn>account_tier</sourceColumn>
+        <sourceAttribute>ATTR011</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#hqCountry">
+        <rdfs:label>headquarters country</rdfs:label>
+        <rdfs:comment>Country where the customer organization's headquarters is located.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceColumn>hq_country</sourceColumn>
+        <sourceAttribute>ATTR012</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#hqRegion">
+        <rdfs:label>headquarters region</rdfs:label>
+        <rdfs:comment>Global region where the customer organization's headquarters is located.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_customer</sourceTable>
+        <sourceColumn>hq_region</sourceColumn>
+        <sourceAttribute>ATTR013</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <!-- Datatype Properties: Date -->
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#dateKey">
+        <rdfs:label>date key</rdfs:label>
+        <rdfs:comment>Encoded key that uniquely identifies a reporting date in the date dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_date</sourceTable>
+        <sourceColumn>date_key</sourceColumn>
+        <sourceAttribute>ATTR014</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#fullDate">
+        <rdfs:label>full date</rdfs:label>
+        <rdfs:comment>Actual calendar date represented by the date record.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <sourceTable>QuoteToBooking.dim_date</sourceTable>
+        <sourceColumn>full_date</sourceColumn>
+        <sourceAttribute>ATTR015</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#monthName">
+        <rdfs:label>month name</rdfs:label>
+        <rdfs:comment>Name of the calendar month for the date.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_date</sourceTable>
+        <sourceColumn>month_name</sourceColumn>
+        <sourceAttribute>ATTR016</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#calendarYear">
+        <rdfs:label>calendar year</rdfs:label>
+        <rdfs:comment>Four-digit calendar year associated with the date.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_date</sourceTable>
+        <sourceColumn>calendar_year</sourceColumn>
+        <sourceAttribute>ATTR017</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#fiscalYear">
+        <rdfs:label>fiscal year</rdfs:label>
+        <rdfs:comment>Fiscal year used by the business for financial and performance reporting.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_date</sourceTable>
+        <sourceColumn>fiscal_year</sourceColumn>
+        <sourceAttribute>ATTR018</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#fiscalQuarter">
+        <rdfs:label>fiscal quarter</rdfs:label>
+        <rdfs:comment>Fiscal quarter used by the business for periodic reporting and analysis.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_date</sourceTable>
+        <sourceColumn>fiscal_quarter</sourceColumn>
+        <sourceAttribute>ATTR019</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#fiscalPeriodSequence">
+        <rdfs:label>fiscal period sequence</rdfs:label>
+        <rdfs:comment>Sequential number representing the fiscal reporting period in ordered time analysis.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_date</sourceTable>
+        <sourceColumn>fiscal_period_seq</sourceColumn>
+        <sourceAttribute>ATTR020</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <!-- Datatype Properties: Geography -->
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#geographyKey">
+        <rdfs:label>geography key</rdfs:label>
+        <rdfs:comment>Surrogate key that uniquely identifies a geography record in the geography dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_geography</sourceTable>
+        <sourceColumn>geography_key</sourceColumn>
+        <sourceAttribute>ATTR021</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#region">
+        <rdfs:label>sales region</rdfs:label>
+        <rdfs:comment>High-level geographic region used for reporting and performance analysis.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_geography</sourceTable>
+        <sourceColumn>region</sourceColumn>
+        <sourceAttribute>ATTR022</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#theater">
+        <rdfs:label>sales theater</rdfs:label>
+        <rdfs:comment>Subregional sales area or theater used to organize market coverage and reporting.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_geography</sourceTable>
+        <sourceColumn>theater</sourceColumn>
+        <sourceAttribute>ATTR023</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#country">
+        <rdfs:label>country</rdfs:label>
+        <rdfs:comment>Country associated with the geography record.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Geography"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_geography</sourceTable>
+        <sourceColumn>country</sourceColumn>
+        <sourceAttribute>ATTR024</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <!-- Datatype Properties: Partner -->
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerKey">
+        <rdfs:label>partner key</rdfs:label>
+        <rdfs:comment>Surrogate key that uniquely identifies a partner record in the partner dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_partner</sourceTable>
+        <sourceColumn>partner_key</sourceColumn>
+        <sourceAttribute>ATTR025</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerId">
+        <rdfs:label>partner id</rdfs:label>
+        <rdfs:comment>Business identifier assigned to the partner organization.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_partner</sourceTable>
+        <sourceColumn>partner_id</sourceColumn>
+        <sourceAttribute>ATTR026</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerName">
+        <rdfs:label>partner name</rdfs:label>
+        <rdfs:comment>Name of the partner organization involved in the transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_partner</sourceTable>
+        <sourceColumn>partner_name</sourceColumn>
+        <sourceAttribute>ATTR027</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerType">
+        <rdfs:label>partner type</rdfs:label>
+        <rdfs:comment>Classifies the partner by operating model, such as distributor, reseller, systems integrator, or direct.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_partner</sourceTable>
+        <sourceColumn>partner_type</sourceColumn>
+        <sourceAttribute>ATTR028</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#partnerTier">
+        <rdfs:label>partner tier</rdfs:label>
+        <rdfs:comment>Indicates the certification, authorization, or strategic tier assigned to the partner.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_partner</sourceTable>
+        <sourceColumn>partner_tier</sourceColumn>
+        <sourceAttribute>ATTR029</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#routeToMarket">
+        <rdfs:label>route to market</rdfs:label>
+        <rdfs:comment>Describes the sales delivery path through which the product or service reached the customer.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Partner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_partner</sourceTable>
+        <sourceColumn>route_to_market</sourceColumn>
+        <sourceAttribute>ATTR030</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <!-- Datatype Properties: Product -->
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#productKey">
+        <rdfs:label>product key</rdfs:label>
+        <rdfs:comment>Surrogate key that uniquely identifies a product record in the product dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_product</sourceTable>
+        <sourceColumn>product_key</sourceColumn>
+        <sourceAttribute>ATTR031</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#productId">
+        <rdfs:label>product id</rdfs:label>
+        <rdfs:comment>Business identifier or SKU assigned to the product or offer.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_product</sourceTable>
+        <sourceColumn>product_id</sourceColumn>
+        <sourceAttribute>ATTR032</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#productName">
+        <rdfs:label>product name</rdfs:label>
+        <rdfs:comment>Commercial name of the product or subscription offer sold to the customer.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_product</sourceTable>
+        <sourceColumn>product_name</sourceColumn>
+        <sourceAttribute>ATTR033</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#productFamily">
+        <rdfs:label>product family</rdfs:label>
+        <rdfs:comment>Higher-level product grouping used for portfolio and performance analysis.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_product</sourceTable>
+        <sourceColumn>product_family</sourceColumn>
+        <sourceAttribute>ATTR034</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#technologyDomain">
+        <rdfs:label>technology domain</rdfs:label>
+        <rdfs:comment>Technology area or solution domain to which the product belongs.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_product</sourceTable>
+        <sourceColumn>technology_domain</sourceColumn>
+        <sourceAttribute>ATTR035</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#offerType">
+        <rdfs:label>offer type</rdfs:label>
+        <rdfs:comment>Indicates whether the item is sold as hardware, software subscription, or SaaS subscription.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_product</sourceTable>
+        <sourceColumn>offer_type</sourceColumn>
+        <sourceAttribute>ATTR036</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#businessEntityName">
+        <rdfs:label>business entity</rdfs:label>
+        <rdfs:comment>Internal business unit or portfolio responsible for the product.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_product</sourceTable>
+        <sourceColumn>business_entity</sourceColumn>
+        <sourceAttribute>ATTR037</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <!-- Datatype Properties: Sales Representative -->
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRepKey">
+        <rdfs:label>sales representative key</rdfs:label>
+        <rdfs:comment>Surrogate key that uniquely identifies a sales representative record in the sales representative dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.dim_sales_rep</sourceTable>
+        <sourceColumn>sales_rep_key</sourceColumn>
+        <sourceAttribute>ATTR038</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRepresentativeId">
+        <rdfs:label>sales representative id</rdfs:label>
+        <rdfs:comment>Business identifier assigned to the sales representative.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_sales_rep</sourceTable>
+        <sourceColumn>rep_id</sourceColumn>
+        <sourceAttribute>ATTR039</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRepresentativeName">
+        <rdfs:label>sales representative name</rdfs:label>
+        <rdfs:comment>Full name of the sales representative associated with the booking.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_sales_rep</sourceTable>
+        <sourceColumn>rep_name</sourceColumn>
+        <sourceAttribute>ATTR040</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesRole">
+        <rdfs:label>sales role</rdfs:label>
+        <rdfs:comment>Job role or account responsibility of the sales representative.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_sales_rep</sourceTable>
+        <sourceColumn>sales_role</sourceColumn>
+        <sourceAttribute>ATTR041</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#salesTeam">
+        <rdfs:label>sales team</rdfs:label>
+        <rdfs:comment>Team or organizational unit to which the sales representative belongs.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_sales_rep</sourceTable>
+        <sourceColumn>sales_team</sourceColumn>
+        <sourceAttribute>ATTR042</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#coveredSegment">
+        <rdfs:label>covered segment</rdfs:label>
+        <rdfs:comment>Customer segment for which the sales representative is responsible.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#SalesRepresentative"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.dim_sales_rep</sourceTable>
+        <sourceColumn>segment_covered</sourceColumn>
+        <sourceAttribute>ATTR043</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <!-- Datatype Properties: Booking Transaction -->
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingId">
+        <rdfs:label>booking id</rdfs:label>
+        <rdfs:comment>Unique identifier for an individual booking transaction record.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>booking_id</sourceColumn>
+        <sourceAttribute>ATTR044</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#orderNumber">
+        <rdfs:label>order number</rdfs:label>
+        <rdfs:comment>Business order number associated with the booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>order_number</sourceColumn>
+        <sourceAttribute>ATTR045</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#orderLineNumber">
+        <rdfs:label>order line number</rdfs:label>
+        <rdfs:comment>Line item number within the order associated with the booking.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>order_line_number</sourceColumn>
+        <sourceAttribute>ATTR046</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingDateKey">
+        <rdfs:label>booking date key</rdfs:label>
+        <rdfs:comment>Foreign key linking the booking transaction to the reporting date dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>date_key</sourceColumn>
+        <sourceAttribute>ATTR047</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingCustomerKey">
+        <rdfs:label>customer key on booking transaction</rdfs:label>
+        <rdfs:comment>Foreign key linking the booking transaction to the customer dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>customer_key</sourceColumn>
+        <sourceAttribute>ATTR048</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingProductKey">
+        <rdfs:label>product key on booking transaction</rdfs:label>
+        <rdfs:comment>Foreign key linking the booking transaction to the product dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>product_key</sourceColumn>
+        <sourceAttribute>ATTR049</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingPartnerKey">
+        <rdfs:label>partner key on booking transaction</rdfs:label>
+        <rdfs:comment>Foreign key linking the booking transaction to the partner dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>partner_key</sourceColumn>
+        <sourceAttribute>ATTR050</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingGeographyKey">
+        <rdfs:label>geography key on booking transaction</rdfs:label>
+        <rdfs:comment>Foreign key linking the booking transaction to the geography dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>geography_key</sourceColumn>
+        <sourceAttribute>ATTR051</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingSalesRepKey">
+        <rdfs:label>sales representative key on booking transaction</rdfs:label>
+        <rdfs:comment>Foreign key linking the booking transaction to the sales representative dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>sales_rep_key</sourceColumn>
+        <sourceAttribute>ATTR052</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingContractKey">
+        <rdfs:label>contract key on booking transaction</rdfs:label>
+        <rdfs:comment>Foreign key linking the booking transaction to the contract dimension.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>contract_key</sourceColumn>
+        <sourceAttribute>ATTR053</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingType">
+        <rdfs:label>booking type</rdfs:label>
+        <rdfs:comment>Indicates whether the booking is a new sale or a renewal.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>booking_type</sourceColumn>
+        <sourceAttribute>ATTR054</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#isRenewal">
+        <rdfs:label>renewal indicator</rdfs:label>
+        <rdfs:comment>Indicates whether the booking transaction is classified as a renewal.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>is_renewal</sourceColumn>
+        <sourceAttribute>ATTR055</sourceAttribute>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#quantity">
+        <rdfs:label>quantity sold</rdfs:label>
+        <rdfs:comment>Number of units, licenses, or subscriptions included in the booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>quantity</sourceColumn>
+        <sourceAttribute>ATTR056</sourceAttribute>
+        <businessDefinition>Number of units, licenses, or subscriptions included in the booking transaction.</businessDefinition>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#unitListPriceUSD">
+        <rdfs:label>unit list price USD</rdfs:label>
+        <rdfs:comment>Standard list price per unit in U.S. dollars before discounts are applied.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>unit_list_price_usd</sourceColumn>
+        <sourceAttribute>ATTR057</sourceAttribute>
+        <businessDefinition>Standard list price per unit in U.S. dollars before discounts are applied.</businessDefinition>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#discountPercentage">
+        <rdfs:label>discount percentage</rdfs:label>
+        <rdfs:comment>Percentage discount applied to the list price for the booking transaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>discount_pct</sourceColumn>
+        <sourceAttribute>ATTR058</sourceAttribute>
+        <businessDefinition>Percentage discount applied to the list price for the booking transaction.</businessDefinition>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#bookingAmountUSD">
+        <rdfs:label>booking amount USD</rdfs:label>
+        <rdfs:comment>Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>booking_amount_usd</sourceColumn>
+        <sourceAttribute>ATTR059</sourceAttribute>
+        <businessDefinition>Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments.</businessDefinition>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#acvUSD">
+        <rdfs:label>annual contract value USD</rdfs:label>
+        <rdfs:comment>Annualized value of the contract associated with the booking in U.S. dollars.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>acv_usd</sourceColumn>
+        <sourceAttribute>ATTR060</sourceAttribute>
+        <businessDefinition>Annualized value of the contract associated with the booking in U.S. dollars.</businessDefinition>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.com/ontology/sales-bookings#tcvUSD">
+        <rdfs:label>total contract value USD</rdfs:label>
+        <rdfs:comment>Total value of the full contract associated with the booking in U.S. dollars.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.com/ontology/sales-bookings#BookingTransaction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <sourceTable>QuoteToBooking.fact_bookings</sourceTable>
+        <sourceColumn>tcv_usd</sourceColumn>
+        <sourceAttribute>ATTR061</sourceAttribute>
+        <businessDefinition>Total value of the full contract associated with the booking in U.S. dollars.</businessDefinition>
+    </owl:DatatypeProperty>
+
+    <!-- Functional property typing based on one-to-many relationship semantics -->
+    <owl:FunctionalProperty rdf:about="http://example.com/ontology/sales-bookings#hasContract"/>
+    <owl:FunctionalProperty rdf:about="http://example.com/ontology/sales-bookings#hasCustomer"/>
+    <owl:FunctionalProperty rdf:about="http://example.com/ontology/sales-bookings#hasBookingDate"/>
+    <owl:FunctionalProperty rdf:about="http://example.com/ontology/sales-bookings#hasGeography"/>
+    <owl:FunctionalProperty rdf:about="http://example.com/ontology/sales-bookings#hasPartner"/>
+    <owl:FunctionalProperty rdf:about="http://example.com/ontology/sales-bookings#hasProduct"/>
+    <owl:FunctionalProperty rdf:about="http://example.com/ontology/sales-bookings#hasSalesRepresentative"/>
 
 </rdf:RDF>
