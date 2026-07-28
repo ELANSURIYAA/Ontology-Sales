@@ -17,35 +17,22 @@ Stores calendar and fiscal date attributes used to analyze bookings over time.
 
 ## Business Meaning
 
-The Date entity provides temporal context for booking transactions, enabling time-based analysis across both calendar and fiscal periods. It supports trending, period-over-period comparisons, seasonal analysis, and fiscal reporting requirements.
+Date represents a specific point in time with associated calendar and fiscal attributes that enable time-based analysis of business transactions. The date dimension provides the temporal context for booking transactions and supports both calendar-based and fiscal-based reporting, trending, and forecasting.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_date  
-**Entity**: [Date](../entities/date.md)  
+**Source Table**: QuoteToBooking.dim_date
+
+**Entity**: [Date](../entities/date.md)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Time
-- Date Dimension
-- Calendar
-- Time Period
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Date](../entities/date.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
 - [Date Key](date-key.md)
 - [Full Date](full-date.md)
 - [Month Name](month-name.md)
@@ -53,9 +40,7 @@ The Date entity provides temporal context for booking transactions, enabling tim
 - [Fiscal Year](fiscal-year.md)
 - [Fiscal Quarter](fiscal-quarter.md)
 - [Fiscal Period Sequence](fiscal-period-sequence.md)
-
-### Related Measures
-- [Booking Amount USD](../measures/booking-amount-usd.md)
+- [Booking Date Key](booking-date-key.md)
 
 ---
 
@@ -64,22 +49,14 @@ The Date entity provides temporal context for booking transactions, enabling tim
 Date is used to:
 - Enable time-based analysis of bookings
 - Support fiscal and calendar reporting
-- Track trends and growth over time
+- Facilitate trend analysis
 - Enable period-over-period comparisons
+- Support forecasting and planning
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Date Entity](../entities/date.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Entity  
-**Source Entity**: Date  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Date](../entities/date.md)
+- [Back to Main Index](../index.md)
