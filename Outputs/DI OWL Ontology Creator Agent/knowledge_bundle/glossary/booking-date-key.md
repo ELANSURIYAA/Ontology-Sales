@@ -17,64 +17,48 @@ Foreign key linking the booking transaction to the reporting date dimension.
 
 ## Business Meaning
 
-Booking Date Key connects each booking transaction to a specific date in the date dimension. This link enables time-based analysis of bookings across calendar and fiscal periods, supporting trending, period comparisons, and temporal reporting.
+Booking Date Key is the foreign key that links each booking transaction to its corresponding date in the date dimension. This relationship enables time-based analysis of bookings, including fiscal and calendar period reporting, trend analysis, and period-over-period comparisons.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: fact_bookings  
-**Source Column**: date_key  
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Attribute**: Booking Date Key  
-**Data Type**: integer  
-**Nullable**: Yes  
-**Foreign Key**: Yes  
+**Source Table**: QuoteToBooking.fact_bookings
+
+**Source Column**: date_key
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)
+
+**Attribute**: Booking Date Key
+
+**Data Type**: Integer
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Transaction Date Key
-- Date Foreign Key
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](../entities/booking-transaction.md)
-- [Date](../entities/date.md)
-
-### Related Relationships
-- [Date to Booking Transaction](../relationships/date-to-booking-transaction.md)
+- [Booking Transaction](booking-transaction.md)
+- [Date](date.md)
+- [Date Key](date-key.md)
 
 ---
 
 ## Usage Context
 
 Booking Date Key is used to:
-- Link transactions to dates
+- Link bookings to dates
 - Enable time-based analysis
-- Support fiscal reporting
+- Support fiscal and calendar reporting
+- Facilitate trend analysis
+- Enable period comparisons
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Booking Transaction Entity](../entities/booking-transaction.md)
-- [View Date Entity](../entities/date.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Booking Transaction  
-**Source Attribute**: Booking Date Key  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Booking Transaction](../entities/booking-transaction.md)
+- [View Entity: Date](../entities/date.md)
+- [Back to Main Index](../index.md)
