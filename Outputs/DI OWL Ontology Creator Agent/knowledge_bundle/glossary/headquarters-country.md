@@ -17,66 +17,48 @@ Country where the customer organization's headquarters is located.
 
 ## Business Meaning
 
-Headquarters Country identifies the primary country location of the customer's corporate headquarters. This geographic attribute enables analysis of customer distribution, regional market penetration, and headquarters-based segmentation. It differs from transaction geography, which represents where sales occur.
+Headquarters Country identifies the nation where the customer's primary corporate headquarters or main office is situated. This geographic attribute enables country-based customer analysis, international market assessment, and regional strategy development. It differs from the transaction geography, which may represent where the sale occurred.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_customer  
-**Source Column**: hq_country  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Headquarters Country  
-**Data Type**: character varying(40)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_customer
+
+**Source Column**: hq_country
+
+**Entity**: [Customer](../entities/customer.md)
+
+**Attribute**: Headquarters Country
+
+**Data Type**: Character Varying(40)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- HQ Country
-- Home Country
-- Corporate Country
-- Headquarters Location
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Customer](../entities/customer.md)
-- [Geography](../entities/geography.md)
-
-### Related Attributes
+- [Customer](customer.md)
 - [Headquarters Region](headquarters-region.md)
-- [Customer Key](customer-key.md)
+- [Geography](geography.md)
+- [Country](country.md)
 
 ---
 
 ## Usage Context
 
 Headquarters Country is used to:
-- Analyze customer distribution by country
-- Assess market penetration
-- Support regional sales planning
-- Identify geographic customer concentrations
+- Identify customer headquarters location
+- Enable country-based customer analysis
+- Support international market assessment
+- Facilitate regional strategy development
+- Enable geographic customer distribution analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Customer Entity](../entities/customer.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Customer  
-**Source Attribute**: Headquarters Country  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Customer](../entities/customer.md)
+- [Back to Main Index](../index.md)
