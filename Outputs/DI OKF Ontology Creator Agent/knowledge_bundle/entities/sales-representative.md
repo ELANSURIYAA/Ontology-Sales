@@ -1,55 +1,51 @@
 ---
 title: Sales Representative
 type: entity
-id: ENT007
-domain: Sales Bookings and Revenue Analytics
-technical_table: QuoteToBooking.dim_sales_rep
-business_keys:
-  - sales_rep_key
-  - rep_id
-version: 1.0
-status: generated
+description: Business entity representing sales personnel responsible for booking transactions.
+resource: entities
+tags: [entity, sales-representative, sales, workforce]
+timestamp: 2026-07-28
 ---
 
 # Sales Representative
 
 ## Business Definition
-
-Stores sales representative attributes used to analyze bookings by individual seller, role, team, and covered segment.
+Stores information about sales personnel responsible for managing customer relationships and booking transactions.
 
 ## Technical Mapping
-
-- Table: `QuoteToBooking.dim_sales_rep`
-- Primary business key(s): `sales_rep_key`, `rep_id`
+- Source Table: `QuoteToBooking.dim_sales_rep`
+- Related Glossary: [Sales Representative](../glossary/sales-representative.md)
 
 ## Attributes
+- Sales Representative Key
+- Sales Representative ID
+- Sales Representative Name
+- Sales Role
+- Sales Team
+- Covered Segment
 
-| Attribute | Technical Column | Data Type | Nullable | PK | FK | Description |
-| --- | --- | --- | --- | --- | --- | --- |
-| Sales Representative Key | sales_rep_key | integer | No | Yes | No | Surrogate key that uniquely identifies a sales representative record in the sales representative dimension. |
-| Sales Representative ID | rep_id | character varying | No | No | No | Business identifier assigned to the sales representative. |
-| Sales Representative Name | rep_name | character varying | Yes | No | No | Full name of the sales representative responsible for the customer relationship or sale. |
-| Sales Role | sales_role | character varying | Yes | No | No | Job role or selling responsibility of the sales representative. |
-| Sales Team | sales_team | character varying | Yes | No | No | Team or organizational unit to which the sales representative belongs. |
-| Covered Segment | segment_covered | character varying | Yes | No | No | Customer segment for which the sales representative is responsible. |
+## Primary Keys
+- Sales Representative Key
 
-## Keys
-
-- Primary Key: `sales_rep_key`
-- Alternate Business Key: `rep_id`
-- Referenced by: [Booking Transaction](booking-transaction.md)
+## Foreign Keys
+None
 
 ## Measures
-
-- No direct measures defined for this entity.
+None
 
 ## Relationships
-
-- Parent in [Sales Representative to Booking Transaction](../relationships/sales-representative-to-booking-transaction.md)
+- [Sales Representative to Booking Transaction](../relationships/sales-representative-to-booking-transaction.md)
 
 ## Related Concepts
-
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-- [Booking Transaction](booking-transaction.md)
-- [Sales Representative](../glossary/sales-representative.md)
+- [Sales Representative ID](../glossary/sales-representative-id.md)
+- [Sales Representative Name](../glossary/sales-representative-name.md)
 - [Sales Role](../glossary/sales-role.md)
+- [Sales Team](../glossary/sales-team.md)
+- [Covered Segment](../glossary/covered-segment.md)
+- [Booking Transaction](booking-transaction.md)
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+
+## Business Rules
+- Each sales representative record is uniquely identified by Sales Representative Key.
+- A sales representative may be associated with multiple booking transactions.
+- Covered Segment describes the customer segment for which the representative is responsible.
