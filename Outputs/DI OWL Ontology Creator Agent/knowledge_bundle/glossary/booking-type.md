@@ -17,68 +17,47 @@ Indicates whether the booking is a new sale or a renewal.
 
 ## Business Meaning
 
-Booking Type classifies transactions as either new business or renewal business. This distinction is critical for understanding revenue composition, tracking customer retention, and measuring new customer acquisition versus existing customer expansion.
+Booking Type classifies booking transactions as either new sales (first-time purchases from new or existing customers) or renewals (repeat purchases of existing subscriptions or contracts). This classification is critical for understanding customer acquisition vs. retention dynamics, measuring renewal rates, and forecasting recurring revenue.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: fact_bookings  
-**Source Column**: booking_type  
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Attribute**: Booking Type  
-**Data Type**: character varying(15)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.fact_bookings
+
+**Source Column**: booking_type
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)
+
+**Attribute**: Booking Type
+
+**Data Type**: Character Varying(15)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Transaction Type
-- Sale Type
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
+- [Booking Transaction](booking-transaction.md)
 - [Renewal Indicator](renewal-indicator.md)
+- [Auto Renew Flag](auto-renew-flag.md)
 
 ---
 
 ## Usage Context
 
 Booking Type is used to:
-- Distinguish new vs renewal revenue
-- Track customer retention
-- Analyze revenue composition
-
----
-
-## Examples
-
-- New
-- Renewal
+- Classify bookings as new or renewal
+- Enable new vs. renewal analysis
+- Support renewal rate calculation
+- Facilitate customer retention measurement
+- Enable revenue mix analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Booking Transaction Entity](../entities/booking-transaction.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Booking Transaction  
-**Source Attribute**: Booking Type  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Booking Transaction](../entities/booking-transaction.md)
+- [Back to Main Index](../index.md)
