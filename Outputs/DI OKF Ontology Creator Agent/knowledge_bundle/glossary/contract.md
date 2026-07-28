@@ -1,28 +1,51 @@
 ---
 title: Contract
-type: glossary_term
-technical_mapping: QuoteToBooking.dim_contract
-synonyms:
-  - Agreement
-version: 1.0
-status: generated
+type: glossary
+description: Glossary concept for the Contract business entity.
+resource: glossary
+tags: contract,glossary,entity,sales
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Contract
 
 ## Business Definition
 
-Stores the contractual attributes associated with a booking, including agreement type, duration, renewal behavior, and support or service coverage level.
+Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.
+
+---
+
+## Business Meaning
+
+Contract represents the commercial agreement context attached to sales bookings.
+
+---
 
 ## Technical Mapping
 
 `QuoteToBooking.dim_contract`
 
+---
+
 ## Synonyms
 
-- Agreement
+None
 
-## Related Entities
+---
 
-- [Contract](../entities/contract.md)
-- [Booking Transaction](../entities/booking-transaction.md)
+## Related Concepts
+
+- [Contract Key](contract_key.md)
+- [Contract Type](contract_type.md)
+- [Contract Term Months](contract_term_months.md)
+- [Auto Renew Flag](auto_renew_flag.md)
+- [Coverage Level](coverage_level.md)
+- [Entity: Contract](../entities/contract.md)
+
+---
+
+## Semantic Cross Links
+
+- [Glossary Index](index.md)
+- [Entity: Contract](../entities/contract.md)
+- [Domain](../domains/sales_bookings_and_revenue_analytics.md)
