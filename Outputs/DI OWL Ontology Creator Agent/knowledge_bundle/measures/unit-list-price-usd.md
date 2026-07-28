@@ -3,7 +3,7 @@ title: Unit List Price USD
 type: measure
 description: Standard list price per unit in U.S. dollars before discounts are applied
 resource: measures
-tags: [measure, pricing, list-price, usd, standard-price]
+tags: [measure, price, pricing, list-price, usd]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,48 +11,50 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Standard list price per unit in U.S. dollars before discounts are applied. This measure represents the baseline pricing for products and supports analysis of pricing strategies, discount impacts, and price realization.
-
----
-
-## Measure Details
-
-**Measure ID**: MEA002  
-**Measure Type**: Pricing Metric  
-**Aggregation Type**: SUM  
-**Unit of Measure**: USD (U.S. Dollars)
+Standard list price per unit in U.S. dollars before discounts are applied.
 
 ---
 
 ## Technical Mapping
 
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Source Table**: QuoteToBooking.fact_bookings  
-**Source Column**: unit_list_price_usd  
-**Data Type**: numeric
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)
+
+**Technical Column**: unit_list_price_usd
+
+**Data Type**: Numeric
+
+**Aggregation Type**: SUM
 
 ---
 
 ## Formula
 
-```
-Unit List Price USD = SUM(unit_list_price_usd)
-```
+This is a base measure captured directly from the booking transaction representing the standard list price before any discounts.
 
-No calculation required - direct aggregation of unit list price values from booking transactions.
+---
+
+## Aggregation
+
+**Default Aggregation**: SUM
+
+**Valid Aggregations**:
+- SUM: Total list price value across all transactions
+- AVG: Average list price per unit
+- MIN: Minimum list price
+- MAX: Maximum list price
 
 ---
 
 ## Related Entities
 
-### Source Entity
-- [Booking Transaction](../entities/booking-transaction.md) - Fact table containing unit list price values
-
-### Analysis Dimensions
-- [Product](../entities/product.md) - Analyze list prices by product, family, and offer type
-- [Date](../entities/date.md) - Track pricing changes over time
-- [Customer](../entities/customer.md) - Compare list prices across customer segments
-- [Geography](../entities/geography.md) - Evaluate pricing by region
+- [Booking Transaction](../entities/booking-transaction.md): Source entity for this measure
+- [Customer](../entities/customer.md): Analyze list price by customer attributes
+- [Product](../entities/product.md): Analyze list price by product attributes
+- [Partner](../entities/partner.md): Analyze list price by partner attributes
+- [Geography](../entities/geography.md): Analyze list price by geographic attributes
+- [Sales Representative](../entities/sales-representative.md): Analyze list price by sales representative
+- [Contract](../entities/contract.md): Analyze list price by contract attributes
+- [Date](../entities/date.md): Analyze list price trends over time
 
 ---
 
@@ -64,80 +66,52 @@ No calculation required - direct aggregation of unit list price values from book
 
 ## Business Rules
 
-1. **Aggregation**: Use SUM aggregation for total list price value
-2. **Currency**: All values are in U.S. dollars (USD)
-3. **Pre-Discount**: Represents pricing before discount application
-4. **Standard Pricing**: Reflects published or standard list prices
-5. **Non-Negative**: List price values should be positive
+1. Unit List Price USD represents the standard list price before discounts
+2. All prices are recorded in U.S. dollars
+3. List price is the baseline for discount calculations
+4. List price does not include any promotional or negotiated discounts
+5. Used in conjunction with Quantity Sold and Discount Percentage to calculate Booking Amount
 
 ---
 
 ## Usage Examples
 
-### Average List Price by Product
-Calculate average unit list price by product to understand pricing positioning.
+**Pricing Analysis**:
+- Calculate average list price by product
+- Analyze list price trends over time
 
-### Price Change Analysis
-Track unit list price trends over time to identify pricing adjustments.
+**Product Pricing**:
+- Compare list prices across product families
+- Identify pricing tiers by product
 
-### Pricing Strategy Analysis
-Compare list prices across product families and technology domains to evaluate pricing strategy.
+**Discount Analysis**:
+- Calculate discount amounts from list price
+- Measure price realization (actual vs. list)
 
-### Price Realization
-Compare unit list price with actual booking amount to calculate price realization and discount impact.
+**Price Realization Formula**:
+- Price Realization = Booking Amount USD / (Unit List Price USD × Quantity Sold)
 
 ---
 
 ## Related Measures
 
-### Complementary Measures
-- [Discount Percentage](discount-percentage.md) - Discount applied to list price
-- [Booking Amount USD](booking-amount-usd.md) - Actual revenue after discounts
-- [Quantity Sold](quantity-sold.md) - Volume sold at list price
-
-### Calculated Metrics
-- **Price Realization** = Booking Amount USD / (Unit List Price USD × Quantity Sold)
-- **Average Unit List Price** = SUM(Unit List Price USD) / SUM(Quantity Sold)
-- **Discount Amount** = (Unit List Price USD × Quantity Sold) - Booking Amount USD
+- [Booking Amount USD](booking-amount-usd.md): Actual revenue after discounts
+- [Discount Percentage](discount-percentage.md): Discount applied to list price
+- [Quantity Sold](quantity-sold.md): Volume measure used with price
 
 ---
 
-## Related Glossary Terms
+## Related Concepts
 
 - [Unit List Price USD](../glossary/unit-list-price-usd.md)
 - [Booking Transaction](../glossary/booking-transaction.md)
-
----
-
-## Analysis Guidelines
-
-### Best Practices
-- Use SUM aggregation for total list price value
-- Calculate average list price by dividing by quantity for per-unit analysis
-- Compare with booking amount to assess discount impact
-- Track over time to monitor pricing strategy changes
-
-### Common Analysis Patterns
-- List price by product family and offer type
-- Pricing trends by fiscal period
-- Price positioning by technology domain
-- List price vs actual price realization
+- [Discount Percentage](../glossary/discount-percentage.md)
 
 ---
 
 ## Navigation
 
-- [View Measures Index](index.md)
-- [View Booking Transaction Entity](../entities/booking-transaction.md)
-- [View Related Measures](index.md#pricing-measures)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Measure ID**: MEA002  
-**Category**: Pricing Metric  
-**Source Entity**: Booking Transaction  
-**Aggregation**: SUM  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Measures Index](index.md)
+- [Back to Main Index](../index.md)
+- [View Entity: Booking Transaction](../entities/booking-transaction.md)
+- [View Metrics](../metrics.md)
