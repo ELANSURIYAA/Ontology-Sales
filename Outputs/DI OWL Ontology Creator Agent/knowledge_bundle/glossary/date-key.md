@@ -3,7 +3,7 @@ title: Date Key
 type: glossary
 description: Encoded key that uniquely identifies a reporting date in the date dimension
 resource: glossary
-tags: [glossary, date, key, identifier]
+tags: [glossary, date, key, identifier, surrogate-key]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,40 +17,31 @@ Encoded key that uniquely identifies a reporting date in the date dimension.
 
 ## Business Meaning
 
-Date Key is a system-generated unique identifier used to link date records to booking transactions. It serves as the primary key for the date dimension and enables efficient joins and referential integrity in the data model.
+Date Key is a system-generated unique identifier used to establish relationships between the date dimension and fact records. It serves as the primary key for date records and enables efficient data integration and referential integrity for time-based analysis.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_date  
-**Source Column**: date_key  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Date Key  
-**Data Type**: integer  
-**Nullable**: No  
-**Primary Key**: Yes  
+**Source Table**: QuoteToBooking.dim_date
+
+**Source Column**: date_key
+
+**Entity**: [Date](../entities/date.md)
+
+**Attribute**: Date Key
+
+**Data Type**: Integer
+
 **Confidence Score**: 0.95
-
----
-
-## Synonyms
-
-- Date Identifier
-- Date Surrogate Key
-- Time Key
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Date](../entities/date.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Relationships
-- [Date to Booking Transaction](../relationships/date-to-booking-transaction.md)
+- [Date](date.md)
+- [Booking Date Key](booking-date-key.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
@@ -59,23 +50,14 @@ Date Key is a system-generated unique identifier used to link date records to bo
 Date Key is used to:
 - Uniquely identify date records
 - Link booking transactions to dates
-- Enable time-based dimensional analysis
 - Maintain referential integrity
+- Enable efficient joins between fact and dimension tables
+- Support data warehouse operations
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Date Entity](../entities/date.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Date  
-**Source Attribute**: Date Key  
-**Confidence Score**: 0.95  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Date](../entities/date.md)
+- [Back to Main Index](../index.md)
