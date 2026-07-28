@@ -1,7 +1,7 @@
 ---
 title: Knowledge Bundle Index
 type: index
-description: Root navigation index for the sales bookings and revenue analytics OKF knowledge bundle.
+description: Root navigation for the sales bookings and revenue analytics OKF knowledge bundle
 resource: knowledge_bundle
 tags: [okf, knowledge-bundle, sales, bookings, revenue]
 timestamp: 2026-07-28
@@ -10,18 +10,19 @@ timestamp: 2026-07-28
 # Knowledge Bundle Index
 
 ## Overview
-This Open Knowledge Format knowledge bundle documents the Sales Bookings and Revenue Analytics semantic model derived from the validated OSI semantic model. The business process document could not be parsed from the provided repository path, so descriptions are preserved from the semantic model without enrichment.
+This knowledge bundle documents the Sales Bookings and Revenue Analytics semantic model in Open Knowledge Format. It preserves the business domain, entities, measures, relationships, glossary concepts, and navigation structure required for downstream ontology generation.
 
-## Validation Status
-- OSI Semantic Model: available and readable
-- Business Process Document: exists but not readable as UTF-8 `.docx`
-- Semantic Model Parsing: successful
-- Domains: 1
-- Entities: 8
-- Measures: 6
-- Relationships: 7
-- Glossary Terms: extracted from glossary mapping
-- Warnings: business process enrichment unavailable due to unreadable `.docx`
+## Validation Summary
+- OSI Semantic Model: available and parsed successfully
+- Business Process document: file exists but was not readable as UTF-8 text; enrichment could not be applied
+- Required semantic sections found: Domains, Entities, Attributes, Measures, Relationships, Glossary Mapping
+- Duplicate domains detected: None
+- Duplicate entities detected: None
+- Missing measures detected: None
+- Missing relationships detected: None
+- Warnings:
+  - Business process enrichment unavailable because `Inputs/QuoteToBooking.docx` could not be decoded by the reader tool
+  - Business rules were not explicitly present in the semantic model and are therefore documented as not specified where applicable
 
 ## Navigation
 - [Semantic Summary](semantic_summary.md)
