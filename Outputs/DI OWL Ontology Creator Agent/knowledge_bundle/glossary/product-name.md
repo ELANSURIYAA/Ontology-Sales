@@ -3,7 +3,7 @@ title: Product Name
 type: glossary
 description: Commercial name of the product or subscription offer sold to the customer
 resource: glossary
-tags: [glossary, product, name]
+tags: [glossary, product, name, commercial]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,37 +17,29 @@ Commercial name of the product or subscription offer sold to the customer.
 
 ## Business Meaning
 
-Product Name is the commercial or marketing name used to identify the product or service offering. This name is used in customer-facing materials, reports, and business communications. It provides human-readable identification of products.
+Product Name is the marketing or commercial name used to identify and promote the product or service offering to customers. This name is used in sales materials, customer communications, contracts, and reports. It provides human-readable identification of the product and reflects the brand and positioning strategy.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_product  
-**Source Column**: product_name  
-**Entity**: [Product](../entities/product.md)  
-**Attribute**: Product Name  
-**Data Type**: character varying(80)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_product
+
+**Source Column**: product_name
+
+**Entity**: [Product](../entities/product.md)
+
+**Attribute**: Product Name
+
+**Data Type**: Character Varying(80)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Product Title
-- Offer Name
-- Solution Name
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Product](../entities/product.md)
-
-### Related Attributes
+- [Product](product.md)
 - [Product Key](product-key.md)
 - [Product ID](product-id.md)
 
@@ -58,22 +50,14 @@ Product Name is the commercial or marketing name used to identify the product or
 Product Name is used to:
 - Identify products in reports and dashboards
 - Support product search and lookup
-- Enable customer-facing communications
+- Display in user interfaces
+- Include in customer communications
+- Enable product recognition
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Product Entity](../entities/product.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Product  
-**Source Attribute**: Product Name  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Product](../entities/product.md)
+- [Back to Main Index](../index.md)
