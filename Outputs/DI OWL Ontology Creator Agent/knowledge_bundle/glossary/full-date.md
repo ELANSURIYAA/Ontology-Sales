@@ -3,7 +3,7 @@ title: Full Date
 type: glossary
 description: Actual calendar date represented by the date record
 resource: glossary
-tags: [glossary, date, calendar-date]
+tags: [glossary, date, calendar, full-date]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,37 +17,29 @@ Actual calendar date represented by the date record.
 
 ## Business Meaning
 
-Full Date is the actual calendar date value that corresponds to the date record. It provides the specific day for booking transactions and enables date-based filtering, sorting, and analysis.
+Full Date is the complete calendar date value (year, month, day) that represents a specific point in time. It provides the actual date context for business transactions and enables precise temporal analysis and reporting.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_date  
-**Source Column**: full_date  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Full Date  
-**Data Type**: date  
-**Nullable**: No  
+**Source Table**: QuoteToBooking.dim_date
+
+**Source Column**: full_date
+
+**Entity**: [Date](../entities/date.md)
+
+**Attribute**: Full Date
+
+**Data Type**: Date
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Calendar Date
-- Transaction Date
-- Actual Date
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Date](../entities/date.md)
-
-### Related Attributes
+- [Date](date.md)
 - [Date Key](date-key.md)
 - [Calendar Year](calendar-year.md)
 - [Month Name](month-name.md)
@@ -58,24 +50,15 @@ Full Date is the actual calendar date value that corresponds to the date record.
 
 Full Date is used to:
 - Identify specific calendar dates
-- Filter transactions by date range
-- Support date-based reporting
-- Enable chronological sorting
+- Enable date-based filtering and selection
+- Support date range analysis
+- Facilitate date display in reports
+- Enable precise temporal analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Date Entity](../entities/date.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Date  
-**Source Attribute**: Full Date  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Date](../entities/date.md)
+- [Back to Main Index](../index.md)
