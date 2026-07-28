@@ -1,135 +1,125 @@
 ---
 title: Measures Index
 type: index
-description: Catalog of business measures and metrics in the Sales Bookings and Revenue Analytics model
+description: Navigation index for business measures
 resource: measures
-tags: [measures, index, metrics, kpis, financial]
+tags: [measures, index, metrics, kpi]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Measures Index
 
-## Overview
-
-This index catalogs all business measures and key performance indicators (KPIs) in the Sales Bookings and Revenue Analytics semantic model. All measures are derived from the Booking Transaction fact table and support comprehensive financial and operational analysis.
+This index provides navigation to all business measure documents in the knowledge bundle.
 
 ---
 
-## Measure Catalog
+## Measure Overview
 
-### Volume Measures
-
-#### [Quantity Sold](quantity-sold.md)
-**Measure ID**: MEA001  
-**Aggregation**: SUM  
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Technical Column**: quantity  
-**Description**: Number of units, licenses, or subscriptions included in the booking transaction
+The knowledge bundle contains **6** business measures, all associated with the Booking Transaction fact entity.
 
 ---
 
-### Pricing Measures
+## Revenue Measures
 
-#### [Unit List Price USD](unit-list-price-usd.md)
-**Measure ID**: MEA002  
+### [Booking Amount USD](booking-amount-usd.md)
+
+**Definition**: Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments
+
 **Aggregation**: SUM  
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Technical Column**: unit_list_price_usd  
-**Description**: Standard list price per unit in U.S. dollars before discounts are applied
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Technical Column**: booking_amount_usd
 
-#### [Discount Percentage](discount-percentage.md)
-**Measure ID**: MEA003  
+---
+
+### [Annual Contract Value USD](annual-contract-value-usd.md)
+
+**Definition**: Annualized value of the contract associated with the booking in U.S. dollars
+
+**Aggregation**: SUM  
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Technical Column**: acv_usd
+
+---
+
+### [Total Contract Value USD](total-contract-value-usd.md)
+
+**Definition**: Total value of the full contract associated with the booking in U.S. dollars
+
+**Aggregation**: SUM  
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Technical Column**: tcv_usd
+
+---
+
+## Volume Measures
+
+### [Quantity Sold](quantity-sold.md)
+
+**Definition**: Number of units, licenses, or subscriptions included in the booking transaction
+
+**Aggregation**: SUM  
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Technical Column**: quantity
+
+---
+
+## Pricing Measures
+
+### [Unit List Price USD](unit-list-price-usd.md)
+
+**Definition**: Standard list price per unit in U.S. dollars before discounts are applied
+
+**Aggregation**: SUM  
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Technical Column**: unit_list_price_usd
+
+---
+
+### [Discount Percentage](discount-percentage.md)
+
+**Definition**: Percentage discount applied to the list price for the booking transaction
+
 **Aggregation**: AVG  
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Technical Column**: discount_pct  
-**Description**: Percentage discount applied to the list price for the booking transaction
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Technical Column**: discount_pct
 
 ---
 
-### Revenue Measures
+## Measure Categories
 
-#### [Booking Amount USD](booking-amount-usd.md)
-**Measure ID**: MEA004  
-**Aggregation**: SUM  
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Technical Column**: booking_amount_usd  
-**Description**: Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments
+**Revenue Metrics**:
+- Booking Amount USD
+- Annual Contract Value USD
+- Total Contract Value USD
 
-#### [Annual Contract Value USD](annual-contract-value-usd.md)
-**Measure ID**: MEA005  
-**Aggregation**: SUM  
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Technical Column**: acv_usd  
-**Description**: Annualized value of the contract associated with the booking in U.S. dollars
+**Volume Metrics**:
+- Quantity Sold
 
-#### [Total Contract Value USD](total-contract-value-usd.md)
-**Measure ID**: MEA006  
-**Aggregation**: SUM  
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Technical Column**: tcv_usd  
-**Description**: Total value of the full contract associated with the booking in U.S. dollars
-
----
-
-## Measure Statistics
-
-| Category | Count |
-|----------|-------|
-| Total Measures | 6 |
-| Volume Measures | 1 |
-| Pricing Measures | 2 |
-| Revenue Measures | 3 |
-
----
-
-## Measure Summary Table
-
-| Measure | Type | Aggregation | Unit | Source Column |
-|---------|------|-------------|------|---------------|
-| Quantity Sold | Volume | SUM | Units | quantity |
-| Unit List Price USD | Pricing | SUM | USD | unit_list_price_usd |
-| Discount Percentage | Pricing | AVG | Percent | discount_pct |
-| Booking Amount USD | Revenue | SUM | USD | booking_amount_usd |
-| Annual Contract Value USD | Revenue | SUM | USD | acv_usd |
-| Total Contract Value USD | Revenue | SUM | USD | tcv_usd |
+**Pricing Metrics**:
+- Unit List Price USD
+- Discount Percentage
 
 ---
 
 ## Analysis Dimensions
 
-All measures can be analyzed across the following dimensions:
-
-- **Time**: [Date](../entities/date.md) - Calendar and fiscal periods
-- **Customer**: [Customer](../entities/customer.md) - Segment, industry, account tier
-- **Product**: [Product](../entities/product.md) - Family, technology domain, offer type
-- **Geography**: [Geography](../entities/geography.md) - Region, theater, country
-- **Partner**: [Partner](../entities/partner.md) - Type, tier, route to market
-- **Sales Team**: [Sales Representative](../entities/sales-representative.md) - Role, team, segment
-- **Contract**: [Contract](../entities/contract.md) - Type, term, coverage level
+All measures can be analyzed across:
+- [Customer](../entities/customer.md)
+- [Product](../entities/product.md)
+- [Partner](../entities/partner.md)
+- [Geography](../entities/geography.md)
+- [Sales Representative](../entities/sales-representative.md)
+- [Contract](../entities/contract.md)
+- [Date](../entities/date.md)
 
 ---
 
 ## Navigation
 
-### By Category
-- [Volume Measures](#volume-measures)
-- [Pricing Measures](#pricing-measures)
-- [Revenue Measures](#revenue-measures)
-
-### Related Content
-- [View All Entities](../entities/index.md)
-- [View All Relationships](../relationships/index.md)
-- [View All Domains](../domains/index.md)
-- [View Metrics Overview](../metrics.md)
-- [View Semantic Summary](../semantic_summary.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Total Measures**: 6  
-**Source Entity**: Booking Transaction  
-**Measure Categories**: Volume (1), Pricing (2), Revenue (3)  
-**Last Updated**: 2026-07-28T00:00:00Z  
-**Format**: Open Knowledge Format (OKF)
+- [Back to Index](../index.md)
+- [Semantic Summary](../semantic_summary.md)
+- [View Metrics](../metrics.md)
+- [View Domains](../domains/index.md)
+- [View Entities](../entities/index.md)
+- [View Relationships](../relationships/index.md)
+- [View Glossary](../glossary/index.md)
