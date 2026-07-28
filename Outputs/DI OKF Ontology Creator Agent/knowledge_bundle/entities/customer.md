@@ -1,88 +1,55 @@
 ---
 title: Customer
 type: entity
-description: Business entity describing customer accounts that place orders and generate bookings.
+description: Business entity representing the customer account that places orders and generates bookings.
 resource: entities
-tags: customer,entity,sales,bookings
-timestamp: 2026-07-28T00:00:00Z
+tags: [entity, customer, sales, bookings]
+timestamp: 2026-07-28
 ---
 
 # Customer
 
 ## Business Definition
-
 Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.
 
----
-
 ## Technical Mapping
-
 - Source Table: `QuoteToBooking.dim_customer`
-- Domain: [Sales Bookings and Revenue Analytics](../domains/sales_bookings_and_revenue_analytics.md)
-
----
+- Related Glossary: [Customer](../glossary/customer.md)
 
 ## Attributes
-
-- Customer Key (`customer_key`) - integer - not nullable
-- Customer ID (`customer_id`) - character varying(20) - not nullable
-- Customer Name (`customer_name`) - character varying(80)
-- Customer Segment (`segment`) - character varying(30)
-- Industry (`industry`) - character varying(40)
-- Account Tier (`account_tier`) - character varying(20)
-- Headquarters Country (`hq_country`) - character varying(40)
-- Headquarters Region (`hq_region`) - character varying(20)
-
----
+- Customer Key
+- Customer ID
+- Customer Name
+- Customer Segment
+- Industry
+- Account Tier
+- Headquarters Country
+- Headquarters Region
 
 ## Primary Keys
-
 - Customer Key
 
----
-
 ## Foreign Keys
-
 None
-
----
 
 ## Measures
-
 None
 
----
-
 ## Relationships
-
-- [Customer to Booking Transaction](../relationships/customer_to_booking_transaction.md)
-
----
+- [Customer to Booking Transaction](../relationships/customer-to-booking-transaction.md)
 
 ## Related Concepts
-
-- [Customer](../glossary/customer.md)
-- [Customer ID](../glossary/customer_id.md)
-- [Customer Segment](../glossary/customer_segment.md)
+- [Customer ID](../glossary/customer-id.md)
+- [Customer Name](../glossary/customer-name.md)
+- [Customer Segment](../glossary/customer-segment.md)
 - [Industry](../glossary/industry.md)
-- [Account Tier](../glossary/account_tier.md)
-- [Headquarters Country](../glossary/headquarters_country.md)
-- [Headquarters Region](../glossary/headquarters_region.md)
-
----
+- [Account Tier](../glossary/account-tier.md)
+- [Headquarters Country](../glossary/headquarters-country.md)
+- [Headquarters Region](../glossary/headquarters-region.md)
+- [Booking Transaction](booking-transaction.md)
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ## Business Rules
-
 - Each customer record is uniquely identified by Customer Key.
 - Customer ID is the business identifier assigned to the customer account.
-- A customer can be associated with multiple booking transactions.
-
----
-
-## Semantic Cross Links
-
-- [Entities Index](index.md)
-- [Domain](../domains/sales_bookings_and_revenue_analytics.md)
-- [Booking Transaction](booking_transaction.md)
-- [Customer to Booking Transaction](../relationships/customer_to_booking_transaction.md)
-- [Glossary: Customer](../glossary/customer.md)
+- A customer may be associated with multiple booking transactions.
