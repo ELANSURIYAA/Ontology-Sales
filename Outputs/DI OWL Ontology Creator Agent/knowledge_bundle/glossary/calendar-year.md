@@ -17,36 +17,29 @@ Four-digit calendar year associated with the date.
 
 ## Business Meaning
 
-Calendar Year represents the standard Gregorian calendar year (e.g., 2024, 2025) for the date. It enables year-based reporting, year-over-year comparisons, and annual trend analysis.
+Calendar Year represents the standard Gregorian calendar year (e.g., 2023, 2024, 2025) associated with a date. It enables year-based reporting, year-over-year comparisons, and alignment with calendar-based planning and forecasting cycles.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_date  
-**Source Column**: calendar_year  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Calendar Year  
-**Data Type**: integer  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_date
+
+**Source Column**: calendar_year
+
+**Entity**: [Date](../entities/date.md)
+
+**Attribute**: Calendar Year
+
+**Data Type**: Integer
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Year
-- Calendar Year Number
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Date](../entities/date.md)
-
-### Related Attributes
+- [Date](date.md)
 - [Full Date](full-date.md)
 - [Month Name](month-name.md)
 - [Fiscal Year](fiscal-year.md)
@@ -56,32 +49,16 @@ Calendar Year represents the standard Gregorian calendar year (e.g., 2024, 2025)
 ## Usage Context
 
 Calendar Year is used to:
-- Support annual reporting
-- Enable year-over-year analysis
-- Track long-term trends
-
----
-
-## Examples
-
-- 2024
-- 2025
-- 2026
+- Enable year-based analysis
+- Support year-over-year comparisons
+- Facilitate calendar-based planning
+- Enable annual reporting
+- Support multi-year trend analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Date Entity](../entities/date.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Date  
-**Source Attribute**: Calendar Year  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Date](../entities/date.md)
+- [Back to Main Index](../index.md)
