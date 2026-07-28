@@ -1,195 +1,135 @@
 ---
 title: Semantic Summary - Sales Bookings and Revenue Analytics
-type: index
-description: Complete semantic overview and model statistics for the Sales Bookings and Revenue Analytics domain
+type: summary
+description: Complete semantic model overview for Sales Bookings and Revenue Analytics
 resource: knowledge_bundle
-tags: [semantic, summary, statistics, overview, sales, bookings]
+tags: [semantic, summary, sales, bookings, revenue, analytics]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Semantic Summary - Sales Bookings and Revenue Analytics
 
-## Executive Overview
-
-This semantic model represents the complete business intelligence framework for analyzing sales booking operations across enterprise networking, security, collaboration, observability, and software subscription products. The model supports comprehensive analysis of sales performance, revenue recognition, contract management, and customer engagement across multiple dimensions.
+This document provides a comprehensive overview of the semantic model for Sales Bookings and Revenue Analytics.
 
 ---
 
-## Domain Summary
+## Domain Overview
 
 ### Sales Bookings and Revenue Analytics
 
-**Domain ID**: DOM001
+This domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. It captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
 
-**Business Purpose**: This domain captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
+**Related Entities**: Contract, Customer, Date, Geography, Partner, Product, Sales Representative, Booking Transaction
 
-**Coverage**: Enterprise sales booking operations including new sales and renewals across all product lines and customer segments.
-
-**Related Entities**: 8 core entities
-**Related Measures**: 6 financial and operational measures
-**Related Relationships**: 7 dimensional relationships
+**Related Measures**: Quantity Sold, Unit List Price USD, Discount Percentage, Booking Amount USD, Annual Contract Value USD, Total Contract Value USD
 
 ---
 
 ## Entity Summary
 
-### Dimensional Entities (7)
-
-| Entity | Type | Business Keys | Attributes | Purpose |
-|--------|------|---------------|------------|---------|
-| Contract | Dimension | Contract Key | 5 | Commercial agreement attributes including type, term, renewal, and coverage |
-| Customer | Dimension | Customer ID | 8 | Customer organization attributes including segment, industry, and location |
-| Date | Dimension | Date Key | 7 | Calendar and fiscal date attributes for time-based analysis |
-| Geography | Dimension | Geography Key | 4 | Geographic attributes for regional sales analysis |
-| Partner | Dimension | Partner ID | 6 | Channel and direct partner attributes including type and tier |
-| Product | Dimension | Product ID | 7 | Product and offer attributes including family, domain, and type |
-| Sales Representative | Dimension | Sales Representative ID | 6 | Sales personnel attributes including role, team, and coverage |
-
-### Fact Entities (1)
-
-| Entity | Type | Business Keys | Attributes | Measures | Purpose |
-|--------|------|---------------|------------|----------|---------|
-| Booking Transaction | Fact | Booking ID, Order Number, Order Line Number | 18 | 6 | Individual sales booking transactions with financial measures |
-
----
-
-## Measure Summary
-
-### Financial Measures (6)
-
-| Measure | Aggregation | Business Definition |
-|---------|-------------|---------------------|
-| Quantity Sold | SUM | Number of units, licenses, or subscriptions included in the booking transaction |
-| Unit List Price USD | SUM | Standard list price per unit in U.S. dollars before discounts are applied |
-| Discount Percentage | AVG | Percentage discount applied to the list price for the booking transaction |
-| Booking Amount USD | SUM | Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments |
-| Annual Contract Value USD | SUM | Annualized value of the contract associated with the booking in U.S. dollars |
-| Total Contract Value USD | SUM | Total value of the full contract associated with the booking in U.S. dollars |
+| Entity | Type | Description | Key Relationships |
+|--------|------|-------------|-------------------|
+| [Contract](entities/contract.md) | Dimension | Commercial agreements associated with bookings | Booking Transaction |
+| [Customer](entities/customer.md) | Dimension | Customers that place orders and generate bookings | Booking Transaction |
+| [Date](entities/date.md) | Dimension | Calendar and fiscal date attributes | Booking Transaction |
+| [Geography](entities/geography.md) | Dimension | Geographic attributes for sales analysis | Booking Transaction |
+| [Partner](entities/partner.md) | Dimension | Channel and direct partners in sales process | Booking Transaction |
+| [Product](entities/product.md) | Dimension | Products and offers sold to customers | Booking Transaction |
+| [Sales Representative](entities/sales-representative.md) | Dimension | Sales personnel managing customer relationships | Booking Transaction |
+| [Booking Transaction](entities/booking-transaction.md) | Fact | Individual completed sales booking transactions | Contract, Customer, Date, Geography, Partner, Product, Sales Representative |
 
 ---
 
 ## Relationship Summary
 
-### Star Schema Relationships (7)
+| Relationship | Source | Target | Cardinality | Type |
+|--------------|--------|--------|-------------|------|
+| [Contract to Booking Transaction](relationships/contract-to-booking-transaction.md) | Contract | Booking Transaction | One-to-Many | Foreign Key |
+| [Customer to Booking Transaction](relationships/customer-to-booking-transaction.md) | Customer | Booking Transaction | One-to-Many | Foreign Key |
+| [Date to Booking Transaction](relationships/date-to-booking-transaction.md) | Date | Booking Transaction | One-to-Many | Foreign Key |
+| [Geography to Booking Transaction](relationships/geography-to-booking-transaction.md) | Geography | Booking Transaction | One-to-Many | Foreign Key |
+| [Partner to Booking Transaction](relationships/partner-to-booking-transaction.md) | Partner | Booking Transaction | One-to-Many | Foreign Key |
+| [Product to Booking Transaction](relationships/product-to-booking-transaction.md) | Product | Booking Transaction | One-to-Many | Foreign Key |
+| [Sales Representative to Booking Transaction](relationships/sales-representative-to-booking-transaction.md) | Sales Representative | Booking Transaction | One-to-Many | Foreign Key |
 
-All relationships follow a star schema pattern with Booking Transaction as the central fact table:
+---
 
-| Relationship | Type | Cardinality | Description |
-|--------------|------|-------------|-------------|
-| Contract → Booking Transaction | Foreign Key | One-to-Many | Links booking transactions to contract agreements |
-| Customer → Booking Transaction | Foreign Key | One-to-Many | Links booking transactions to customer organizations |
-| Date → Booking Transaction | Foreign Key | One-to-Many | Links booking transactions to reporting dates |
-| Geography → Booking Transaction | Foreign Key | One-to-Many | Links booking transactions to geographic regions |
-| Partner → Booking Transaction | Foreign Key | One-to-Many | Links booking transactions to partner organizations |
-| Product → Booking Transaction | Foreign Key | One-to-Many | Links booking transactions to products and offers |
-| Sales Representative → Booking Transaction | Foreign Key | One-to-Many | Links booking transactions to sales personnel |
+## Measure Summary
+
+| Measure | Entity | Aggregation | Description |
+|---------|--------|-------------|-------------|
+| [Quantity Sold](measures/quantity-sold.md) | Booking Transaction | SUM | Number of units, licenses, or subscriptions |
+| [Unit List Price USD](measures/unit-list-price-usd.md) | Booking Transaction | SUM | Standard list price per unit before discounts |
+| [Discount Percentage](measures/discount-percentage.md) | Booking Transaction | AVG | Percentage discount applied to list price |
+| [Booking Amount USD](measures/booking-amount-usd.md) | Booking Transaction | SUM | Total booked revenue after pricing adjustments |
+| [Annual Contract Value USD](measures/annual-contract-value-usd.md) | Booking Transaction | SUM | Annualized value of the contract |
+| [Total Contract Value USD](measures/total-contract-value-usd.md) | Booking Transaction | SUM | Total value of the full contract |
 
 ---
 
 ## Glossary Summary
 
-### Business Terminology Coverage
+The glossary contains 69 business terms covering:
 
-**Total Terms**: 68 business terms
-**Entity-Level Terms**: 8 terms
-**Attribute-Level Terms**: 60 terms
-**Confidence Score Range**: 0.95 - 1.00
+- **Contract Terms**: Contract, Contract Key, Contract Type, Contract Term Months, Auto Renew Flag, Coverage Level
+- **Customer Terms**: Customer, Customer Key, Customer ID, Customer Name, Customer Segment, Industry, Account Tier, Headquarters Country, Headquarters Region
+- **Date Terms**: Date, Date Key, Full Date, Month Name, Calendar Year, Fiscal Year, Fiscal Quarter, Fiscal Period Sequence
+- **Geography Terms**: Geography, Geography Key, Sales Region, Sales Theater, Country
+- **Partner Terms**: Partner, Partner Key, Partner ID, Partner Name, Partner Type, Partner Tier, Route to Market
+- **Product Terms**: Product, Product Key, Product ID, Product Name, Product Family, Technology Domain, Offer Type, Business Entity
+- **Sales Representative Terms**: Sales Representative, Sales Representative Key, Sales Representative ID, Sales Representative Name, Sales Role, Sales Team, Covered Segment
+- **Booking Transaction Terms**: Booking Transaction, Booking ID, Order Number, Order Line Number, Booking Date Key, Booking Type, Renewal Indicator, Quantity Sold, Unit List Price USD, Discount Percentage, Booking Amount USD, Annual Contract Value USD, Total Contract Value USD
 
-### Key Business Concepts
+See [Glossary Index](glossary/index.md) for complete definitions.
 
-- **Contract Management**: Contract types, terms, renewal behavior, coverage levels
-- **Customer Segmentation**: Customer segments, industries, account tiers, geographic locations
-- **Time Intelligence**: Calendar and fiscal periods, quarters, years
-- **Geographic Analysis**: Regions, theaters, countries
-- **Partner Ecosystem**: Partner types, tiers, routes to market
-- **Product Portfolio**: Product families, technology domains, offer types, business entities
-- **Sales Organization**: Sales roles, teams, segment coverage
-- **Transaction Details**: Booking types, renewal indicators, pricing, discounts
+---
+
+## Semantic Model Statistics
+
+- **Domains**: 1
+- **Entities**: 8
+- **Attributes**: 61
+- **Relationships**: 7
+- **Measures**: 6
+- **Glossary Terms**: 69
+- **Primary Keys**: 8
+- **Foreign Keys**: 7
 
 ---
 
 ## Technical Mapping
 
-### Source System
+**Source System**: QuoteToBooking
 
-**Schema**: QuoteToBooking
-**Tables**: 8 tables (7 dimensions + 1 fact)
-**Total Columns**: 61 mapped columns
-
-### Data Quality
-
-**Primary Key Coverage**: 100% (all entities have defined primary keys)
-**Foreign Key Coverage**: 100% (all relationships are explicitly defined)
-**Business Key Coverage**: 100% (all entities have business identifiers)
-**Nullable Columns**: Managed per business rules
-
----
-
-## Semantic Completeness
-
-### Model Validation Status
-
-✅ **Domains Defined**: 1 domain
-✅ **Entities Defined**: 8 entities
-✅ **Attributes Defined**: 61 attributes
-✅ **Measures Defined**: 6 measures
-✅ **Relationships Defined**: 7 relationships
-✅ **Glossary Terms Defined**: 68 terms
-✅ **Primary Keys Defined**: 8 keys
-✅ **Foreign Keys Defined**: 7 keys
-✅ **Business Definitions**: Complete
-✅ **Technical Mappings**: Complete
-
-### Coverage Metrics
-
-- **Entity Coverage**: 100% (all entities documented)
-- **Attribute Coverage**: 100% (all attributes documented)
-- **Relationship Coverage**: 100% (all relationships documented)
-- **Measure Coverage**: 100% (all measures documented)
-- **Glossary Coverage**: 100% (all terms documented)
+**Tables**:
+- dim_contract
+- dim_customer
+- dim_date
+- dim_geography
+- dim_partner
+- dim_product
+- dim_sales_rep
+- fact_bookings
 
 ---
 
-## Business Analysis Capabilities
+## Semantic Integrity
 
-### Supported Analysis Dimensions
-
-1. **Customer Analysis**: Segment, industry, account tier, geographic location
-2. **Product Analysis**: Product family, technology domain, offer type, business entity
-3. **Partner Analysis**: Partner type, partner tier, route to market
-4. **Geographic Analysis**: Region, theater, country
-5. **Time Analysis**: Calendar and fiscal periods, quarters, years
-6. **Sales Team Analysis**: Sales role, sales team, segment coverage
-7. **Contract Analysis**: Contract type, term, renewal behavior, coverage level
-
-### Supported Business Questions
-
-- What is the total booking amount by customer segment and fiscal quarter?
-- What is the annual contract value by product family and geography?
-- What is the average discount percentage by partner type and sales region?
-- What is the renewal rate by customer segment and contract type?
-- What is the total contract value by sales representative and product domain?
-- What is the booking quantity by offer type and fiscal year?
+- All entities have primary keys
+- All relationships are properly defined
+- All measures have aggregation types
+- All glossary terms are mapped to technical columns
+- All foreign keys reference valid dimension tables
+- Confidence scores range from 0.95 to 1.00
 
 ---
 
 ## Navigation
 
-### Explore the Model
-
-- [View All Domains](domains/index.md)
-- [View All Entities](entities/index.md)
-- [View All Relationships](relationships/index.md)
-- [View All Measures](measures/index.md)
-- [View All Glossary Terms](glossary/index.md)
-- [Return to Bundle Index](index.md)
-
----
-
-## Metadata
-
-**Model Version**: 1.0
-**Last Updated**: 2026-07-28T00:00:00Z
-**Source**: OSI Semantic Model - QuoteToBooking
-**Format**: Open Knowledge Format (OKF)
-**Validator Status**: Compliant
+- [Back to Index](index.md)
+- [View Metrics](metrics.md)
+- [Browse Domains](domains/index.md)
+- [Browse Entities](entities/index.md)
+- [Browse Relationships](relationships/index.md)
+- [Browse Measures](measures/index.md)
+- [Browse Glossary](glossary/index.md)
