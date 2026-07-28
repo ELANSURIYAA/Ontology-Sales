@@ -3,7 +3,7 @@ title: Industry
 type: glossary
 description: Industry in which the customer operates
 resource: glossary
-tags: [glossary, customer, industry, vertical, sector]
+tags: [glossary, customer, industry, vertical]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,76 +17,48 @@ Identifies the industry in which the customer operates.
 
 ## Business Meaning
 
-Industry classifies customers by their primary business sector or vertical market. Industry classification enables analysis of market penetration, industry-specific performance, and targeted go-to-market strategies. Different industries often have unique technology needs, buying patterns, and regulatory requirements.
+Industry represents the economic sector or vertical market in which the customer organization conducts its primary business operations. Industry classification enables market analysis, competitive benchmarking, industry-specific product positioning, and targeted sales strategies. Examples include financial services, healthcare, manufacturing, retail, and technology.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_customer  
-**Source Column**: industry  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Industry  
-**Data Type**: character varying(40)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_customer
+
+**Source Column**: industry
+
+**Entity**: [Customer](../entities/customer.md)
+
+**Attribute**: Industry
+
+**Data Type**: Character Varying(40)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Vertical
-- Industry Vertical
-- Business Sector
-- Market Vertical
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Customer](../entities/customer.md)
-
-### Related Attributes
+- [Customer](customer.md)
 - [Customer Segment](customer-segment.md)
-- [Customer Key](customer-key.md)
+- [Account Tier](account-tier.md)
 
 ---
 
 ## Usage Context
 
 Industry is used to:
-- Analyze revenue by industry vertical
-- Identify high-performing sectors
-- Target industry-specific solutions
-- Assess market penetration
-
----
-
-## Examples
-
-- Financial Services
-- Healthcare
-- Manufacturing
-- Retail
-- Telecommunications
-- Government
+- Classify customers by vertical market
+- Enable industry-based revenue analysis
+- Support industry-specific marketing
+- Facilitate competitive analysis
+- Enable market penetration measurement
+- Support industry trend analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Customer Entity](../entities/customer.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Customer  
-**Source Attribute**: Industry  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Customer](../entities/customer.md)
+- [Back to Main Index](../index.md)
