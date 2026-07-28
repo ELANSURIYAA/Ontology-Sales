@@ -1,9 +1,9 @@
 ---
 title: Contract
 type: entity
-description: Business entity representing commercial agreements associated with bookings
+description: Commercial agreements associated with bookings including contract type, term, renewal behavior, and support coverage level
 resource: entities
-tags: [entity, dimension, contract, agreement, terms]
+tags: [entity, dimension, contract, agreement, commercial]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,26 +11,27 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level. The Contract entity enables analysis of booking performance by contract characteristics and supports contract lifecycle management.
+Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_contract  
-**Entity Type**: Dimension  
-**Entity ID**: ENT001
+**Source Table**: QuoteToBooking.dim_contract
+
+**Source System**: QuoteToBooking
+
+**Entity Type**: Dimension
 
 ---
 
 ## Attributes
 
-- **Contract Key** (contract_key) - integer, NOT NULL
-- **Contract Type** (contract_type) - character varying(40), NULL
-- **Contract Term Months** (term_months) - integer, NULL
-- **Auto Renew Flag** (auto_renew_flag) - character(1), NULL
-- **Coverage Level** (coverage_level) - character varying(20), NULL
+- **Contract Key** (contract_key): Surrogate key that uniquely identifies a contract record in the contract dimension
+- **Contract Type** (contract_type): Describes the type of commercial agreement attached to the booking, such as SaaS subscription, Enterprise Agreement, or support contract
+- **Contract Term Months** (term_months): Indicates the duration of the contract in months
+- **Auto Renew Flag** (auto_renew_flag): Indicates whether the contract is set to renew automatically at the end of its term
+- **Coverage Level** (coverage_level): Describes the level of service or support coverage provided under the contract
 
 ---
 
@@ -50,90 +51,84 @@ None
 
 ### Outgoing Relationships
 
-- [Contract to Booking Transaction](../relationships/contract-to-booking-transaction.md) - Links contracts to booking transactions (One-to-Many)
+- **[Contract to Booking Transaction](../relationships/contract-to-booking-transaction.md)**: One-to-Many relationship linking contracts to booking transactions
+
+### Related Entities
+
+- [Booking Transaction](booking-transaction.md): Fact entity that references this dimension
 
 ---
 
 ## Measures
 
-Contracts are analyzed using measures from related booking transactions:
+This dimension supports analysis of the following measures:
 
 - [Booking Amount USD](../measures/booking-amount-usd.md)
 - [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
 - [Total Contract Value USD](../measures/total-contract-value-usd.md)
 - [Quantity Sold](../measures/quantity-sold.md)
+- [Unit List Price USD](../measures/unit-list-price-usd.md)
+- [Discount Percentage](../measures/discount-percentage.md)
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Booking Transaction](booking-transaction.md) - Booking transactions associated with this contract
-- [Customer](customer.md) - Customers who enter into contracts
-- [Product](product.md) - Products covered by contracts
-
-### Related Glossary Terms
 - [Contract](../glossary/contract.md)
 - [Contract Key](../glossary/contract-key.md)
 - [Contract Type](../glossary/contract-type.md)
 - [Contract Term Months](../glossary/contract-term-months.md)
 - [Auto Renew Flag](../glossary/auto-renew-flag.md)
 - [Coverage Level](../glossary/coverage-level.md)
-
-### Related Domains
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Annual Contract Value USD](../glossary/annual-contract-value-usd.md)
+- [Total Contract Value USD](../glossary/total-contract-value-usd.md)
 
 ---
 
 ## Business Rules
 
-1. **Uniqueness**: Each contract record is uniquely identified by Contract Key
-2. **Contract Term**: Contract term is measured in months and determines the duration of the agreement
-3. **Auto Renewal**: Auto Renew Flag indicates whether the contract automatically renews at term end
-4. **Coverage**: Coverage Level describes the service or support tier provided under the contract
-5. **Contract Types**: Common contract types include SaaS subscription, Enterprise Agreement, and support contracts
+1. Contract Key is a surrogate key and must be unique
+2. Contract Type classifies the commercial agreement (e.g., SaaS subscription, Enterprise Agreement, support contract)
+3. Contract Term Months indicates the duration of the contract commitment
+4. Auto Renew Flag indicates automatic renewal behavior
+5. Coverage Level describes the service or support tier
+6. Every booking transaction must reference a valid contract
+7. Contract terms are measured in months
+8. Annual Contract Value (ACV) is derived from the contract value annualized
+9. Total Contract Value (TCV) represents the full contract commitment
 
 ---
 
 ## Usage Examples
 
-### Analysis by Contract Type
-Analyze booking amounts and contract values by contract type to understand which agreement structures drive the most revenue.
+**Analysis by Contract Type**:
+- Compare booking amounts across SaaS subscriptions vs. Enterprise Agreements
+- Analyze renewal rates by contract type
 
-### Renewal Analysis
-Use Auto Renew Flag to track adoption of automatic renewal terms and predict future revenue streams.
+**Analysis by Contract Term**:
+- Evaluate average contract duration by customer segment
+- Compare TCV for short-term vs. long-term contracts
 
-### Contract Term Analysis
-Analyze average contract terms by customer segment and product family to optimize contract structures.
+**Analysis by Coverage Level**:
+- Measure booking amounts by support coverage tier
+- Analyze premium vs. standard coverage adoption
 
-### Coverage Analysis
-Evaluate booking performance by coverage level to understand demand for different service tiers.
+**Analysis by Auto Renew Behavior**:
+- Calculate percentage of contracts with auto-renewal enabled
+- Compare retention rates for auto-renew vs. manual renewal contracts
 
 ---
 
-## Data Quality Notes
+## Domain
 
-- Contract Key is mandatory and serves as the primary key
-- Descriptive attributes (Contract Type, Coverage Level) may be NULL for incomplete records
-- Contract Term Months should be positive when populated
-- Auto Renew Flag typically uses 'Y' or 'N' values
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Navigation
 
-- [View Entity Index](index.md)
-- [View Related Relationships](../relationships/index.md)
-- [View Related Measures](../measures/index.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Entity ID**: ENT001  
-**Domain**: Sales Bookings and Revenue Analytics  
-**Entity Type**: Dimension  
-**Attribute Count**: 5  
-**Relationship Count**: 1  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Entities Index](index.md)
+- [Back to Main Index](../index.md)
+- [View Relationships](../relationships/index.md)
+- [View Measures](../measures/index.md)
+- [View Glossary](../glossary/index.md)
