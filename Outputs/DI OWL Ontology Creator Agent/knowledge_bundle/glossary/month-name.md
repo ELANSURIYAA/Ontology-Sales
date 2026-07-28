@@ -17,36 +17,29 @@ Name of the calendar month for the date.
 
 ## Business Meaning
 
-Month Name provides the textual name of the calendar month (e.g., January, February) associated with the date. This enables month-based reporting, seasonal analysis, and human-readable date displays.
+Month Name provides the human-readable name of the calendar month (e.g., January, February, March) associated with a date. This enables month-based reporting, seasonal analysis, and intuitive date presentation in business reports and dashboards.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_date  
-**Source Column**: month_name  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Month Name  
-**Data Type**: character varying(12)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_date
+
+**Source Column**: month_name
+
+**Entity**: [Date](../entities/date.md)
+
+**Attribute**: Month Name
+
+**Data Type**: Character Varying(12)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Calendar Month
-- Month
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Date](../entities/date.md)
-
-### Related Attributes
+- [Date](date.md)
 - [Full Date](full-date.md)
 - [Calendar Year](calendar-year.md)
 
@@ -55,33 +48,15 @@ Month Name provides the textual name of the calendar month (e.g., January, Febru
 ## Usage Context
 
 Month Name is used to:
-- Support month-based reporting
-- Enable seasonal analysis
-- Provide human-readable month identification
-
----
-
-## Examples
-
-- January
-- February
-- March
-- December
+- Display month names in reports
+- Enable month-based analysis
+- Support seasonal trend analysis
+- Facilitate intuitive date presentation
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Date Entity](../entities/date.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Date  
-**Source Attribute**: Month Name  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Date](../entities/date.md)
+- [Back to Main Index](../index.md)
