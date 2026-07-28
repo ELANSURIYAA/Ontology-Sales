@@ -3,7 +3,7 @@ title: Sales Role
 type: glossary
 description: Job role or account responsibility of the sales representative
 resource: glossary
-tags: [glossary, sales-rep, role, responsibility]
+tags: [glossary, sales-representative, role, responsibility]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,37 +17,30 @@ Job role or account responsibility of the sales representative.
 
 ## Business Meaning
 
-Sales Role describes the functional role or job title of the sales representative, such as Account Executive, Account Manager, or Territory Manager. This classification enables analysis of performance by role type and supports organizational planning and resource allocation.
+Sales Role defines the specific job function or account responsibility assigned to the sales representative. Roles may include account executive, account manager, territory sales representative, inside sales representative, or sales engineer. Sales role classification enables role-based performance analysis, resource planning, and organizational structure optimization.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_sales_rep  
-**Source Column**: sales_role  
-**Entity**: [Sales Representative](../entities/sales-representative.md)  
-**Attribute**: Sales Role  
-**Data Type**: character varying(40)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_sales_rep
+
+**Source Column**: sales_role
+
+**Entity**: [Sales Representative](../entities/sales-representative.md)
+
+**Attribute**: Sales Role
+
+**Data Type**: Character Varying(40)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Job Role
-- Position
-- Sales Position
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Sales Representative](../entities/sales-representative.md)
-
-### Related Attributes
+- [Sales Representative](sales-representative.md)
+- [Sales Representative Key](sales-representative-key.md)
 - [Sales Team](sales-team.md)
 - [Covered Segment](covered-segment.md)
 
@@ -56,34 +49,16 @@ Sales Role describes the functional role or job title of the sales representativ
 ## Usage Context
 
 Sales Role is used to:
-- Classify sales personnel by function
-- Analyze performance by role type
-- Support organizational planning
-- Guide compensation and quota setting
-
----
-
-## Examples
-
-- Account Executive
-- Account Manager
-- Territory Manager
-- Inside Sales Representative
+- Classify sales representatives by job function
+- Enable role-based performance analysis
+- Support organizational structure planning
+- Facilitate role-specific training and development
+- Enable role effectiveness measurement
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Sales Representative Entity](../entities/sales-representative.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Sales Representative  
-**Source Attribute**: Sales Role  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Sales Representative](../entities/sales-representative.md)
+- [Back to Main Index](../index.md)
