@@ -1,22 +1,18 @@
 ---
 title: Domains Index
 type: index
-description: Navigation index for all business domain documents in the knowledge bundle.
+description: Navigation index for domain documents in the sales bookings and revenue analytics knowledge bundle.
 resource: domains
-tags: domains,index,sales,okf
-timestamp: 2026-07-28T00:00:00Z
+tags: [domains, index, sales, okf]
+timestamp: 2026-07-28
 ---
 
 # Domains Index
 
-## Domains
+## Domain Documents
+- [Sales Bookings and Revenue Analytics](sales-bookings-and-revenue-analytics.md)
 
-- [Sales Bookings and Revenue Analytics](sales_bookings_and_revenue_analytics.md)
-
----
-
-## Semantic Cross Links
-
+## Navigation
 - [Knowledge Bundle Index](../index.md)
 - [Semantic Summary](../semantic_summary.md)
 - [Entities Index](../entities/index.md)
