@@ -1,149 +1,113 @@
 ---
 title: Entities Index
 type: index
-description: Catalog of business entities in the Sales Bookings and Revenue Analytics model
+description: Navigation index for business entities
 resource: entities
-tags: [entities, index, business-entities, dimensions, facts]
+tags: [entities, index, business-entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Entities Index
 
-## Overview
-
-This index catalogs all business entities in the Sales Bookings and Revenue Analytics semantic model. Entities represent core business concepts including dimensions for analysis and fact tables containing transactional data and measures.
+This index provides navigation to all business entity documents in the knowledge bundle.
 
 ---
 
-## Entity Catalog
+## Entity Overview
 
-### Dimensional Entities (7)
+The knowledge bundle contains **8** business entities:
+- **7** Dimension Entities
+- **1** Fact Entity
 
-#### [Contract](contract.md)
-**Entity ID**: ENT001  
+---
+
+## Dimension Entities
+
+### [Contract](contract.md)
+Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.
+
 **Technical Table**: QuoteToBooking.dim_contract  
-**Business Keys**: Contract Key  
-**Description**: Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.
-
-#### [Customer](customer.md)
-**Entity ID**: ENT002  
-**Technical Table**: QuoteToBooking.dim_customer  
-**Business Keys**: Customer ID  
-**Description**: Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.
-
-#### [Date](date.md)
-**Entity ID**: ENT003  
-**Technical Table**: QuoteToBooking.dim_date  
-**Business Keys**: Date Key  
-**Description**: Stores calendar and fiscal date attributes used to analyze bookings over time.
-
-#### [Geography](geography.md)
-**Entity ID**: ENT004  
-**Technical Table**: QuoteToBooking.dim_geography  
-**Business Keys**: Geography Key  
-**Description**: Stores geographic attributes used to analyze bookings by sales region, theater, and country.
-
-#### [Partner](partner.md)
-**Entity ID**: ENT005  
-**Technical Table**: QuoteToBooking.dim_partner  
-**Business Keys**: Partner ID  
-**Description**: Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.
-
-#### [Product](product.md)
-**Entity ID**: ENT006  
-**Technical Table**: QuoteToBooking.dim_product  
-**Business Keys**: Product ID  
-**Description**: Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.
-
-#### [Sales Representative](sales-representative.md)
-**Entity ID**: ENT007  
-**Technical Table**: QuoteToBooking.dim_sales_rep  
-**Business Keys**: Sales Representative ID  
-**Description**: Stores information about sales personnel responsible for managing customer relationships and booking transactions.
+**Primary Key**: Contract Key
 
 ---
 
-### Fact Entities (1)
+### [Customer](customer.md)
+Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.
 
-#### [Booking Transaction](booking-transaction.md)
-**Entity ID**: ENT008  
+**Technical Table**: QuoteToBooking.dim_customer  
+**Primary Key**: Customer Key
+
+---
+
+### [Date](date.md)
+Stores calendar and fiscal date attributes used to analyze bookings over time.
+
+**Technical Table**: QuoteToBooking.dim_date  
+**Primary Key**: Date Key
+
+---
+
+### [Geography](geography.md)
+Stores geographic attributes used to analyze bookings by sales region, theater, and country.
+
+**Technical Table**: QuoteToBooking.dim_geography  
+**Primary Key**: Geography Key
+
+---
+
+### [Partner](partner.md)
+Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.
+
+**Technical Table**: QuoteToBooking.dim_partner  
+**Primary Key**: Partner Key
+
+---
+
+### [Product](product.md)
+Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.
+
+**Technical Table**: QuoteToBooking.dim_product  
+**Primary Key**: Product Key
+
+---
+
+### [Sales Representative](sales-representative.md)
+Stores information about sales personnel responsible for managing customer relationships and booking transactions.
+
+**Technical Table**: QuoteToBooking.dim_sales_rep  
+**Primary Key**: Sales Representative Key
+
+---
+
+## Fact Entities
+
+### [Booking Transaction](booking-transaction.md)
+Stores individual completed sales booking transactions with related financial measures and links to customer, product, partner, geography, sales representative, contract, and date dimensions.
+
 **Technical Table**: QuoteToBooking.fact_bookings  
-**Business Keys**: Booking ID, Order Number, Order Line Number  
-**Description**: Stores individual completed sales booking transactions with related financial measures and links to customer, product, partner, geography, sales representative, contract, and date dimensions.
+**Primary Keys**: Booking ID, Order Number, Order Line Number
 
 ---
 
 ## Entity Relationships
 
-### Star Schema Structure
+All dimension entities have a **One-to-Many** relationship with the Booking Transaction fact entity:
 
-```
-                    Contract ──────┐
-                                   │
-    Customer ──────┐               │
-                   │               │
-    Date ──────────┤               │
-                   │               │
-    Geography ─────┼───► Booking Transaction
-                   │               │
-    Partner ───────┤               │
-                   │               │
-    Product ───────┘               │
-                                   │
-    Sales Representative ──────────┘
-```
-
----
-
-## Entity Statistics
-
-| Category | Count |
-|----------|-------|
-| Total Entities | 8 |
-| Dimensional Entities | 7 |
-| Fact Entities | 1 |
-| Total Attributes | 61 |
-| Total Primary Keys | 8 |
-| Total Foreign Keys | 7 |
-| Total Measures | 6 |
-
----
-
-## Entity Attributes Summary
-
-| Entity | Attributes | Primary Key | Foreign Keys |
-|--------|------------|-------------|--------------|
-| Contract | 5 | Contract Key | 0 |
-| Customer | 8 | Customer Key | 0 |
-| Date | 7 | Date Key | 0 |
-| Geography | 4 | Geography Key | 0 |
-| Partner | 6 | Partner Key | 0 |
-| Product | 7 | Product Key | 0 |
-| Sales Representative | 6 | Sales Representative Key | 0 |
-| Booking Transaction | 18 | Booking ID | 7 |
+- [Contract to Booking Transaction](../relationships/contract-to-booking-transaction.md)
+- [Customer to Booking Transaction](../relationships/customer-to-booking-transaction.md)
+- [Date to Booking Transaction](../relationships/date-to-booking-transaction.md)
+- [Geography to Booking Transaction](../relationships/geography-to-booking-transaction.md)
+- [Partner to Booking Transaction](../relationships/partner-to-booking-transaction.md)
+- [Product to Booking Transaction](../relationships/product-to-booking-transaction.md)
+- [Sales Representative to Booking Transaction](../relationships/sales-representative-to-booking-transaction.md)
 
 ---
 
 ## Navigation
 
-### By Entity Type
-- [Dimensional Entities](#dimensional-entities-7)
-- [Fact Entities](#fact-entities-1)
-
-### Related Content
-- [View All Domains](../domains/index.md)
-- [View All Relationships](../relationships/index.md)
-- [View All Measures](../measures/index.md)
-- [View All Glossary Terms](../glossary/index.md)
-- [View Semantic Summary](../semantic_summary.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Total Entities**: 8
-**Source Schema**: QuoteToBooking
-**Data Model Pattern**: Star Schema
-**Last Updated**: 2026-07-28T00:00:00Z
-**Format**: Open Knowledge Format (OKF)
+- [Back to Index](../index.md)
+- [Semantic Summary](../semantic_summary.md)
+- [View Domains](../domains/index.md)
+- [View Relationships](../relationships/index.md)
+- [View Measures](../measures/index.md)
+- [View Glossary](../glossary/index.md)
