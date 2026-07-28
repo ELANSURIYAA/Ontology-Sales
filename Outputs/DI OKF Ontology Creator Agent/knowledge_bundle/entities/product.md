@@ -1,56 +1,87 @@
 ---
 title: Product
 type: entity
-id: ENT006
-domain: Sales Bookings and Revenue Analytics
-technical_table: QuoteToBooking.dim_product
-business_keys:
-  - product_key
-  - product_id
-version: 1.0
-status: generated
+description: Business entity describing products and offers sold to customers.
+resource: entities
+tags: product,entity,portfolio,sales
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Product
 
 ## Business Definition
 
-Stores product master data used to analyze bookings by product identity, family, technology domain, offer type, and business entity.
+Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.
+
+---
 
 ## Technical Mapping
 
-- Table: `QuoteToBooking.dim_product`
-- Primary business key(s): `product_key`, `product_id`
+- Source Table: `QuoteToBooking.dim_product`
+- Domain: [Sales Bookings and Revenue Analytics](../domains/sales_bookings_and_revenue_analytics.md)
+
+---
 
 ## Attributes
 
-| Attribute | Technical Column | Data Type | Nullable | PK | FK | Description |
-| --- | --- | --- | --- | --- | --- | --- |
-| Product Key | product_key | integer | No | Yes | No | Surrogate key that uniquely identifies a product record in the product dimension. |
-| Product ID | product_id | character varying | No | No | No | Business identifier or SKU assigned to the product or offering. |
-| Product Name | product_name | character varying | Yes | No | No | Name of the product, solution, or subscription offering. |
-| Product Family | product_family | character varying | Yes | No | No | Groups related products into a common family for portfolio analysis. |
-| Technology Domain | technology_domain | character varying | Yes | No | No | Identifies the technology area associated with the product, such as networking, security, or collaboration. |
-| Offer Type | offer_type | character varying | Yes | No | No | Indicates whether the offering is hardware, software subscription, or SaaS subscription. |
-| Business Entity | business_entity | character varying | Yes | No | No | Identifies the internal business unit or portfolio associated with the product. |
+- Product Key (`product_key`) - integer - not nullable
+- Product ID (`product_id`) - character varying(30) - not nullable
+- Product Name (`product_name`) - character varying(80)
+- Product Family (`product_family`) - character varying(30)
+- Technology Domain (`technology_domain`) - character varying(40)
+- Offer Type (`offer_type`) - character varying(30)
+- Business Entity (`business_entity`) - character varying(30)
 
-## Keys
+---
 
-- Primary Key: `product_key`
-- Alternate Business Key: `product_id`
-- Referenced by: [Booking Transaction](booking-transaction.md)
+## Primary Keys
+
+- Product Key
+
+---
+
+## Foreign Keys
+
+None
+
+---
 
 ## Measures
 
-- No direct measures defined for this entity.
+None
+
+---
 
 ## Relationships
 
-- Parent in [Product to Booking Transaction](../relationships/product-to-booking-transaction.md)
+- [Product to Booking Transaction](../relationships/product_to_booking_transaction.md)
+
+---
 
 ## Related Concepts
 
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-- [Booking Transaction](booking-transaction.md)
 - [Product](../glossary/product.md)
-- [Technology Domain](../glossary/technology-domain.md)
+- [Product ID](../glossary/product_id.md)
+- [Product Name](../glossary/product_name.md)
+- [Product Family](../glossary/product_family.md)
+- [Technology Domain](../glossary/technology_domain.md)
+- [Offer Type](../glossary/offer_type.md)
+- [Business Entity](../glossary/business_entity.md)
+
+---
+
+## Business Rules
+
+- Each product record is uniquely identified by Product Key.
+- Product ID is the business identifier or SKU assigned to the product or offer.
+- A product can be associated with multiple booking transactions.
+
+---
+
+## Semantic Cross Links
+
+- [Entities Index](index.md)
+- [Domain](../domains/sales_bookings_and_revenue_analytics.md)
+- [Booking Transaction](booking_transaction.md)
+- [Product to Booking Transaction](../relationships/product_to_booking_transaction.md)
+- [Glossary: Product](../glossary/product.md)
