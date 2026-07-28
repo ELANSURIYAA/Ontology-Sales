@@ -17,75 +17,48 @@ Global region where the customer organization's headquarters is located.
 
 ## Business Meaning
 
-Headquarters Region identifies the high-level geographic region where the customer's corporate headquarters is based. This regional classification enables analysis of customer distribution across major global markets and supports regional sales and marketing strategies.
+Headquarters Region identifies the broader geographic region where the customer's primary corporate headquarters is situated. Regions typically represent major global markets such as Americas, EMEA (Europe, Middle East, Africa), Asia Pacific, or other strategic geographic groupings. This enables high-level geographic customer analysis and regional market strategy.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_customer  
-**Source Column**: hq_region  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Headquarters Region  
-**Data Type**: character varying(20)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_customer
+
+**Source Column**: hq_region
+
+**Entity**: [Customer](../entities/customer.md)
+
+**Attribute**: Headquarters Region
+
+**Data Type**: Character Varying(20)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- HQ Region
-- Home Region
-- Corporate Region
-- Headquarters Geographic Region
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Customer](../entities/customer.md)
-- [Geography](../entities/geography.md)
-
-### Related Attributes
+- [Customer](customer.md)
 - [Headquarters Country](headquarters-country.md)
-- [Customer Key](customer-key.md)
+- [Geography](geography.md)
+- [Sales Region](sales-region.md)
 
 ---
 
 ## Usage Context
 
 Headquarters Region is used to:
-- Analyze customer distribution by global region
-- Support regional market analysis
-- Enable geographic customer segmentation
-- Guide regional sales strategies
-
----
-
-## Examples
-
-- Americas
-- EMEA (Europe, Middle East, Africa)
-- APAC (Asia Pacific)
-- Latin America
+- Identify customer headquarters region
+- Enable regional customer analysis
+- Support global market assessment
+- Facilitate regional strategy development
+- Enable geographic customer distribution analysis
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Customer Entity](../entities/customer.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Customer  
-**Source Attribute**: Headquarters Region  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Customer](../entities/customer.md)
+- [Back to Main Index](../index.md)
