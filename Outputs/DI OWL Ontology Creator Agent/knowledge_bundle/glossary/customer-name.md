@@ -17,38 +17,29 @@ Official name of the customer organization that purchased products or services.
 
 ## Business Meaning
 
-Customer Name is the legal or commonly used business name of the customer organization. This name is used for reporting, communications, and business analysis. It provides human-readable identification of customer accounts.
+Customer Name is the formal, legal name of the organization that has entered into a business relationship with the company. This name is used in contracts, invoices, reports, and all official business communications. It provides human-readable identification of the customer entity.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_customer  
-**Source Column**: customer_name  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Customer Name  
-**Data Type**: character varying(80)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_customer
+
+**Source Column**: customer_name
+
+**Entity**: [Customer](../entities/customer.md)
+
+**Attribute**: Customer Name
+
+**Data Type**: Character Varying(80)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Account Name
-- Organization Name
-- Company Name
-- Customer Organization Name
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Customer](../entities/customer.md)
-
-### Related Attributes
+- [Customer](customer.md)
 - [Customer Key](customer-key.md)
 - [Customer ID](customer-id.md)
 
@@ -58,24 +49,15 @@ Customer Name is the legal or commonly used business name of the customer organi
 
 Customer Name is used to:
 - Identify customers in reports and dashboards
-- Support customer communications
-- Enable customer search and lookup
-- Provide human-readable customer identification
+- Support customer search and lookup
+- Display in user interfaces
+- Include in business communications
+- Enable customer recognition
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Customer Entity](../entities/customer.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Customer  
-**Source Attribute**: Customer Name  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Customer](../entities/customer.md)
+- [Back to Main Index](../index.md)
