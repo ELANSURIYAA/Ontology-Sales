@@ -17,39 +17,30 @@ Surrogate key that uniquely identifies a product record in the product dimension
 
 ## Business Meaning
 
-Product Key is a system-generated unique identifier used to link product records to booking transactions. It serves as the primary key for the product dimension and enables efficient joins and referential integrity in the data model.
+Product Key is a system-generated unique identifier used to establish relationships between the product dimension and booking transaction fact records. It serves as the primary key for product records and enables efficient data integration and referential integrity.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_product  
-**Source Column**: product_key  
-**Entity**: [Product](../entities/product.md)  
-**Attribute**: Product Key  
-**Data Type**: integer  
-**Nullable**: No  
-**Primary Key**: Yes  
+**Source Table**: QuoteToBooking.dim_product
+
+**Source Column**: product_key
+
+**Entity**: [Product](../entities/product.md)
+
+**Attribute**: Product Key
+
+**Data Type**: Integer
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Product Identifier
-- Product Surrogate Key
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Product](../entities/product.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Relationships
-- [Product to Booking Transaction](../relationships/product-to-booking-transaction.md)
+- [Product](product.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
@@ -58,23 +49,14 @@ Product Key is a system-generated unique identifier used to link product records
 Product Key is used to:
 - Uniquely identify product records
 - Link booking transactions to products
-- Enable dimensional analysis by product attributes
 - Maintain referential integrity
+- Enable efficient joins between fact and dimension tables
+- Support data warehouse operations
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Product Entity](../entities/product.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Product  
-**Source Attribute**: Product Key  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Product](../entities/product.md)
+- [Back to Main Index](../index.md)
