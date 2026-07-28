@@ -17,39 +17,29 @@ Describes the level of service or support coverage provided under the contract.
 
 ## Business Meaning
 
-Coverage Level specifies the tier or extent of support and service commitments included in the contract. Different coverage levels typically offer varying response times, support hours, escalation procedures, and service guarantees. Coverage level impacts both customer satisfaction and contract pricing.
+Coverage Level defines the tier or extent of support and service coverage that the customer receives under their contract. Different coverage levels typically offer varying response times, support hours, service level agreements (SLAs), and access to technical resources. Common levels include basic, standard, premium, or enterprise coverage tiers.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_contract  
-**Source Column**: coverage_level  
-**Entity**: [Contract](../entities/contract.md)  
-**Attribute**: Coverage Level  
-**Data Type**: character varying(20)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_contract
+
+**Source Column**: coverage_level
+
+**Entity**: [Contract](../entities/contract.md)
+
+**Attribute**: Coverage Level
+
+**Data Type**: Character Varying(20)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Support Level
-- Service Level
-- Support Tier
-- Coverage Tier
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Contract](../entities/contract.md)
-- [Booking Transaction](../entities/booking-transaction.md)
-
-### Related Attributes
+- [Contract](contract.md)
 - [Contract Key](contract-key.md)
 - [Contract Type](contract-type.md)
 
@@ -58,35 +48,17 @@ Coverage Level specifies the tier or extent of support and service commitments i
 ## Usage Context
 
 Coverage Level is used to:
-- Define support and service commitments
-- Differentiate contract pricing tiers
-- Manage customer expectations
-- Allocate support resources
-
----
-
-## Examples
-
-- Basic
-- Standard
-- Premium
-- Enterprise
-- 24x7 Support
+- Define support and service tiers
+- Differentiate service offerings
+- Analyze revenue by coverage level
+- Support pricing strategies
+- Enable service level reporting
+- Facilitate support resource planning
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Contract Entity](../entities/contract.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Contract  
-**Source Attribute**: Coverage Level  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Contract](../entities/contract.md)
+- [Back to Main Index](../index.md)
