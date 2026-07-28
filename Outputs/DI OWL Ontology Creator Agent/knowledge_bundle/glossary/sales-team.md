@@ -3,7 +3,7 @@ title: Sales Team
 type: glossary
 description: Team or organizational unit to which the sales representative belongs
 resource: glossary
-tags: [glossary, sales-rep, team, organization]
+tags: [glossary, sales-representative, team, organization]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,37 +17,30 @@ Team or organizational unit to which the sales representative belongs.
 
 ## Business Meaning
 
-Sales Team identifies the organizational group or team to which the sales representative is assigned. Teams enable collaborative selling, shared accountability, and team-based performance management. Sales teams may be organized by geography, customer segment, product line, or other criteria.
+Sales Team identifies the organizational unit, team, or group to which the sales representative is assigned. Teams may be organized by geography, product line, customer segment, or other strategic dimensions. Sales team classification enables team-based performance measurement, resource allocation, and collaborative selling strategies.
 
 ---
 
 ## Technical Mapping
 
-**Source Schema**: QuoteToBooking  
-**Source Table**: dim_sales_rep  
-**Source Column**: sales_team  
-**Entity**: [Sales Representative](../entities/sales-representative.md)  
-**Attribute**: Sales Team  
-**Data Type**: character varying(40)  
-**Nullable**: Yes  
+**Source Table**: QuoteToBooking.dim_sales_rep
+
+**Source Column**: sales_team
+
+**Entity**: [Sales Representative](../entities/sales-representative.md)
+
+**Attribute**: Sales Team
+
+**Data Type**: Character Varying(40)
+
 **Confidence Score**: 1.00
-
----
-
-## Synonyms
-
-- Team
-- Sales Organization
-- Sales Group
 
 ---
 
 ## Related Concepts
 
-### Related Entities
-- [Sales Representative](../entities/sales-representative.md)
-
-### Related Attributes
+- [Sales Representative](sales-representative.md)
+- [Sales Representative Key](sales-representative-key.md)
 - [Sales Role](sales-role.md)
 - [Covered Segment](covered-segment.md)
 
@@ -56,25 +49,16 @@ Sales Team identifies the organizational group or team to which the sales repres
 ## Usage Context
 
 Sales Team is used to:
-- Organize sales personnel
-- Track team performance
-- Support team-based compensation
-- Enable collaborative selling
+- Identify sales organizational structure
+- Enable team-based performance analysis
+- Support team resource allocation
+- Facilitate team collaboration
+- Enable team effectiveness measurement
 
 ---
 
 ## Navigation
 
-- [View Glossary Index](index.md)
-- [View Sales Representative Entity](../entities/sales-representative.md)
-- [Return to Bundle Index](../index.md)
-
----
-
-## Metadata
-
-**Term Type**: Attribute  
-**Source Entity**: Sales Representative  
-**Source Attribute**: Sales Team  
-**Confidence Score**: 1.00  
-**Last Updated**: 2026-07-28T00:00:00Z
+- [Back to Glossary Index](index.md)
+- [View Entity: Sales Representative](../entities/sales-representative.md)
+- [Back to Main Index](../index.md)
