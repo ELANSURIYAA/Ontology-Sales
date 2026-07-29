@@ -3,7 +3,7 @@ title: Date
 type: entity
 description: Calendar and fiscal date attributes used to analyze bookings over time
 resource: entities
-tags: [entity, dimension, date, time, calendar, fiscal]
+tags: [date, time, calendar, fiscal, dimension, entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,41 +11,40 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Stores calendar and fiscal date attributes used to analyze bookings over time.
+The Date entity stores calendar and fiscal date attributes used to analyze bookings over time. It provides comprehensive temporal context including calendar dates, fiscal periods, quarters, and years. This entity enables time-based analysis and trending of booking performance across multiple time hierarchies.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_date
-
-**Source System**: QuoteToBooking
-
-**Entity Type**: Dimension
+**Source Table**: QuoteToBooking.dim_date  
+**Source Schema**: QuoteToBooking  
+**Entity Type**: Dimension  
+**Entity ID**: ENT003
 
 ---
 
 ## Attributes
 
-- **Date Key** (date_key): Encoded key that uniquely identifies a reporting date in the date dimension
-- **Full Date** (full_date): Actual calendar date represented by the date record
-- **Month Name** (month_name): Name of the calendar month for the date
-- **Calendar Year** (calendar_year): Four-digit calendar year associated with the date
-- **Fiscal Year** (fiscal_year): Fiscal year used by the business for financial and performance reporting
-- **Fiscal Quarter** (fiscal_quarter): Fiscal quarter used by the business for periodic reporting and analysis
-- **Fiscal Period Sequence** (fiscal_period_seq): Sequential number representing the fiscal reporting period in ordered time analysis
+- **Date Key** - Encoded key that uniquely identifies a reporting date in the date dimension
+- **Full Date** - Actual calendar date represented by the date record
+- **Month Name** - Name of the calendar month for the date
+- **Calendar Year** - Four-digit calendar year associated with the date
+- **Fiscal Year** - Fiscal year used by the business for financial and performance reporting
+- **Fiscal Quarter** - Fiscal quarter used by the business for periodic reporting and analysis
+- **Fiscal Period Sequence** - Sequential number representing the fiscal reporting period in ordered time analysis
 
 ---
 
 ## Primary Keys
 
-- **Date Key** (date_key)
+- **Date Key** (date_key) - Surrogate key, Integer, Not Nullable
 
 ---
 
 ## Foreign Keys
 
-None
+None - This is a dimension entity
 
 ---
 
@@ -53,28 +52,92 @@ None
 
 ### Outgoing Relationships
 
-- **[Date to Booking Transaction](../relationships/date-to-booking-transaction.md)**: One-to-Many relationship linking dates to booking transactions
+- **[Date to Booking Transaction](../relationships/date-to-booking-transaction.md)** - One-to-Many relationship linking dates to booking transactions
 
 ### Related Entities
 
-- [Booking Transaction](booking-transaction.md): Fact entity that references this dimension
+- **[Booking Transaction](./booking-transaction.md)** - Fact entity containing booking records with date references
 
 ---
 
 ## Measures
 
-This dimension supports analysis of the following measures:
+Dates support time-based analysis of all measures:
 
-- [Booking Amount USD](../measures/booking-amount-usd.md)
-- [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
-- [Total Contract Value USD](../measures/total-contract-value-usd.md)
-- [Quantity Sold](../measures/quantity-sold.md)
-- [Unit List Price USD](../measures/unit-list-price-usd.md)
-- [Discount Percentage](../measures/discount-percentage.md)
+- **[Booking Amount USD](../measures/booking-amount-usd.md)** - Revenue trending over time
+- **[Annual Contract Value USD](../measures/annual-contract-value-usd.md)** - ACV trends by period
+- **[Total Contract Value USD](../measures/total-contract-value-usd.md)** - TCV trends by period
+- **[Quantity Sold](../measures/quantity-sold.md)** - Volume trends over time
+- **[Discount Percentage](../measures/discount-percentage.md)** - Pricing trends by period
+- **[Unit List Price USD](../measures/unit-list-price-usd.md)** - Price trends over time
+
+---
+
+## Business Rules
+
+1. Date Key must be unique and not null
+2. Full Date must be a valid calendar date
+3. Calendar Year must be four-digit integer
+4. Fiscal Year must follow company fiscal calendar format
+5. Fiscal Quarter must be valid quarter designation (Q1, Q2, Q3, Q4)
+6. Fiscal Period Sequence must be sequential and continuous
+7. Month Name must be valid calendar month
+
+---
+
+## Analytical Usage
+
+### Calendar Analysis
+- Analyze booking performance by calendar year, month, and day
+- Track seasonal patterns and trends
+- Compare year-over-year calendar performance
+
+### Fiscal Analysis
+- Report bookings by fiscal year and quarter
+- Track fiscal period performance against targets
+- Analyze fiscal year-to-date metrics
+
+### Trend Analysis
+- Identify booking trends over time
+- Perform period-over-period comparisons
+- Track growth rates and momentum
+
+### Seasonal Analysis
+- Identify seasonal booking patterns
+- Analyze quarter-end and year-end effects
+- Track monthly and quarterly cycles
+
+---
+
+## Time Hierarchies
+
+### Calendar Hierarchy
+```
+Calendar Year
+  └─ Month Name
+      └─ Full Date
+```
+
+### Fiscal Hierarchy
+```
+Fiscal Year
+  └─ Fiscal Quarter
+      └─ Fiscal Period Sequence
+          └─ Full Date
+```
 
 ---
 
 ## Related Concepts
+
+- **[Booking Transaction](./booking-transaction.md)** - Transactions occurring on specific dates
+- **[Contract](./contract.md)** - Contract effective dates and terms
+- **[Customer](./customer.md)** - Customer acquisition dates
+- **[Sales Representative](./sales-representative.md)** - Sales performance by period
+
+---
+
+## Glossary Terms
 
 - [Date](../glossary/date.md)
 - [Date Key](../glossary/date-key.md)
@@ -87,59 +150,37 @@ This dimension supports analysis of the following measures:
 
 ---
 
-## Business Rules
+## Attribute Details
 
-1. Date Key is a surrogate key and must be unique
-2. Full Date represents the actual calendar date
-3. Month Name provides the calendar month name
-4. Calendar Year is a four-digit year value
-5. Fiscal Year represents the business fiscal year for financial reporting
-6. Fiscal Quarter represents the business fiscal quarter
-7. Fiscal Period Sequence enables ordered time-series analysis
-8. Every booking transaction must reference a valid date
-9. Date dimension supports both calendar and fiscal reporting hierarchies
-
----
-
-## Usage Examples
-
-**Analysis by Fiscal Year**:
-- Compare booking revenue across fiscal years
-- Analyze year-over-year growth trends
-- Measure annual performance against targets
-
-**Analysis by Fiscal Quarter**:
-- Track quarterly booking performance
-- Analyze seasonal trends
-- Compare quarter-over-quarter growth
-
-**Analysis by Calendar Year**:
-- Align bookings with calendar-based planning
-- Compare calendar year performance
-- Support calendar-based forecasting
-
-**Analysis by Month**:
-- Identify monthly booking patterns
-- Analyze month-over-month trends
-- Track monthly performance against quotas
-
-**Time Series Analysis**:
-- Use Fiscal Period Sequence for ordered trend analysis
-- Calculate moving averages and cumulative totals
-- Perform period-over-period comparisons
+| Attribute | Technical Column | Data Type | Nullable | Key Type | Description |
+|-----------|-----------------|-----------|----------|----------|-------------|
+| Date Key | date_key | integer | No | Primary | Encoded key uniquely identifying date |
+| Full Date | full_date | date | No | - | Actual calendar date |
+| Month Name | month_name | character varying(12) | Yes | - | Name of calendar month |
+| Calendar Year | calendar_year | integer | Yes | - | Four-digit calendar year |
+| Fiscal Year | fiscal_year | character varying(6) | Yes | - | Fiscal year designation |
+| Fiscal Quarter | fiscal_quarter | character varying(10) | Yes | - | Fiscal quarter designation |
+| Fiscal Period Sequence | fiscal_period_seq | integer | Yes | - | Sequential fiscal period number |
 
 ---
 
-## Domain
+## Semantic Links
 
-[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Entity Index](./index.md)
+- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Relationship Index](../relationships/index.md)
+- [Measure Index](../measures/index.md)
+- [Main Index](../index.md)
 
 ---
 
-## Navigation
+## Metadata
 
-- [Back to Entities Index](index.md)
-- [Back to Main Index](../index.md)
-- [View Relationships](../relationships/index.md)
-- [View Measures](../measures/index.md)
-- [View Glossary](../glossary/index.md)
+**Entity ID**: ENT003  
+**Domain ID**: DOM001  
+**Entity Type**: Dimension  
+**Technical Table**: QuoteToBooking.dim_date  
+**Total Attributes**: 7  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
