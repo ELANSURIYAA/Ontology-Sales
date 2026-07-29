@@ -3,7 +3,7 @@ title: Sales Representative Key
 type: glossary
 description: Surrogate key that uniquely identifies a sales representative record in the sales representative dimension
 resource: glossary
-tags: [glossary, sales-representative, key, identifier, surrogate-key]
+tags: [sales, representative, key, identifier, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,46 +17,42 @@ Surrogate key that uniquely identifies a sales representative record in the sale
 
 ## Business Meaning
 
-Sales Representative Key is a system-generated unique identifier used to establish relationships between the sales representative dimension and booking transaction fact records. It serves as the primary key for sales representative records and enables efficient data integration and referential integrity.
+Sales Representative Key is a system-generated unique identifier used to link sales representative records to booking transactions. It serves as the primary key for the sales representative dimension and enables efficient joins in analytical queries.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_sales_rep
-
-**Source Column**: sales_rep_key
-
-**Entity**: [Sales Representative](../entities/sales-representative.md)
-
-**Attribute**: Sales Representative Key
-
-**Data Type**: Integer
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_sales_rep  
+**Source Column:** sales_rep_key  
+**Data Type:** Integer  
+**Entity:** [Sales Representative](../entities/sales-representative.md)  
+**Attribute:** Sales Representative Key  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Sales Representative](sales-representative.md)
-- [Booking Transaction](booking-transaction.md)
+- [Sales Representative](./sales-representative.md) - Parent entity
+- [Booking Transaction](./booking-transaction.md) - Uses sales representative key as foreign key
+- [Sales Representative ID](./sales-representative-id.md) - Business identifier
 
 ---
 
 ## Usage Context
 
 Sales Representative Key is used to:
-- Uniquely identify sales representative records
-- Link booking transactions to sales representatives
-- Maintain referential integrity
-- Enable efficient joins between fact and dimension tables
-- Support data warehouse operations
+- Uniquely identify each sales representative record
+- Link booking transactions to sales representative attributes
+- Enable dimensional analysis by sales representative characteristics
+- Support referential integrity in the data model
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Sales Representative](../entities/sales-representative.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/sales-representative.md)
+- [Return to Bundle Index](../index.md)
