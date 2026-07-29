@@ -1,9 +1,9 @@
 ---
 title: Route to Market
 type: glossary
-description: Sales delivery path through which the product or service reached the customer
+description: Describes the sales delivery path through which the product or service reached the customer
 resource: glossary
-tags: [glossary, partner, route, channel]
+tags: [partner, route, channel, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,48 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Describes the sales delivery path through which the product or service reached the customer.
 
+---
+
 ## Business Meaning
 
-Route to Market defines the channel path from vendor to customer, including direct sales and various indirect channel models. Understanding route to market is essential for channel strategy, margin analysis, and go-to-market optimization.
+Route to Market identifies the specific channel path used to deliver products and services to customers. This attribute enables analysis of channel effectiveness and supports go-to-market strategy optimization.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_partner  
-**Source Column**: route_to_market  
-**Entity**: [Partner](../entities/partner.md)  
-**Attribute**: Route to Market  
-**Data Type**: Character Varying(20)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_partner  
+**Source Column:** route_to_market  
+**Data Type:** Character Varying(20)  
+**Entity:** [Partner](../entities/partner.md)  
+**Attribute:** Route to Market  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Channel Route
-- Sales Channel
-- Go-to-Market Route
+---
 
 ## Related Concepts
 
-- [Partner](./partner.md)
-- [Partner Type](./partner-type.md)
-- [Partner Tier](./partner-tier.md)
+- [Partner](./partner.md) - Parent entity
+- [Partner Type](./partner-type.md) - Operating model
+- [Partner Tier](./partner-tier.md) - Certification tier
+
+---
 
 ## Usage Context
 
 Route to Market is used to:
-- Analyze channel effectiveness
-- Compare direct vs indirect performance
-- Optimize go-to-market strategy
-- Support channel planning
-
-## Example Values
-
-- Direct
-- One-Tier (Direct to Partner to Customer)
-- Two-Tier (Direct to Distributor to Reseller to Customer)
+- Identify sales delivery channels
+- Enable route-based performance analysis
+- Support go-to-market strategy development
+- Track channel effectiveness
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Partner (ENT005)  
-**Attribute**: ATTR030
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/partner.md)
+- [Return to Bundle Index](../index.md)
