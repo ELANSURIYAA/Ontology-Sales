@@ -3,7 +3,7 @@ title: Calendar Year
 type: glossary
 description: Four-digit calendar year associated with the date
 resource: glossary
-tags: [glossary, date, year, calendar]
+tags: [date, year, calendar, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,47 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Four-digit calendar year associated with the date.
 
+---
+
 ## Business Meaning
 
-Calendar Year represents the standard Gregorian calendar year, enabling year-based reporting and year-over-year analysis. It is fundamental for annual performance tracking and multi-year trending.
+Calendar Year represents the standard Gregorian calendar year (e.g., 2024, 2025) for the date record. This enables year-based analysis and year-over-year comparisons.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_date  
-**Source Column**: calendar_year  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Calendar Year  
-**Data Type**: Integer  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_date  
+**Source Column:** calendar_year  
+**Data Type:** Integer  
+**Entity:** [Date](../entities/date.md)  
+**Attribute:** Calendar Year  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Year
-- CY
+---
 
 ## Related Concepts
 
-- [Date](./date.md)
-- [Fiscal Year](./fiscal-year.md)
-- [Month Name](./month-name.md)
+- [Date](./date.md) - Parent entity
+- [Fiscal Year](./fiscal-year.md) - Business fiscal year
+- [Month Name](./month-name.md) - Month component
+
+---
 
 ## Usage Context
 
 Calendar Year is used to:
-- Enable annual aggregation and reporting
-- Support year-over-year comparisons
-- Filter data by calendar year
-- Track multi-year trends
-
-## Example Values
-
-- 2024
-- 2025
-- 2026
+- Group transactions by calendar year
+- Enable year-over-year analysis
+- Support annual reporting
+- Provide calendar-based time context
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Date (ENT003)  
-**Attribute**: ATTR017
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/date.md)
+- [Return to Bundle Index](../index.md)
