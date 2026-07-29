@@ -3,7 +3,7 @@ title: Contract to Booking Transaction
 type: relationship
 description: One-to-Many relationship linking contracts to booking transactions
 resource: relationships
-tags: [relationship, foreign-key, contract, booking-transaction]
+tags: [relationship, contract, booking, foreign-key]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,92 +11,95 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Description
 
-This relationship links contract records to booking transactions, enabling analysis of bookings by contract attributes such as contract type, term, renewal behavior, and coverage level.
+This relationship links Contract dimension records to Booking Transaction fact records. Each contract can be associated with multiple booking transactions, while each booking transaction references exactly one contract. This relationship enables analysis of booking performance by contract characteristics including contract type, term, renewal behavior, and coverage level.
 
 ---
 
 ## Relationship Details
 
-**Source Entity**: [Contract](../entities/contract.md)
-
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Relationship Type**: Foreign Key
-
-**Cardinality**: One-to-Many
-
+**Relationship ID**: REL001  
+**Relationship Type**: Foreign Key  
+**Cardinality**: One-to-Many  
 **Confidence Score**: 1.00
+
+---
+
+## Source Entity
+
+**Entity**: [Contract](../entities/contract.md)  
+**Entity ID**: ENT001  
+**Attribute**: Contract Key  
+**Technical Column**: contract_key  
+**Role**: Parent (One side)
+
+---
+
+## Target Entity
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Entity ID**: ENT008  
+**Attribute**: Contract Key  
+**Technical Column**: contract_key  
+**Role**: Child (Many side)
 
 ---
 
 ## Technical Mapping
 
-**Parent Table**: QuoteToBooking.dim_contract
-
-**Parent Column**: contract_key
-
-**Child Table**: QuoteToBooking.fact_bookings
-
-**Child Column**: contract_key
-
----
-
-## Cardinality Explanation
-
-- **One Contract** can be associated with **Many Booking Transactions**
-- **Each Booking Transaction** must reference **exactly one Contract**
-
-This relationship enables:
-- Analysis of booking amounts by contract type
-- Evaluation of contract term preferences
-- Measurement of renewal behavior
-- Analysis of coverage level adoption
+**Source Table**: QuoteToBooking.dim_contract  
+**Target Table**: QuoteToBooking.fact_bookings  
+**Join Condition**: `dim_contract.contract_key = fact_bookings.contract_key`
 
 ---
 
 ## Business Rules
 
-1. Every booking transaction must reference a valid contract
-2. A contract can be associated with zero or many booking transactions
-3. Contract Key is the foreign key in the booking transaction fact table
-4. The relationship is mandatory on the booking transaction side
-5. The relationship supports referential integrity
+1. Each booking transaction must reference a valid contract
+2. A contract can have zero or many booking transactions
+3. Contract Key in Booking Transaction must exist in Contract dimension
+4. Referential integrity must be maintained
+5. Contract attributes apply to all associated booking transactions
+
+---
+
+## Analytical Usage
+
+This relationship enables analysis of:
+
+- Booking performance by contract type
+- Revenue distribution by contract term
+- Auto-renewal vs manual renewal patterns
+- Coverage level adoption and performance
+- Contract-based customer segmentation
 
 ---
 
 ## Related Concepts
 
-- [Contract](../glossary/contract.md)
-- [Contract Key](../glossary/contract-key.md)
-- [Booking Transaction](../glossary/booking-transaction.md)
-- [Contract Type](../glossary/contract-type.md)
-- [Contract Term Months](../glossary/contract-term-months.md)
+- [Contract](../entities/contract.md) - Source dimension entity
+- [Booking Transaction](../entities/booking-transaction.md) - Target fact entity
+- [Customer](../entities/customer.md) - Customers with contracts
+- [Product](../entities/product.md) - Products covered by contracts
 
 ---
 
-## Usage Examples
+## Semantic Links
 
-**Analyze bookings by contract type**:
-- Compare SaaS subscription vs. Enterprise Agreement bookings
-- Measure contract type distribution
-
-**Analyze bookings by contract term**:
-- Evaluate average contract duration
-- Compare short-term vs. long-term contract performance
-
-**Analyze renewal behavior**:
-- Measure auto-renewal adoption rates
-- Compare renewal vs. new sale bookings
-
-**Analyze coverage levels**:
-- Evaluate premium vs. standard coverage bookings
-- Measure support tier adoption
+- [Relationship Index](./index.md)
+- [Entity Index](../entities/index.md)
+- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Main Index](../index.md)
 
 ---
 
-## Navigation
+## Metadata
 
-- [Back to Relationships Index](index.md)
-- [View Source Entity: Contract](../entities/contract.md)
-- [View Target Entity: Booking Transaction](../entities/booking-transaction.md)
-- [Back to Main Index](../index.md)
+**Relationship ID**: REL001  
+**Source Entity ID**: ENT001  
+**Target Entity ID**: ENT008  
+**Relationship Type**: Foreign Key  
+**Cardinality**: One-to-Many  
+**Confidence Score**: 1.00  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
