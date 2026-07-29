@@ -3,7 +3,7 @@ title: Product Family
 type: glossary
 description: Higher-level product grouping used for portfolio and performance analysis
 resource: glossary
-tags: [glossary, product, family, grouping, portfolio]
+tags: [product, family, portfolio, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,48 +17,42 @@ Higher-level product grouping used for portfolio and performance analysis.
 
 ## Business Meaning
 
-Product Family represents a strategic grouping of related products that share common characteristics, target markets, or business purposes. Product families enable portfolio-level analysis, strategic planning, and resource allocation. Examples might include networking products, security solutions, collaboration tools, or observability platforms. Product family groupings support executive-level decision making and market strategy development.
+Product Family represents a strategic grouping of related products that share common characteristics, market positioning, or business objectives. This classification enables portfolio-level analysis and strategic planning.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_product
-
-**Source Column**: product_family
-
-**Entity**: [Product](../entities/product.md)
-
-**Attribute**: Product Family
-
-**Data Type**: Character Varying(30)
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_product  
+**Source Column:** product_family  
+**Data Type:** Character Varying(30)  
+**Entity:** [Product](../entities/product.md)  
+**Attribute:** Product Family  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Product](product.md)
-- [Product Key](product-key.md)
-- [Technology Domain](technology-domain.md)
-- [Offer Type](offer-type.md)
+- [Product](./product.md) - Parent entity
+- [Technology Domain](./technology-domain.md) - Solution domain
+- [Offer Type](./offer-type.md) - Delivery model
 
 ---
 
 ## Usage Context
 
 Product Family is used to:
-- Enable portfolio-level analysis
-- Support strategic product planning
-- Facilitate product family performance measurement
-- Enable product mix analysis
-- Support resource allocation decisions
+- Group products for portfolio analysis
+- Enable family-level performance tracking
+- Support product strategy development
+- Track portfolio mix and contribution
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Product](../entities/product.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/product.md)
+- [Return to Bundle Index](../index.md)
