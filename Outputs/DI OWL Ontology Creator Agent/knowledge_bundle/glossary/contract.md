@@ -1,9 +1,9 @@
 ---
 title: Contract
 type: glossary
-description: Commercial agreements associated with bookings including contract type, term, renewal behavior, and support coverage level
+description: Stores the business attributes of commercial agreements associated with bookings
 resource: glossary
-tags: [glossary, contract, agreement, entity]
+tags: [contract, agreement, commercial, entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,45 +13,49 @@ timestamp: 2026-07-28T00:00:00Z
 
 Stores the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level.
 
+---
+
 ## Business Meaning
 
-The Contract represents a formal commercial agreement between the company and a customer that governs the terms, conditions, duration, and support coverage for products and services purchased. Contracts are essential for managing customer commitments, tracking renewal opportunities, and analyzing booking performance by contract characteristics.
+A contract represents a formal commercial agreement between the vendor and customer that defines the terms, conditions, duration, and coverage level for products and services. Contracts govern the relationship and establish the framework for booking transactions.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_contract  
-**Entity**: [Contract](../entities/contract.md)  
-**Attribute**: Entity-level term  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_contract  
+**Entity:** [Contract](../entities/contract.md)  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Agreement
-- Commercial Agreement
-- Service Agreement
-- Subscription Agreement
+---
 
 ## Related Concepts
 
-- [Contract Key](./contract-key.md)
-- [Contract Type](./contract-type.md)
-- [Contract Term Months](./contract-term-months.md)
-- [Auto Renew Flag](./auto-renew-flag.md)
-- [Coverage Level](./coverage-level.md)
-- [Booking Transaction](./booking-transaction.md)
-- [Customer](./customer.md)
+- [Booking Transaction](./booking-transaction.md) - Transactions governed by contracts
+- [Contract Key](./contract-key.md) - Unique identifier for contracts
+- [Contract Type](./contract-type.md) - Type of commercial agreement
+- [Contract Term Months](./contract-term-months.md) - Duration of contract
+- [Auto Renew Flag](./auto-renew-flag.md) - Renewal behavior
+- [Coverage Level](./coverage-level.md) - Service coverage provided
+- [Annual Contract Value USD](./annual-contract-value-usd.md) - Annual value metric
+- [Total Contract Value USD](./total-contract-value-usd.md) - Total value metric
+
+---
 
 ## Usage Context
 
 Contracts are used to:
-- Define commercial terms and conditions
-- Track contract duration and renewal dates
-- Manage support and service coverage levels
-- Analyze booking performance by contract attributes
-- Support renewal forecasting and management
+- Define commercial terms for customer engagements
+- Establish pricing and discount structures
+- Specify service levels and support coverage
+- Govern renewal and termination conditions
+- Track multi-year commitments and obligations
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Contract (ENT001)
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/contract.md)
+- [Return to Bundle Index](../index.md)
