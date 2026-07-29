@@ -3,7 +3,7 @@ title: Sales Region
 type: glossary
 description: High-level geographic region used for reporting and performance analysis
 resource: glossary
-tags: [glossary, geography, region, sales, territory]
+tags: [glossary, geography, region, sales]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,53 +13,50 @@ timestamp: 2026-07-28T00:00:00Z
 
 High-level geographic region used for reporting and performance analysis.
 
----
-
 ## Business Meaning
 
-Sales Region represents the highest level of geographic hierarchy used for sales organization and performance measurement. Regions typically represent major global markets such as Americas, EMEA (Europe, Middle East, Africa), Asia Pacific, or other strategic geographic groupings. Sales regions enable executive-level geographic performance analysis and regional strategy development.
-
----
+Sales Region represents the highest level of geographic hierarchy, typically covering major global areas. It enables executive-level regional performance analysis and strategic market planning.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_geography
-
-**Source Column**: region
-
-**Entity**: [Geography](../entities/geography.md)
-
-**Attribute**: Sales Region
-
-**Data Type**: Character Varying(20)
-
+**Source Table**: QuoteToBooking.dim_geography  
+**Source Column**: region  
+**Entity**: [Geography](../entities/geography.md)  
+**Attribute**: Sales Region  
+**Data Type**: Character Varying(20)  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- Region
+- Geographic Region
+- Market Region
 
 ## Related Concepts
 
-- [Geography](geography.md)
-- [Geography Key](geography-key.md)
-- [Sales Theater](sales-theater.md)
-- [Country](country.md)
-- [Headquarters Region](headquarters-region.md)
-
----
+- [Geography](./geography.md)
+- [Sales Theater](./sales-theater.md)
+- [Country](./country.md)
 
 ## Usage Context
 
 Sales Region is used to:
-- Enable regional performance analysis
-- Support regional strategy development
-- Facilitate regional resource allocation
-- Enable regional market comparison
-- Support executive-level geographic reporting
+- Enable high-level regional reporting
+- Support strategic market analysis
+- Track regional performance
+- Allocate regional resources
+
+## Example Values
+
+- Americas
+- EMEA
+- APAC
+- North America
+- Europe
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Geography](../entities/geography.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Geography (ENT004)  
+**Attribute**: ATTR022
