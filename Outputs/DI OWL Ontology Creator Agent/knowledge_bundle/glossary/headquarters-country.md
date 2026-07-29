@@ -3,7 +3,7 @@ title: Headquarters Country
 type: glossary
 description: Country where the customer organization's headquarters is located
 resource: glossary
-tags: [glossary, customer, country, location, headquarters]
+tags: [glossary, customer, location, country]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,52 +13,43 @@ timestamp: 2026-07-28T00:00:00Z
 
 Country where the customer organization's headquarters is located.
 
----
-
 ## Business Meaning
 
-Headquarters Country identifies the nation where the customer's primary corporate headquarters or main office is situated. This geographic attribute enables country-based customer analysis, international market assessment, and regional strategy development. It differs from the transaction geography, which may represent where the sale occurred.
-
----
+Headquarters Country identifies the primary country location of the customer's corporate headquarters. This geographic attribute enables analysis of customer distribution, regional market penetration, and international vs domestic customer mix.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer
-
-**Source Column**: hq_country
-
-**Entity**: [Customer](../entities/customer.md)
-
-**Attribute**: Headquarters Country
-
-**Data Type**: Character Varying(40)
-
+**Source Table**: QuoteToBooking.dim_customer  
+**Source Column**: hq_country  
+**Entity**: [Customer](../entities/customer.md)  
+**Attribute**: Headquarters Country  
+**Data Type**: Character Varying(40)  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- HQ Country
+- Home Country
+- Corporate Country
 
 ## Related Concepts
 
-- [Customer](customer.md)
-- [Headquarters Region](headquarters-region.md)
-- [Geography](geography.md)
-- [Country](country.md)
-
----
+- [Customer](./customer.md)
+- [Headquarters Region](./headquarters-region.md)
+- [Geography](./geography.md)
+- [Country](./country.md)
 
 ## Usage Context
 
 Headquarters Country is used to:
-- Identify customer headquarters location
-- Enable country-based customer analysis
-- Support international market assessment
-- Facilitate regional strategy development
-- Enable geographic customer distribution analysis
+- Analyze customer geographic distribution
+- Track international market penetration
+- Support regional sales planning
+- Enable country-specific analysis
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Customer](../entities/customer.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Customer (ENT002)  
+**Attribute**: ATTR012
