@@ -1,106 +1,94 @@
 ---
 title: Geography to Booking Transaction
 type: relationship
-description: One-to-Many relationship linking geographies to booking transactions
+description: Foreign key relationship linking geographies to booking transactions
 resource: relationships
-tags: [relationship, geography, booking, foreign-key]
+tags: [geography, booking, foreign-key, one-to-many, spatial]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Geography to Booking Transaction
 
-## Business Description
+## Relationship Definition
 
-This relationship links Geography dimension records to Booking Transaction fact records. Each geography can be associated with multiple booking transactions, while each booking transaction occurs in exactly one geographic location. This relationship enables regional analysis of booking performance across sales regions, theaters, and countries.
+Links geography records to booking transactions, enabling spatial analysis by sales region, theater, and country. This relationship allows business users to understand geographic sales performance and market penetration.
 
 ---
 
-## Relationship Details
+## Relationship Identifier
 
-**Relationship ID**: REL004  
-**Relationship Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Confidence Score**: 1.00
+**Relationship ID:** REL004
 
 ---
 
 ## Source Entity
 
-**Entity**: [Geography](../entities/geography.md)  
-**Entity ID**: ENT004  
-**Attribute**: Geography Key  
-**Technical Column**: geography_key  
-**Role**: Parent (One side)
+**[Geography](../entities/geography.md)**  
+**Entity ID:** ENT004  
+**Technical Table:** QuoteToBooking.dim_geography
 
 ---
 
 ## Target Entity
 
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Entity ID**: ENT008  
-**Attribute**: Geography Key  
-**Technical Column**: geography_key  
-**Role**: Child (Many side)
+**[Booking Transaction](../entities/booking-transaction.md)**  
+**Entity ID:** ENT008  
+**Technical Table:** QuoteToBooking.fact_bookings
+
+---
+
+## Relationship Type
+
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Confidence Score:** 1.00
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_geography  
-**Target Table**: QuoteToBooking.fact_bookings  
-**Join Condition**: `dim_geography.geography_key = fact_bookings.geography_key`
+**Parent Attribute:** Geography Key (geography_key)  
+**Child Attribute:** Geography Key (geography_key)  
+**Join Condition:** dim_geography.geography_key = fact_bookings.geography_key
 
 ---
 
-## Business Rules
+## Business Description
 
-1. Each booking transaction must reference a valid geography
-2. A geography can have zero or many booking transactions
-3. Geography Key in Booking Transaction must exist in Geography dimension
-4. Referential integrity must be maintained
-5. Geographic attributes apply to all associated booking transactions
-
----
-
-## Analytical Usage
-
-This relationship enables analysis of:
+Each geography can be associated with multiple booking transactions, but each booking transaction occurs in exactly one geography. This relationship enables analysis of:
 
 - Booking performance by sales region
-- Theater-level revenue contribution and trends
-- Country-specific booking patterns
-- Geographic market penetration and growth
-- Regional quota attainment and performance
+- Theater-level revenue analysis
+- Country-specific booking trends
+- Geographic market penetration
+- Regional sales territory performance
 
 ---
 
-## Related Concepts
+## Related Measures
 
-- [Geography](../entities/geography.md) - Source dimension entity
-- [Booking Transaction](../entities/booking-transaction.md) - Target fact entity
-- [Customer](../entities/customer.md) - Customer headquarters locations
-- [Sales Representative](../entities/sales-representative.md) - Territory assignments
-- [Partner](../entities/partner.md) - Partner geographic coverage
+This relationship enables geography-based analysis of:
 
----
-
-## Semantic Links
-
-- [Relationship Index](./index.md)
-- [Entity Index](../entities/index.md)
-- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-- [Main Index](../index.md)
+- [Booking Amount USD](../measures/booking-amount-usd.md)
+- [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
+- [Total Contract Value USD](../measures/total-contract-value-usd.md)
+- [Quantity Sold](../measures/quantity-sold.md)
 
 ---
 
-## Metadata
+## Business Use Cases
 
-**Relationship ID**: REL004  
-**Source Entity ID**: ENT004  
-**Target Entity ID**: ENT008  
-**Relationship Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Confidence Score**: 1.00  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+1. **Regional Performance** - Compare booking performance across sales regions
+2. **Theater Analysis** - Analyze revenue contribution by sales theater
+3. **Country Analysis** - Track booking trends by country
+4. **Market Penetration** - Evaluate geographic coverage and market share
+5. **Territory Optimization** - Identify high-performing and underperforming territories
+
+---
+
+## Navigation
+
+- [Return to Relationships Index](./index.md)
+- [View Source Entity: Geography](../entities/geography.md)
+- [View Target Entity: Booking Transaction](../entities/booking-transaction.md)
+- [Return to Bundle Index](../index.md)
