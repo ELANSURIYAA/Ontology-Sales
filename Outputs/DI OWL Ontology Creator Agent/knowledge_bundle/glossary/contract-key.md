@@ -3,7 +3,7 @@ title: Contract Key
 type: glossary
 description: Surrogate key that uniquely identifies a contract record in the contract dimension
 resource: glossary
-tags: [glossary, contract, key, identifier, surrogate-key]
+tags: [glossary, contract, key, identifier]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,50 +13,41 @@ timestamp: 2026-07-28T00:00:00Z
 
 Surrogate key that uniquely identifies a contract record in the contract dimension.
 
----
-
 ## Business Meaning
 
-Contract Key is a system-generated unique identifier used to establish relationships between the contract dimension and booking transaction fact records. It serves as the primary key for contract records and enables efficient data integration and referential integrity.
-
----
+The Contract Key is a system-generated unique identifier used to link contract dimension records to booking transaction fact records. It serves as the primary key for the contract dimension and enables efficient joins and referential integrity in the dimensional model.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_contract
-
-**Source Column**: contract_key
-
-**Entity**: [Contract](../entities/contract.md)
-
-**Attribute**: Contract Key
-
-**Data Type**: Integer
-
+**Source Table**: QuoteToBooking.dim_contract  
+**Source Column**: contract_key  
+**Entity**: [Contract](../entities/contract.md)  
+**Attribute**: Contract Key  
+**Data Type**: Integer  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- Contract Identifier
+- Contract Surrogate Key
+- Contract ID
 
 ## Related Concepts
 
-- [Contract](contract.md)
-- [Booking Transaction](booking-transaction.md)
-
----
+- [Contract](./contract.md)
+- [Booking Transaction](./booking-transaction.md)
 
 ## Usage Context
 
-Contract Key is used to:
+The Contract Key is used to:
 - Uniquely identify contract records
-- Link booking transactions to contracts
+- Link contracts to booking transactions
 - Maintain referential integrity
-- Enable efficient joins between fact and dimension tables
-- Support data warehouse operations
+- Enable efficient dimensional queries
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Contract](../entities/contract.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Contract (ENT001)  
+**Attribute**: ATTR001
