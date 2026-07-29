@@ -13,51 +13,41 @@ timestamp: 2026-07-28T00:00:00Z
 
 Business identifier assigned to the partner organization.
 
----
-
 ## Business Meaning
 
-Partner ID is the business-recognized identifier used to uniquely identify partner organizations in operational systems and business processes. Unlike the surrogate Partner Key, the Partner ID is meaningful to business users and is used in partner communications, program management, and business reporting.
-
----
+Partner ID is the business-facing identifier used to reference partner organizations in operational systems, reports, and communications. It is used in partner-facing contexts and partner management activities.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_partner
-
-**Source Column**: partner_id
-
-**Entity**: [Partner](../entities/partner.md)
-
-**Attribute**: Partner ID
-
-**Data Type**: Character Varying(20)
-
+**Source Table**: QuoteToBooking.dim_partner  
+**Source Column**: partner_id  
+**Entity**: [Partner](../entities/partner.md)  
+**Attribute**: Partner ID  
+**Data Type**: Character Varying(20)  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- Partner Number
+- Partner Code
 
 ## Related Concepts
 
-- [Partner](partner.md)
-- [Partner Key](partner-key.md)
-- [Partner Name](partner-name.md)
-
----
+- [Partner](./partner.md)
+- [Partner Key](./partner-key.md)
+- [Partner Name](./partner-name.md)
 
 ## Usage Context
 
 Partner ID is used to:
-- Identify partner organizations in business processes
-- Support partner lookup and reference
-- Enable cross-system partner identification
-- Facilitate partner communications
-- Support partner program operations
+- Reference partners in business communications
+- Look up partner information
+- Integrate with partner systems
+- Support partner management
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Partner](../entities/partner.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Partner (ENT005)  
+**Attribute**: ATTR026
