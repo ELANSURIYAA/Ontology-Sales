@@ -3,7 +3,7 @@ title: Total Contract Value USD
 type: measure
 description: Total value of the full contract associated with the booking in U.S. dollars
 resource: measures
-tags: [measure, tcv, contract, revenue, total]
+tags: [tcv, contract, total, financial, metric]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,190 +11,117 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Total Contract Value (TCV) USD represents the total value of the full contract associated with the booking in U.S. dollars. This measure captures the complete revenue commitment over the entire contract term and is essential for long-term revenue planning, deal size analysis, and contract value tracking.
+Total value of the full contract associated with the booking in U.S. dollars. This measure represents the complete value of a contract over its entire term, providing visibility into long-term revenue commitments.
+
+---
+
+## Measure Identifier
+
+**Measure ID:** MEA006  
+**Source Entity:** [Booking Transaction](../entities/booking-transaction.md)
 
 ---
 
 ## Technical Mapping
 
-**Measure ID**: MEA006  
-**Technical Column**: tcv_usd  
-**Source Table**: QuoteToBooking.fact_bookings  
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Data Type**: Numeric
+**Source Table:** QuoteToBooking.fact_bookings  
+**Source Column:** tcv_usd  
+**Data Type:** Numeric
 
 ---
 
 ## Aggregation
 
-**Aggregation Type**: SUM  
-**Description**: Total TCV is calculated by summing individual total contract values across selected dimensions
+**Aggregation Type:** SUM  
+**Business Logic:** Sum of all total contract values across selected transactions
 
 ---
 
-## Formula
+## Business Formula
 
 ```
-Total Contract Value (TCV) = Booking Amount × Contract Term (Months) / 12
-TCV = Annual Contract Value (ACV) × Contract Term (Years)
-Total TCV = SUM(tcv_usd)
+Total Contract Value = SUM(tcv_usd)
+TCV = Annual Contract Value × Contract Term (in years)
 ```
-
----
-
-## Business Rules
-
-1. TCV must be non-negative
-2. TCV is expressed in U.S. dollars (USD)
-3. TCV represents full contract value over entire term
-4. TCV includes all committed revenue for contract duration
-5. TCV is calculated at time of booking
-
----
-
-## Analytical Usage
-
-### Contract Value Analysis
-- Track total contract values by customer and segment
-- Analyze deal sizes and contract commitments
-- Monitor large deal pipeline and closure
-
-### Long-term Revenue Planning
-- Forecast committed revenue over contract terms
-- Model future revenue streams from existing contracts
-- Support multi-year financial planning
-
-### Deal Size Analysis
-- Compare deal sizes across segments and products
-- Identify large enterprise deals
-- Track average contract values
-
-### Sales Performance
-- Measure sales representative performance on total deal value
-- Track large deal closure rates
-- Analyze deal size trends over time
 
 ---
 
 ## Related Entities
 
-- **[Booking Transaction](../entities/booking-transaction.md)** - Source entity containing TCV data
-- **[Contract](../entities/contract.md)** - Contract terms determining TCV
-- **[Customer](../entities/customer.md)** - Customer contract values
-- **[Product](../entities/product.md)** - Product contract performance
-- **[Sales Representative](../entities/sales-representative.md)** - Sales rep TCV credit
+- **[Booking Transaction](../entities/booking-transaction.md)** - Source entity for this measure
+- **[Contract](../entities/contract.md)** - Contracts with total values
+- **[Customer](../entities/customer.md)** - Customers with contract commitments
+- **[Product](../entities/product.md)** - Products with contract values
+- **[Partner](../entities/partner.md)** - Partners facilitating contracts
+
+---
+
+## Related Domains
+
+- **[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)** - Primary domain
+
+---
+
+## Business Use Cases
+
+1. **Long-term Value Analysis** - Track total committed revenue from contracts
+2. **Contract Portfolio** - Analyze total value of active contract portfolio
+3. **Revenue Pipeline** - Project future revenue from existing contracts
+4. **Customer Lifetime Value** - Calculate total contract value per customer
+5. **Strategic Planning** - Support long-term revenue planning and forecasting
+
+---
+
+## Analysis Dimensions
+
+This measure can be analyzed across:
+
+- [Customer](../entities/customer.md) - Segment, industry, account tier
+- [Product](../entities/product.md) - Product family, technology domain, offer type
+- [Partner](../entities/partner.md) - Partner type, partner tier
+- [Geography](../entities/geography.md) - Region, theater, country
+- [Date](../entities/date.md) - Fiscal year, quarter, period
+- [Sales Representative](../entities/sales-representative.md) - Sales role, team
+- [Contract](../entities/contract.md) - Contract type, term, coverage level
 
 ---
 
 ## Related Measures
 
-- **[Annual Contract Value USD](./annual-contract-value-usd.md)** - Annualized contract value (TCV / Term)
-- **[Booking Amount USD](./booking-amount-usd.md)** - Initial booking amount
-- **[Quantity Sold](./quantity-sold.md)** - Volume component
-- **[Discount Percentage](./discount-percentage.md)** - Pricing impact on TCV
+- [Annual Contract Value USD](./annual-contract-value-usd.md) - Annualized contract value
+- [Booking Amount USD](./booking-amount-usd.md) - Initial booking revenue
+- [Quantity Sold](./quantity-sold.md) - Volume of contract commitments
 
 ---
 
-## Calculation Relationships
+## Calculated Relationships
 
 ```
-TCV = ACV × Contract Term (Years)
-TCV = Booking Amount × Contract Term (Months) / 12
-ACV = TCV / Contract Term (Years)
-Average Contract Term = TCV / ACV
+Annual Contract Value = Total Contract Value / Contract Term (in years)
+Contract Portfolio Value = SUM(Total Contract Value) for active contracts
 ```
-
----
-
-## Dimensional Analysis
-
-Total Contract Value USD can be analyzed across:
-
-- **[Date](../entities/date.md)** - TCV trends over time
-- **[Product](../entities/product.md)** - Product TCV performance
-- **[Customer](../entities/customer.md)** - Customer segment TCV
-- **[Geography](../entities/geography.md)** - Regional TCV distribution
-- **[Partner](../entities/partner.md)** - Channel TCV contribution
-- **[Sales Representative](../entities/sales-representative.md)** - Sales rep TCV performance
-- **[Contract](../entities/contract.md)** - TCV by contract type and term
 
 ---
 
 ## Key Performance Indicators
 
-- **Total TCV** - Sum of all total contract values
-- **Average TCV** - Mean TCV per transaction
-- **TCV Growth Rate** - Period-over-period TCV change
-- **Large Deal TCV** - TCV from deals above threshold
-- **TCV per Customer** - Average TCV per customer account
-- **TCV Pipeline** - Forecasted future TCV
+- Total Contract Value by Fiscal Year
+- TCV Growth Rate
+- Average TCV per Customer
+- TCV by Contract Term Length
+- New TCV vs Renewal TCV
 
 ---
 
-## Business Context
+## Glossary Reference
 
-TCV is important for enterprise sales as it:
-- Captures full revenue commitment over contract life
-- Supports long-term revenue forecasting
-- Enables deal size and contract value analysis
-- Drives compensation for large enterprise deals
-- Provides visibility into committed future revenue
+- [Total Contract Value USD](../glossary/total-contract-value-usd.md)
 
 ---
 
-## Use Cases
+## Navigation
 
-### Enterprise Sales
-- Track large enterprise deal values
-- Monitor multi-year contract commitments
-- Analyze strategic account contract values
-
-### Revenue Planning
-- Forecast committed revenue streams
-- Model future revenue from existing contracts
-- Support financial planning and budgeting
-
-### Sales Compensation
-- Calculate commissions based on total deal value
-- Reward large deal closure
-- Track TCV quota attainment
-
-### Contract Management
-- Monitor contract value portfolio
-- Track contract renewals and expansions
-- Analyze contract value retention
-
----
-
-## Comparison with ACV
-
-| Aspect | TCV | ACV |
-|--------|-----|-----|
-| Definition | Total contract value | Annualized contract value |
-| Time Period | Full contract term | One year |
-| Use Case | Deal size analysis | Recurring revenue tracking |
-| Calculation | ACV × Term | TCV / Term |
-
----
-
-## Semantic Links
-
-- [Measure Index](./index.md)
-- [Metrics Overview](../metrics.md)
-- [Booking Transaction Entity](../entities/booking-transaction.md)
-- [Contract Entity](../entities/contract.md)
-- [Main Index](../index.md)
-
----
-
-## Metadata
-
-**Measure ID**: MEA006  
-**Entity ID**: ENT008  
-**Technical Column**: tcv_usd  
-**Data Type**: Numeric  
-**Aggregation**: SUM  
-**Currency**: USD  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+- [Return to Measures Index](./index.md)
+- [View Metrics Summary](../metrics.md)
+- [View Source Entity](../entities/booking-transaction.md)
+- [Return to Bundle Index](../index.md)
