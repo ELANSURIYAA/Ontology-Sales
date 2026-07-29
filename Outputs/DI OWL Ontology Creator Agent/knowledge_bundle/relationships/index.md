@@ -1,123 +1,108 @@
 ---
-title: Relationship Index
+title: Relationships Index
 type: index
-description: Catalog of semantic relationships in the Sales Bookings and Revenue Analytics model
+description: Complete catalog of business relationships in the Sales Bookings and Revenue Analytics knowledge bundle
 resource: relationships
-tags: [relationships, associations, connections, index]
+tags: [relationships, index, catalog, foreign-keys]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Relationship Index
+# Relationships Index
 
 ## Overview
 
-This index catalogs all semantic relationships in the model. Relationships define how entities are connected and enable dimensional analysis across the star schema.
+This index catalogs all business relationships in the Sales Bookings and Revenue Analytics knowledge bundle. All relationships connect dimensional entities to the central Booking Transaction fact entity through foreign key relationships.
 
 ---
 
 ## Relationship Catalog
 
 ### [Contract to Booking Transaction](./contract-to-booking-transaction.md)
-**Relationship ID**: REL001  
-**Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Source**: [Contract](../entities/contract.md)  
-**Target**: [Booking Transaction](../entities/booking-transaction.md)  
-**Confidence**: 1.00
+**Relationship ID:** REL001  
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Description:** Links contract records to booking transactions, enabling analysis of bookings by contract type, term, and coverage level.
+
+---
 
 ### [Customer to Booking Transaction](./customer-to-booking-transaction.md)
-**Relationship ID**: REL002  
-**Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Source**: [Customer](../entities/customer.md)  
-**Target**: [Booking Transaction](../entities/booking-transaction.md)  
-**Confidence**: 1.00
+**Relationship ID:** REL002  
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Description:** Links customer records to booking transactions, enabling analysis of bookings by customer segment, industry, and account tier.
+
+---
 
 ### [Date to Booking Transaction](./date-to-booking-transaction.md)
-**Relationship ID**: REL003  
-**Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Source**: [Date](../entities/date.md)  
-**Target**: [Booking Transaction](../entities/booking-transaction.md)  
-**Confidence**: 1.00
+**Relationship ID:** REL003  
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Description:** Links date records to booking transactions, enabling temporal analysis by fiscal year, quarter, and period.
+
+---
 
 ### [Geography to Booking Transaction](./geography-to-booking-transaction.md)
-**Relationship ID**: REL004  
-**Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Source**: [Geography](../entities/geography.md)  
-**Target**: [Booking Transaction](../entities/booking-transaction.md)  
-**Confidence**: 1.00
+**Relationship ID:** REL004  
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Description:** Links geography records to booking transactions, enabling spatial analysis by region, theater, and country.
+
+---
 
 ### [Partner to Booking Transaction](./partner-to-booking-transaction.md)
-**Relationship ID**: REL005  
-**Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Source**: [Partner](../entities/partner.md)  
-**Target**: [Booking Transaction](../entities/booking-transaction.md)  
-**Confidence**: 1.00
+**Relationship ID:** REL005  
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Description:** Links partner records to booking transactions, enabling analysis of bookings by partner type, tier, and route to market.
+
+---
 
 ### [Product to Booking Transaction](./product-to-booking-transaction.md)
-**Relationship ID**: REL006  
-**Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Source**: [Product](../entities/product.md)  
-**Target**: [Booking Transaction](../entities/booking-transaction.md)  
-**Confidence**: 1.00
+**Relationship ID:** REL006  
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Description:** Links product records to booking transactions, enabling analysis of bookings by product family, technology domain, and offer type.
+
+---
 
 ### [Sales Representative to Booking Transaction](./sales-representative-to-booking-transaction.md)
-**Relationship ID**: REL007  
-**Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Source**: [Sales Representative](../entities/sales-representative.md)  
-**Target**: [Booking Transaction](../entities/booking-transaction.md)  
-**Confidence**: 1.00
+**Relationship ID:** REL007  
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Description:** Links sales representative records to booking transactions, enabling analysis of bookings by sales role, team, and covered segment.
 
 ---
 
 ## Relationship Statistics
 
-| Metric | Count |
-|--------|-------|
-| Total Relationships | 7 |
-| One-to-Many Relationships | 7 |
-| Foreign Key Relationships | 7 |
-| Average Confidence Score | 1.00 |
+- **Total Relationships:** 7
+- **Relationship Type:** Foreign Key
+- **Cardinality Pattern:** One-to-Many
+- **Source Entities:** 7 dimensional entities
+- **Target Entity:** 1 fact entity (Booking Transaction)
 
 ---
 
-## Star Schema Pattern
+## Relationship Pattern
 
-All relationships follow a star schema pattern with Booking Transaction as the central fact entity:
+All relationships follow a star schema pattern where dimensional entities connect to the central fact entity:
 
 ```
-        Contract ────────┐
-        Customer ────────┤
-        Date ────────────┤
-        Geography ───────┼──→ Booking Transaction (Fact)
-        Partner ─────────┤
-        Product ─────────┤
-        Sales Rep ───────┘
+Contract ──────────┐
+Customer ──────────┤
+Date ──────────────┤
+Geography ─────────┼──→ Booking Transaction
+Partner ───────────┤
+Product ───────────┤
+Sales Representative ┘
 ```
 
 ---
 
-## Semantic Links
+## Navigation
 
-- [Main Index](../index.md)
-- [Semantic Summary](../semantic_summary.md)
-- [Domain Index](../domains/index.md)
-- [Entity Index](../entities/index.md)
-- [Measure Index](../measures/index.md)
-- [Glossary Index](../glossary/index.md)
-
----
-
-## Metadata
-
-**Resource Type**: Relationship Catalog  
-**Total Relationships**: 7  
-**Model Pattern**: Star Schema  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+- [Return to Bundle Index](../index.md)
+- [View Semantic Summary](../semantic_summary.md)
+- [View All Entities](../entities/index.md)
+- [View All Domains](../domains/index.md)
+- [View All Measures](../measures/index.md)
