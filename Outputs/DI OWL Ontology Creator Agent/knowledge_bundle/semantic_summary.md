@@ -1,184 +1,102 @@
 ---
 title: Semantic Summary
 type: index
-description: High-level overview of the Sales Bookings and Revenue Analytics semantic model
+description: High-level semantic model overview for Sales Bookings and Revenue Analytics
 resource: knowledge_bundle
-tags: [semantic, summary, overview, model, sales, bookings]
+tags: [semantic, summary, overview, model]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Semantic Summary
 
-## Business Context
-
-The Sales Bookings and Revenue Analytics semantic model represents enterprise sales booking operations for networking, security, collaboration, observability, and software subscription products. The model captures completed customer bookings and enables comprehensive analysis of sales performance across multiple business dimensions.
-
----
-
 ## Domain Overview
 
-### Sales Bookings and Revenue Analytics
-
-This domain encompasses all aspects of sales booking operations including:
-
-- Customer relationship management
-- Product and offer management
-- Partner and channel operations
-- Geographic sales coverage
-- Contract and agreement tracking
-- Sales representative performance
-- Revenue and financial metrics
-
-The domain supports strategic decision-making through dimensional analysis of booking transactions across time, geography, customer segments, product portfolios, and sales channels.
+The **Sales Bookings and Revenue Analytics** domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. It captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
 
 ---
 
-## Entity Architecture
+## Semantic Architecture
+
+### Core Fact Entity
+
+**[Booking Transaction](./entities/booking-transaction.md)** - Stores individual completed sales booking transactions with related financial measures and links to customer, product, partner, geography, sales representative, contract, and date dimensions.
 
 ### Dimensional Entities
 
-The model follows a dimensional architecture with seven dimension entities providing business context:
-
-1. **[Contract](./entities/contract.md)** - Commercial agreements and terms
-2. **[Customer](./entities/customer.md)** - Customer organizations and accounts
-3. **[Date](./entities/date.md)** - Calendar and fiscal time periods
-4. **[Geography](./entities/geography.md)** - Sales regions and territories
-5. **[Partner](./entities/partner.md)** - Channel and direct partners
-6. **[Product](./entities/product.md)** - Products and subscription offers
-7. **[Sales Representative](./entities/sales-representative.md)** - Sales personnel
-
-### Fact Entity
-
-1. **[Booking Transaction](./entities/booking-transaction.md)** - Individual sales booking records with financial measures
+1. **[Contract](./entities/contract.md)** - Commercial agreements associated with bookings
+2. **[Customer](./entities/customer.md)** - Organizations that place orders and generate bookings
+3. **[Date](./entities/date.md)** - Calendar and fiscal date attributes for temporal analysis
+4. **[Geography](./entities/geography.md)** - Geographic attributes for regional analysis
+5. **[Partner](./entities/partner.md)** - Channel and direct partners involved in sales
+6. **[Product](./entities/product.md)** - Products and offers sold to customers
+7. **[Sales Representative](./entities/sales-representative.md)** - Sales personnel managing customer relationships
 
 ---
 
-## Relationship Model
+## Key Relationships
 
-The semantic model implements a star schema pattern with the Booking Transaction fact entity at the center, connected to seven dimension entities through foreign key relationships:
+All dimensional entities connect to the central **Booking Transaction** fact entity through foreign key relationships:
 
-- Contract → Booking Transaction (One-to-Many)
-- Customer → Booking Transaction (One-to-Many)
-- Date → Booking Transaction (One-to-Many)
-- Geography → Booking Transaction (One-to-Many)
-- Partner → Booking Transaction (One-to-Many)
-- Product → Booking Transaction (One-to-Many)
-- Sales Representative → Booking Transaction (One-to-Many)
-
-All relationships are validated with 1.00 confidence scores, ensuring data integrity and referential consistency.
+- [Contract → Booking Transaction](./relationships/contract-to-booking-transaction.md)
+- [Customer → Booking Transaction](./relationships/customer-to-booking-transaction.md)
+- [Date → Booking Transaction](./relationships/date-to-booking-transaction.md)
+- [Geography → Booking Transaction](./relationships/geography-to-booking-transaction.md)
+- [Partner → Booking Transaction](./relationships/partner-to-booking-transaction.md)
+- [Product → Booking Transaction](./relationships/product-to-booking-transaction.md)
+- [Sales Representative → Booking Transaction](./relationships/sales-representative-to-booking-transaction.md)
 
 ---
 
-## Measure Framework
+## Key Measures
 
-The model includes six core financial measures supporting revenue analytics:
+The model supports six primary financial and operational measures:
 
-1. **[Quantity Sold](./measures/quantity-sold.md)** - Units, licenses, or subscriptions
-2. **[Unit List Price USD](./measures/unit-list-price-usd.md)** - Standard pricing
-3. **[Discount Percentage](./measures/discount-percentage.md)** - Price adjustments
-4. **[Booking Amount USD](./measures/booking-amount-usd.md)** - Total booked revenue
+1. **[Quantity Sold](./measures/quantity-sold.md)** - Number of units, licenses, or subscriptions
+2. **[Unit List Price USD](./measures/unit-list-price-usd.md)** - Standard list price per unit
+3. **[Discount Percentage](./measures/discount-percentage.md)** - Percentage discount applied
+4. **[Booking Amount USD](./measures/booking-amount-usd.md)** - Total booked revenue amount
 5. **[Annual Contract Value USD](./measures/annual-contract-value-usd.md)** - Annualized contract value
-6. **[Total Contract Value USD](./measures/total-contract-value-usd.md)** - Full contract value
-
-These measures enable comprehensive financial analysis including revenue recognition, pricing analysis, discount management, and contract value tracking.
+6. **[Total Contract Value USD](./measures/total-contract-value-usd.md)** - Total contract value
 
 ---
 
-## Business Glossary
+## Business Analysis Capabilities
 
-The model includes 69 standardized business terms covering:
+This semantic model enables analysis across multiple dimensions:
 
-- Entity definitions
-- Attribute definitions
-- Business keys and identifiers
-- Dimensional attributes
-- Measure definitions
-- Technical mappings
-
-All glossary terms are mapped to technical implementations with confidence scores, ensuring semantic consistency between business and technical layers.
-
----
-
-## Technical Architecture
-
-### Source System
-
-**Database**: QuoteToBooking  
-**Schema**: Dimensional star schema  
-**Tables**: 8 (7 dimensions + 1 fact)
-
-### Data Model Pattern
-
-- **Type**: Star Schema
-- **Grain**: Individual booking transaction
-- **Keys**: Surrogate keys for dimensions, composite business keys for fact
-- **Slowly Changing Dimensions**: Type 1 (overwrite)
-
-### Integration Points
-
-The model supports integration with:
-- Business intelligence platforms
-- Data warehouses
-- Analytics applications
-- Reporting systems
-- Ontology frameworks
+- **Customer Analysis** - Segment, industry, account tier, headquarters location
+- **Product Analysis** - Product family, technology domain, offer type, business entity
+- **Partner Analysis** - Partner type, partner tier, route to market
+- **Geographic Analysis** - Sales region, theater, country
+- **Temporal Analysis** - Calendar year, fiscal year, fiscal quarter, fiscal period
+- **Sales Performance** - Sales representative, sales role, sales team, covered segment
+- **Contract Analysis** - Contract type, term, renewal behavior, coverage level
 
 ---
 
-## Analytical Capabilities
+## Technical Foundation
 
-### Dimensional Analysis
-
-- **Time**: Calendar and fiscal period analysis
-- **Geography**: Region, theater, and country analysis
-- **Customer**: Segment, industry, and account tier analysis
-- **Product**: Family, technology domain, and offer type analysis
-- **Partner**: Type, tier, and route-to-market analysis
-- **Contract**: Type, term, and coverage analysis
-- **Sales**: Representative, role, and team analysis
-
-### Measure Analysis
-
-- Revenue and booking analysis
-- Contract value tracking
-- Pricing and discount analysis
-- Volume and quantity analysis
-- Performance trending
-- Comparative analysis
+- **Source System:** QuoteToBooking
+- **Data Model Pattern:** Star Schema
+- **Fact Table:** fact_bookings
+- **Dimension Tables:** 7 dimension tables
+- **Total Attributes:** 61 attributes
+- **Business Keys:** 8 business keys
+- **Foreign Keys:** 7 foreign key relationships
 
 ---
 
-## Semantic Links
+## Glossary Coverage
 
-- [Complete Domain Catalog](./domains/index.md)
-- [Complete Entity Catalog](./entities/index.md)
-- [Complete Relationship Catalog](./relationships/index.md)
-- [Complete Measure Catalog](./measures/index.md)
-- [Complete Business Glossary](./glossary/index.md)
-- [Metrics Overview](./metrics.md)
+The model includes [69 business terms](./glossary/index.md) with complete definitions, technical mappings, and semantic relationships.
 
 ---
 
-## Model Statistics
+## Navigation
 
-| Component | Count |
-|-----------|-------|
-| Business Domains | 1 |
-| Business Entities | 8 |
-| Business Attributes | 61 |
-| Semantic Relationships | 7 |
-| Business Measures | 6 |
-| Glossary Terms | 69 |
-| Primary Keys | 8 |
-| Foreign Keys | 7 |
-
----
-
-## Metadata
-
-**Model Name**: Sales Bookings and Revenue Analytics  
-**Model Type**: Dimensional Star Schema  
-**Source**: OSI Semantic Model  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+- [Return to Bundle Index](./index.md)
+- [View All Domains](./domains/index.md)
+- [View All Entities](./entities/index.md)
+- [View All Relationships](./relationships/index.md)
+- [View All Measures](./measures/index.md)
+- [View Complete Glossary](./glossary/index.md)
