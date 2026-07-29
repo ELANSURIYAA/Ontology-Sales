@@ -3,7 +3,7 @@ title: Sales Region
 type: glossary
 description: High-level geographic region used for reporting and performance analysis
 resource: glossary
-tags: [glossary, geography, region, sales]
+tags: [geography, region, sales, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,50 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 High-level geographic region used for reporting and performance analysis.
 
+---
+
 ## Business Meaning
 
-Sales Region represents the highest level of geographic hierarchy, typically covering major global areas. It enables executive-level regional performance analysis and strategic market planning.
+Sales Region represents the highest level of geographic hierarchy, grouping territories into major geographic areas for strategic planning and performance tracking. Regions enable executive-level geographic analysis.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_geography  
-**Source Column**: region  
-**Entity**: [Geography](../entities/geography.md)  
-**Attribute**: Sales Region  
-**Data Type**: Character Varying(20)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_geography  
+**Source Column:** region  
+**Data Type:** Character Varying(20)  
+**Entity:** [Geography](../entities/geography.md)  
+**Attribute:** Sales Region  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Region
-- Geographic Region
-- Market Region
+---
 
 ## Related Concepts
 
-- [Geography](./geography.md)
-- [Sales Theater](./sales-theater.md)
-- [Country](./country.md)
+- [Geography](./geography.md) - Parent entity
+- [Sales Theater](./sales-theater.md) - Subregional area
+- [Country](./country.md) - Country location
+
+---
 
 ## Usage Context
 
 Sales Region is used to:
-- Enable high-level regional reporting
-- Support strategic market analysis
-- Track regional performance
-- Allocate regional resources
-
-## Example Values
-
-- Americas
-- EMEA
-- APAC
-- North America
-- Europe
+- Group territories into major geographic areas
+- Enable high-level regional performance analysis
+- Support strategic planning and resource allocation
+- Track regional market trends
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Geography (ENT004)  
-**Attribute**: ATTR022
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/geography.md)
+- [Return to Bundle Index](../index.md)
