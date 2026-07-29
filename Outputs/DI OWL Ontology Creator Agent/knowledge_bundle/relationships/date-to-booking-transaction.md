@@ -1,105 +1,96 @@
 ---
 title: Date to Booking Transaction
 type: relationship
-description: One-to-Many relationship linking dates to booking transactions
+description: Foreign key relationship linking dates to booking transactions
 resource: relationships
-tags: [relationship, date, booking, foreign-key]
+tags: [date, booking, foreign-key, one-to-many, temporal]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Date to Booking Transaction
 
-## Business Description
+## Relationship Definition
 
-This relationship links Date dimension records to Booking Transaction fact records. Each date can be associated with multiple booking transactions, while each booking transaction occurs on exactly one date. This relationship enables time-based analysis of booking performance across calendar and fiscal periods.
+Links date records to booking transactions, enabling temporal analysis by fiscal year, fiscal quarter, calendar year, and fiscal period. This relationship allows business users to track sales performance over time and identify trends.
 
 ---
 
-## Relationship Details
+## Relationship Identifier
 
-**Relationship ID**: REL003  
-**Relationship Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Confidence Score**: 1.00
+**Relationship ID:** REL003
 
 ---
 
 ## Source Entity
 
-**Entity**: [Date](../entities/date.md)  
-**Entity ID**: ENT003  
-**Attribute**: Date Key  
-**Technical Column**: date_key  
-**Role**: Parent (One side)
+**[Date](../entities/date.md)**  
+**Entity ID:** ENT003  
+**Technical Table:** QuoteToBooking.dim_date
 
 ---
 
 ## Target Entity
 
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Entity ID**: ENT008  
-**Attribute**: Booking Date Key  
-**Technical Column**: date_key  
-**Role**: Child (Many side)
+**[Booking Transaction](../entities/booking-transaction.md)**  
+**Entity ID:** ENT008  
+**Technical Table:** QuoteToBooking.fact_bookings
+
+---
+
+## Relationship Type
+
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Confidence Score:** 1.00
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_date  
-**Target Table**: QuoteToBooking.fact_bookings  
-**Join Condition**: `dim_date.date_key = fact_bookings.date_key`
+**Parent Attribute:** Date Key (date_key)  
+**Child Attribute:** Booking Date Key (date_key)  
+**Join Condition:** dim_date.date_key = fact_bookings.date_key
 
 ---
 
-## Business Rules
+## Business Description
 
-1. Each booking transaction must reference a valid date
-2. A date can have zero or many booking transactions
-3. Date Key in Booking Transaction must exist in Date dimension
-4. Referential integrity must be maintained
-5. Date attributes apply to all associated booking transactions
+Each date can be associated with multiple booking transactions, but each booking transaction occurs on exactly one date. This relationship enables analysis of:
 
----
-
-## Analytical Usage
-
-This relationship enables analysis of:
-
-- Booking trends over time (daily, monthly, quarterly, yearly)
-- Calendar year vs fiscal year performance comparison
-- Seasonal patterns and booking cycles
-- Period-over-period growth analysis
-- Fiscal quarter and year-end performance tracking
+- Booking performance by fiscal year
+- Quarterly trend analysis
+- Seasonal booking patterns
+- Year-over-year growth comparison
+- Period-over-period performance tracking
 
 ---
 
-## Related Concepts
+## Related Measures
 
-- [Date](../entities/date.md) - Source dimension entity
-- [Booking Transaction](../entities/booking-transaction.md) - Target fact entity
-- [Contract](../entities/contract.md) - Contract effective dates
-- [Customer](../entities/customer.md) - Customer acquisition timing
+This relationship enables time-based analysis of:
 
----
-
-## Semantic Links
-
-- [Relationship Index](./index.md)
-- [Entity Index](../entities/index.md)
-- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-- [Main Index](../index.md)
+- [Booking Amount USD](../measures/booking-amount-usd.md)
+- [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
+- [Total Contract Value USD](../measures/total-contract-value-usd.md)
+- [Quantity Sold](../measures/quantity-sold.md)
+- [Unit List Price USD](../measures/unit-list-price-usd.md)
+- [Discount Percentage](../measures/discount-percentage.md)
 
 ---
 
-## Metadata
+## Business Use Cases
 
-**Relationship ID**: REL003  
-**Source Entity ID**: ENT003  
-**Target Entity ID**: ENT008  
-**Relationship Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Confidence Score**: 1.00  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+1. **Fiscal Year Analysis** - Track annual booking performance against targets
+2. **Quarterly Trends** - Analyze booking patterns by fiscal quarter
+3. **Seasonal Analysis** - Identify seasonal booking trends and patterns
+4. **Growth Analysis** - Calculate year-over-year and quarter-over-quarter growth
+5. **Period Comparison** - Compare booking performance across fiscal periods
+
+---
+
+## Navigation
+
+- [Return to Relationships Index](./index.md)
+- [View Source Entity: Date](../entities/date.md)
+- [View Target Entity: Booking Transaction](../entities/booking-transaction.md)
+- [Return to Bundle Index](../index.md)
