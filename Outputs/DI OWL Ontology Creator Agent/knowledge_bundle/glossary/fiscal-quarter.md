@@ -3,7 +3,7 @@ title: Fiscal Quarter
 type: glossary
 description: Fiscal quarter used by the business for periodic reporting and analysis
 resource: glossary
-tags: [glossary, date, fiscal-quarter, financial]
+tags: [glossary, date, fiscal, quarter]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,51 +13,49 @@ timestamp: 2026-07-28T00:00:00Z
 
 Fiscal quarter used by the business for periodic reporting and analysis.
 
----
-
 ## Business Meaning
 
-Fiscal Quarter represents a three-month period within the organization's fiscal year used for periodic financial reporting and performance measurement. Quarters are typically designated as Q1, Q2, Q3, and Q4 within a fiscal year. Fiscal quarters enable quarterly performance tracking, trend analysis, and alignment with quarterly business reviews and planning cycles.
-
----
+Fiscal Quarter divides the fiscal year into four reporting periods, enabling quarterly performance tracking, trend analysis, and quarter-over-quarter comparisons. Quarterly reporting is fundamental to business performance management.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_date
-
-**Source Column**: fiscal_quarter
-
-**Entity**: [Date](../entities/date.md)
-
-**Attribute**: Fiscal Quarter
-
-**Data Type**: Character Varying(10)
-
+**Source Table**: QuoteToBooking.dim_date  
+**Source Column**: fiscal_quarter  
+**Entity**: [Date](../entities/date.md)  
+**Attribute**: Fiscal Quarter  
+**Data Type**: Character Varying(10)  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- FQ
+- Quarter
 
 ## Related Concepts
 
-- [Date](date.md)
-- [Fiscal Year](fiscal-year.md)
-- [Fiscal Period Sequence](fiscal-period-sequence.md)
-
----
+- [Date](./date.md)
+- [Fiscal Year](./fiscal-year.md)
+- [Fiscal Period Sequence](./fiscal-period-sequence.md)
 
 ## Usage Context
 
 Fiscal Quarter is used to:
-- Enable quarterly reporting
-- Support quarterly performance analysis
-- Facilitate quarter-over-quarter comparisons
-- Enable seasonal trend analysis
-- Support quarterly planning and forecasting
+- Enable quarterly performance reporting
+- Support quarter-over-quarter analysis
+- Track quarterly targets and quotas
+- Analyze seasonal quarterly patterns
+
+## Example Values
+
+- Q1
+- Q2
+- Q3
+- Q4
+- FY2024-Q1
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Date](../entities/date.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Date (ENT003)  
+**Attribute**: ATTR019
