@@ -3,7 +3,7 @@ title: Technology Domain
 type: glossary
 description: Technology area or solution domain to which the product belongs
 resource: glossary
-tags: [glossary, product, technology, domain, solution]
+tags: [product, technology, domain, solution, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,48 +17,42 @@ Technology area or solution domain to which the product belongs.
 
 ## Business Meaning
 
-Technology Domain classifies products based on their primary technology area or solution category. Domains represent major technology categories such as networking, security, collaboration, observability, or software platforms. Technology domain classification enables technology-focused analysis, competitive positioning, and strategic investment decisions across the product portfolio.
+Technology Domain categorizes products by their primary technology area or solution focus, such as networking, security, collaboration, or observability. This classification enables technology-specific analysis and strategic planning.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_product
-
-**Source Column**: technology_domain
-
-**Entity**: [Product](../entities/product.md)
-
-**Attribute**: Technology Domain
-
-**Data Type**: Character Varying(40)
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_product  
+**Source Column:** technology_domain  
+**Data Type:** Character Varying(40)  
+**Entity:** [Product](../entities/product.md)  
+**Attribute:** Technology Domain  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Product](product.md)
-- [Product Key](product-key.md)
-- [Product Family](product-family.md)
-- [Offer Type](offer-type.md)
+- [Product](./product.md) - Parent entity
+- [Product Family](./product-family.md) - Portfolio grouping
+- [Offer Type](./offer-type.md) - Delivery model
 
 ---
 
 ## Usage Context
 
 Technology Domain is used to:
-- Classify products by technology area
-- Enable technology-focused performance analysis
+- Categorize products by technology area
+- Enable domain-specific analysis
 - Support technology strategy development
-- Facilitate competitive positioning
-- Enable technology investment decisions
+- Track technology portfolio mix
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Product](../entities/product.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/product.md)
+- [Return to Bundle Index](../index.md)
