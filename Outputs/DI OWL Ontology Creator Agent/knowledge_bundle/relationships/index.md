@@ -1,126 +1,123 @@
 ---
-title: Relationships Index
+title: Relationship Index
 type: index
-description: Navigation index for entity relationships
+description: Catalog of semantic relationships in the Sales Bookings and Revenue Analytics model
 resource: relationships
-tags: [relationships, index, foreign-key, cardinality]
+tags: [relationships, associations, connections, index]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Relationships Index
+# Relationship Index
 
-This index provides navigation to all entity relationship documents in the knowledge bundle.
+## Overview
 
----
-
-## Relationship Overview
-
-The knowledge bundle contains **7** entity relationships, all following a **One-to-Many** cardinality pattern from dimension entities to the fact entity.
+This index catalogs all semantic relationships in the model. Relationships define how entities are connected and enable dimensional analysis across the star schema.
 
 ---
 
-## Relationship List
+## Relationship Catalog
 
-### [Contract to Booking Transaction](contract-to-booking-transaction.md)
-
-**Source Entity**: [Contract](../entities/contract.md)  
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Cardinality**: One-to-Many  
+### [Contract to Booking Transaction](./contract-to-booking-transaction.md)
+**Relationship ID**: REL001  
 **Type**: Foreign Key  
-**Description**: Links contract records to booking transactions
-
----
-
-### [Customer to Booking Transaction](customer-to-booking-transaction.md)
-
-**Source Entity**: [Customer](../entities/customer.md)  
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)  
 **Cardinality**: One-to-Many  
+**Source**: [Contract](../entities/contract.md)  
+**Target**: [Booking Transaction](../entities/booking-transaction.md)  
+**Confidence**: 1.00
+
+### [Customer to Booking Transaction](./customer-to-booking-transaction.md)
+**Relationship ID**: REL002  
 **Type**: Foreign Key  
-**Description**: Links customer records to booking transactions
-
----
-
-### [Date to Booking Transaction](date-to-booking-transaction.md)
-
-**Source Entity**: [Date](../entities/date.md)  
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)  
 **Cardinality**: One-to-Many  
+**Source**: [Customer](../entities/customer.md)  
+**Target**: [Booking Transaction](../entities/booking-transaction.md)  
+**Confidence**: 1.00
+
+### [Date to Booking Transaction](./date-to-booking-transaction.md)
+**Relationship ID**: REL003  
 **Type**: Foreign Key  
-**Description**: Links date records to booking transactions
-
----
-
-### [Geography to Booking Transaction](geography-to-booking-transaction.md)
-
-**Source Entity**: [Geography](../entities/geography.md)  
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)  
 **Cardinality**: One-to-Many  
+**Source**: [Date](../entities/date.md)  
+**Target**: [Booking Transaction](../entities/booking-transaction.md)  
+**Confidence**: 1.00
+
+### [Geography to Booking Transaction](./geography-to-booking-transaction.md)
+**Relationship ID**: REL004  
 **Type**: Foreign Key  
-**Description**: Links geography records to booking transactions
-
----
-
-### [Partner to Booking Transaction](partner-to-booking-transaction.md)
-
-**Source Entity**: [Partner](../entities/partner.md)  
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)  
 **Cardinality**: One-to-Many  
+**Source**: [Geography](../entities/geography.md)  
+**Target**: [Booking Transaction](../entities/booking-transaction.md)  
+**Confidence**: 1.00
+
+### [Partner to Booking Transaction](./partner-to-booking-transaction.md)
+**Relationship ID**: REL005  
 **Type**: Foreign Key  
-**Description**: Links partner records to booking transactions
-
----
-
-### [Product to Booking Transaction](product-to-booking-transaction.md)
-
-**Source Entity**: [Product](../entities/product.md)  
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)  
 **Cardinality**: One-to-Many  
+**Source**: [Partner](../entities/partner.md)  
+**Target**: [Booking Transaction](../entities/booking-transaction.md)  
+**Confidence**: 1.00
+
+### [Product to Booking Transaction](./product-to-booking-transaction.md)
+**Relationship ID**: REL006  
 **Type**: Foreign Key  
-**Description**: Links product records to booking transactions
-
----
-
-### [Sales Representative to Booking Transaction](sales-representative-to-booking-transaction.md)
-
-**Source Entity**: [Sales Representative](../entities/sales-representative.md)  
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)  
 **Cardinality**: One-to-Many  
+**Source**: [Product](../entities/product.md)  
+**Target**: [Booking Transaction](../entities/booking-transaction.md)  
+**Confidence**: 1.00
+
+### [Sales Representative to Booking Transaction](./sales-representative-to-booking-transaction.md)
+**Relationship ID**: REL007  
 **Type**: Foreign Key  
-**Description**: Links sales representative records to booking transactions
+**Cardinality**: One-to-Many  
+**Source**: [Sales Representative](../entities/sales-representative.md)  
+**Target**: [Booking Transaction](../entities/booking-transaction.md)  
+**Confidence**: 1.00
 
 ---
 
-## Relationship Pattern
+## Relationship Statistics
 
-All relationships follow a star schema pattern where:
-
-- **Dimension entities** (Contract, Customer, Date, Geography, Partner, Product, Sales Representative) have a **One-to-Many** relationship with the **Fact entity** (Booking Transaction)
-- Each booking transaction references exactly one record from each dimension
-- Each dimension record can be referenced by zero or many booking transactions
-- All relationships are implemented through foreign key constraints
+| Metric | Count |
+|--------|-------|
+| Total Relationships | 7 |
+| One-to-Many Relationships | 7 |
+| Foreign Key Relationships | 7 |
+| Average Confidence Score | 1.00 |
 
 ---
 
-## Semantic Model Structure
+## Star Schema Pattern
+
+All relationships follow a star schema pattern with Booking Transaction as the central fact entity:
 
 ```
-Contract ──────────┐
-Customer ──────────┤
-Date ──────────────┤
-Geography ─────────┤──→ Booking Transaction (Fact)
-Partner ───────────┤
-Product ───────────┤
-Sales Representative ┘
+        Contract ────────┐
+        Customer ────────┤
+        Date ────────────┤
+        Geography ───────┼──→ Booking Transaction (Fact)
+        Partner ─────────┤
+        Product ─────────┤
+        Sales Rep ───────┘
 ```
 
 ---
 
-## Navigation
+## Semantic Links
 
-- [Back to Index](../index.md)
+- [Main Index](../index.md)
 - [Semantic Summary](../semantic_summary.md)
-- [View Domains](../domains/index.md)
-- [View Entities](../entities/index.md)
-- [View Measures](../measures/index.md)
-- [View Glossary](../glossary/index.md)
+- [Domain Index](../domains/index.md)
+- [Entity Index](../entities/index.md)
+- [Measure Index](../measures/index.md)
+- [Glossary Index](../glossary/index.md)
+
+---
+
+## Metadata
+
+**Resource Type**: Relationship Catalog  
+**Total Relationships**: 7  
+**Model Pattern**: Star Schema  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
