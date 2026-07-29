@@ -3,7 +3,7 @@ title: Sales Representative Name
 type: glossary
 description: Full name of the sales representative associated with the booking
 resource: glossary
-tags: [glossary, sales-representative, name, person]
+tags: [sales, representative, name, person, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,47 +17,42 @@ Full name of the sales representative associated with the booking.
 
 ## Business Meaning
 
-Sales Representative Name is the full name of the sales person responsible for the booking transaction. This name is used in reports, dashboards, and communications to identify the individual sales representative. It provides human-readable identification and enables recognition of sales personnel.
+Sales Representative Name is the full name of the individual sales person responsible for managing customer relationships and generating booking transactions. This is the primary descriptor used for sales representative identification.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_sales_rep
-
-**Source Column**: rep_name
-
-**Entity**: [Sales Representative](../entities/sales-representative.md)
-
-**Attribute**: Sales Representative Name
-
-**Data Type**: Character Varying(60)
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_sales_rep  
+**Source Column:** rep_name  
+**Data Type:** Character Varying(60)  
+**Entity:** [Sales Representative](../entities/sales-representative.md)  
+**Attribute:** Sales Representative Name  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Sales Representative](sales-representative.md)
-- [Sales Representative Key](sales-representative-key.md)
-- [Sales Representative ID](sales-representative-id.md)
+- [Sales Representative](./sales-representative.md) - Parent entity
+- [Sales Representative ID](./sales-representative-id.md) - Business identifier
+- [Sales Representative Key](./sales-representative-key.md) - Surrogate identifier
 
 ---
 
 ## Usage Context
 
 Sales Representative Name is used to:
-- Identify sales representatives in reports and dashboards
+- Identify sales personnel in reports and analysis
 - Support sales representative search and lookup
-- Display in user interfaces
-- Include in business communications
-- Enable sales representative recognition
+- Enable personnel communication
+- Provide human-readable sales representative identification
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Sales Representative](../entities/sales-representative.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/sales-representative.md)
+- [Return to Bundle Index](../index.md)
