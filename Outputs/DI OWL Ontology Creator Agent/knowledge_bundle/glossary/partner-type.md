@@ -1,9 +1,9 @@
 ---
 title: Partner Type
 type: glossary
-description: Classification of partner by operating model such as distributor, reseller, systems integrator, or direct
+description: Classifies the partner by operating model such as distributor, reseller, systems integrator, or direct
 resource: glossary
-tags: [glossary, partner, type, classification]
+tags: [partner, type, classification, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,50 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Classifies the partner by operating model, such as distributor, reseller, systems integrator, or direct.
 
+---
+
 ## Business Meaning
 
-Partner Type categorizes partners based on their business model and role in the sales channel. Different partner types have different capabilities, margins, and go-to-market strategies.
+Partner Type categorizes partners based on their business model and role in the sales channel. This classification enables analysis of channel effectiveness and supports partner strategy optimization.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_partner  
-**Source Column**: partner_type  
-**Entity**: [Partner](../entities/partner.md)  
-**Attribute**: Partner Type  
-**Data Type**: Character Varying(30)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_partner  
+**Source Column:** partner_type  
+**Data Type:** Character Varying(30)  
+**Entity:** [Partner](../entities/partner.md)  
+**Attribute:** Partner Type  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Channel Type
-- Partner Category
-- Partner Classification
+---
 
 ## Related Concepts
 
-- [Partner](./partner.md)
-- [Partner Tier](./partner-tier.md)
-- [Route to Market](./route-to-market.md)
+- [Partner](./partner.md) - Parent entity
+- [Partner Tier](./partner-tier.md) - Certification tier
+- [Route to Market](./route-to-market.md) - Sales delivery path
+
+---
 
 ## Usage Context
 
 Partner Type is used to:
-- Classify channel partners
-- Analyze performance by partner type
-- Support channel strategy
-- Allocate channel resources
-
-## Example Values
-
-- Distributor
-- Reseller
-- Systems Integrator
-- Managed Service Provider
-- Direct
+- Categorize partners by operating model
+- Enable partner type-specific analysis
+- Support channel strategy development
+- Track channel mix and performance
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Partner (ENT005)  
-**Attribute**: ATTR028
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/partner.md)
+- [Return to Bundle Index](../index.md)
