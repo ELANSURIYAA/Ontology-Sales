@@ -3,7 +3,7 @@ title: Month Name
 type: glossary
 description: Name of the calendar month for the date
 resource: glossary
-tags: [glossary, date, month, calendar]
+tags: [date, month, calendar, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,48 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Name of the calendar month for the date.
 
+---
+
 ## Business Meaning
 
-Month Name provides the textual representation of the calendar month, enabling month-based reporting and analysis. It supports monthly trending, seasonal analysis, and month-over-month comparisons.
+Month Name provides the textual name of the calendar month (e.g., January, February) for the date record. This enables month-based grouping and reporting in a human-readable format.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_date  
-**Source Column**: month_name  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Month Name  
-**Data Type**: Character Varying(12)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_date  
+**Source Column:** month_name  
+**Data Type:** Character Varying(12)  
+**Entity:** [Date](../entities/date.md)  
+**Attribute:** Month Name  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Calendar Month
-- Month
+---
 
 ## Related Concepts
 
-- [Date](./date.md)
-- [Full Date](./full-date.md)
-- [Calendar Year](./calendar-year.md)
+- [Date](./date.md) - Parent entity
+- [Calendar Year](./calendar-year.md) - Year component
+- [Fiscal Quarter](./fiscal-quarter.md) - Quarterly grouping
+
+---
 
 ## Usage Context
 
 Month Name is used to:
-- Display month labels in reports
-- Enable monthly aggregation and trending
-- Support seasonal analysis
-- Facilitate month-based filtering
-
-## Example Values
-
-- January
-- February
-- March
-- December
+- Provide human-readable month identification
+- Enable month-based analysis and reporting
+- Support seasonal trend analysis
+- Group transactions by calendar month
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Date (ENT003)  
-**Attribute**: ATTR016
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/date.md)
+- [Return to Bundle Index](../index.md)
