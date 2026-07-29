@@ -13,51 +13,42 @@ timestamp: 2026-07-28T00:00:00Z
 
 Business identifier assigned to the customer account.
 
----
-
 ## Business Meaning
 
-Customer ID is the business-recognized identifier used to uniquely identify customer accounts in operational systems and business processes. Unlike the surrogate Customer Key, the Customer ID is meaningful to business users and is used in customer communications, account management, and business reporting.
-
----
+Customer ID is the business-facing identifier used to reference customer accounts in operational systems, reports, and communications. Unlike the surrogate Customer Key, the Customer ID is meaningful to business users and is used in customer-facing contexts.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer
-
-**Source Column**: customer_id
-
-**Entity**: [Customer](../entities/customer.md)
-
-**Attribute**: Customer ID
-
-**Data Type**: Character Varying(20)
-
+**Source Table**: QuoteToBooking.dim_customer  
+**Source Column**: customer_id  
+**Entity**: [Customer](../entities/customer.md)  
+**Attribute**: Customer ID  
+**Data Type**: Character Varying(20)  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- Account ID
+- Customer Number
+- Account Number
 
 ## Related Concepts
 
-- [Customer](customer.md)
-- [Customer Key](customer-key.md)
-- [Customer Name](customer-name.md)
-
----
+- [Customer](./customer.md)
+- [Customer Key](./customer-key.md)
+- [Customer Name](./customer-name.md)
 
 ## Usage Context
 
 Customer ID is used to:
-- Identify customer accounts in business processes
-- Support customer lookup and reference
-- Enable cross-system customer identification
-- Facilitate customer communications
-- Support account management operations
+- Reference customer accounts in business communications
+- Look up customer information
+- Integrate with external systems
+- Support customer service and account management
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Customer](../entities/customer.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Customer (ENT002)  
+**Attribute**: ATTR007
