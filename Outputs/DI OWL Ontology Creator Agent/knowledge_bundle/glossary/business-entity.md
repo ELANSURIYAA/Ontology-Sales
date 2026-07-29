@@ -3,7 +3,7 @@ title: Business Entity
 type: glossary
 description: Internal business unit or portfolio responsible for the product
 resource: glossary
-tags: [glossary, product, business-entity, business-unit, portfolio]
+tags: [product, business, entity, organization, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,47 +17,42 @@ Internal business unit or portfolio responsible for the product.
 
 ## Business Meaning
 
-Business Entity identifies the internal organizational unit, division, or portfolio that owns and manages the product. This organizational classification enables business unit performance measurement, resource allocation, P&L analysis, and portfolio management. Business entities typically represent major divisions or strategic business units within the organization.
+Business Entity identifies the internal organizational unit or business portfolio that owns and manages the product. This classification enables organizational performance tracking and supports internal accountability.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_product
-
-**Source Column**: business_entity
-
-**Entity**: [Product](../entities/product.md)
-
-**Attribute**: Business Entity
-
-**Data Type**: Character Varying(30)
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_product  
+**Source Column:** business_entity  
+**Data Type:** Character Varying(30)  
+**Entity:** [Product](../entities/product.md)  
+**Attribute:** Business Entity  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Product](product.md)
-- [Product Key](product-key.md)
-- [Product Family](product-family.md)
+- [Product](./product.md) - Parent entity
+- [Product Family](./product-family.md) - Portfolio grouping
+- [Technology Domain](./technology-domain.md) - Solution domain
 
 ---
 
 ## Usage Context
 
 Business Entity is used to:
-- Identify product ownership
+- Identify product ownership and accountability
 - Enable business unit performance analysis
-- Support P&L reporting
-- Facilitate resource allocation
-- Enable portfolio management
+- Support organizational reporting
+- Track portfolio contribution by business unit
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Product](../entities/product.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/product.md)
+- [Return to Bundle Index](../index.md)
