@@ -3,7 +3,7 @@ title: Fiscal Quarter
 type: glossary
 description: Fiscal quarter used by the business for periodic reporting and analysis
 resource: glossary
-tags: [glossary, date, fiscal, quarter]
+tags: [date, fiscal, quarter, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,49 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Fiscal quarter used by the business for periodic reporting and analysis.
 
+---
+
 ## Business Meaning
 
-Fiscal Quarter divides the fiscal year into four reporting periods, enabling quarterly performance tracking, trend analysis, and quarter-over-quarter comparisons. Quarterly reporting is fundamental to business performance management.
+Fiscal Quarter divides the fiscal year into four reporting periods, enabling quarterly performance tracking, trend analysis, and period-over-period comparisons aligned with business planning cycles.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_date  
-**Source Column**: fiscal_quarter  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Fiscal Quarter  
-**Data Type**: Character Varying(10)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_date  
+**Source Column:** fiscal_quarter  
+**Data Type:** Character Varying(10)  
+**Entity:** [Date](../entities/date.md)  
+**Attribute:** Fiscal Quarter  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- FQ
-- Quarter
+---
 
 ## Related Concepts
 
-- [Date](./date.md)
-- [Fiscal Year](./fiscal-year.md)
-- [Fiscal Period Sequence](./fiscal-period-sequence.md)
+- [Date](./date.md) - Parent entity
+- [Fiscal Year](./fiscal-year.md) - Annual period
+- [Fiscal Period Sequence](./fiscal-period-sequence.md) - Period ordering
+
+---
 
 ## Usage Context
 
 Fiscal Quarter is used to:
-- Enable quarterly performance reporting
-- Support quarter-over-quarter analysis
-- Track quarterly targets and quotas
-- Analyze seasonal quarterly patterns
-
-## Example Values
-
-- Q1
-- Q2
-- Q3
-- Q4
-- FY2024-Q1
+- Enable quarterly performance analysis
+- Support quarterly business reviews
+- Track quarterly trends and patterns
+- Compare quarter-over-quarter performance
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Date (ENT003)  
-**Attribute**: ATTR019
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/date.md)
+- [Return to Bundle Index](../index.md)
