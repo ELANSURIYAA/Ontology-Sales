@@ -1,9 +1,9 @@
 ---
 title: Date
 type: glossary
-description: Calendar and fiscal date attributes used to analyze bookings over time
+description: Stores calendar and fiscal date attributes used to analyze bookings over time
 resource: glossary
-tags: [glossary, date, time, entity]
+tags: [date, time, calendar, fiscal, entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,41 +13,45 @@ timestamp: 2026-07-28T00:00:00Z
 
 Stores calendar and fiscal date attributes used to analyze bookings over time.
 
+---
+
 ## Business Meaning
 
-The Date entity provides temporal context for booking transactions, enabling time-based analysis across calendar and fiscal periods. Date attributes support trending, period-over-period comparisons, and fiscal reporting.
+The Date entity provides temporal context for booking transactions, enabling time-based analysis across calendar and fiscal periods. It supports trend analysis, period comparisons, and time-series reporting.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_date  
-**Entity**: [Date](../entities/date.md)  
-**Attribute**: Entity-level term  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_date  
+**Entity:** [Date](../entities/date.md)  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Time
-- Date Dimension
-- Calendar
+---
 
 ## Related Concepts
 
-- [Date Key](./date-key.md)
-- [Full Date](./full-date.md)
-- [Fiscal Year](./fiscal-year.md)
-- [Fiscal Quarter](./fiscal-quarter.md)
-- [Booking Transaction](./booking-transaction.md)
+- [Booking Transaction](./booking-transaction.md) - Transactions occurring on dates
+- [Date Key](./date-key.md) - Unique identifier
+- [Fiscal Year](./fiscal-year.md) - Fiscal year attribute
+- [Fiscal Quarter](./fiscal-quarter.md) - Fiscal quarter attribute
+- [Calendar Year](./calendar-year.md) - Calendar year attribute
+
+---
 
 ## Usage Context
 
 Date is used to:
-- Enable time-based analysis of bookings
-- Support fiscal and calendar reporting
+- Provide temporal context for transactions
+- Enable time-based analysis and reporting
+- Support fiscal and calendar period analysis
 - Track trends and patterns over time
-- Enable period-over-period comparisons
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Date (ENT003)
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/date.md)
+- [Return to Bundle Index](../index.md)
