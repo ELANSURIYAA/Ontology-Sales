@@ -3,7 +3,7 @@ title: Booking Amount USD
 type: glossary
 description: Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments
 resource: glossary
-tags: [glossary, booking, revenue, amount, measure]
+tags: [booking, transaction, revenue, financial, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,51 +17,46 @@ Total booked revenue amount for the transaction in U.S. dollars after pricing ad
 
 ## Business Meaning
 
-Booking Amount USD is the primary revenue metric representing the net value of a completed booking transaction after all pricing adjustments, discounts, and negotiations. This is the actual revenue recognized from the sale and serves as the foundation for financial reporting, performance measurement, and revenue forecasting. All amounts are recorded in U.S. dollars for consistent financial analysis.
+Booking Amount USD represents the actual revenue recognized from each booking transaction after applying discounts and pricing adjustments. This is the primary revenue metric for sales performance analysis.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.fact_bookings
-
-**Source Column**: booking_amount_usd
-
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Attribute**: Booking Amount USD
-
-**Data Type**: Numeric
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** fact_bookings  
+**Source Column:** booking_amount_usd  
+**Data Type:** Numeric  
+**Entity:** [Booking Transaction](../entities/booking-transaction.md)  
+**Attribute:** Booking Amount USD  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Booking Transaction](booking-transaction.md)
-- [Unit List Price USD](unit-list-price-usd.md)
-- [Discount Percentage](discount-percentage.md)
-- [Quantity Sold](quantity-sold.md)
-- [Annual Contract Value USD](annual-contract-value-usd.md)
-- [Total Contract Value USD](total-contract-value-usd.md)
+- [Booking Transaction](./booking-transaction.md) - Parent entity
+- [Unit List Price USD](./unit-list-price-usd.md) - Base price
+- [Discount Percentage](./discount-percentage.md) - Discount applied
+- [Quantity Sold](./quantity-sold.md) - Volume sold
+- [Annual Contract Value USD](./annual-contract-value-usd.md) - Annualized value
+- [Total Contract Value USD](./total-contract-value-usd.md) - Total value
 
 ---
 
 ## Usage Context
 
 Booking Amount USD is used to:
-- Measure total revenue
+- Track actual revenue from transactions
+- Measure sales performance
+- Calculate revenue metrics
 - Support financial reporting
-- Enable performance measurement
-- Facilitate revenue forecasting
-- Calculate key revenue metrics
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Booking Transaction](../entities/booking-transaction.md)
-- [View Measure: Booking Amount USD](../measures/booking-amount-usd.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/booking-transaction.md)
+- [View Measure Definition](../measures/booking-amount-usd.md)
+- [Return to Bundle Index](../index.md)
