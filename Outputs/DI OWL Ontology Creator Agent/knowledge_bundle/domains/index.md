@@ -1,31 +1,29 @@
 ---
-title: Domains Index
+title: Domain Index
 type: index
-description: Navigation index for business domains
+description: Catalog of business domains in the Sales Bookings and Revenue Analytics semantic model
 resource: domains
-tags: [domains, index, business-domain]
+tags: [domains, business, catalog, index]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Domains Index
+# Domain Index
 
-This index provides navigation to all business domain documents in the knowledge bundle.
+## Overview
 
----
-
-## Domain Overview
-
-The knowledge bundle contains **1** business domain:
+This index catalogs all business domains in the semantic model. Domains represent high-level business areas that organize related entities, relationships, and measures.
 
 ---
 
-## Domain List
+## Domain Catalog
 
-### [Sales Bookings and Revenue Analytics](sales-bookings-and-revenue-analytics.md)
+### [Sales Bookings and Revenue Analytics](./sales-bookings-and-revenue-analytics.md)
+
+**Domain ID**: DOM001
 
 **Description**: This domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. It captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
 
-**Related Entities**: 
+**Related Entities**:
 - [Contract](../entities/contract.md)
 - [Customer](../entities/customer.md)
 - [Date](../entities/date.md)
@@ -45,11 +43,32 @@ The knowledge bundle contains **1** business domain:
 
 ---
 
-## Navigation
+## Domain Statistics
 
-- [Back to Index](../index.md)
+| Metric | Count |
+|--------|-------|
+| Total Domains | 1 |
+| Total Entities | 8 |
+| Total Measures | 6 |
+| Total Relationships | 7 |
+
+---
+
+## Semantic Links
+
+- [Main Index](../index.md)
 - [Semantic Summary](../semantic_summary.md)
-- [View Entities](../entities/index.md)
-- [View Relationships](../relationships/index.md)
-- [View Measures](../measures/index.md)
-- [View Glossary](../glossary/index.md)
+- [Entity Index](../entities/index.md)
+- [Relationship Index](../relationships/index.md)
+- [Measure Index](../measures/index.md)
+- [Glossary Index](../glossary/index.md)
+
+---
+
+## Metadata
+
+**Resource Type**: Domain Catalog  
+**Total Domains**: 1  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
