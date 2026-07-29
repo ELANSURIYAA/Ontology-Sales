@@ -3,7 +3,7 @@ title: Sales Theater
 type: glossary
 description: Subregional sales area or theater used to organize market coverage and reporting
 resource: glossary
-tags: [glossary, geography, theater, sales]
+tags: [geography, theater, sales, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,50 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Subregional sales area or theater used to organize market coverage and reporting.
 
+---
+
 ## Business Meaning
 
-Sales Theater represents a mid-level geographic hierarchy between region and country. It enables theater-level performance tracking, territory management, and subregional market analysis.
+Sales Theater represents a subregional geographic area within a sales region, providing a mid-level geographic hierarchy for territory management and performance analysis. Theaters enable more granular geographic reporting than regions.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_geography  
-**Source Column**: theater  
-**Entity**: [Geography](../entities/geography.md)  
-**Attribute**: Sales Theater  
-**Data Type**: Character Varying(30)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_geography  
+**Source Column:** theater  
+**Data Type:** Character Varying(30)  
+**Entity:** [Geography](../entities/geography.md)  
+**Attribute:** Sales Theater  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Theater
-- Subregion
-- Territory
+---
 
 ## Related Concepts
 
-- [Geography](./geography.md)
-- [Sales Region](./sales-region.md)
-- [Country](./country.md)
+- [Geography](./geography.md) - Parent entity
+- [Sales Region](./sales-region.md) - Parent regional area
+- [Country](./country.md) - Country location
+
+---
 
 ## Usage Context
 
 Sales Theater is used to:
+- Organize market coverage within regions
 - Enable theater-level performance analysis
-- Support territory management
-- Track subregional market performance
-- Organize sales coverage
-
-## Example Values
-
-- North America
-- Latin America
-- Europe
-- Middle East
-- Asia Pacific North
+- Support territory management and planning
+- Track subregional market trends
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Geography (ENT004)  
-**Attribute**: ATTR023
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/geography.md)
+- [Return to Bundle Index](../index.md)
