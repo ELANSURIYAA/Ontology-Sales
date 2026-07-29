@@ -1,248 +1,137 @@
 ---
-title: Business Metrics Catalog
+title: Business Metrics
 type: index
-description: Comprehensive catalog of business measures and KPIs for sales booking and revenue analytics
+description: Complete catalog of business measures and KPIs for Sales Bookings and Revenue Analytics
 resource: knowledge_bundle
-tags: [metrics, measures, kpi, financial, revenue, sales]
+tags: [metrics, measures, kpi, financial, operational]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Business Metrics Catalog
+# Business Metrics
 
 ## Overview
 
-This catalog documents all business measures and key performance indicators (KPIs) used in the Sales Bookings and Revenue Analytics domain. These metrics enable comprehensive financial analysis, performance tracking, and strategic decision-making.
+This document catalogs all business measures and key performance indicators (KPIs) available in the Sales Bookings and Revenue Analytics domain. All measures are derived from the [Booking Transaction](./entities/booking-transaction.md) fact entity.
 
 ---
 
-## Measure Categories
+## Financial Measures
 
-### Volume Metrics
+### Revenue Measures
 
-Measures tracking transaction volumes and quantities:
+#### [Booking Amount USD](./measures/booking-amount-usd.md)
+- **Definition:** Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments
+- **Aggregation:** SUM
+- **Business Use:** Primary revenue metric for sales performance analysis
 
-- **[Quantity Sold](./measures/quantity-sold.md)** - Units, licenses, or subscriptions sold
+#### [Annual Contract Value USD](./measures/annual-contract-value-usd.md)
+- **Definition:** Annualized value of the contract associated with the booking in U.S. dollars
+- **Aggregation:** SUM
+- **Business Use:** Subscription and recurring revenue analysis
 
-### Pricing Metrics
-
-Measures related to product pricing and discounting:
-
-- **[Unit List Price USD](./measures/unit-list-price-usd.md)** - Standard list price per unit
-- **[Discount Percentage](./measures/discount-percentage.md)** - Price discount percentage
-
-### Revenue Metrics
-
-Measures tracking booked revenue and financial performance:
-
-- **[Booking Amount USD](./measures/booking-amount-usd.md)** - Total booked revenue
-- **[Annual Contract Value USD](./measures/annual-contract-value-usd.md)** - Annualized contract value (ACV)
-- **[Total Contract Value USD](./measures/total-contract-value-usd.md)** - Total contract value (TCV)
+#### [Total Contract Value USD](./measures/total-contract-value-usd.md)
+- **Definition:** Total value of the full contract associated with the booking in U.S. dollars
+- **Aggregation:** SUM
+- **Business Use:** Long-term contract value analysis
 
 ---
 
-## Detailed Measure Specifications
+## Pricing Measures
 
-### Quantity Sold
+#### [Unit List Price USD](./measures/unit-list-price-usd.md)
+- **Definition:** Standard list price per unit in U.S. dollars before discounts are applied
+- **Aggregation:** SUM
+- **Business Use:** Pricing strategy and discount analysis
 
-**Business Definition**: Number of units, licenses, or subscriptions included in the booking transaction  
-**Technical Column**: `quantity`  
-**Aggregation**: SUM  
-**Data Type**: Integer  
-**Source Entity**: [Booking Transaction](./entities/booking-transaction.md)
-
-**Usage**:
-- Volume analysis
-- Product adoption tracking
-- Sales performance measurement
-- Capacity planning
+#### [Discount Percentage](./measures/discount-percentage.md)
+- **Definition:** Percentage discount applied to the list price for the booking transaction
+- **Aggregation:** AVG
+- **Business Use:** Discount effectiveness and margin analysis
 
 ---
 
-### Unit List Price USD
+## Operational Measures
 
-**Business Definition**: Standard list price per unit in U.S. dollars before discounts are applied  
-**Technical Column**: `unit_list_price_usd`  
-**Aggregation**: SUM  
-**Data Type**: Numeric  
-**Source Entity**: [Booking Transaction](./entities/booking-transaction.md)
-
-**Usage**:
-- Pricing strategy analysis
-- List price management
-- Price positioning
-- Revenue potential calculation
-
----
-
-### Discount Percentage
-
-**Business Definition**: Percentage discount applied to the list price for the booking transaction  
-**Technical Column**: `discount_pct`  
-**Aggregation**: AVG  
-**Data Type**: Numeric  
-**Source Entity**: [Booking Transaction](./entities/booking-transaction.md)
-
-**Usage**:
-- Discount analysis
-- Pricing effectiveness
-- Margin management
-- Competitive positioning
-
----
-
-### Booking Amount USD
-
-**Business Definition**: Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments  
-**Technical Column**: `booking_amount_usd`  
-**Aggregation**: SUM  
-**Data Type**: Numeric  
-**Source Entity**: [Booking Transaction](./entities/booking-transaction.md)
-
-**Usage**:
-- Revenue reporting
-- Sales performance tracking
-- Quota attainment
-- Financial forecasting
-
-**Formula**: `Quantity × Unit List Price × (1 - Discount Percentage)`
-
----
-
-### Annual Contract Value USD
-
-**Business Definition**: Annualized value of the contract associated with the booking in U.S. dollars  
-**Technical Column**: `acv_usd`  
-**Aggregation**: SUM  
-**Data Type**: Numeric  
-**Source Entity**: [Booking Transaction](./entities/booking-transaction.md)
-
-**Usage**:
-- Subscription revenue analysis
-- Recurring revenue tracking
-- Customer lifetime value
-- Growth rate calculation
-
-**Formula**: `Total Contract Value ÷ Contract Term (Years)`
-
----
-
-### Total Contract Value USD
-
-**Business Definition**: Total value of the full contract associated with the booking in U.S. dollars  
-**Technical Column**: `tcv_usd`  
-**Aggregation**: SUM  
-**Data Type**: Numeric  
-**Source Entity**: [Booking Transaction](./entities/booking-transaction.md)
-
-**Usage**:
-- Contract value analysis
-- Long-term revenue planning
-- Deal size tracking
-- Pipeline management
-
-**Formula**: `Booking Amount × Contract Term (Months) ÷ 12`
-
----
-
-## Analytical Dimensions
-
-All measures can be analyzed across the following business dimensions:
-
-### Temporal Analysis
-- **[Date](./entities/date.md)** - Calendar year, fiscal year, quarter, month, period
-
-### Geographic Analysis
-- **[Geography](./entities/geography.md)** - Region, theater, country
-
-### Customer Analysis
-- **[Customer](./entities/customer.md)** - Segment, industry, account tier, headquarters location
-
-### Product Analysis
-- **[Product](./entities/product.md)** - Family, technology domain, offer type, business entity
-
-### Partner Analysis
-- **[Partner](./entities/partner.md)** - Type, tier, route to market
-
-### Contract Analysis
-- **[Contract](./entities/contract.md)** - Type, term, coverage level, auto-renew
-
-### Sales Analysis
-- **[Sales Representative](./entities/sales-representative.md)** - Role, team, covered segment
+#### [Quantity Sold](./measures/quantity-sold.md)
+- **Definition:** Number of units, licenses, or subscriptions included in the booking transaction
+- **Aggregation:** SUM
+- **Business Use:** Volume analysis and capacity planning
 
 ---
 
 ## Measure Relationships
 
-### Revenue Hierarchy
+### Calculated Relationships
 
 ```
-Total Contract Value (TCV)
-  └─ Annual Contract Value (ACV)
-      └─ Booking Amount
-          ├─ Quantity Sold
-          ├─ Unit List Price
-          └─ Discount Percentage
+Booking Amount USD = (Unit List Price USD × Quantity Sold) × (1 - Discount Percentage)
 ```
 
-### Calculation Dependencies
+### Measure Dependencies
 
-- **Booking Amount** depends on: Quantity, Unit List Price, Discount Percentage
-- **Annual Contract Value** depends on: Total Contract Value, Contract Term
-- **Total Contract Value** depends on: Booking Amount, Contract Term
+- **Booking Amount USD** depends on:
+  - Unit List Price USD
+  - Quantity Sold
+  - Discount Percentage
+
+- **Annual Contract Value USD** relates to:
+  - Total Contract Value USD
+  - Contract Term Months (from [Contract](./entities/contract.md))
+
+---
+
+## Analysis Dimensions
+
+All measures can be analyzed across the following dimensions:
+
+- **[Customer](./entities/customer.md)** - Segment, industry, account tier
+- **[Product](./entities/product.md)** - Product family, technology domain, offer type
+- **[Partner](./entities/partner.md)** - Partner type, partner tier, route to market
+- **[Geography](./entities/geography.md)** - Region, theater, country
+- **[Date](./entities/date.md)** - Fiscal year, fiscal quarter, calendar year
+- **[Sales Representative](./entities/sales-representative.md)** - Sales role, sales team
+- **[Contract](./entities/contract.md)** - Contract type, term, coverage level
 
 ---
 
 ## Key Performance Indicators (KPIs)
 
-### Primary KPIs
+### Revenue KPIs
+- Total Booking Amount by Fiscal Period
+- Annual Contract Value by Customer Segment
+- Total Contract Value by Product Family
+- Average Booking Amount per Transaction
 
-1. **Total Bookings** - Sum of Booking Amount USD
-2. **Total ACV** - Sum of Annual Contract Value USD
-3. **Total TCV** - Sum of Total Contract Value USD
-4. **Average Deal Size** - Average of Booking Amount USD
-5. **Average Discount** - Average of Discount Percentage
-6. **Total Units Sold** - Sum of Quantity Sold
+### Operational KPIs
+- Total Quantity Sold by Product
+- Average Discount Percentage by Partner Type
+- Booking Count by Sales Representative
+- Renewal Rate (based on Booking Type)
 
-### Derived KPIs
-
-1. **Booking Growth Rate** - Period-over-period change in Total Bookings
-2. **ACV Growth Rate** - Period-over-period change in Total ACV
-3. **Average Contract Term** - TCV ÷ ACV
-4. **Effective Price** - Booking Amount ÷ Quantity
-5. **Discount Impact** - (List Price - Booking Amount) ÷ List Price
-6. **Revenue per Customer** - Total Bookings ÷ Distinct Customers
+### Efficiency KPIs
+- Average Unit List Price by Product Family
+- Discount Impact on Booking Amount
+- Contract Value per Customer
+- Booking Amount per Sales Representative
 
 ---
 
 ## Measure Catalog Summary
 
-| Measure | Type | Aggregation | Entity | Usage |
-|---------|------|-------------|--------|-------|
-| Quantity Sold | Volume | SUM | Booking Transaction | Volume analysis |
-| Unit List Price USD | Pricing | SUM | Booking Transaction | Pricing strategy |
-| Discount Percentage | Pricing | AVG | Booking Transaction | Discount analysis |
-| Booking Amount USD | Revenue | SUM | Booking Transaction | Revenue reporting |
-| Annual Contract Value USD | Revenue | SUM | Booking Transaction | Recurring revenue |
-| Total Contract Value USD | Revenue | SUM | Booking Transaction | Contract value |
+| Measure | Type | Aggregation | Source Entity |
+|---------|------|-------------|---------------|
+| [Quantity Sold](./measures/quantity-sold.md) | Operational | SUM | Booking Transaction |
+| [Unit List Price USD](./measures/unit-list-price-usd.md) | Pricing | SUM | Booking Transaction |
+| [Discount Percentage](./measures/discount-percentage.md) | Pricing | AVG | Booking Transaction |
+| [Booking Amount USD](./measures/booking-amount-usd.md) | Financial | SUM | Booking Transaction |
+| [Annual Contract Value USD](./measures/annual-contract-value-usd.md) | Financial | SUM | Booking Transaction |
+| [Total Contract Value USD](./measures/total-contract-value-usd.md) | Financial | SUM | Booking Transaction |
 
 ---
 
-## Semantic Links
+## Navigation
 
-- [Booking Transaction Entity](./entities/booking-transaction.md)
-- [Complete Measure Catalog](./measures/index.md)
-- [Entity Catalog](./entities/index.md)
-- [Semantic Summary](./semantic_summary.md)
-- [Main Index](./index.md)
-
----
-
-## Metadata
-
-**Catalog Type**: Business Measures  
-**Domain**: Sales Bookings and Revenue Analytics  
-**Total Measures**: 6  
-**Source Entity**: Booking Transaction  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+- [Return to Bundle Index](./index.md)
+- [View Semantic Summary](./semantic_summary.md)
+- [View All Measures](./measures/index.md)
+- [View Booking Transaction Entity](./entities/booking-transaction.md)
