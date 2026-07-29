@@ -3,7 +3,7 @@ title: Offer Type
 type: glossary
 description: Indicates whether the item is sold as hardware, software subscription, or SaaS subscription
 resource: glossary
-tags: [glossary, product, offer-type, subscription, hardware, software]
+tags: [product, offer, type, delivery, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,49 +17,42 @@ Indicates whether the item is sold as hardware, software subscription, or SaaS s
 
 ## Business Meaning
 
-Offer Type classifies products based on their delivery and consumption model. Common offer types include hardware (physical equipment), software subscription (licensed software with recurring fees), and SaaS subscription (cloud-based software as a service). Offer type classification enables business model analysis, subscription revenue tracking, and strategic shifts from traditional to subscription-based offerings.
+Offer Type categorizes products by their delivery model and consumption pattern. This classification distinguishes between physical hardware, on-premise software subscriptions, and cloud-based SaaS offerings, enabling delivery model analysis.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_product
-
-**Source Column**: offer_type
-
-**Entity**: [Product](../entities/product.md)
-
-**Attribute**: Offer Type
-
-**Data Type**: Character Varying(30)
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_product  
+**Source Column:** offer_type  
+**Data Type:** Character Varying(30)  
+**Entity:** [Product](../entities/product.md)  
+**Attribute:** Offer Type  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Product](product.md)
-- [Product Key](product-key.md)
-- [Product Family](product-family.md)
-- [Technology Domain](technology-domain.md)
-- [Contract Type](contract-type.md)
+- [Product](./product.md) - Parent entity
+- [Product Family](./product-family.md) - Portfolio grouping
+- [Technology Domain](./technology-domain.md) - Solution domain
 
 ---
 
 ## Usage Context
 
 Offer Type is used to:
-- Classify products by delivery model
-- Enable subscription revenue analysis
-- Support business model transformation
-- Facilitate hardware vs. software analysis
-- Enable recurring revenue tracking
+- Categorize products by delivery model
+- Enable offer type-specific analysis
+- Support go-to-market strategy
+- Track product mix by delivery model
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Product](../entities/product.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/product.md)
+- [Return to Bundle Index](../index.md)
