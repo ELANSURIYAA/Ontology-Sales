@@ -3,7 +3,7 @@ title: Date Key
 type: glossary
 description: Encoded key that uniquely identifies a reporting date in the date dimension
 resource: glossary
-tags: [glossary, date, key, identifier, surrogate-key]
+tags: [glossary, date, key, identifier]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,51 +13,42 @@ timestamp: 2026-07-28T00:00:00Z
 
 Encoded key that uniquely identifies a reporting date in the date dimension.
 
----
-
 ## Business Meaning
 
-Date Key is a system-generated unique identifier used to establish relationships between the date dimension and fact records. It serves as the primary key for date records and enables efficient data integration and referential integrity for time-based analysis.
-
----
+The Date Key is a system-generated unique identifier used to link date dimension records to booking transaction fact records. It serves as the primary key for the date dimension and enables efficient temporal joins in the dimensional model.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_date
-
-**Source Column**: date_key
-
-**Entity**: [Date](../entities/date.md)
-
-**Attribute**: Date Key
-
-**Data Type**: Integer
-
+**Source Table**: QuoteToBooking.dim_date  
+**Source Column**: date_key  
+**Entity**: [Date](../entities/date.md)  
+**Attribute**: Date Key  
+**Data Type**: Integer  
 **Confidence Score**: 0.95
 
----
+## Synonyms
+
+- Date Identifier
+- Date Surrogate Key
+- Time Key
 
 ## Related Concepts
 
-- [Date](date.md)
-- [Booking Date Key](booking-date-key.md)
-- [Booking Transaction](booking-transaction.md)
-
----
+- [Date](./date.md)
+- [Booking Transaction](./booking-transaction.md)
+- [Booking Date Key](./booking-date-key.md)
 
 ## Usage Context
 
-Date Key is used to:
+The Date Key is used to:
 - Uniquely identify date records
-- Link booking transactions to dates
+- Link dates to booking transactions
 - Maintain referential integrity
-- Enable efficient joins between fact and dimension tables
-- Support data warehouse operations
+- Enable efficient temporal queries
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Date](../entities/date.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 0.95  
+**Source**: OSI Semantic Model  
+**Entity**: Date (ENT003)  
+**Attribute**: ATTR014
