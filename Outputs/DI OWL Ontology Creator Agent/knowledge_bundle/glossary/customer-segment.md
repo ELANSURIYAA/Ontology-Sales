@@ -1,9 +1,9 @@
 ---
 title: Customer Segment
 type: glossary
-description: Classification of customers into business segments such as Enterprise, Service Provider, or Public Sector
+description: Classifies the customer into a business segment such as Enterprise, Service Provider, or Public Sector
 resource: glossary
-tags: [glossary, customer, segment, classification]
+tags: [customer, segment, classification, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,51 +13,47 @@ timestamp: 2026-07-28T00:00:00Z
 
 Classifies the customer into a business segment such as Enterprise, Service Provider, or Public Sector.
 
+---
+
 ## Business Meaning
 
-Customer Segment groups customers into strategic categories based on their business characteristics, size, and operational model. Segmentation enables targeted sales strategies, customized offerings, and segment-specific performance analysis.
+Customer Segment categorizes customers based on their business model, organizational structure, and market focus. This classification enables targeted analysis, sales strategies, and product positioning for different customer types.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer  
-**Source Column**: segment  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Customer Segment  
-**Data Type**: Character Varying(30)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_customer  
+**Source Column:** segment  
+**Data Type:** Character Varying(30)  
+**Entity:** [Customer](../entities/customer.md)  
+**Attribute:** Customer Segment  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Market Segment
-- Customer Category
-- Business Segment
+---
 
 ## Related Concepts
 
-- [Customer](./customer.md)
-- [Industry](./industry.md)
-- [Account Tier](./account-tier.md)
-- [Covered Segment](./covered-segment.md)
+- [Customer](./customer.md) - Parent entity
+- [Industry](./industry.md) - Industry classification
+- [Account Tier](./account-tier.md) - Strategic importance
+- [Covered Segment](./covered-segment.md) - Sales representative coverage
+
+---
 
 ## Usage Context
 
 Customer Segment is used to:
-- Target sales and marketing efforts
-- Analyze booking performance by segment
-- Customize product offerings and pricing
-- Allocate sales resources
-
-## Example Values
-
-- Enterprise
-- Service Provider
-- Public Sector
-- Commercial
-- Small Business
+- Categorize customers by business type
+- Enable segment-specific analysis and reporting
+- Support targeted sales and marketing strategies
+- Track segment mix and performance
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Customer (ENT002)  
-**Attribute**: ATTR009
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/customer.md)
+- [Return to Bundle Index](../index.md)
