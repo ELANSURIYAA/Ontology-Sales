@@ -3,7 +3,7 @@ title: Headquarters Country
 type: glossary
 description: Country where the customer organization's headquarters is located
 resource: glossary
-tags: [glossary, customer, location, country]
+tags: [customer, country, location, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,43 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Country where the customer organization's headquarters is located.
 
+---
+
 ## Business Meaning
 
-Headquarters Country identifies the primary country location of the customer's corporate headquarters. This geographic attribute enables analysis of customer distribution, regional market penetration, and international vs domestic customer mix.
+Headquarters Country identifies the primary country location of the customer's corporate headquarters. This attribute supports geographic analysis and enables understanding of customer distribution by headquarters location.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer  
-**Source Column**: hq_country  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Headquarters Country  
-**Data Type**: Character Varying(40)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_customer  
+**Source Column:** hq_country  
+**Data Type:** Character Varying(40)  
+**Entity:** [Customer](../entities/customer.md)  
+**Attribute:** Headquarters Country  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- HQ Country
-- Home Country
-- Corporate Country
+---
 
 ## Related Concepts
 
-- [Customer](./customer.md)
-- [Headquarters Region](./headquarters-region.md)
-- [Geography](./geography.md)
-- [Country](./country.md)
+- [Customer](./customer.md) - Parent entity
+- [Headquarters Region](./headquarters-region.md) - Regional location
+- [Geography](./geography.md) - Geographic dimension
+
+---
 
 ## Usage Context
 
 Headquarters Country is used to:
-- Analyze customer geographic distribution
-- Track international market penetration
-- Support regional sales planning
-- Enable country-specific analysis
+- Identify customer headquarters location
+- Enable geographic customer analysis
+- Support regional market strategies
+- Track customer distribution by country
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Customer (ENT002)  
-**Attribute**: ATTR012
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/customer.md)
+- [Return to Bundle Index](../index.md)
