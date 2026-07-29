@@ -1,9 +1,9 @@
 ---
 title: Partner
 type: glossary
-description: Channel and direct partners involved in the sales process including partner type, partner tier, and route to market
+description: Stores information about channel and direct partners involved in the sales process
 resource: glossary
-tags: [glossary, partner, channel, entity]
+tags: [partner, channel, reseller, entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,43 +13,47 @@ timestamp: 2026-07-28T00:00:00Z
 
 Stores information about channel and direct partners involved in the sales process, including partner type, partner tier, and route to market.
 
+---
+
 ## Business Meaning
 
-The Partner entity represents organizations that participate in the sales channel, including distributors, resellers, systems integrators, and direct sales. Partners are critical to go-to-market strategy and channel performance analysis.
+A partner represents an organization that facilitates sales transactions, providing customer access to products and services. Partners include distributors, resellers, systems integrators, and direct sales channels.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_partner  
-**Entity**: [Partner](../entities/partner.md)  
-**Attribute**: Entity-level term  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_partner  
+**Entity:** [Partner](../entities/partner.md)  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Channel Partner
-- Reseller
-- Distributor
+---
 
 ## Related Concepts
 
-- [Partner Key](./partner-key.md)
-- [Partner ID](./partner-id.md)
-- [Partner Name](./partner-name.md)
-- [Partner Type](./partner-type.md)
-- [Partner Tier](./partner-tier.md)
-- [Route to Market](./route-to-market.md)
-- [Booking Transaction](./booking-transaction.md)
+- [Booking Transaction](./booking-transaction.md) - Transactions facilitated by partners
+- [Partner Key](./partner-key.md) - Unique identifier
+- [Partner ID](./partner-id.md) - Business identifier
+- [Partner Name](./partner-name.md) - Organization name
+- [Partner Type](./partner-type.md) - Partner classification
+- [Partner Tier](./partner-tier.md) - Certification tier
+- [Route to Market](./route-to-market.md) - Sales delivery path
+
+---
 
 ## Usage Context
 
 Partners are used to:
-- Track channel performance
-- Analyze partner contribution
-- Manage partner relationships
-- Support channel strategy
+- Track channel organizations facilitating sales
+- Analyze revenue by partner characteristics
+- Support partner relationship management
+- Enable channel strategy optimization
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Partner (ENT005)
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/partner.md)
+- [Return to Bundle Index](../index.md)
