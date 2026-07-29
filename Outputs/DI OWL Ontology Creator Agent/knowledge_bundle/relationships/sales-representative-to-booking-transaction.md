@@ -3,7 +3,7 @@ title: Sales Representative to Booking Transaction
 type: relationship
 description: One-to-Many relationship linking sales representatives to booking transactions
 resource: relationships
-tags: [relationship, foreign-key, sales-representative, booking-transaction, sales]
+tags: [relationship, sales-representative, booking, foreign-key]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,94 +11,96 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Description
 
-This relationship links sales representative records to booking transactions, enabling analysis of bookings by sales representative, sales role, sales team, and covered segment.
+This relationship links Sales Representative dimension records to Booking Transaction fact records. Each sales representative can be associated with multiple booking transactions, while each booking transaction is credited to exactly one sales representative. This relationship enables sales performance analysis across representatives, roles, teams, and covered segments.
 
 ---
 
 ## Relationship Details
 
-**Source Entity**: [Sales Representative](../entities/sales-representative.md)
-
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Relationship Type**: Foreign Key
-
-**Cardinality**: One-to-Many
-
+**Relationship ID**: REL007  
+**Relationship Type**: Foreign Key  
+**Cardinality**: One-to-Many  
 **Confidence Score**: 1.00
+
+---
+
+## Source Entity
+
+**Entity**: [Sales Representative](../entities/sales-representative.md)  
+**Entity ID**: ENT007  
+**Attribute**: Sales Representative Key  
+**Technical Column**: sales_rep_key  
+**Role**: Parent (One side)
+
+---
+
+## Target Entity
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Entity ID**: ENT008  
+**Attribute**: Sales Representative Key  
+**Technical Column**: sales_rep_key  
+**Role**: Child (Many side)
 
 ---
 
 ## Technical Mapping
 
-**Parent Table**: QuoteToBooking.dim_sales_rep
-
-**Parent Column**: sales_rep_key
-
-**Child Table**: QuoteToBooking.fact_bookings
-
-**Child Column**: sales_rep_key
-
----
-
-## Cardinality Explanation
-
-- **One Sales Representative** can be associated with **Many Booking Transactions**
-- **Each Booking Transaction** must reference **exactly one Sales Representative**
-
-This relationship enables:
-- Analysis of booking amounts by sales representative
-- Evaluation of sales role performance
-- Measurement of sales team effectiveness
-- Individual and team quota attainment tracking
+**Source Table**: QuoteToBooking.dim_sales_rep  
+**Target Table**: QuoteToBooking.fact_bookings  
+**Join Condition**: `dim_sales_rep.sales_rep_key = fact_bookings.sales_rep_key`
 
 ---
 
 ## Business Rules
 
-1. Every booking transaction must reference a valid sales representative
-2. A sales representative can be associated with zero or many booking transactions
-3. Sales Representative Key is the foreign key in the booking transaction fact table
-4. The relationship is mandatory on the booking transaction side
-5. The relationship supports referential integrity
+1. Each booking transaction must reference a valid sales representative
+2. A sales representative can have zero or many booking transactions
+3. Sales Representative Key in Booking Transaction must exist in Sales Representative dimension
+4. Referential integrity must be maintained
+5. Sales representative attributes apply to all associated booking transactions
+
+---
+
+## Analytical Usage
+
+This relationship enables analysis of:
+
+- Individual sales representative performance and quota attainment
+- Sales role effectiveness and productivity
+- Sales team contribution and performance
+- Segment coverage and specialization
+- Representative ranking and leaderboards
 
 ---
 
 ## Related Concepts
 
-- [Sales Representative](../glossary/sales-representative.md)
-- [Sales Representative Key](../glossary/sales-representative-key.md)
-- [Booking Transaction](../glossary/booking-transaction.md)
-- [Sales Role](../glossary/sales-role.md)
-- [Sales Team](../glossary/sales-team.md)
-- [Covered Segment](../glossary/covered-segment.md)
+- [Sales Representative](../entities/sales-representative.md) - Source dimension entity
+- [Booking Transaction](../entities/booking-transaction.md) - Target fact entity
+- [Customer](../entities/customer.md) - Customers managed by sales representatives
+- [Geography](../entities/geography.md) - Sales territories
+- [Product](../entities/product.md) - Products sold by representatives
 
 ---
 
-## Usage Examples
+## Semantic Links
 
-**Analyze bookings by sales representative**:
-- Identify top-performing sales representatives
-- Measure individual quota attainment
-
-**Analyze bookings by sales role**:
-- Compare performance across different sales roles
-- Evaluate role effectiveness
-
-**Analyze bookings by sales team**:
-- Measure team performance and contribution
-- Compare team results across geographies
-
-**Sales performance management**:
-- Track individual and team productivity
-- Analyze average deal size by sales representative
-- Measure sales cycle effectiveness
+- [Relationship Index](./index.md)
+- [Entity Index](../entities/index.md)
+- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Main Index](../index.md)
 
 ---
 
-## Navigation
+## Metadata
 
-- [Back to Relationships Index](index.md)
-- [View Source Entity: Sales Representative](../entities/sales-representative.md)
-- [View Target Entity: Booking Transaction](../entities/booking-transaction.md)
-- [Back to Main Index](../index.md)
+**Relationship ID**: REL007  
+**Source Entity ID**: ENT007  
+**Target Entity ID**: ENT008  
+**Relationship Type**: Foreign Key  
+**Cardinality**: One-to-Many  
+**Confidence Score**: 1.00  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
