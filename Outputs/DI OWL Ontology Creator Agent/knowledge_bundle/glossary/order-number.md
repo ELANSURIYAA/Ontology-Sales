@@ -3,7 +3,7 @@ title: Order Number
 type: glossary
 description: Business order number associated with the booking transaction
 resource: glossary
-tags: [glossary, booking, order, identifier]
+tags: [booking, transaction, order, identifier, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,47 +17,42 @@ Business order number associated with the booking transaction.
 
 ## Business Meaning
 
-Order Number is the business-recognized identifier for the customer order that generated the booking transaction. Multiple booking transactions (line items) can share the same order number. Order numbers are used in operational systems, customer communications, and fulfillment processes to track and manage customer orders.
+Order Number is the business-recognized identifier for the customer order that generated the booking transaction. It provides traceability to source order systems and enables order-level analysis.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.fact_bookings
-
-**Source Column**: order_number
-
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Attribute**: Order Number
-
-**Data Type**: Character Varying(20)
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** fact_bookings  
+**Source Column:** order_number  
+**Data Type:** Character Varying(20)  
+**Entity:** [Booking Transaction](../entities/booking-transaction.md)  
+**Attribute:** Order Number  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Booking Transaction](booking-transaction.md)
-- [Booking ID](booking-id.md)
-- [Order Line Number](order-line-number.md)
+- [Booking Transaction](./booking-transaction.md) - Parent entity
+- [Booking ID](./booking-id.md) - Transaction identifier
+- [Order Line Number](./order-line-number.md) - Line item reference
 
 ---
 
 ## Usage Context
 
 Order Number is used to:
-- Identify customer orders
-- Group related booking transactions
-- Support order tracking and fulfillment
-- Enable order-level analysis
-- Facilitate customer service operations
+- Reference source customer orders
+- Enable order-level aggregation
+- Support order tracking and traceability
+- Link to operational order systems
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Booking Transaction](../entities/booking-transaction.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/booking-transaction.md)
+- [Return to Bundle Index](../index.md)
