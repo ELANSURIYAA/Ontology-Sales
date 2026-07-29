@@ -3,7 +3,7 @@ title: Covered Segment
 type: glossary
 description: Customer segment for which the sales representative is responsible
 resource: glossary
-tags: [glossary, sales-representative, segment, coverage, responsibility]
+tags: [sales, representative, segment, coverage, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,48 +17,43 @@ Customer segment for which the sales representative is responsible.
 
 ## Business Meaning
 
-Covered Segment identifies the customer segment that the sales representative is assigned to serve. This assignment aligns sales resources with customer needs and enables segment-focused selling strategies. Covered segments typically align with the customer segmentation model (e.g., Enterprise, Service Provider, Public Sector) and enable measurement of segment coverage effectiveness.
+Covered Segment identifies the customer segment that the sales representative is assigned to manage and serve. This classification enables segment-based sales coverage analysis and territory management.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_sales_rep
-
-**Source Column**: segment_covered
-
-**Entity**: [Sales Representative](../entities/sales-representative.md)
-
-**Attribute**: Covered Segment
-
-**Data Type**: Character Varying(30)
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_sales_rep  
+**Source Column:** segment_covered  
+**Data Type:** Character Varying(30)  
+**Entity:** [Sales Representative](../entities/sales-representative.md)  
+**Attribute:** Covered Segment  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Sales Representative](sales-representative.md)
-- [Sales Representative Key](sales-representative-key.md)
-- [Customer Segment](customer-segment.md)
-- [Sales Role](sales-role.md)
+- [Sales Representative](./sales-representative.md) - Parent entity
+- [Customer Segment](./customer-segment.md) - Customer classification
+- [Sales Role](./sales-role.md) - Job role
+- [Sales Team](./sales-team.md) - Team affiliation
 
 ---
 
 ## Usage Context
 
 Covered Segment is used to:
-- Identify sales representative segment assignments
+- Identify sales representative segment responsibilities
 - Enable segment coverage analysis
-- Support territory and account planning
-- Facilitate segment-focused strategies
-- Enable segment specialization measurement
+- Support territory and account assignment
+- Track segment-specific sales performance
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Sales Representative](../entities/sales-representative.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/sales-representative.md)
+- [Return to Bundle Index](../index.md)
