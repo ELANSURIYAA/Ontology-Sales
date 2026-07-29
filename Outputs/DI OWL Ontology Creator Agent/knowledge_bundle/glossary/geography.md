@@ -3,7 +3,7 @@ title: Geography
 type: glossary
 description: Geographic attributes used to analyze bookings by sales region, theater, and country
 resource: glossary
-tags: [glossary, geography, location, region, territory]
+tags: [glossary, geography, location, entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,48 +13,41 @@ timestamp: 2026-07-28T00:00:00Z
 
 Stores geographic attributes used to analyze bookings by sales region, theater, and country.
 
----
-
 ## Business Meaning
 
-Geography represents the spatial dimension for sales and booking analysis, organizing markets into hierarchical geographic structures. It enables territory-based performance measurement, regional strategy development, and market penetration analysis across different geographic levels from broad regions to specific countries.
-
----
+The Geography entity provides hierarchical geographic context for sales performance analysis. It enables regional analysis, territory management, and geographic market segmentation across multiple levels of geographic granularity.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_geography
-
-**Entity**: [Geography](../entities/geography.md)
-
+**Source Table**: QuoteToBooking.dim_geography  
+**Entity**: [Geography](../entities/geography.md)  
+**Attribute**: Entity-level term  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- Location
+- Territory
+- Region
 
 ## Related Concepts
 
-- [Geography Key](geography-key.md)
-- [Sales Region](sales-region.md)
-- [Sales Theater](sales-theater.md)
-- [Country](country.md)
-- [Headquarters Country](headquarters-country.md)
-- [Headquarters Region](headquarters-region.md)
-
----
+- [Geography Key](./geography-key.md)
+- [Sales Region](./sales-region.md)
+- [Sales Theater](./sales-theater.md)
+- [Country](./country.md)
+- [Booking Transaction](./booking-transaction.md)
 
 ## Usage Context
 
 Geography is used to:
-- Enable geographic sales analysis
-- Support territory-based performance measurement
-- Facilitate regional strategy development
-- Enable market penetration analysis
-- Support geographic resource allocation
+- Enable regional sales analysis
+- Support territory management
+- Track geographic market performance
+- Analyze booking distribution by location
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Geography](../entities/geography.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Geography (ENT004)
