@@ -1,9 +1,9 @@
 ---
 title: Account Tier
 type: glossary
-description: Strategic importance or service tier of the customer account
+description: Indicates the strategic importance or service tier of the customer account
 resource: glossary
-tags: [glossary, customer, tier, classification]
+tags: [customer, tier, strategic, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,50 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Indicates the strategic importance or service tier of the customer account.
 
+---
+
 ## Business Meaning
 
-Account Tier classifies customers based on their strategic value, revenue potential, or service level. Tier classifications help prioritize account management resources, customize service levels, and focus on high-value relationships.
+Account Tier classifies customers based on their strategic value, revenue potential, or service level. This classification enables prioritized account management, resource allocation, and differentiated service delivery.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer  
-**Source Column**: account_tier  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Account Tier  
-**Data Type**: Character Varying(20)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_customer  
+**Source Column:** account_tier  
+**Data Type:** Character Varying(20)  
+**Entity:** [Customer](../entities/customer.md)  
+**Attribute:** Account Tier  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Customer Tier
-- Account Classification
-- Strategic Tier
+---
 
 ## Related Concepts
 
-- [Customer](./customer.md)
-- [Customer Segment](./customer-segment.md)
-- [Coverage Level](./coverage-level.md)
+- [Customer](./customer.md) - Parent entity
+- [Customer Segment](./customer-segment.md) - Business segment
+- [Industry](./industry.md) - Industry vertical
+
+---
 
 ## Usage Context
 
 Account Tier is used to:
-- Prioritize account management activities
-- Allocate sales and support resources
-- Customize service levels and engagement models
-- Analyze performance by account importance
-
-## Example Values
-
-- Strategic
-- Tier 1
-- Tier 2
-- Tier 3
-- Key Account
+- Classify customers by strategic importance
+- Support account management prioritization
+- Enable tier-based analysis and reporting
+- Guide resource allocation and service levels
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Customer (ENT002)  
-**Attribute**: ATTR011
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/customer.md)
+- [Return to Bundle Index](../index.md)
