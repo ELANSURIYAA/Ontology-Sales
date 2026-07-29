@@ -3,7 +3,7 @@ title: Partner to Booking Transaction
 type: relationship
 description: One-to-Many relationship linking partners to booking transactions
 resource: relationships
-tags: [relationship, foreign-key, partner, booking-transaction, channel]
+tags: [relationship, partner, booking, foreign-key]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,94 +11,96 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Description
 
-This relationship links partner records to booking transactions, enabling analysis of bookings by partner type, partner tier, and route to market.
+This relationship links Partner dimension records to Booking Transaction fact records. Each partner can be associated with multiple booking transactions, while each booking transaction involves exactly one partner. This relationship enables channel analysis of booking performance across partner types, tiers, and routes to market.
 
 ---
 
 ## Relationship Details
 
-**Source Entity**: [Partner](../entities/partner.md)
-
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Relationship Type**: Foreign Key
-
-**Cardinality**: One-to-Many
-
+**Relationship ID**: REL005  
+**Relationship Type**: Foreign Key  
+**Cardinality**: One-to-Many  
 **Confidence Score**: 1.00
+
+---
+
+## Source Entity
+
+**Entity**: [Partner](../entities/partner.md)  
+**Entity ID**: ENT005  
+**Attribute**: Partner Key  
+**Technical Column**: partner_key  
+**Role**: Parent (One side)
+
+---
+
+## Target Entity
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Entity ID**: ENT008  
+**Attribute**: Partner Key  
+**Technical Column**: partner_key  
+**Role**: Child (Many side)
 
 ---
 
 ## Technical Mapping
 
-**Parent Table**: QuoteToBooking.dim_partner
-
-**Parent Column**: partner_key
-
-**Child Table**: QuoteToBooking.fact_bookings
-
-**Child Column**: partner_key
-
----
-
-## Cardinality Explanation
-
-- **One Partner** can be associated with **Many Booking Transactions**
-- **Each Booking Transaction** must reference **exactly one Partner**
-
-This relationship enables:
-- Analysis of booking amounts by partner type
-- Evaluation of partner tier performance
-- Measurement of route to market effectiveness
-- Channel performance analysis
+**Source Table**: QuoteToBooking.dim_partner  
+**Target Table**: QuoteToBooking.fact_bookings  
+**Join Condition**: `dim_partner.partner_key = fact_bookings.partner_key`
 
 ---
 
 ## Business Rules
 
-1. Every booking transaction must reference a valid partner
-2. A partner can be associated with zero or many booking transactions
-3. Partner Key is the foreign key in the booking transaction fact table
-4. The relationship is mandatory on the booking transaction side
-5. The relationship supports referential integrity
+1. Each booking transaction must reference a valid partner
+2. A partner can have zero or many booking transactions
+3. Partner Key in Booking Transaction must exist in Partner dimension
+4. Referential integrity must be maintained
+5. Partner attributes apply to all associated booking transactions
+
+---
+
+## Analytical Usage
+
+This relationship enables analysis of:
+
+- Channel performance by partner type (distributor, reseller, systems integrator)
+- Partner tier contribution (Gold, Silver, Bronze)
+- Route-to-market effectiveness (direct, one-tier, two-tier)
+- Partner revenue contribution and growth
+- Channel mix and partner specialization
 
 ---
 
 ## Related Concepts
 
-- [Partner](../glossary/partner.md)
-- [Partner Key](../glossary/partner-key.md)
-- [Booking Transaction](../glossary/booking-transaction.md)
-- [Partner Type](../glossary/partner-type.md)
-- [Partner Tier](../glossary/partner-tier.md)
-- [Route to Market](../glossary/route-to-market.md)
+- [Partner](../entities/partner.md) - Source dimension entity
+- [Booking Transaction](../entities/booking-transaction.md) - Target fact entity
+- [Customer](../entities/customer.md) - Customers served through partners
+- [Product](../entities/product.md) - Products sold through channels
+- [Geography](../entities/geography.md) - Partner geographic coverage
 
 ---
 
-## Usage Examples
+## Semantic Links
 
-**Analyze bookings by partner type**:
-- Compare distributor vs. reseller vs. systems integrator performance
-- Measure direct vs. indirect sales
-
-**Analyze bookings by partner tier**:
-- Evaluate strategic vs. standard partner performance
-- Measure partner tier effectiveness
-
-**Analyze bookings by route to market**:
-- Compare sales delivery paths
-- Evaluate channel strategy effectiveness
-
-**Partner performance analysis**:
-- Identify top-performing partners
-- Measure partner productivity
-- Analyze partner product mix
+- [Relationship Index](./index.md)
+- [Entity Index](../entities/index.md)
+- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Main Index](../index.md)
 
 ---
 
-## Navigation
+## Metadata
 
-- [Back to Relationships Index](index.md)
-- [View Source Entity: Partner](../entities/partner.md)
-- [View Target Entity: Booking Transaction](../entities/booking-transaction.md)
-- [Back to Main Index](../index.md)
+**Relationship ID**: REL005  
+**Source Entity ID**: ENT005  
+**Target Entity ID**: ENT008  
+**Relationship Type**: Foreign Key  
+**Cardinality**: One-to-Many  
+**Confidence Score**: 1.00  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
