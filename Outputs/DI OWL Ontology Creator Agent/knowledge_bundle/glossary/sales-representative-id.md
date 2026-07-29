@@ -3,7 +3,7 @@ title: Sales Representative ID
 type: glossary
 description: Business identifier assigned to the sales representative
 resource: glossary
-tags: [glossary, sales-representative, identifier, business-key]
+tags: [sales, representative, identifier, business-key, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,47 +17,42 @@ Business identifier assigned to the sales representative.
 
 ## Business Meaning
 
-Sales Representative ID is the business-recognized identifier used to uniquely identify sales personnel in operational systems, HR systems, and business processes. Unlike the surrogate Sales Representative Key, the Sales Representative ID is meaningful to business users and is used in sales reporting, quota management, and commission calculations.
+Sales Representative ID is the business-recognized identifier used to reference sales personnel in operational systems and business communications. Unlike the surrogate Sales Representative Key, this is a meaningful business identifier.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_sales_rep
-
-**Source Column**: rep_id
-
-**Entity**: [Sales Representative](../entities/sales-representative.md)
-
-**Attribute**: Sales Representative ID
-
-**Data Type**: Character Varying(20)
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_sales_rep  
+**Source Column:** rep_id  
+**Data Type:** Character Varying(20)  
+**Entity:** [Sales Representative](../entities/sales-representative.md)  
+**Attribute:** Sales Representative ID  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Sales Representative](sales-representative.md)
-- [Sales Representative Key](sales-representative-key.md)
-- [Sales Representative Name](sales-representative-name.md)
+- [Sales Representative](./sales-representative.md) - Parent entity
+- [Sales Representative Key](./sales-representative-key.md) - Surrogate identifier
+- [Sales Representative Name](./sales-representative-name.md) - Person name
 
 ---
 
 ## Usage Context
 
 Sales Representative ID is used to:
-- Identify sales personnel in business processes
-- Support sales representative lookup and reference
-- Enable cross-system sales representative identification
-- Facilitate quota and commission management
-- Support sales operations
+- Reference sales personnel in business processes
+- Integrate with operational systems
+- Support sales representative lookup and identification
+- Enable cross-system personnel tracking
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Sales Representative](../entities/sales-representative.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/sales-representative.md)
+- [Return to Bundle Index](../index.md)
