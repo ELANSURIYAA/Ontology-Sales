@@ -3,7 +3,7 @@ title: Partner Name
 type: glossary
 description: Name of the partner organization involved in the transaction
 resource: glossary
-tags: [glossary, partner, name, organization]
+tags: [partner, name, organization, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,40 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Name of the partner organization involved in the transaction.
 
+---
+
 ## Business Meaning
 
-Partner Name is the official name of the partner organization. It is used to identify partners in reports, dashboards, and business communications.
+Partner Name is the official name of the organization that facilitates sales transactions. This is the primary descriptor used for partner identification and reporting.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_partner  
-**Source Column**: partner_name  
-**Entity**: [Partner](../entities/partner.md)  
-**Attribute**: Partner Name  
-**Data Type**: Character Varying(60)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_partner  
+**Source Column:** partner_name  
+**Data Type:** Character Varying(60)  
+**Entity:** [Partner](../entities/partner.md)  
+**Attribute:** Partner Name  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Partner Organization Name
-- Partner Company Name
+---
 
 ## Related Concepts
 
-- [Partner](./partner.md)
-- [Partner ID](./partner-id.md)
+- [Partner](./partner.md) - Parent entity
+- [Partner ID](./partner-id.md) - Business identifier
+- [Partner Key](./partner-key.md) - Surrogate identifier
+
+---
 
 ## Usage Context
 
 Partner Name is used to:
-- Identify partners in reports
-- Display partner information
-- Support partner search
-- Enable partner communications
+- Identify partner organizations in reports and analysis
+- Support partner search and lookup
+- Enable partner communication and engagement
+- Provide human-readable partner identification
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Partner (ENT005)  
-**Attribute**: ATTR027
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/partner.md)
+- [Return to Bundle Index](../index.md)
