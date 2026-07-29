@@ -3,7 +3,7 @@ title: Quantity Sold
 type: measure
 description: Number of units, licenses, or subscriptions included in the booking transaction
 resource: measures
-tags: [measure, quantity, volume, sales]
+tags: [quantity, volume, operational, metric]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,28 +11,33 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Quantity Sold represents the number of units, licenses, or subscriptions included in the booking transaction. This measure tracks the volume of products or services sold and is fundamental for volume-based analysis, capacity planning, and sales performance measurement.
+Number of units, licenses, or subscriptions included in the booking transaction. This measure represents the volume of products or services sold in each transaction.
+
+---
+
+## Measure Identifier
+
+**Measure ID:** MEA001  
+**Source Entity:** [Booking Transaction](../entities/booking-transaction.md)
 
 ---
 
 ## Technical Mapping
 
-**Measure ID**: MEA001  
-**Technical Column**: quantity  
-**Source Table**: QuoteToBooking.fact_bookings  
-**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Data Type**: Integer
+**Source Table:** QuoteToBooking.fact_bookings  
+**Source Column:** quantity  
+**Data Type:** Integer
 
 ---
 
 ## Aggregation
 
-**Aggregation Type**: SUM  
-**Description**: Total quantity is calculated by summing individual transaction quantities across selected dimensions
+**Aggregation Type:** SUM  
+**Business Logic:** Sum of all quantity values across selected transactions
 
 ---
 
-## Formula
+## Business Formula
 
 ```
 Total Quantity Sold = SUM(quantity)
@@ -40,97 +45,62 @@ Total Quantity Sold = SUM(quantity)
 
 ---
 
-## Business Rules
-
-1. Quantity must be a positive integer
-2. Quantity cannot be null for valid booking transactions
-3. Quantity represents discrete units (licenses, subscriptions, devices)
-4. Fractional quantities are not supported
-5. Zero quantity bookings are invalid
-
----
-
-## Analytical Usage
-
-### Volume Analysis
-- Track total units sold over time
-- Compare volume across products and product families
-- Analyze volume trends and patterns
-
-### Sales Performance
-- Measure sales representative productivity by volume
-- Track team and territory volume performance
-- Compare volume across customer segments
-
-### Capacity Planning
-- Forecast future volume requirements
-- Plan inventory and resource allocation
-- Identify volume growth opportunities
-
-### Product Adoption
-- Track product adoption rates
-- Measure license deployment
-- Analyze subscription volume trends
-
----
-
 ## Related Entities
 
-- **[Booking Transaction](../entities/booking-transaction.md)** - Source entity containing quantity data
-- **[Product](../entities/product.md)** - Products sold in quantities
+- **[Booking Transaction](../entities/booking-transaction.md)** - Source entity for this measure
+- **[Product](../entities/product.md)** - Products being sold
 - **[Customer](../entities/customer.md)** - Customers purchasing quantities
-- **[Sales Representative](../entities/sales-representative.md)** - Representatives selling volumes
+- **[Partner](../entities/partner.md)** - Partners facilitating sales
+
+---
+
+## Related Domains
+
+- **[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)** - Primary domain
+
+---
+
+## Business Use Cases
+
+1. **Volume Analysis** - Track total units, licenses, or subscriptions sold
+2. **Product Demand** - Analyze quantity sold by product family or SKU
+3. **Capacity Planning** - Forecast future demand based on historical quantities
+4. **Customer Analysis** - Evaluate purchase volume by customer segment
+5. **Partner Performance** - Measure volume contribution by partner
+
+---
+
+## Analysis Dimensions
+
+This measure can be analyzed across:
+
+- [Customer](../entities/customer.md) - Segment, industry, account tier
+- [Product](../entities/product.md) - Product family, technology domain, offer type
+- [Partner](../entities/partner.md) - Partner type, partner tier
+- [Geography](../entities/geography.md) - Region, theater, country
+- [Date](../entities/date.md) - Fiscal year, quarter, period
+- [Sales Representative](../entities/sales-representative.md) - Sales role, team
+- [Contract](../entities/contract.md) - Contract type, term
 
 ---
 
 ## Related Measures
 
-- **[Booking Amount USD](./booking-amount-usd.md)** - Revenue derived from quantity sold
-- **[Unit List Price USD](./unit-list-price-usd.md)** - Price per unit of quantity
-- **[Discount Percentage](./discount-percentage.md)** - Discounts applied to quantity purchases
+- [Booking Amount USD](./booking-amount-usd.md) - Revenue generated from quantities sold
+- [Unit List Price USD](./unit-list-price-usd.md) - Price per unit sold
+- [Discount Percentage](./discount-percentage.md) - Discount applied to quantities
 
 ---
 
-## Dimensional Analysis
+## Glossary Reference
 
-Quantity Sold can be analyzed across:
-
-- **[Date](../entities/date.md)** - Volume trends over time
-- **[Product](../entities/product.md)** - Volume by product and family
-- **[Customer](../entities/customer.md)** - Volume by customer segment
-- **[Geography](../entities/geography.md)** - Volume by region and country
-- **[Partner](../entities/partner.md)** - Volume by channel partner
-- **[Sales Representative](../entities/sales-representative.md)** - Volume by sales rep
-- **[Contract](../entities/contract.md)** - Volume by contract type
+- [Quantity Sold](../glossary/quantity-sold.md)
 
 ---
 
-## Key Performance Indicators
+## Navigation
 
-- **Total Units Sold** - Sum of all quantities
-- **Average Deal Size (Units)** - Average quantity per transaction
-- **Volume Growth Rate** - Period-over-period quantity change
-- **Volume per Customer** - Average quantity per customer
-- **Volume per Representative** - Average quantity per sales rep
-
----
-
-## Semantic Links
-
-- [Measure Index](./index.md)
-- [Metrics Overview](../metrics.md)
-- [Booking Transaction Entity](../entities/booking-transaction.md)
-- [Main Index](../index.md)
-
----
-
-## Metadata
-
-**Measure ID**: MEA001  
-**Entity ID**: ENT008  
-**Technical Column**: quantity  
-**Data Type**: Integer  
-**Aggregation**: SUM  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+- [Return to Measures Index](./index.md)
+- [View Metrics Summary](../metrics.md)
+- [View Source Entity](../entities/booking-transaction.md)
+- [Return to Bundle Index](../index.md)
