@@ -3,7 +3,7 @@ title: Booking Date Key
 type: glossary
 description: Foreign key linking the booking transaction to the reporting date dimension
 resource: glossary
-tags: [glossary, booking, date, foreign-key]
+tags: [booking, transaction, date, foreign-key, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,48 +17,42 @@ Foreign key linking the booking transaction to the reporting date dimension.
 
 ## Business Meaning
 
-Booking Date Key is the foreign key that links each booking transaction to its corresponding date in the date dimension. This relationship enables time-based analysis of bookings, including fiscal and calendar period reporting, trend analysis, and period-over-period comparisons.
+Booking Date Key is the foreign key that links each booking transaction to its corresponding date in the date dimension, enabling temporal analysis of booking transactions.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.fact_bookings
-
-**Source Column**: date_key
-
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Attribute**: Booking Date Key
-
-**Data Type**: Integer
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** fact_bookings  
+**Source Column:** date_key  
+**Data Type:** Integer  
+**Entity:** [Booking Transaction](../entities/booking-transaction.md)  
+**Attribute:** Booking Date Key  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Booking Transaction](booking-transaction.md)
-- [Date](date.md)
-- [Date Key](date-key.md)
+- [Booking Transaction](./booking-transaction.md) - Parent entity
+- [Date](./date.md) - Referenced dimension
+- [Date Key](./date-key.md) - Primary key in date dimension
 
 ---
 
 ## Usage Context
 
 Booking Date Key is used to:
-- Link bookings to dates
-- Enable time-based analysis
-- Support fiscal and calendar reporting
-- Facilitate trend analysis
-- Enable period comparisons
+- Link transactions to date attributes
+- Enable temporal analysis
+- Support time-based filtering and grouping
+- Provide referential integrity to date dimension
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Booking Transaction](../entities/booking-transaction.md)
-- [View Entity: Date](../entities/date.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/booking-transaction.md)
+- [Return to Bundle Index](../index.md)
