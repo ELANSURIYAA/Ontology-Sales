@@ -3,7 +3,7 @@ title: Total Contract Value USD
 type: glossary
 description: Total value of the full contract associated with the booking in U.S. dollars
 resource: glossary
-tags: [glossary, booking, tcv, contract-value, measure]
+tags: [booking, transaction, contract, tcv, financial, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -17,49 +17,44 @@ Total value of the full contract associated with the booking in U.S. dollars.
 
 ## Business Meaning
 
-Total Contract Value (TCV) represents the complete financial commitment of a contract over its entire term. Unlike ACV which normalizes to annual values, TCV captures the full multi-year value of customer commitments. TCV is essential for measuring total deal size, customer commitment levels, and long-term revenue potential. All amounts are recorded in U.S. dollars.
+Total Contract Value USD represents the complete value of a contract over its entire term, providing visibility into long-term revenue commitments. This metric is essential for understanding total customer commitment and contract portfolio value.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.fact_bookings
-
-**Source Column**: tcv_usd
-
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Attribute**: Total Contract Value USD
-
-**Data Type**: Numeric
-
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** fact_bookings  
+**Source Column:** tcv_usd  
+**Data Type:** Numeric  
+**Entity:** [Booking Transaction](../entities/booking-transaction.md)  
+**Attribute:** Total Contract Value USD  
+**Confidence Score:** 1.00
 
 ---
 
 ## Related Concepts
 
-- [Booking Transaction](booking-transaction.md)
-- [Booking Amount USD](booking-amount-usd.md)
-- [Annual Contract Value USD](annual-contract-value-usd.md)
-- [Contract Term Months](contract-term-months.md)
+- [Booking Transaction](./booking-transaction.md) - Parent entity
+- [Annual Contract Value USD](./annual-contract-value-usd.md) - Annualized value
+- [Booking Amount USD](./booking-amount-usd.md) - Initial booking revenue
+- [Contract Term Months](./contract-term-months.md) - Contract duration
 
 ---
 
 ## Usage Context
 
 Total Contract Value USD is used to:
-- Measure total contract commitments
-- Support deal size analysis
-- Enable customer commitment measurement
-- Facilitate pipeline value tracking
-- Calculate total revenue potential
+- Track total committed revenue
+- Analyze contract portfolio value
+- Project long-term revenue
+- Calculate customer lifetime value
 
 ---
 
 ## Navigation
 
-- [Back to Glossary Index](index.md)
-- [View Entity: Booking Transaction](../entities/booking-transaction.md)
-- [View Measure: Total Contract Value USD](../measures/total-contract-value-usd.md)
-- [Back to Main Index](../index.md)
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/booking-transaction.md)
+- [View Measure Definition](../measures/total-contract-value-usd.md)
+- [Return to Bundle Index](../index.md)
