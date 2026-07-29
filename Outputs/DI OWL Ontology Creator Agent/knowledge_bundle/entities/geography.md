@@ -3,7 +3,7 @@ title: Geography
 type: entity
 description: Geographic attributes used to analyze bookings by sales region, theater, and country
 resource: entities
-tags: [geography, location, region, dimension, entity]
+tags: [geography, location, region, theater, dimension]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,16 +11,22 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-The Geography entity stores geographic attributes used to analyze bookings by sales region, theater, and country. It provides hierarchical geographic context for sales performance analysis across global markets. This entity enables regional analysis, territory management, and geographic market segmentation.
+Stores geographic attributes used to analyze bookings by sales region, theater, and country. The Geography entity enables spatial analysis of sales performance across different geographic markets and territories.
+
+---
+
+## Entity Identifier
+
+**Entity ID:** ENT004  
+**Domain:** [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_geography  
-**Source Schema**: QuoteToBooking  
-**Entity Type**: Dimension  
-**Entity ID**: ENT004
+**Source System:** QuoteToBooking  
+**Source Table:** dim_geography  
+**Table Type:** Dimension Table
 
 ---
 
@@ -35,13 +41,13 @@ The Geography entity stores geographic attributes used to analyze bookings by sa
 
 ## Primary Keys
 
-- **Geography Key** (geography_key) - Surrogate key, Integer, Not Nullable
+- **Geography Key** (geography_key)
 
 ---
 
 ## Foreign Keys
 
-None - This is a dimension entity
+None
 
 ---
 
@@ -51,106 +57,35 @@ None - This is a dimension entity
 
 - **[Geography to Booking Transaction](../relationships/geography-to-booking-transaction.md)** - One-to-Many relationship linking geographies to booking transactions
 
-### Related Entities
-
-- **[Booking Transaction](./booking-transaction.md)** - Fact entity containing booking records with geographic context
-- **[Customer](./customer.md)** - Customers with headquarters locations
-- **[Sales Representative](./sales-representative.md)** - Sales personnel assigned to territories
-
 ---
 
 ## Measures
 
-Geographies support regional analysis of all measures:
+Geographies enable regional analysis of all measures from [Booking Transaction](./booking-transaction.md) entity:
 
-- **[Booking Amount USD](../measures/booking-amount-usd.md)** - Revenue by region, theater, and country
-- **[Annual Contract Value USD](../measures/annual-contract-value-usd.md)** - ACV by geographic market
-- **[Total Contract Value USD](../measures/total-contract-value-usd.md)** - TCV by territory
-- **[Quantity Sold](../measures/quantity-sold.md)** - Volume by geographic area
-- **[Discount Percentage](../measures/discount-percentage.md)** - Regional pricing patterns
-- **[Unit List Price USD](../measures/unit-list-price-usd.md)** - Price positioning by market
+- [Booking Amount USD](../measures/booking-amount-usd.md)
+- [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
+- [Total Contract Value USD](../measures/total-contract-value-usd.md)
+- [Quantity Sold](../measures/quantity-sold.md)
 
 ---
 
 ## Business Rules
 
-1. Geography Key must be unique and not null
-2. Country must be valid ISO country code
-3. Sales Theater must belong to parent Sales Region
-4. Geographic hierarchy must be consistent (Region → Theater → Country)
-5. Each country must map to exactly one theater and region
-6. Sales Region must be from approved list of global regions
-
----
-
-## Analytical Usage
-
-### Regional Analysis
-- Compare booking performance across major global regions
-- Track regional growth rates and market share
-- Analyze regional revenue contribution
-
-### Theater Analysis
-- Evaluate subregional sales theater performance
-- Compare theater-level booking patterns
-- Track theater coverage and penetration
-
-### Country Analysis
-- Analyze country-specific booking performance
-- Identify high-performing and emerging markets
-- Track country-level market share
-
-### Geographic Trends
-- Monitor geographic expansion and growth
-- Identify regional opportunities and challenges
-- Track market penetration by geography
-
----
-
-## Geographic Hierarchy
-
-```
-Sales Region
-  └─ Sales Theater
-      └─ Country
-```
-
-### Example Hierarchy
-```
-Americas
-  ├─ North America
-  │   ├─ United States
-  │   ├─ Canada
-  │   └─ Mexico
-  └─ Latin America
-      ├─ Brazil
-      └─ Argentina
-
-EMEA
-  ├─ Europe
-  │   ├─ United Kingdom
-  │   ├─ Germany
-  │   └─ France
-  └─ Middle East
-      └─ United Arab Emirates
-
-APAC
-  ├─ Asia Pacific North
-  │   ├─ Japan
-  │   └─ South Korea
-  └─ Asia Pacific South
-      ├─ Australia
-      └─ Singapore
-```
+1. Each geography must have a unique Geography Key
+2. Sales Region represents the highest level of geographic hierarchy
+3. Sales Theater provides subregional market segmentation
+4. Country enables country-level performance analysis
+5. Geographic hierarchy supports drill-down analysis from region to theater to country
 
 ---
 
 ## Related Concepts
 
-- **[Customer](./customer.md)** - Customer headquarters locations
-- **[Sales Representative](./sales-representative.md)** - Territory assignments
-- **[Partner](./partner.md)** - Partner geographic coverage
-- **[Booking Transaction](./booking-transaction.md)** - Transaction locations
+- [Booking Transaction](./booking-transaction.md) - Transactions occurring in specific geographies
+- [Customer](./customer.md) - Customers located in different geographies
+- [Sales Representative](./sales-representative.md) - Sales representatives covering geographic territories
+- [Partner](./partner.md) - Partners operating in specific geographies
 
 ---
 
@@ -164,34 +99,9 @@ APAC
 
 ---
 
-## Attribute Details
+## Navigation
 
-| Attribute | Technical Column | Data Type | Nullable | Key Type | Description |
-|-----------|-----------------|-----------|----------|----------|-------------|
-| Geography Key | geography_key | integer | No | Primary | Surrogate key uniquely identifying geography |
-| Sales Region | region | character varying(20) | Yes | - | High-level geographic region |
-| Sales Theater | theater | character varying(30) | Yes | - | Subregional sales area |
-| Country | country | character varying(40) | Yes | - | Country designation |
-
----
-
-## Semantic Links
-
-- [Entity Index](./index.md)
-- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-- [Relationship Index](../relationships/index.md)
-- [Measure Index](../measures/index.md)
-- [Main Index](../index.md)
-
----
-
-## Metadata
-
-**Entity ID**: ENT004  
-**Domain ID**: DOM001  
-**Entity Type**: Dimension  
-**Technical Table**: QuoteToBooking.dim_geography  
-**Total Attributes**: 4  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+- [Return to Entities Index](./index.md)
+- [Return to Bundle Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
+- [View Relationships](../relationships/index.md)
