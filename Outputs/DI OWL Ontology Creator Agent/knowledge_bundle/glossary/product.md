@@ -1,9 +1,9 @@
 ---
 title: Product
 type: glossary
-description: Products and offers sold to customers including product family, technology domain, offer type, and business entity
+description: Stores descriptive information about products and offers sold to customers
 resource: glossary
-tags: [glossary, product, offer, entity]
+tags: [product, offer, sku, entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,44 +13,48 @@ timestamp: 2026-07-28T00:00:00Z
 
 Stores descriptive information about products and offers sold to customers, including product family, technology domain, offer type, and business entity.
 
+---
+
 ## Business Meaning
 
-The Product entity represents the goods and services sold to customers. Product information enables portfolio analysis, product performance tracking, and strategic product management.
+A product represents goods or services sold to customers that generate revenue through booking transactions. Products are characterized by their family grouping, technology domain, offer type, and owning business entity.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_product  
-**Entity**: [Product](../entities/product.md)  
-**Attribute**: Entity-level term  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_product  
+**Entity:** [Product](../entities/product.md)  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Offering
-- SKU
-- Product Offering
+---
 
 ## Related Concepts
 
-- [Product Key](./product-key.md)
-- [Product ID](./product-id.md)
-- [Product Name](./product-name.md)
-- [Product Family](./product-family.md)
-- [Technology Domain](./technology-domain.md)
-- [Offer Type](./offer-type.md)
-- [Business Entity](./business-entity.md)
-- [Booking Transaction](./booking-transaction.md)
+- [Booking Transaction](./booking-transaction.md) - Transactions involving products
+- [Product Key](./product-key.md) - Unique identifier
+- [Product ID](./product-id.md) - Business identifier
+- [Product Name](./product-name.md) - Commercial name
+- [Product Family](./product-family.md) - Portfolio grouping
+- [Technology Domain](./technology-domain.md) - Solution domain
+- [Offer Type](./offer-type.md) - Delivery model
+- [Business Entity](./business-entity.md) - Owning organization
+
+---
 
 ## Usage Context
 
 Products are used to:
-- Track product sales performance
-- Analyze product portfolio
-- Support product strategy
-- Enable product-based reporting
+- Track goods and services sold to customers
+- Analyze revenue by product characteristics
+- Support product portfolio management
+- Enable product strategy optimization
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Product (ENT006)
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/product.md)
+- [Return to Bundle Index](../index.md)
