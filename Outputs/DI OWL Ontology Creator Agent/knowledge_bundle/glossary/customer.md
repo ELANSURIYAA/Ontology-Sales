@@ -1,9 +1,9 @@
 ---
 title: Customer
 type: glossary
-description: Customers that place orders and generate bookings including segment, industry, account tier, and headquarters location
+description: Customer organizations that place orders and generate bookings including segment, industry, account tier, and headquarters location
 resource: glossary
-tags: [glossary, customer, account, organization]
+tags: [glossary, customer, account, entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,52 +13,44 @@ timestamp: 2026-07-28T00:00:00Z
 
 Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.
 
----
-
 ## Business Meaning
 
-A customer represents an organization or entity that purchases products or services from the company. Customers are the primary revenue source and are characterized by various attributes including business segment, industry vertical, strategic importance, and geographic location. Understanding customer attributes enables targeted sales strategies, market analysis, and relationship management.
-
----
+The Customer represents an organization that purchases products and services from the company. Customer records contain essential information for segmentation, targeting, and relationship management. Understanding customer characteristics is fundamental to sales strategy, account management, and revenue optimization.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer
-
-**Entity**: [Customer](../entities/customer.md)
-
+**Source Table**: QuoteToBooking.dim_customer  
+**Entity**: [Customer](../entities/customer.md)  
+**Attribute**: Entity-level term  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- Account
+- Client
+- Customer Account
+- Customer Organization
 
 ## Related Concepts
 
-- [Customer Key](customer-key.md)
-- [Customer ID](customer-id.md)
-- [Customer Name](customer-name.md)
-- [Customer Segment](customer-segment.md)
-- [Industry](industry.md)
-- [Account Tier](account-tier.md)
-- [Headquarters Country](headquarters-country.md)
-- [Headquarters Region](headquarters-region.md)
-- [Booking Transaction](booking-transaction.md)
-
----
+- [Customer Key](./customer-key.md)
+- [Customer ID](./customer-id.md)
+- [Customer Name](./customer-name.md)
+- [Customer Segment](./customer-segment.md)
+- [Industry](./industry.md)
+- [Account Tier](./account-tier.md)
+- [Booking Transaction](./booking-transaction.md)
 
 ## Usage Context
 
-Customer is used to:
-- Identify purchasing organizations
-- Enable customer-based revenue analysis
-- Support customer segmentation and targeting
-- Facilitate account management
-- Enable customer lifetime value analysis
-- Support market and industry analysis
+Customers are used to:
+- Track customer relationships and accounts
+- Segment customers for targeted marketing and sales
+- Analyze booking performance by customer characteristics
+- Support account management and customer success activities
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Customer](../entities/customer.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Customer (ENT002)
