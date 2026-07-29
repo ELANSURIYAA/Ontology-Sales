@@ -3,7 +3,7 @@ title: Product to Booking Transaction
 type: relationship
 description: One-to-Many relationship linking products to booking transactions
 resource: relationships
-tags: [relationship, foreign-key, product, booking-transaction, portfolio]
+tags: [relationship, product, booking, foreign-key]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,94 +11,96 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Description
 
-This relationship links product records to booking transactions, enabling analysis of bookings by product family, technology domain, offer type, and business entity.
+This relationship links Product dimension records to Booking Transaction fact records. Each product can be associated with multiple booking transactions, while each booking transaction involves exactly one product. This relationship enables product portfolio analysis of booking performance across product families, technology domains, and offer types.
 
 ---
 
 ## Relationship Details
 
-**Source Entity**: [Product](../entities/product.md)
-
-**Target Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Relationship Type**: Foreign Key
-
-**Cardinality**: One-to-Many
-
+**Relationship ID**: REL006  
+**Relationship Type**: Foreign Key  
+**Cardinality**: One-to-Many  
 **Confidence Score**: 1.00
+
+---
+
+## Source Entity
+
+**Entity**: [Product](../entities/product.md)  
+**Entity ID**: ENT006  
+**Attribute**: Product Key  
+**Technical Column**: product_key  
+**Role**: Parent (One side)
+
+---
+
+## Target Entity
+
+**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
+**Entity ID**: ENT008  
+**Attribute**: Product Key  
+**Technical Column**: product_key  
+**Role**: Child (Many side)
 
 ---
 
 ## Technical Mapping
 
-**Parent Table**: QuoteToBooking.dim_product
-
-**Parent Column**: product_key
-
-**Child Table**: QuoteToBooking.fact_bookings
-
-**Child Column**: product_key
-
----
-
-## Cardinality Explanation
-
-- **One Product** can be associated with **Many Booking Transactions**
-- **Each Booking Transaction** must reference **exactly one Product**
-
-This relationship enables:
-- Analysis of booking amounts by product family
-- Evaluation of technology domain performance
-- Measurement of offer type adoption
-- Product portfolio analysis
+**Source Table**: QuoteToBooking.dim_product  
+**Target Table**: QuoteToBooking.fact_bookings  
+**Join Condition**: `dim_product.product_key = fact_bookings.product_key`
 
 ---
 
 ## Business Rules
 
-1. Every booking transaction must reference a valid product
-2. A product can be associated with zero or many booking transactions
-3. Product Key is the foreign key in the booking transaction fact table
-4. The relationship is mandatory on the booking transaction side
-5. The relationship supports referential integrity
+1. Each booking transaction must reference a valid product
+2. A product can have zero or many booking transactions
+3. Product Key in Booking Transaction must exist in Product dimension
+4. Referential integrity must be maintained
+5. Product attributes apply to all associated booking transactions
+
+---
+
+## Analytical Usage
+
+This relationship enables analysis of:
+
+- Product portfolio performance and revenue contribution
+- Product family booking trends and growth
+- Technology domain adoption and market penetration
+- Offer type mix (hardware, software subscription, SaaS)
+- Business entity performance and product ownership
 
 ---
 
 ## Related Concepts
 
-- [Product](../glossary/product.md)
-- [Product Key](../glossary/product-key.md)
-- [Booking Transaction](../glossary/booking-transaction.md)
-- [Product Family](../glossary/product-family.md)
-- [Technology Domain](../glossary/technology-domain.md)
-- [Offer Type](../glossary/offer-type.md)
+- [Product](../entities/product.md) - Source dimension entity
+- [Booking Transaction](../entities/booking-transaction.md) - Target fact entity
+- [Customer](../entities/customer.md) - Customers purchasing products
+- [Contract](../entities/contract.md) - Product subscription agreements
+- [Partner](../entities/partner.md) - Partners selling products
 
 ---
 
-## Usage Examples
+## Semantic Links
 
-**Analyze bookings by product family**:
-- Compare product family performance
-- Measure product family contribution to revenue
-
-**Analyze bookings by technology domain**:
-- Evaluate networking vs. security vs. collaboration performance
-- Measure technology domain adoption
-
-**Analyze bookings by offer type**:
-- Compare hardware vs. software subscription vs. SaaS subscription
-- Measure subscription adoption trends
-
-**Product performance analysis**:
-- Identify top-performing products
-- Analyze product mix by customer segment
-- Measure product adoption by geography
+- [Relationship Index](./index.md)
+- [Entity Index](../entities/index.md)
+- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Main Index](../index.md)
 
 ---
 
-## Navigation
+## Metadata
 
-- [Back to Relationships Index](index.md)
-- [View Source Entity: Product](../entities/product.md)
-- [View Target Entity: Booking Transaction](../entities/booking-transaction.md)
-- [Back to Main Index](../index.md)
+**Relationship ID**: REL006  
+**Source Entity ID**: ENT006  
+**Target Entity ID**: ENT008  
+**Relationship Type**: Foreign Key  
+**Cardinality**: One-to-Many  
+**Confidence Score**: 1.00  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
