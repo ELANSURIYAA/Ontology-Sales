@@ -13,54 +13,51 @@ timestamp: 2026-07-28T00:00:00Z
 
 Classifies the customer into a business segment such as Enterprise, Service Provider, or Public Sector.
 
----
-
 ## Business Meaning
 
-Customer Segment is a strategic classification that groups customers based on their business model, organizational type, and market characteristics. Common segments include Enterprise (large commercial organizations), Service Provider (telecommunications and cloud service providers), and Public Sector (government and educational institutions). Segmentation enables targeted sales strategies, specialized product offerings, and segment-specific performance analysis.
-
----
+Customer Segment groups customers into strategic categories based on their business characteristics, size, and operational model. Segmentation enables targeted sales strategies, customized offerings, and segment-specific performance analysis.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer
-
-**Source Column**: segment
-
-**Entity**: [Customer](../entities/customer.md)
-
-**Attribute**: Customer Segment
-
-**Data Type**: Character Varying(30)
-
+**Source Table**: QuoteToBooking.dim_customer  
+**Source Column**: segment  
+**Entity**: [Customer](../entities/customer.md)  
+**Attribute**: Customer Segment  
+**Data Type**: Character Varying(30)  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- Market Segment
+- Customer Category
+- Business Segment
 
 ## Related Concepts
 
-- [Customer](customer.md)
-- [Customer Key](customer-key.md)
-- [Industry](industry.md)
-- [Account Tier](account-tier.md)
-- [Covered Segment](covered-segment.md)
-
----
+- [Customer](./customer.md)
+- [Industry](./industry.md)
+- [Account Tier](./account-tier.md)
+- [Covered Segment](./covered-segment.md)
 
 ## Usage Context
 
 Customer Segment is used to:
-- Classify customers for targeted marketing
-- Enable segment-based revenue analysis
-- Support sales territory assignment
-- Facilitate segment-specific strategies
-- Enable competitive analysis by segment
-- Support market sizing and opportunity assessment
+- Target sales and marketing efforts
+- Analyze booking performance by segment
+- Customize product offerings and pricing
+- Allocate sales resources
+
+## Example Values
+
+- Enterprise
+- Service Provider
+- Public Sector
+- Commercial
+- Small Business
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Customer](../entities/customer.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Customer (ENT002)  
+**Attribute**: ATTR009
