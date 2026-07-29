@@ -1,9 +1,9 @@
 ---
 title: Glossary Index
 type: index
-description: Business glossary catalog for the Sales Bookings and Revenue Analytics semantic model
+description: Complete catalog of business terms in the Sales Bookings and Revenue Analytics knowledge bundle
 resource: glossary
-tags: [glossary, terminology, definitions, index]
+tags: [glossary, index, catalog, terms, definitions]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,24 +11,22 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Overview
 
-This index catalogs all business terms and definitions in the semantic model. The glossary provides standardized terminology, business definitions, and technical mappings for all concepts in the Sales Bookings and Revenue Analytics domain.
+This index catalogs all business terms in the Sales Bookings and Revenue Analytics knowledge bundle. Each term includes business definitions, technical mappings, and semantic relationships.
 
 ---
 
 ## Glossary Statistics
 
-| Metric | Count |
-|--------|-------|
-| Total Terms | 69 |
-| Entity Terms | 8 |
-| Attribute Terms | 61 |
-| Average Confidence Score | 0.99 |
+- **Total Terms:** 69
+- **Entity Terms:** 8
+- **Attribute Terms:** 61
+- **Confidence Score Range:** 0.95 - 1.00
 
 ---
 
-## Glossary Catalog by Entity
+## Glossary Terms by Category
 
-### Contract Terms (6 terms)
+### Contract Terms
 - [Contract](./contract.md)
 - [Contract Key](./contract-key.md)
 - [Contract Type](./contract-type.md)
@@ -36,7 +34,7 @@ This index catalogs all business terms and definitions in the semantic model. Th
 - [Auto Renew Flag](./auto-renew-flag.md)
 - [Coverage Level](./coverage-level.md)
 
-### Customer Terms (9 terms)
+### Customer Terms
 - [Customer](./customer.md)
 - [Customer Key](./customer-key.md)
 - [Customer ID](./customer-id.md)
@@ -47,7 +45,7 @@ This index catalogs all business terms and definitions in the semantic model. Th
 - [Headquarters Country](./headquarters-country.md)
 - [Headquarters Region](./headquarters-region.md)
 
-### Date Terms (8 terms)
+### Date Terms
 - [Date](./date.md)
 - [Date Key](./date-key.md)
 - [Full Date](./full-date.md)
@@ -57,14 +55,14 @@ This index catalogs all business terms and definitions in the semantic model. Th
 - [Fiscal Quarter](./fiscal-quarter.md)
 - [Fiscal Period Sequence](./fiscal-period-sequence.md)
 
-### Geography Terms (5 terms)
+### Geography Terms
 - [Geography](./geography.md)
 - [Geography Key](./geography-key.md)
 - [Sales Region](./sales-region.md)
 - [Sales Theater](./sales-theater.md)
 - [Country](./country.md)
 
-### Partner Terms (7 terms)
+### Partner Terms
 - [Partner](./partner.md)
 - [Partner Key](./partner-key.md)
 - [Partner ID](./partner-id.md)
@@ -73,7 +71,7 @@ This index catalogs all business terms and definitions in the semantic model. Th
 - [Partner Tier](./partner-tier.md)
 - [Route to Market](./route-to-market.md)
 
-### Product Terms (8 terms)
+### Product Terms
 - [Product](./product.md)
 - [Product Key](./product-key.md)
 - [Product ID](./product-id.md)
@@ -83,7 +81,7 @@ This index catalogs all business terms and definitions in the semantic model. Th
 - [Offer Type](./offer-type.md)
 - [Business Entity](./business-entity.md)
 
-### Sales Representative Terms (7 terms)
+### Sales Representative Terms
 - [Sales Representative](./sales-representative.md)
 - [Sales Representative Key](./sales-representative-key.md)
 - [Sales Representative ID](./sales-representative-id.md)
@@ -92,7 +90,7 @@ This index catalogs all business terms and definitions in the semantic model. Th
 - [Sales Team](./sales-team.md)
 - [Covered Segment](./covered-segment.md)
 
-### Booking Transaction Terms (19 terms)
+### Booking Transaction Terms
 - [Booking Transaction](./booking-transaction.md)
 - [Booking ID](./booking-id.md)
 - [Order Number](./order-number.md)
@@ -109,95 +107,9 @@ This index catalogs all business terms and definitions in the semantic model. Th
 
 ---
 
-## Alphabetical Term List
+## Navigation
 
-A-C:
-- [Account Tier](./account-tier.md)
-- [Annual Contract Value USD](./annual-contract-value-usd.md)
-- [Auto Renew Flag](./auto-renew-flag.md)
-- [Booking Amount USD](./booking-amount-usd.md)
-- [Booking Date Key](./booking-date-key.md)
-- [Booking ID](./booking-id.md)
-- [Booking Transaction](./booking-transaction.md)
-- [Booking Type](./booking-type.md)
-- [Business Entity](./business-entity.md)
-- [Calendar Year](./calendar-year.md)
-- [Contract](./contract.md)
-- [Contract Key](./contract-key.md)
-- [Contract Term Months](./contract-term-months.md)
-- [Contract Type](./contract-type.md)
-- [Country](./country.md)
-- [Covered Segment](./covered-segment.md)
-- [Coverage Level](./coverage-level.md)
-- [Customer](./customer.md)
-- [Customer ID](./customer-id.md)
-- [Customer Key](./customer-key.md)
-- [Customer Name](./customer-name.md)
-- [Customer Segment](./customer-segment.md)
-
-D-H:
-- [Date](./date.md)
-- [Date Key](./date-key.md)
-- [Discount Percentage](./discount-percentage.md)
-- [Fiscal Period Sequence](./fiscal-period-sequence.md)
-- [Fiscal Quarter](./fiscal-quarter.md)
-- [Fiscal Year](./fiscal-year.md)
-- [Full Date](./full-date.md)
-- [Geography](./geography.md)
-- [Geography Key](./geography-key.md)
-- [Headquarters Country](./headquarters-country.md)
-- [Headquarters Region](./headquarters-region.md)
-
-I-P:
-- [Industry](./industry.md)
-- [Month Name](./month-name.md)
-- [Offer Type](./offer-type.md)
-- [Order Line Number](./order-line-number.md)
-- [Order Number](./order-number.md)
-- [Partner](./partner.md)
-- [Partner ID](./partner-id.md)
-- [Partner Key](./partner-key.md)
-- [Partner Name](./partner-name.md)
-- [Partner Tier](./partner-tier.md)
-- [Partner Type](./partner-type.md)
-- [Product](./product.md)
-- [Product Family](./product-family.md)
-- [Product ID](./product-id.md)
-- [Product Key](./product-key.md)
-- [Product Name](./product-name.md)
-
-Q-Z:
-- [Quantity Sold](./quantity-sold.md)
-- [Renewal Indicator](./renewal-indicator.md)
-- [Route to Market](./route-to-market.md)
-- [Sales Region](./sales-region.md)
-- [Sales Representative](./sales-representative.md)
-- [Sales Representative ID](./sales-representative-id.md)
-- [Sales Representative Key](./sales-representative-key.md)
-- [Sales Representative Name](./sales-representative-name.md)
-- [Sales Role](./sales-role.md)
-- [Sales Team](./sales-team.md)
-- [Sales Theater](./sales-theater.md)
-- [Technology Domain](./technology-domain.md)
-- [Total Contract Value USD](./total-contract-value-usd.md)
-- [Unit List Price USD](./unit-list-price-usd.md)
-
----
-
-## Semantic Links
-
-- [Main Index](../index.md)
-- [Semantic Summary](../semantic_summary.md)
-- [Entity Index](../entities/index.md)
-- [Domain Index](../domains/index.md)
-
----
-
-## Metadata
-
-**Resource Type**: Glossary Catalog  
-**Total Terms**: 69  
-**Domain**: Sales Bookings and Revenue Analytics  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+- [Return to Bundle Index](../index.md)
+- [View Semantic Summary](../semantic_summary.md)
+- [View All Entities](../entities/index.md)
+- [View All Domains](../domains/index.md)
