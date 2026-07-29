@@ -1,17 +1,17 @@
 ---
-title: Domain Index
+title: Domains Index
 type: index
-description: Catalog of business domains in the Sales Bookings and Revenue Analytics semantic model
+description: Complete catalog of business domains in the Sales Bookings and Revenue Analytics knowledge bundle
 resource: domains
-tags: [domains, business, catalog, index]
+tags: [domains, index, catalog]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Domain Index
+# Domains Index
 
 ## Overview
 
-This index catalogs all business domains in the semantic model. Domains represent high-level business areas that organize related entities, relationships, and measures.
+This index catalogs all business domains in the Sales Bookings and Revenue Analytics knowledge bundle. Each domain represents a distinct area of business operations with related entities, measures, and relationships.
 
 ---
 
@@ -19,11 +19,11 @@ This index catalogs all business domains in the semantic model. Domains represen
 
 ### [Sales Bookings and Revenue Analytics](./sales-bookings-and-revenue-analytics.md)
 
-**Domain ID**: DOM001
+**Domain ID:** DOM001
 
-**Description**: This domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. It captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
+**Description:** This domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. It captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
 
-**Related Entities**:
+**Related Entities:**
 - [Contract](../entities/contract.md)
 - [Customer](../entities/customer.md)
 - [Date](../entities/date.md)
@@ -33,7 +33,7 @@ This index catalogs all business domains in the semantic model. Domains represen
 - [Sales Representative](../entities/sales-representative.md)
 - [Booking Transaction](../entities/booking-transaction.md)
 
-**Related Measures**:
+**Related Measures:**
 - [Quantity Sold](../measures/quantity-sold.md)
 - [Unit List Price USD](../measures/unit-list-price-usd.md)
 - [Discount Percentage](../measures/discount-percentage.md)
@@ -41,34 +41,30 @@ This index catalogs all business domains in the semantic model. Domains represen
 - [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
 - [Total Contract Value USD](../measures/total-contract-value-usd.md)
 
+**Related Relationships:**
+- [Contract to Booking Transaction](../relationships/contract-to-booking-transaction.md)
+- [Customer to Booking Transaction](../relationships/customer-to-booking-transaction.md)
+- [Date to Booking Transaction](../relationships/date-to-booking-transaction.md)
+- [Geography to Booking Transaction](../relationships/geography-to-booking-transaction.md)
+- [Partner to Booking Transaction](../relationships/partner-to-booking-transaction.md)
+- [Product to Booking Transaction](../relationships/product-to-booking-transaction.md)
+- [Sales Representative to Booking Transaction](../relationships/sales-representative-to-booking-transaction.md)
+
 ---
 
 ## Domain Statistics
 
-| Metric | Count |
-|--------|-------|
-| Total Domains | 1 |
-| Total Entities | 8 |
-| Total Measures | 6 |
-| Total Relationships | 7 |
+- **Total Domains:** 1
+- **Total Entities:** 8
+- **Total Relationships:** 7
+- **Total Measures:** 6
 
 ---
 
-## Semantic Links
+## Navigation
 
-- [Main Index](../index.md)
-- [Semantic Summary](../semantic_summary.md)
-- [Entity Index](../entities/index.md)
-- [Relationship Index](../relationships/index.md)
-- [Measure Index](../measures/index.md)
-- [Glossary Index](../glossary/index.md)
-
----
-
-## Metadata
-
-**Resource Type**: Domain Catalog  
-**Total Domains**: 1  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+- [Return to Bundle Index](../index.md)
+- [View Semantic Summary](../semantic_summary.md)
+- [View All Entities](../entities/index.md)
+- [View All Relationships](../relationships/index.md)
+- [View All Measures](../measures/index.md)
