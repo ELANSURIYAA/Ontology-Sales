@@ -1,9 +1,9 @@
 ---
 title: Customer
 type: entity
-description: Customers that place orders and generate bookings including segment, industry, account tier, and headquarters location
+description: Customer organizations that place orders and generate bookings including segment, industry, account tier, and headquarters location
 resource: entities
-tags: [entity, dimension, customer, account, organization]
+tags: [customer, account, dimension, entity]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,42 +11,41 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Stores descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.
+The Customer entity stores descriptive information about customers that place orders and generate bookings. It captures customer organizational characteristics including customer segment, industry classification, account tier, and headquarters location. This entity enables comprehensive customer analysis and segmentation for sales performance tracking and strategic account management.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer
-
-**Source System**: QuoteToBooking
-
-**Entity Type**: Dimension
+**Source Table**: QuoteToBooking.dim_customer  
+**Source Schema**: QuoteToBooking  
+**Entity Type**: Dimension  
+**Entity ID**: ENT002
 
 ---
 
 ## Attributes
 
-- **Customer Key** (customer_key): Surrogate key that uniquely identifies a customer record in the customer dimension
-- **Customer ID** (customer_id): Business identifier assigned to the customer account
-- **Customer Name** (customer_name): Official name of the customer organization that purchased products or services
-- **Customer Segment** (segment): Classifies the customer into a business segment such as Enterprise, Service Provider, or Public Sector
-- **Industry** (industry): Identifies the industry in which the customer operates
-- **Account Tier** (account_tier): Indicates the strategic importance or service tier of the customer account
-- **Headquarters Country** (hq_country): Country where the customer organization's headquarters is located
-- **Headquarters Region** (hq_region): Global region where the customer organization's headquarters is located
+- **Customer Key** - Surrogate key that uniquely identifies a customer record in the customer dimension
+- **Customer ID** - Business identifier assigned to the customer account
+- **Customer Name** - Official name of the customer organization that purchased products or services
+- **Customer Segment** - Classifies the customer into a business segment such as Enterprise, Service Provider, or Public Sector
+- **Industry** - Identifies the industry in which the customer operates
+- **Account Tier** - Indicates the strategic importance or service tier of the customer account
+- **Headquarters Country** - Country where the customer organization's headquarters is located
+- **Headquarters Region** - Global region where the customer organization's headquarters is located
 
 ---
 
 ## Primary Keys
 
-- **Customer Key** (customer_key)
+- **Customer Key** (customer_key) - Surrogate key, Integer, Not Nullable
 
 ---
 
 ## Foreign Keys
 
-None
+None - This is a dimension entity
 
 ---
 
@@ -54,30 +53,76 @@ None
 
 ### Outgoing Relationships
 
-- **[Customer to Booking Transaction](../relationships/customer-to-booking-transaction.md)**: One-to-Many relationship linking customers to booking transactions
+- **[Customer to Booking Transaction](../relationships/customer-to-booking-transaction.md)** - One-to-Many relationship linking customers to booking transactions
 
 ### Related Entities
 
-- [Booking Transaction](booking-transaction.md): Fact entity that references this dimension
-- [Geography](geography.md): Related through headquarters location
-- [Sales Representative](sales-representative.md): Related through account coverage
+- **[Booking Transaction](./booking-transaction.md)** - Fact entity containing booking records for customers
+- **[Geography](./geography.md)** - Geographic locations where customers operate
+- **[Sales Representative](./sales-representative.md)** - Sales personnel managing customer relationships
 
 ---
 
 ## Measures
 
-This dimension supports analysis of the following measures:
+Customers support analysis of the following measures:
 
-- [Booking Amount USD](../measures/booking-amount-usd.md)
-- [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
-- [Total Contract Value USD](../measures/total-contract-value-usd.md)
-- [Quantity Sold](../measures/quantity-sold.md)
-- [Unit List Price USD](../measures/unit-list-price-usd.md)
-- [Discount Percentage](../measures/discount-percentage.md)
+- **[Booking Amount USD](../measures/booking-amount-usd.md)** - Total revenue by customer and segment
+- **[Annual Contract Value USD](../measures/annual-contract-value-usd.md)** - ACV by customer characteristics
+- **[Total Contract Value USD](../measures/total-contract-value-usd.md)** - TCV by customer attributes
+- **[Quantity Sold](../measures/quantity-sold.md)** - Volume by customer segment
+- **[Discount Percentage](../measures/discount-percentage.md)** - Pricing by customer tier
+
+---
+
+## Business Rules
+
+1. Customer Key must be unique and not null
+2. Customer ID must be unique and not null
+3. Customer Name is required for all customer records
+4. Customer Segment must be from approved list (Enterprise, Service Provider, Public Sector, etc.)
+5. Account Tier must be from approved tier classification
+6. Headquarters Country must be valid ISO country code
+7. Headquarters Region must align with country location
+
+---
+
+## Analytical Usage
+
+### Customer Segment Analysis
+- Compare booking performance across Enterprise, Service Provider, and Public Sector segments
+- Analyze segment mix and trends over time
+- Evaluate revenue contribution by customer segment
+
+### Industry Analysis
+- Track booking performance by industry vertical
+- Identify high-performing industries
+- Analyze industry-specific product preferences
+
+### Account Tier Analysis
+- Monitor strategic account performance
+- Compare tier-based booking patterns
+- Track account tier migration and growth
+
+### Geographic Analysis
+- Analyze customer distribution by headquarters location
+- Compare regional customer characteristics
+- Track international vs domestic customer mix
 
 ---
 
 ## Related Concepts
+
+- **[Geography](./geography.md)** - Sales territories and customer locations
+- **[Product](./product.md)** - Products purchased by customers
+- **[Contract](./contract.md)** - Agreements with customers
+- **[Sales Representative](./sales-representative.md)** - Account management relationships
+- **[Partner](./partner.md)** - Channel partners serving customers
+- **[Booking Transaction](./booking-transaction.md)** - Customer purchase transactions
+
+---
+
+## Glossary Terms
 
 - [Customer](../glossary/customer.md)
 - [Customer Key](../glossary/customer-key.md)
@@ -91,54 +136,38 @@ This dimension supports analysis of the following measures:
 
 ---
 
-## Business Rules
+## Attribute Details
 
-1. Customer Key is a surrogate key and must be unique
-2. Customer ID is the business identifier for the customer account
-3. Customer Name is the official organization name
-4. Customer Segment classifies customers into business categories (Enterprise, Service Provider, Public Sector)
-5. Industry identifies the customer's operating industry
-6. Account Tier indicates strategic importance or service level
-7. Headquarters Country and Region identify the customer's primary location
-8. Every booking transaction must reference a valid customer
-9. Customer attributes support segmentation and targeting analysis
-
----
-
-## Usage Examples
-
-**Analysis by Customer Segment**:
-- Compare booking amounts across Enterprise, Service Provider, and Public Sector segments
-- Analyze product mix by customer segment
-- Measure average deal size by segment
-
-**Analysis by Industry**:
-- Identify top-performing industries by booking revenue
-- Analyze product adoption by industry vertical
-- Compare discount rates across industries
-
-**Analysis by Account Tier**:
-- Measure revenue contribution by strategic vs. standard accounts
-- Analyze contract terms by account tier
-- Compare renewal rates across account tiers
-
-**Analysis by Geography**:
-- Evaluate booking performance by headquarters region
-- Analyze international vs. domestic customer revenue
-- Compare customer distribution by country
+| Attribute | Technical Column | Data Type | Nullable | Key Type | Description |
+|-----------|-----------------|-----------|----------|----------|-------------|
+| Customer Key | customer_key | integer | No | Primary | Surrogate key uniquely identifying customer |
+| Customer ID | customer_id | character varying(20) | No | Business | Business identifier for customer account |
+| Customer Name | customer_name | character varying(80) | Yes | - | Official name of customer organization |
+| Customer Segment | segment | character varying(30) | Yes | - | Business segment classification |
+| Industry | industry | character varying(40) | Yes | - | Industry vertical classification |
+| Account Tier | account_tier | character varying(20) | Yes | - | Strategic importance tier |
+| Headquarters Country | hq_country | character varying(40) | Yes | - | Country of headquarters location |
+| Headquarters Region | hq_region | character varying(20) | Yes | - | Global region of headquarters |
 
 ---
 
-## Domain
+## Semantic Links
 
-[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Entity Index](./index.md)
+- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+- [Relationship Index](../relationships/index.md)
+- [Measure Index](../measures/index.md)
+- [Main Index](../index.md)
 
 ---
 
-## Navigation
+## Metadata
 
-- [Back to Entities Index](index.md)
-- [Back to Main Index](../index.md)
-- [View Relationships](../relationships/index.md)
-- [View Measures](../measures/index.md)
-- [View Glossary](../glossary/index.md)
+**Entity ID**: ENT002  
+**Domain ID**: DOM001  
+**Entity Type**: Dimension  
+**Technical Table**: QuoteToBooking.dim_customer  
+**Total Attributes**: 8  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
