@@ -1,9 +1,9 @@
 ---
 title: Sales Bookings and Revenue Analytics
 type: domain
-description: Sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products
+description: Sales booking operations for enterprise products supporting analysis across customers, products, partners, geographies, and contracts
 resource: domains
-tags: [domain, sales, bookings, revenue, analytics, enterprise]
+tags: [sales, bookings, revenue, analytics, enterprise, domain]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,135 +11,207 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-This domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. It captures completed customer bookings and supports analysis of sales performance across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
+The Sales Bookings and Revenue Analytics domain represents sales booking operations for enterprise networking, security, collaboration, observability, and software subscription products. This domain captures completed customer bookings and supports comprehensive analysis of sales performance across multiple business dimensions.
 
 ---
 
 ## Business Purpose
 
-The Sales Bookings and Revenue Analytics domain enables the organization to:
+This domain serves as the foundation for:
 
-- Track and analyze completed sales bookings across all product lines
-- Measure sales performance by customer segment, geography, and product family
-- Evaluate partner and sales representative effectiveness
-- Monitor contract terms, renewal behavior, and support coverage
-- Analyze pricing, discounting, and revenue trends
-- Support fiscal and calendar-based reporting
-- Calculate key revenue metrics including booking amount, ACV, and TCV
+- **Sales Performance Analysis** - Track and analyze booking performance across time, geography, and sales teams
+- **Revenue Analytics** - Monitor booking amounts, contract values, and revenue metrics
+- **Customer Intelligence** - Analyze customer segments, industries, and account tiers
+- **Product Portfolio Management** - Evaluate product family performance and technology domain adoption
+- **Partner Channel Analysis** - Assess partner contribution and route-to-market effectiveness
+- **Contract Management** - Track contract types, terms, and renewal behavior
+- **Strategic Planning** - Support forecasting, quota setting, and resource allocation
+
+---
+
+## Domain Scope
+
+### Included
+
+- Completed sales bookings
+- Customer account information
+- Product and offer catalog
+- Partner and channel data
+- Geographic sales territories
+- Sales representative assignments
+- Contract terms and conditions
+- Financial measures (bookings, ACV, TCV)
+- Calendar and fiscal time periods
+
+### Excluded
+
+- Quote and opportunity pipeline
+- Order fulfillment and delivery
+- Revenue recognition accounting
+- Customer support and service
+- Product usage and consumption
+- Billing and invoicing
+- Collections and accounts receivable
 
 ---
 
 ## Related Entities
 
-This domain contains the following business entities:
-
 ### Dimension Entities
 
-- **[Contract](../entities/contract.md)**: Commercial agreements associated with bookings, including contract type, term, renewal behavior, and support coverage level
-- **[Customer](../entities/customer.md)**: Customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location
-- **[Date](../entities/date.md)**: Calendar and fiscal date attributes used to analyze bookings over time
-- **[Geography](../entities/geography.md)**: Geographic attributes used to analyze bookings by sales region, theater, and country
-- **[Partner](../entities/partner.md)**: Channel and direct partners involved in the sales process, including partner type, tier, and route to market
-- **[Product](../entities/product.md)**: Products and offers sold to customers, including product family, technology domain, offer type, and business entity
-- **[Sales Representative](../entities/sales-representative.md)**: Sales personnel responsible for managing customer relationships and booking transactions
+- **[Contract](../entities/contract.md)** - Commercial agreements and contract terms
+- **[Customer](../entities/customer.md)** - Customer organizations and account information
+- **[Date](../entities/date.md)** - Calendar and fiscal time periods
+- **[Geography](../entities/geography.md)** - Sales regions, theaters, and countries
+- **[Partner](../entities/partner.md)** - Channel and direct partner organizations
+- **[Product](../entities/product.md)** - Products and subscription offers
+- **[Sales Representative](../entities/sales-representative.md)** - Sales personnel and team assignments
 
 ### Fact Entities
 
-- **[Booking Transaction](../entities/booking-transaction.md)**: Individual completed sales booking transactions with related financial measures and links to all dimension entities
+- **[Booking Transaction](../entities/booking-transaction.md)** - Individual sales booking records with financial measures
 
 ---
 
 ## Related Measures
 
-This domain supports the following business measures:
+### Volume Metrics
 
-- **[Quantity Sold](../measures/quantity-sold.md)**: Number of units, licenses, or subscriptions included in booking transactions
-- **[Unit List Price USD](../measures/unit-list-price-usd.md)**: Standard list price per unit before discounts are applied
-- **[Discount Percentage](../measures/discount-percentage.md)**: Percentage discount applied to the list price
-- **[Booking Amount USD](../measures/booking-amount-usd.md)**: Total booked revenue amount after pricing adjustments
-- **[Annual Contract Value USD](../measures/annual-contract-value-usd.md)**: Annualized value of the contract
-- **[Total Contract Value USD](../measures/total-contract-value-usd.md)**: Total value of the full contract
+- **[Quantity Sold](../measures/quantity-sold.md)** - Units, licenses, or subscriptions sold
+
+### Pricing Metrics
+
+- **[Unit List Price USD](../measures/unit-list-price-usd.md)** - Standard list price per unit
+- **[Discount Percentage](../measures/discount-percentage.md)** - Price discount percentage
+
+### Revenue Metrics
+
+- **[Booking Amount USD](../measures/booking-amount-usd.md)** - Total booked revenue
+- **[Annual Contract Value USD](../measures/annual-contract-value-usd.md)** - Annualized contract value
+- **[Total Contract Value USD](../measures/total-contract-value-usd.md)** - Total contract value
 
 ---
 
 ## Related Relationships
 
-The domain is structured around the following key relationships:
+The domain implements a dimensional star schema with the following relationships:
 
-- [Contract to Booking Transaction](../relationships/contract-to-booking-transaction.md)
-- [Customer to Booking Transaction](../relationships/customer-to-booking-transaction.md)
-- [Date to Booking Transaction](../relationships/date-to-booking-transaction.md)
-- [Geography to Booking Transaction](../relationships/geography-to-booking-transaction.md)
-- [Partner to Booking Transaction](../relationships/partner-to-booking-transaction.md)
-- [Product to Booking Transaction](../relationships/product-to-booking-transaction.md)
-- [Sales Representative to Booking Transaction](../relationships/sales-representative-to-booking-transaction.md)
-
----
-
-## Semantic Links
-
-### Related Glossary Concepts
-
-- [Booking Transaction](../glossary/booking-transaction.md)
-- [Booking Amount USD](../glossary/booking-amount-usd.md)
-- [Annual Contract Value USD](../glossary/annual-contract-value-usd.md)
-- [Total Contract Value USD](../glossary/total-contract-value-usd.md)
-- [Customer Segment](../glossary/customer-segment.md)
-- [Product Family](../glossary/product-family.md)
-- [Partner Type](../glossary/partner-type.md)
-- [Sales Region](../glossary/sales-region.md)
-- [Contract Type](../glossary/contract-type.md)
-- [Fiscal Year](../glossary/fiscal-year.md)
-
----
-
-## Technical Mapping
-
-**Source System**: QuoteToBooking
-
-**Database Tables**:
-- QuoteToBooking.dim_contract
-- QuoteToBooking.dim_customer
-- QuoteToBooking.dim_date
-- QuoteToBooking.dim_geography
-- QuoteToBooking.dim_partner
-- QuoteToBooking.dim_product
-- QuoteToBooking.dim_sales_rep
-- QuoteToBooking.fact_bookings
+- **[Contract to Booking Transaction](../relationships/contract-to-booking-transaction.md)** - Links contracts to booking records
+- **[Customer to Booking Transaction](../relationships/customer-to-booking-transaction.md)** - Links customers to booking records
+- **[Date to Booking Transaction](../relationships/date-to-booking-transaction.md)** - Links dates to booking records
+- **[Geography to Booking Transaction](../relationships/geography-to-booking-transaction.md)** - Links geographies to booking records
+- **[Partner to Booking Transaction](../relationships/partner-to-booking-transaction.md)** - Links partners to booking records
+- **[Product to Booking Transaction](../relationships/product-to-booking-transaction.md)** - Links products to booking records
+- **[Sales Representative to Booking Transaction](../relationships/sales-representative-to-booking-transaction.md)** - Links sales reps to booking records
 
 ---
 
 ## Business Rules
 
-1. Every booking transaction must be associated with a valid customer
-2. Every booking transaction must be associated with a valid product
-3. Every booking transaction must have a booking date
-4. Booking amounts are recorded in U.S. dollars
-5. Annual Contract Value (ACV) represents annualized contract value
-6. Total Contract Value (TCV) represents full contract commitment
-7. Discount percentages are applied to list prices to calculate booking amounts
-8. Renewal indicator identifies repeat business from existing customers
-9. Contract terms are measured in months
-10. All financial measures use numeric data types for precision
+### Data Quality Rules
+
+1. Every booking transaction must have a valid customer
+2. Every booking transaction must have a valid product
+3. Every booking transaction must have a valid date
+4. Booking amounts must be non-negative
+5. Contract terms must be positive integers
+6. Discount percentages must be between 0 and 100
+
+### Business Logic Rules
+
+1. Annual Contract Value (ACV) = Total Contract Value (TCV) ÷ Contract Term (Years)
+2. Booking Amount = Quantity × Unit List Price × (1 - Discount Percentage)
+3. Renewal bookings must reference an existing contract
+4. New bookings create new contract records
+5. Fiscal periods follow company fiscal calendar
+
+### Referential Integrity Rules
+
+1. All foreign keys must reference valid dimension records
+2. Dimension surrogate keys must be unique
+3. Business keys must be unique within entity
+4. Date keys must exist in date dimension
+5. Geographic hierarchies must be consistent
+
+---
+
+## Analytical Capabilities
+
+### Dimensional Analysis
+
+- **Time Analysis** - Trend analysis by calendar and fiscal periods
+- **Geographic Analysis** - Performance by region, theater, and country
+- **Customer Analysis** - Segmentation by industry, segment, and tier
+- **Product Analysis** - Portfolio analysis by family and technology domain
+- **Partner Analysis** - Channel performance by type, tier, and route
+- **Contract Analysis** - Contract mix by type, term, and coverage
+- **Sales Analysis** - Representative and team performance tracking
+
+### Measure Analysis
+
+- **Revenue Analysis** - Booking amounts, ACV, and TCV tracking
+- **Volume Analysis** - Quantity and unit analysis
+- **Pricing Analysis** - List price and discount effectiveness
+- **Growth Analysis** - Period-over-period comparisons
+- **Mix Analysis** - Product, customer, and channel mix
+- **Performance Analysis** - Quota attainment and target achievement
+
+---
+
+## Technical Mapping
+
+### Source System
+
+**Database**: QuoteToBooking  
+**Schema**: Dimensional star schema  
+**Tables**: 8 (7 dimensions + 1 fact)
+
+### Table Mapping
+
+| Entity | Technical Table |
+|--------|----------------|
+| Contract | QuoteToBooking.dim_contract |
+| Customer | QuoteToBooking.dim_customer |
+| Date | QuoteToBooking.dim_date |
+| Geography | QuoteToBooking.dim_geography |
+| Partner | QuoteToBooking.dim_partner |
+| Product | QuoteToBooking.dim_product |
+| Sales Representative | QuoteToBooking.dim_sales_rep |
+| Booking Transaction | QuoteToBooking.fact_bookings |
 
 ---
 
 ## Domain Statistics
 
-- **Entities**: 8 (7 dimensions, 1 fact)
-- **Attributes**: 61
-- **Relationships**: 7
-- **Measures**: 6
-- **Glossary Terms**: 69
-- **Primary Keys**: 8
-- **Foreign Keys**: 7
+| Metric | Count |
+|--------|-------|
+| Entities | 8 |
+| Attributes | 61 |
+| Relationships | 7 |
+| Measures | 6 |
+| Primary Keys | 8 |
+| Foreign Keys | 7 |
 
 ---
 
-## Navigation
+## Semantic Links
 
-- [Back to Domains Index](index.md)
-- [Back to Main Index](../index.md)
-- [View Entities](../entities/index.md)
-- [View Measures](../measures/index.md)
-- [View Relationships](../relationships/index.md)
+- [Domain Index](./index.md)
+- [Entity Index](../entities/index.md)
+- [Relationship Index](../relationships/index.md)
+- [Measure Index](../measures/index.md)
+- [Glossary Index](../glossary/index.md)
+- [Semantic Summary](../semantic_summary.md)
+- [Main Index](../index.md)
+
+---
+
+## Metadata
+
+**Domain ID**: DOM001  
+**Domain Type**: Analytical  
+**Model Pattern**: Star Schema  
+**Source System**: QuoteToBooking  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
