@@ -11,114 +11,149 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Percentage discount applied to the list price for the booking transaction.
+Discount Percentage represents the percentage discount applied to the list price for the booking transaction. This measure quantifies pricing adjustments and is critical for margin analysis, pricing effectiveness evaluation, and competitive positioning assessment.
 
 ---
 
 ## Technical Mapping
 
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Technical Column**: discount_pct
-
+**Measure ID**: MEA003  
+**Technical Column**: discount_pct  
+**Source Table**: QuoteToBooking.fact_bookings  
+**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
 **Data Type**: Numeric
-
-**Aggregation Type**: AVG
-
----
-
-## Formula
-
-This is a base measure captured directly from the booking transaction representing the discount rate applied to the list price.
-
-**Discount Amount** = Unit List Price USD × Quantity Sold × Discount Percentage
-
-**Net Price** = Unit List Price USD × (1 - Discount Percentage)
 
 ---
 
 ## Aggregation
 
-**Default Aggregation**: AVG
-
-**Valid Aggregations**:
-- AVG: Average discount percentage across transactions
-- MIN: Minimum discount percentage
-- MAX: Maximum discount percentage
-- MEDIAN: Median discount percentage
+**Aggregation Type**: AVG  
+**Description**: Average discount percentage is calculated across selected dimensions to understand typical discounting patterns
 
 ---
 
-## Related Entities
+## Formula
 
-- [Booking Transaction](../entities/booking-transaction.md): Source entity for this measure
-- [Customer](../entities/customer.md): Analyze discount by customer attributes
-- [Product](../entities/product.md): Analyze discount by product attributes
-- [Partner](../entities/partner.md): Analyze discount by partner attributes
-- [Geography](../entities/geography.md): Analyze discount by geographic attributes
-- [Sales Representative](../entities/sales-representative.md): Analyze discount by sales representative
-- [Contract](../entities/contract.md): Analyze discount by contract attributes
-- [Date](../entities/date.md): Analyze discount trends over time
-
----
-
-## Related Domains
-
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+```
+Average Discount Percentage = AVG(discount_pct)
+Weighted Average Discount = SUM(discount_pct × booking_amount_usd) / SUM(booking_amount_usd)
+```
 
 ---
 
 ## Business Rules
 
-1. Discount Percentage represents the rate applied to list price
-2. Discount is expressed as a decimal (e.g., 0.15 = 15% discount)
-3. Discount reduces the list price to calculate booking amount
-4. Average aggregation is most meaningful for discount percentage
-5. Discount percentage varies by customer, product, partner, and deal size
+1. Discount Percentage must be between 0 and 100
+2. Zero discount indicates list price transaction
+3. Negative discounts are not permitted
+4. Discount Percentage is expressed as a whole number (e.g., 15 = 15%)
+5. Discount applies to unit list price before calculating booking amount
 
 ---
 
-## Usage Examples
+## Analytical Usage
 
-**Discount Analysis**:
-- Calculate average discount rate by customer segment
-- Analyze discount trends over time
+### Discount Analysis
+- Track average discount rates across dimensions
+- Identify high-discount transactions and patterns
+- Monitor discount trends over time
 
-**Pricing Strategy**:
-- Compare discount rates across product families
-- Evaluate discount levels by partner type
+### Margin Management
+- Assess impact of discounting on margins
+- Compare discount rates by customer segment and tier
+- Evaluate discount effectiveness on deal closure
 
-**Margin Analysis**:
-- Measure discount impact on revenue
-- Identify high-discount transactions
+### Pricing Strategy
+- Analyze discount patterns by product family
+- Compare channel discount strategies
+- Optimize discount policies and guidelines
 
-**Discount by Dimension**:
-- Average discount by customer tier
-- Average discount by sales region
-- Average discount by product family
-- Average discount by partner type
+### Competitive Positioning
+- Benchmark discount rates against market standards
+- Analyze geographic discount variations
+- Track competitive pricing pressure
+
+---
+
+## Related Entities
+
+- **[Booking Transaction](../entities/booking-transaction.md)** - Source entity containing discount data
+- **[Product](../entities/product.md)** - Products with discount rates
+- **[Customer](../entities/customer.md)** - Customer-specific discounting
+- **[Partner](../entities/partner.md)** - Channel discount structures
+- **[Sales Representative](../entities/sales-representative.md)** - Sales rep discount authority
 
 ---
 
 ## Related Measures
 
-- [Unit List Price USD](unit-list-price-usd.md): Base price before discount
-- [Booking Amount USD](booking-amount-usd.md): Revenue after discount
-- [Quantity Sold](quantity-sold.md): Volume measure used in discount calculation
+- **[Unit List Price USD](./unit-list-price-usd.md)** - Base price before discount
+- **[Booking Amount USD](./booking-amount-usd.md)** - Net revenue after discount
+- **[Quantity Sold](./quantity-sold.md)** - Volume impacted by discounting
 
 ---
 
-## Related Concepts
+## Calculation Relationships
 
-- [Discount Percentage](../glossary/discount-percentage.md)
-- [Booking Transaction](../glossary/booking-transaction.md)
-- [Unit List Price USD](../glossary/unit-list-price-usd.md)
+```
+Discount Amount = Quantity × Unit List Price × (Discount Percentage / 100)
+Net Price = Unit List Price × (1 - Discount Percentage / 100)
+Booking Amount = Quantity × Unit List Price × (1 - Discount Percentage / 100)
+```
 
 ---
 
-## Navigation
+## Dimensional Analysis
 
-- [Back to Measures Index](index.md)
-- [Back to Main Index](../index.md)
-- [View Entity: Booking Transaction](../entities/booking-transaction.md)
-- [View Metrics](../metrics.md)
+Discount Percentage can be analyzed across:
+
+- **[Date](../entities/date.md)** - Discount trends over time
+- **[Product](../entities/product.md)** - Discounting by product
+- **[Customer](../entities/customer.md)** - Customer segment discounting
+- **[Geography](../entities/geography.md)** - Regional discount patterns
+- **[Partner](../entities/partner.md)** - Channel discount strategies
+- **[Sales Representative](../entities/sales-representative.md)** - Rep discount behavior
+- **[Contract](../entities/contract.md)** - Contract-based discounting
+
+---
+
+## Key Performance Indicators
+
+- **Average Discount Rate** - Mean discount percentage
+- **Discount Range** - Min and max discount percentages
+- **Zero Discount Rate** - Percentage of transactions at list price
+- **High Discount Rate** - Percentage of transactions above threshold
+- **Discount Impact** - Revenue loss due to discounting
+
+---
+
+## Business Thresholds
+
+### Typical Discount Ranges
+- **0-10%**: Standard discount range
+- **10-20%**: Moderate discount range
+- **20-30%**: High discount range
+- **30%+**: Exceptional discount requiring approval
+
+---
+
+## Semantic Links
+
+- [Measure Index](./index.md)
+- [Metrics Overview](../metrics.md)
+- [Booking Transaction Entity](../entities/booking-transaction.md)
+- [Main Index](../index.md)
+
+---
+
+## Metadata
+
+**Measure ID**: MEA003  
+**Entity ID**: ENT008  
+**Technical Column**: discount_pct  
+**Data Type**: Numeric  
+**Aggregation**: AVG  
+**Unit**: Percentage  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
