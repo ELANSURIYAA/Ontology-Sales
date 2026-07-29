@@ -1,106 +1,94 @@
 ---
 title: Customer to Booking Transaction
 type: relationship
-description: One-to-Many relationship linking customers to booking transactions
+description: Foreign key relationship linking customers to booking transactions
 resource: relationships
-tags: [relationship, customer, booking, foreign-key]
+tags: [customer, booking, foreign-key, one-to-many]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Customer to Booking Transaction
 
-## Business Description
+## Relationship Definition
 
-This relationship links Customer dimension records to Booking Transaction fact records. Each customer can have multiple booking transactions, while each booking transaction is associated with exactly one customer. This relationship enables analysis of booking performance by customer characteristics including segment, industry, account tier, and headquarters location.
+Links customer records to booking transactions, enabling analysis of bookings by customer segment, industry, account tier, and headquarters location. This relationship allows business users to understand customer purchasing behavior and revenue contribution.
 
 ---
 
-## Relationship Details
+## Relationship Identifier
 
-**Relationship ID**: REL002  
-**Relationship Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Confidence Score**: 1.00
+**Relationship ID:** REL002
 
 ---
 
 ## Source Entity
 
-**Entity**: [Customer](../entities/customer.md)  
-**Entity ID**: ENT002  
-**Attribute**: Customer Key  
-**Technical Column**: customer_key  
-**Role**: Parent (One side)
+**[Customer](../entities/customer.md)**  
+**Entity ID:** ENT002  
+**Technical Table:** QuoteToBooking.dim_customer
 
 ---
 
 ## Target Entity
 
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)  
-**Entity ID**: ENT008  
-**Attribute**: Customer Key  
-**Technical Column**: customer_key  
-**Role**: Child (Many side)
+**[Booking Transaction](../entities/booking-transaction.md)**  
+**Entity ID:** ENT008  
+**Technical Table:** QuoteToBooking.fact_bookings
+
+---
+
+## Relationship Type
+
+**Type:** Foreign Key  
+**Cardinality:** One-to-Many  
+**Confidence Score:** 1.00
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer  
-**Target Table**: QuoteToBooking.fact_bookings  
-**Join Condition**: `dim_customer.customer_key = fact_bookings.customer_key`
+**Parent Attribute:** Customer Key (customer_key)  
+**Child Attribute:** Customer Key (customer_key)  
+**Join Condition:** dim_customer.customer_key = fact_bookings.customer_key
 
 ---
 
-## Business Rules
+## Business Description
 
-1. Each booking transaction must reference a valid customer
-2. A customer can have zero or many booking transactions
-3. Customer Key in Booking Transaction must exist in Customer dimension
-4. Referential integrity must be maintained
-5. Customer attributes apply to all associated booking transactions
-
----
-
-## Analytical Usage
-
-This relationship enables analysis of:
+Each customer can have multiple booking transactions, but each booking transaction is associated with exactly one customer. This relationship enables analysis of:
 
 - Booking performance by customer segment
-- Revenue distribution by industry vertical
-- Account tier contribution and performance
-- Customer lifetime value and repeat purchase patterns
-- Geographic customer distribution and headquarters analysis
+- Revenue contribution by industry vertical
+- Account tier profitability analysis
+- Geographic customer distribution
+- Customer lifetime value analysis
 
 ---
 
-## Related Concepts
+## Related Measures
 
-- [Customer](../entities/customer.md) - Source dimension entity
-- [Booking Transaction](../entities/booking-transaction.md) - Target fact entity
-- [Geography](../entities/geography.md) - Customer locations
-- [Sales Representative](../entities/sales-representative.md) - Customer account managers
-- [Product](../entities/product.md) - Products purchased by customers
+This relationship enables customer-based analysis of:
 
----
-
-## Semantic Links
-
-- [Relationship Index](./index.md)
-- [Entity Index](../entities/index.md)
-- [Domain: Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
-- [Main Index](../index.md)
+- [Booking Amount USD](../measures/booking-amount-usd.md)
+- [Annual Contract Value USD](../measures/annual-contract-value-usd.md)
+- [Total Contract Value USD](../measures/total-contract-value-usd.md)
+- [Quantity Sold](../measures/quantity-sold.md)
 
 ---
 
-## Metadata
+## Business Use Cases
 
-**Relationship ID**: REL002  
-**Source Entity ID**: ENT002  
-**Target Entity ID**: ENT008  
-**Relationship Type**: Foreign Key  
-**Cardinality**: One-to-Many  
-**Confidence Score**: 1.00  
-**Format**: Open Knowledge Format (OKF)  
-**Version**: 1.0  
-**Generated**: 2026-07-28T00:00:00Z
+1. **Customer Segment Analysis** - Compare booking performance across Enterprise, Service Provider, and Public Sector segments
+2. **Industry Vertical Analysis** - Analyze revenue patterns by customer industry
+3. **Account Tier Analysis** - Evaluate booking performance by strategic account tier
+4. **Geographic Analysis** - Track customer bookings by headquarters location
+5. **Customer Profitability** - Calculate total revenue and contract value per customer
+
+---
+
+## Navigation
+
+- [Return to Relationships Index](./index.md)
+- [View Source Entity: Customer](../entities/customer.md)
+- [View Target Entity: Booking Transaction](../entities/booking-transaction.md)
+- [Return to Bundle Index](../index.md)
