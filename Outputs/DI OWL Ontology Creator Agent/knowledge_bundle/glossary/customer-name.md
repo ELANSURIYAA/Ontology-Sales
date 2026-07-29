@@ -3,7 +3,7 @@ title: Customer Name
 type: glossary
 description: Official name of the customer organization that purchased products or services
 resource: glossary
-tags: [glossary, customer, name, organization]
+tags: [customer, name, organization, attribute]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -13,41 +13,46 @@ timestamp: 2026-07-28T00:00:00Z
 
 Official name of the customer organization that purchased products or services.
 
+---
+
 ## Business Meaning
 
-Customer Name is the legal or commonly used name of the customer organization. This is the primary way customers are identified in reports, dashboards, and business communications. Accurate customer names are essential for customer recognition, relationship management, and reporting.
+Customer Name is the legal or official name of the organization that enters into commercial agreements and generates booking transactions. This is the primary descriptor used for customer identification and reporting.
+
+---
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer  
-**Source Column**: customer_name  
-**Entity**: [Customer](../entities/customer.md)  
-**Attribute**: Customer Name  
-**Data Type**: Character Varying(80)  
-**Confidence Score**: 1.00
+**Source System:** QuoteToBooking  
+**Source Table:** dim_customer  
+**Source Column:** customer_name  
+**Data Type:** Character Varying(80)  
+**Entity:** [Customer](../entities/customer.md)  
+**Attribute:** Customer Name  
+**Confidence Score:** 1.00
 
-## Synonyms
-
-- Account Name
-- Organization Name
-- Company Name
+---
 
 ## Related Concepts
 
-- [Customer](./customer.md)
-- [Customer ID](./customer-id.md)
+- [Customer](./customer.md) - Parent entity
+- [Customer ID](./customer-id.md) - Business identifier
+- [Customer Key](./customer-key.md) - Surrogate identifier
+
+---
 
 ## Usage Context
 
 Customer Name is used to:
-- Identify customers in reports and dashboards
-- Support customer communications
-- Enable customer search and lookup
-- Display customer information in user interfaces
+- Identify customer organizations in reports and analysis
+- Support customer search and lookup
+- Enable customer communication and engagement
+- Provide human-readable customer identification
 
 ---
 
-**Confidence Score**: 1.00  
-**Source**: OSI Semantic Model  
-**Entity**: Customer (ENT002)  
-**Attribute**: ATTR008
+## Navigation
+
+- [Return to Glossary Index](./index.md)
+- [View Entity Definition](../entities/customer.md)
+- [Return to Bundle Index](../index.md)
