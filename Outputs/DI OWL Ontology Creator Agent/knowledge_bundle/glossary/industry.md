@@ -13,52 +13,53 @@ timestamp: 2026-07-28T00:00:00Z
 
 Identifies the industry in which the customer operates.
 
----
-
 ## Business Meaning
 
-Industry represents the economic sector or vertical market in which the customer organization conducts its primary business operations. Industry classification enables market analysis, competitive benchmarking, industry-specific product positioning, and targeted sales strategies. Examples include financial services, healthcare, manufacturing, retail, and technology.
-
----
+Industry classification categorizes customers by their primary business vertical or sector. Industry analysis enables vertical-specific sales strategies, product positioning, and competitive analysis. Understanding industry trends helps identify growth opportunities and market dynamics.
 
 ## Technical Mapping
 
-**Source Table**: QuoteToBooking.dim_customer
-
-**Source Column**: industry
-
-**Entity**: [Customer](../entities/customer.md)
-
-**Attribute**: Industry
-
-**Data Type**: Character Varying(40)
-
+**Source Table**: QuoteToBooking.dim_customer  
+**Source Column**: industry  
+**Entity**: [Customer](../entities/customer.md)  
+**Attribute**: Industry  
+**Data Type**: Character Varying(40)  
 **Confidence Score**: 1.00
 
----
+## Synonyms
+
+- Industry Vertical
+- Business Sector
+- Market Vertical
+- Industry Classification
 
 ## Related Concepts
 
-- [Customer](customer.md)
-- [Customer Segment](customer-segment.md)
-- [Account Tier](account-tier.md)
-
----
+- [Customer](./customer.md)
+- [Customer Segment](./customer-segment.md)
 
 ## Usage Context
 
 Industry is used to:
-- Classify customers by vertical market
-- Enable industry-based revenue analysis
-- Support industry-specific marketing
-- Facilitate competitive analysis
-- Enable market penetration measurement
-- Support industry trend analysis
+- Analyze booking performance by industry vertical
+- Develop industry-specific solutions and messaging
+- Identify high-growth industries
+- Support vertical sales specialization
+
+## Example Values
+
+- Financial Services
+- Healthcare
+- Manufacturing
+- Retail
+- Technology
+- Telecommunications
+- Government
+- Education
 
 ---
 
-## Navigation
-
-- [Back to Glossary Index](index.md)
-- [View Entity: Customer](../entities/customer.md)
-- [Back to Main Index](../index.md)
+**Confidence Score**: 1.00  
+**Source**: OSI Semantic Model  
+**Entity**: Customer (ENT002)  
+**Attribute**: ATTR010
