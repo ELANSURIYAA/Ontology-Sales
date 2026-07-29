@@ -3,7 +3,7 @@ title: Booking Amount USD
 type: measure
 description: Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments
 resource: measures
-tags: [measure, revenue, booking, amount, usd]
+tags: [measure, revenue, booking, sales]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,127 +11,155 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Total booked revenue amount for the transaction in U.S. dollars after pricing adjustments.
+Booking Amount USD represents the total booked revenue amount for the transaction in U.S. dollars after pricing adjustments. This is the primary revenue measure for sales performance tracking, quota attainment, and financial reporting. It reflects the actual revenue value after applying discounts to the list price.
 
 ---
 
 ## Technical Mapping
 
-**Entity**: [Booking Transaction](../entities/booking-transaction.md)
-
-**Technical Column**: booking_amount_usd
-
+**Measure ID**: MEA004  
+**Technical Column**: booking_amount_usd  
+**Source Table**: QuoteToBooking.fact_bookings  
+**Source Entity**: [Booking Transaction](../entities/booking-transaction.md)  
 **Data Type**: Numeric
-
-**Aggregation Type**: SUM
-
----
-
-## Formula
-
-**Booking Amount USD** = (Unit List Price USD × Quantity Sold) × (1 - Discount Percentage)
-
-This represents the net revenue after applying discounts to the list price.
 
 ---
 
 ## Aggregation
 
-**Default Aggregation**: SUM
-
-**Valid Aggregations**:
-- SUM: Total booking revenue across all transactions
-- AVG: Average booking amount per transaction
-- MIN: Minimum booking amount
-- MAX: Maximum booking amount
-- COUNT: Number of transactions with booking amounts
+**Aggregation Type**: SUM  
+**Description**: Total bookings are calculated by summing individual booking amounts across selected dimensions
 
 ---
 
-## Related Entities
+## Formula
 
-- [Booking Transaction](../entities/booking-transaction.md): Source entity for this measure
-- [Customer](../entities/customer.md): Analyze booking revenue by customer attributes
-- [Product](../entities/product.md): Analyze booking revenue by product attributes
-- [Partner](../entities/partner.md): Analyze booking revenue by partner attributes
-- [Geography](../entities/geography.md): Analyze booking revenue by geographic attributes
-- [Sales Representative](../entities/sales-representative.md): Analyze booking revenue by sales representative
-- [Contract](../entities/contract.md): Analyze booking revenue by contract attributes
-- [Date](../entities/date.md): Analyze booking revenue trends over time
-
----
-
-## Related Domains
-
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+```
+Booking Amount = Quantity × Unit List Price × (1 - Discount Percentage / 100)
+Total Bookings = SUM(booking_amount_usd)
+```
 
 ---
 
 ## Business Rules
 
-1. Booking Amount USD is the primary revenue metric
-2. All amounts are recorded in U.S. dollars
-3. Booking amount reflects net revenue after discounts
-4. Aggregation is typically SUM to calculate total revenue
-5. Used for revenue reporting, forecasting, and performance analysis
-6. Represents completed bookings only
+1. Booking Amount must be non-negative
+2. Booking Amount is expressed in U.S. dollars (USD)
+3. Booking Amount reflects net revenue after discounts
+4. Booking Amount is recognized at time of booking
+5. Zero booking amounts may indicate promotional transactions
 
 ---
 
-## Usage Examples
+## Analytical Usage
 
-**Revenue Analysis**:
-- Calculate total booking revenue by fiscal period
-- Measure year-over-year revenue growth
-- Track revenue against targets
+### Revenue Reporting
+- Track total bookings by period (daily, monthly, quarterly, yearly)
+- Monitor revenue performance against targets and quotas
+- Report financial results to stakeholders
 
-**Customer Revenue Analysis**:
-- Identify top customers by booking revenue
-- Measure revenue by customer segment
-- Calculate customer lifetime value
+### Sales Performance
+- Measure sales representative and team performance
+- Track quota attainment and achievement rates
+- Compare performance across territories and segments
 
-**Product Revenue Analysis**:
-- Evaluate product family contribution to revenue
-- Analyze product mix by revenue
-- Identify top-performing products
+### Trend Analysis
+- Analyze booking trends and growth rates
+- Identify seasonal patterns and cycles
+- Forecast future revenue based on historical trends
 
-**Geographic Revenue Analysis**:
-- Compare revenue by sales region
-- Analyze revenue distribution by country
-- Measure geographic market performance
+### Segmentation Analysis
+- Compare revenue across customer segments
+- Analyze product portfolio contribution
+- Evaluate channel and partner performance
 
-**Partner Revenue Analysis**:
-- Evaluate partner contribution to revenue
-- Compare direct vs. indirect revenue
-- Measure channel effectiveness
+---
 
-**Sales Performance**:
-- Track sales representative quota attainment
-- Measure team revenue contribution
-- Analyze average deal size
+## Related Entities
+
+- **[Booking Transaction](../entities/booking-transaction.md)** - Source entity containing booking amounts
+- **[Customer](../entities/customer.md)** - Customer revenue contribution
+- **[Product](../entities/product.md)** - Product revenue performance
+- **[Sales Representative](../entities/sales-representative.md)** - Sales rep revenue credit
+- **[Geography](../entities/geography.md)** - Regional revenue distribution
+- **[Partner](../entities/partner.md)** - Channel revenue contribution
 
 ---
 
 ## Related Measures
 
-- [Annual Contract Value USD](annual-contract-value-usd.md): Annualized contract value
-- [Total Contract Value USD](total-contract-value-usd.md): Full contract value
-- [Quantity Sold](quantity-sold.md): Volume measure
-- [Unit List Price USD](unit-list-price-usd.md): Base price before discount
-- [Discount Percentage](discount-percentage.md): Discount applied to price
+- **[Quantity Sold](./quantity-sold.md)** - Volume component of booking amount
+- **[Unit List Price USD](./unit-list-price-usd.md)** - Base price component
+- **[Discount Percentage](./discount-percentage.md)** - Discount applied to calculate booking amount
+- **[Annual Contract Value USD](./annual-contract-value-usd.md)** - Annualized booking value
+- **[Total Contract Value USD](./total-contract-value-usd.md)** - Full contract value
 
 ---
 
-## Related Concepts
+## Calculation Relationships
 
-- [Booking Amount USD](../glossary/booking-amount-usd.md)
-- [Booking Transaction](../glossary/booking-transaction.md)
+```
+Booking Amount = Quantity × Unit List Price × (1 - Discount Percentage / 100)
+Effective Price = Booking Amount / Quantity
+Discount Amount = (Quantity × Unit List Price) - Booking Amount
+Price Realization = Booking Amount / (Quantity × Unit List Price) × 100
+```
 
 ---
 
-## Navigation
+## Dimensional Analysis
 
-- [Back to Measures Index](index.md)
-- [Back to Main Index](../index.md)
-- [View Entity: Booking Transaction](../entities/booking-transaction.md)
-- [View Metrics](../metrics.md)
+Booking Amount USD can be analyzed across:
+
+- **[Date](../entities/date.md)** - Revenue trends over time
+- **[Product](../entities/product.md)** - Product portfolio revenue
+- **[Customer](../entities/customer.md)** - Customer segment revenue
+- **[Geography](../entities/geography.md)** - Regional revenue performance
+- **[Partner](../entities/partner.md)** - Channel revenue contribution
+- **[Sales Representative](../entities/sales-representative.md)** - Sales rep performance
+- **[Contract](../entities/contract.md)** - Contract type revenue
+
+---
+
+## Key Performance Indicators
+
+- **Total Bookings** - Sum of all booking amounts
+- **Average Deal Size** - Average booking amount per transaction
+- **Booking Growth Rate** - Period-over-period booking change
+- **Bookings per Customer** - Average bookings per customer
+- **Bookings per Representative** - Average bookings per sales rep
+- **Quota Attainment** - Actual bookings / Target bookings × 100
+
+---
+
+## Business Context
+
+Booking Amount USD is the most critical measure in the sales bookings model as it:
+- Drives sales compensation and commissions
+- Determines quota achievement
+- Supports financial planning and forecasting
+- Enables performance management
+- Provides basis for revenue recognition
+
+---
+
+## Semantic Links
+
+- [Measure Index](./index.md)
+- [Metrics Overview](../metrics.md)
+- [Booking Transaction Entity](../entities/booking-transaction.md)
+- [Main Index](../index.md)
+
+---
+
+## Metadata
+
+**Measure ID**: MEA004  
+**Entity ID**: ENT008  
+**Technical Column**: booking_amount_usd  
+**Data Type**: Numeric  
+**Aggregation**: SUM  
+**Currency**: USD  
+**Format**: Open Knowledge Format (OKF)  
+**Version**: 1.0  
+**Generated**: 2026-07-28T00:00:00Z
