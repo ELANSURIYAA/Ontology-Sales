@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL |
+| Database Name | PostgreSQL 16.14 |
 | Table Name | quotetobooking.dim_product |
 | Row Count | 10 |
 
@@ -66,14 +66,15 @@
 
 | Column Name | Min Date | Max Date | Distinct Count |
 | --- | --- | --- | --- |
+|  |  |  |  |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
 | --- | --- | --- | --- |
-| product_id | 8 | 11 | 9.40 |
-| product_name | 10 | 32 | 20.50 |
-| product_family | 3 | 9 | 6.70 |
-| technology_domain | 13 | 26 | 20.40 |
-| offer_type | 8 | 21 | 12.90 |
-| business_entity | 6 | 13 | 8.80 |
+| business_entity | 6 | 13 | 8.8 |
+| offer_type | 8 | 21 | 12.9 |
+| product_family | 3 | 9 | 6.7 |
+| product_id | 8 | 11 | 9.4 |
+| product_name | 10 | 32 | 20.5 |
+| technology_domain | 13 | 26 | 20.4 |
