@@ -2,8 +2,8 @@
 
 | Metric | Value |
 | --- | --- |
-| Database Type | PostgreSQL |
-| Number of Schemas | 2 |
+| Database Type | PostgreSQL 16.14 |
+| Number of Schemas | 1 |
 | Number of Tables | 8 |
 | Number of Columns | 61 |
 | Number of Primary Keys | 8 |
@@ -121,13 +121,13 @@ ALTER TABLE quotetobooking.dim_partner ADD CONSTRAINT dim_partner_pkey PRIMARY K
 ALTER TABLE quotetobooking.dim_product ADD CONSTRAINT dim_product_pkey PRIMARY KEY (product_key);
 ALTER TABLE quotetobooking.dim_sales_rep ADD CONSTRAINT dim_sales_rep_pkey PRIMARY KEY (sales_rep_key);
 ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fact_bookings_pkey PRIMARY KEY (booking_id);
+ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_contract FOREIGN KEY (contract_key) REFERENCES dim_contract(contract_key);
 ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_customer FOREIGN KEY (customer_key) REFERENCES dim_customer(customer_key);
 ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_date FOREIGN KEY (date_key) REFERENCES dim_date(date_key);
-ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_contract FOREIGN KEY (contract_key) REFERENCES dim_contract(contract_key);
-ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_sales_rep FOREIGN KEY (sales_rep_key) REFERENCES dim_sales_rep(sales_rep_key);
 ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_geography FOREIGN KEY (geography_key) REFERENCES dim_geography(geography_key);
 ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_partner FOREIGN KEY (partner_key) REFERENCES dim_partner(partner_key);
 ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_product FOREIGN KEY (product_key) REFERENCES dim_product(product_key);
+ALTER TABLE quotetobooking.fact_bookings ADD CONSTRAINT fk_booking_sales_rep FOREIGN KEY (sales_rep_key) REFERENCES dim_sales_rep(sales_rep_key);
 
 CREATE UNIQUE INDEX dim_contract_pkey ON quotetobooking.dim_contract USING btree (contract_key);
 CREATE UNIQUE INDEX dim_customer_pkey ON quotetobooking.dim_customer USING btree (customer_key);
