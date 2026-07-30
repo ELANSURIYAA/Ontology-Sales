@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL |
+| Database Name | PostgreSQL 16.14 |
 | Table Name | quotetobooking.dim_partner |
 | Row Count | 6 |
 
@@ -50,13 +50,14 @@
 
 | Column Name | Min Date | Max Date | Distinct Count |
 | --- | --- | --- | --- |
+|  |  |  |  |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
 | --- | --- | --- | --- |
-| partner_id | 6 | 6 | 6.00 |
+| partner_id | 6 | 6 | 6.0 |
 | partner_name | 3 | 21 | 9.67 |
-| partner_type | 6 | 20 | 15.83 |
 | partner_tier | 3 | 22 | 11.33 |
+| partner_type | 6 | 20 | 15.83 |
 | route_to_market | 6 | 8 | 7.67 |
