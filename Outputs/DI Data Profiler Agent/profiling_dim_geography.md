@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL |
+| Database Name | PostgreSQL 16.14 |
 | Table Name | quotetobooking.dim_geography |
 | Row Count | 8 |
 
@@ -38,28 +38,16 @@
 | Northern Europe | 1 |
 | US Commercial | 1 |
 
-## country
-
-| Value | Frequency |
-| --- | --- |
-| Australia | 1 |
-| Canada | 1 |
-| Germany | 1 |
-| India | 1 |
-| Japan | 1 |
-| United Arab Emirates | 1 |
-| United Kingdom | 1 |
-| United States | 1 |
-
 # Date Statistics
 
 | Column Name | Min Date | Max Date | Distinct Count |
 | --- | --- | --- | --- |
+|  |  |  |  |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
 | --- | --- | --- | --- |
-| region | 4 | 8 | 5.00 |
-| theater | 3 | 15 | 9.00 |
 | country | 5 | 20 | 9.88 |
+| region | 4 | 8 | 5.0 |
+| theater | 3 | 15 | 9.0 |
