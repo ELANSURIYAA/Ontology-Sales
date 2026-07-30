@@ -2,15 +2,14 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL 16.14 |
+| Database Name | ontology |
 | Table Name | quotetobooking.dim_partner |
-| Row Count | 6 |
 
 # Column Summary
 
 | Column Name | Data Type | Nullable | Distinct Count | Null Count | Null % | Min | Max | Average |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| partner_key | integer | NO | 6 | 0 | 0.00 | 1 | 6 | 3.50 |
+| --- | --- | --- | ---: | ---: | ---: | --- | --- | --- |
+| partner_key | integer | NO | 6 | 0 | 0.00 | 1 | 6 | 3.5000000000000000 |
 | partner_id | character varying | NO | 6 | 0 | 0.00 | PTR-01 | PTR-06 |  |
 | partner_name | character varying | YES | 6 | 0 | 0.00 | CDW | World Wide Technology |  |
 | partner_type | character varying | YES | 4 | 0 | 0.00 | Direct | Value-Added Reseller |  |
@@ -22,7 +21,7 @@
 ## partner_type
 
 | Value | Frequency |
-| --- | --- |
+| --- | ---: |
 | Value-Added Reseller | 3 |
 | Direct | 1 |
 | Distributor | 1 |
@@ -31,7 +30,7 @@
 ## partner_tier
 
 | Value | Frequency |
-| --- | --- |
+| --- | ---: |
 | Gold Integrator | 2 |
 | Authorized Distributor | 1 |
 | N/A | 1 |
@@ -41,7 +40,7 @@
 ## route_to_market
 
 | Value | Frequency |
-| --- | --- |
+| --- | ---: |
 | Reseller | 3 |
 | Two-Tier | 2 |
 | Direct | 1 |
@@ -49,15 +48,14 @@
 # Date Statistics
 
 | Column Name | Min Date | Max Date | Distinct Count |
-| --- | --- | --- | --- |
-|  |  |  |  |
+| --- | --- | --- | ---: |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
-| --- | --- | --- | --- |
-| partner_id | 6 | 6 | 6.0 |
+| --- | ---: | ---: | ---: |
+| partner_id | 6 | 6 | 6.00 |
 | partner_name | 3 | 21 | 9.67 |
-| partner_tier | 3 | 22 | 11.33 |
 | partner_type | 6 | 20 | 15.83 |
+| partner_tier | 3 | 22 | 11.33 |
 | route_to_market | 6 | 8 | 7.67 |
