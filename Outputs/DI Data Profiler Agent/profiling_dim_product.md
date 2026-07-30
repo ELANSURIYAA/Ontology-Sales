@@ -2,15 +2,14 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL 16.14 |
+| Database Name | ontology |
 | Table Name | quotetobooking.dim_product |
-| Row Count | 10 |
 
 # Column Summary
 
 | Column Name | Data Type | Nullable | Distinct Count | Null Count | Null % | Min | Max | Average |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| product_key | integer | NO | 10 | 0 | 0.00 | 1 | 10 | 5.50 |
+| --- | --- | --- | ---: | ---: | ---: | --- | --- | --- |
+| product_key | integer | NO | 10 | 0 | 0.00 | 1 | 10 | 5.5000000000000000 |
 | product_id | character varying | NO | 10 | 0 | 0.00 | C9300-48P | WBX-SUITE |  |
 | product_name | character varying | YES | 10 | 0 | 0.00 | Catalyst 9300 Switch | Webex Suite |  |
 | product_family | character varying | YES | 7 | 0 | 0.00 | Catalyst | Webex |  |
@@ -23,7 +22,7 @@
 ## product_family
 
 | Value | Frequency |
-| --- | --- |
+| --- | ---: |
 | Catalyst | 2 |
 | Firepower | 2 |
 | Meraki | 2 |
@@ -35,7 +34,7 @@
 ## technology_domain
 
 | Value | Frequency |
-| --- | --- |
+| --- | ---: |
 | Networking - Cloud Managed | 2 |
 | Networking - Switching | 2 |
 | Security - Network | 2 |
@@ -47,7 +46,7 @@
 ## offer_type
 
 | Value | Frequency |
-| --- | --- |
+| --- | ---: |
 | Hardware | 5 |
 | SaaS Subscription | 4 |
 | Software Subscription | 1 |
@@ -55,7 +54,7 @@
 ## business_entity
 
 | Value | Frequency |
-| --- | --- |
+| --- | ---: |
 | Security | 4 |
 | Meraki | 2 |
 | Networking | 2 |
@@ -65,16 +64,15 @@
 # Date Statistics
 
 | Column Name | Min Date | Max Date | Distinct Count |
-| --- | --- | --- | --- |
-|  |  |  |  |
+| --- | --- | --- | ---: |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
-| --- | --- | --- | --- |
-| business_entity | 6 | 13 | 8.8 |
-| offer_type | 8 | 21 | 12.9 |
-| product_family | 3 | 9 | 6.7 |
-| product_id | 8 | 11 | 9.4 |
-| product_name | 10 | 32 | 20.5 |
-| technology_domain | 13 | 26 | 20.4 |
+| --- | ---: | ---: | ---: |
+| product_id | 8 | 11 | 9.40 |
+| product_name | 10 | 32 | 20.50 |
+| product_family | 3 | 9 | 6.70 |
+| technology_domain | 13 | 26 | 20.40 |
+| offer_type | 8 | 21 | 12.90 |
+| business_entity | 6 | 13 | 8.80 |
