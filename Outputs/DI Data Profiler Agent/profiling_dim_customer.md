@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL |
+| Database Name | PostgreSQL 16.14 |
 | Table Name | quotetobooking.dim_customer |
 | Row Count | 8 |
 
@@ -44,16 +44,6 @@
 | Growth | 4 |
 | Strategic | 4 |
 
-## hq_country
-
-| Value | Frequency |
-| --- | --- |
-| United States | 4 |
-| Germany | 1 |
-| India | 1 |
-| Japan | 1 |
-| United Kingdom | 1 |
-
 ## hq_region
 
 | Value | Frequency |
@@ -66,15 +56,16 @@
 
 | Column Name | Min Date | Max Date | Distinct Count |
 | --- | --- | --- | --- |
+|  |  |  |  |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
 | --- | --- | --- | --- |
-| customer_id | 9 | 9 | 9.00 |
+| account_tier | 6 | 9 | 7.5 |
+| customer_id | 9 | 9 | 9.0 |
 | customer_name | 3 | 26 | 11.25 |
-| segment | 10 | 16 | 14.88 |
-| industry | 10 | 18 | 17.00 |
-| account_tier | 6 | 9 | 7.50 |
 | hq_country | 5 | 14 | 10.38 |
-| hq_region | 4 | 8 | 6.00 |
+| hq_region | 4 | 8 | 6.0 |
+| industry | 10 | 18 | 17.0 |
+| segment | 10 | 16 | 14.88 |
