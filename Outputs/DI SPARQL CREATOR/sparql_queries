@@ -1,0 +1,4 @@
+{
+  "status": "failure",
+  "error": "SPARQL query generation could not be completed because the Turtle ontology is unavailable, invalid, malformed, or failed validation."
+}
