@@ -1,1 +1,26 @@
-{"status":"failure","error":"Unable to generate SPARQL queries because the Turtle ontology EnterpriseOntology.ttl could not be retrieved or parsed. The GitHub file reader reported a 404 Not Found error and prior tooling indicated that any available content is only a partial ontology header, not a complete, valid TTL schema. Without the actual ontology content, prefixes, classes, properties, and metadata, it is impossible to construct queries that strictly adhere to the requirement of using only ontology elements explicitly present in the Turtle file."}
+{
+  "status": "success",
+  "totalQueries": 5,
+  "queries": [
+    {
+      "question": "Retrieve the ontology metadata, including label, comment, version, and all skos:note annotations for the enterprise sales bookings ontology.",
+      "sparql": "PREFIX ex: <http://example.com/ontology/sales#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\n\nSELECT ?ontology ?label ?comment ?version ?note\nWHERE {\n  ?ontology a owl:Ontology .\n  OPTIONAL { ?ontology rdfs:label ?label . }\n  OPTIONAL { ?ontology rdfs:comment ?comment . }\n  OPTIONAL { ?ontology owl:versionInfo ?version . }\n  OPTIONAL { ?ontology skos:note ?note . }\n}"
+    },
+    {
+      "question": "List all classes defined in the ontology along with their human-readable labels and comments.",
+      "sparql": "PREFIX ex: <http://example.com/ontology/sales#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?class ?label ?comment\nWHERE {\n  ?class a owl:Class .\n  OPTIONAL { ?class rdfs:label ?label . }\n  OPTIONAL { ?class rdfs:comment ?comment . }\n}\nORDER BY ?class"
+    },
+    {
+      "question": "Show the class hierarchy by listing each subclass and its direct superclass (rdfs:subClassOf) defined in the ontology.",
+      "sparql": "PREFIX ex: <http://example.com/ontology/sales#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?subClass ?subLabel ?superClass ?superLabel\nWHERE {\n  ?subClass a owl:Class .\n  ?subClass rdfs:subClassOf ?superClass .\n  OPTIONAL { ?subClass rdfs:label ?subLabel . }\n  OPTIONAL { ?superClass rdfs:label ?superLabel . }\n}\nORDER BY ?subClass ?superClass"
+    },
+    {
+      "question": "List all object properties in the ontology, including their labels, comments, domains, ranges, and declared inverse properties (owl:inverseOf).",
+      "sparql": "PREFIX ex: <http://example.com/ontology/sales#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?property ?label ?comment ?domain ?range ?inverse\nWHERE {\n  ?property a owl:ObjectProperty .\n  OPTIONAL { ?property rdfs:label ?label . }\n  OPTIONAL { ?property rdfs:comment ?comment . }\n  OPTIONAL { ?property rdfs:domain ?domain . }\n  OPTIONAL { ?property rdfs:range ?range . }\n  OPTIONAL { ?property owl:inverseOf ?inverse . }\n}\nORDER BY ?property"
+    },
+    {
+      "question": "List all datatype properties together with their labels, comments, domains, ranges, and any sourceTable and sourceColumn annotations used for data lineage.",
+      "sparql": "PREFIX ex: <http://example.com/ontology/sales#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?property ?label ?comment ?domain ?range ?sourceTable ?sourceColumn\nWHERE {\n  ?property a owl:DatatypeProperty .\n  OPTIONAL { ?property rdfs:label ?label . }\n  OPTIONAL { ?property rdfs:comment ?comment . }\n  OPTIONAL { ?property rdfs:domain ?domain . }\n  OPTIONAL { ?property rdfs:range ?range . }\n  OPTIONAL { ?property ex:sourceTable ?sourceTable . }\n  OPTIONAL { ?property ex:sourceColumn ?sourceColumn . }\n}\nORDER BY ?property"
+    }
+  ]
+}
