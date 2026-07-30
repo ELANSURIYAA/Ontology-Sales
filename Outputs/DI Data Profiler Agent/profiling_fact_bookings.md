@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL |
+| Database Name | PostgreSQL 16.14 |
 | Table Name | quotetobooking.fact_bookings |
 | Row Count | 10 |
 
@@ -31,12 +31,6 @@
 
 # Value Distribution Summary
 
-## order_line_number
-
-| Value | Frequency |
-| --- | --- |
-| 1 | 10 |
-
 ## booking_type
 
 | Value | Frequency |
@@ -55,10 +49,11 @@
 
 | Column Name | Min Date | Max Date | Distinct Count |
 | --- | --- | --- | --- |
+|  |  |  |  |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
 | --- | --- | --- | --- |
-| order_number | 8 | 8 | 8.00 |
-| booking_type | 3 | 7 | 4.60 |
+| booking_type | 3 | 7 | 4.6 |
+| order_number | 8 | 8 | 8.0 |
