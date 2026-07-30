@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL |
+| Database Name | PostgreSQL 16.14 |
 | Table Name | quotetobooking.dim_date |
 | Row Count | 12 |
 
@@ -71,6 +71,6 @@
 
 | Column Name | Min Length | Max Length | Average Length |
 | --- | --- | --- | --- |
-| month_name | 4 | 9 | 6.50 |
-| fiscal_year | 4 | 4 | 4.00 |
-| fiscal_quarter | 7 | 7 | 7.00 |
+| fiscal_quarter | 7 | 7 | 7.0 |
+| fiscal_year | 4 | 4 | 4.0 |
+| month_name | 4 | 9 | 6.5 |
