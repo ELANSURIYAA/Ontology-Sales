@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL |
+| Database Name | PostgreSQL 16.14 |
 | Table Name | quotetobooking.dim_sales_rep |
 | Row Count | 6 |
 
@@ -50,13 +50,14 @@
 
 | Column Name | Min Date | Max Date | Distinct Count |
 | --- | --- | --- | --- |
+|  |  |  |  |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
 | --- | --- | --- | --- |
-| rep_id | 6 | 6 | 6.00 |
-| rep_name | 10 | 14 | 12.00 |
-| sales_role | 17 | 29 | 20.50 |
+| rep_id | 6 | 6 | 6.0 |
+| rep_name | 10 | 14 | 12.0 |
+| sales_role | 17 | 29 | 20.5 |
 | sales_team | 7 | 14 | 8.17 |
-| segment_covered | 10 | 16 | 14.50 |
+| segment_covered | 10 | 16 | 14.5 |
