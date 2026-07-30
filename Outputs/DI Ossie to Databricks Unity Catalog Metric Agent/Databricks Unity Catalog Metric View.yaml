@@ -1,0 +1,174 @@
+version: 1.1
+source: quotetobooking.fact_bookings
+comment: Stores individual completed sales booking transactions and associated financial measures used for revenue and performance analysis.
+fields:
+  - name: booking_id
+    expr: booking_id
+    comment: Unique identifier for an individual booking transaction record.
+    display_name: Booking ID
+  - name: order_number
+    expr: order_number
+    comment: Business order number associated with the booking transaction.
+    display_name: Order Number
+  - name: order_line_number
+    expr: order_line_number
+    comment: Line number within the order that identifies the booked item or service entry.
+    display_name: Order Line Number
+  - name: date_key
+    expr: date_key
+    comment: Reference to the date dimension representing when the booking was recorded.
+    display_name: Booking Date Key
+  - name: customer_key
+    expr: customer_key
+    comment: Reference to the customer associated with the booking transaction.
+    display_name: Customer Key
+  - name: product_key
+    expr: product_key
+    comment: Reference to the product or offer included in the booking transaction.
+    display_name: Product Key
+  - name: partner_key
+    expr: partner_key
+    comment: Reference to the partner involved in the booking transaction.
+    display_name: Partner Key
+  - name: geography_key
+    expr: geography_key
+    comment: Reference to the geography associated with the booking transaction.
+    display_name: Geography Key
+  - name: sales_rep_key
+    expr: sales_rep_key
+    comment: Reference to the sales representative responsible for the booking.
+    display_name: Sales Representative Key
+  - name: contract_key
+    expr: contract_key
+    comment: Reference to the contract terms associated with the booking.
+    display_name: Contract Key
+  - name: booking_type
+    expr: booking_type
+    comment: Indicates the business type of the booking, such as New or Renewal.
+    display_name: Booking Type
+  - name: is_renewal
+    expr: is_renewal
+    comment: Indicates whether the booking transaction is a renewal booking. Observed values are 0 for no and 1 for yes.
+    display_name: Renewal Indicator
+  - name: quantity
+    expr: quantity
+    comment: Number of units, licenses, or subscriptions included in the booking transaction.
+    display_name: Quantity Sold
+  - name: unit_list_price_usd
+    expr: unit_list_price_usd
+    comment: Standard list price per unit in U.S. dollars before discounts.
+    display_name: Unit List Price USD
+    format: currency
+  - name: discount_pct
+    expr: discount_pct
+    comment: Discount rate applied to the list price for the booking transaction.
+    display_name: Discount Percentage
+    format: percent
+  - name: booking_amount_usd
+    expr: booking_amount_usd
+    comment: Total booked transaction amount in U.S. dollars after pricing adjustments.
+    display_name: Booking Amount USD
+    format: currency
+  - name: acv_usd
+    expr: acv_usd
+    comment: Annualized contract value of the booking in U.S. dollars.
+    display_name: ACV USD
+    synonyms:
+      - ACV
+      - Annual Contract Value
+    format: currency
+  - name: tcv_usd
+    expr: tcv_usd
+    comment: Total contract value of the booking across the full contract term in U.S. dollars.
+    display_name: TCV USD
+    synonyms:
+      - TCV
+      - Total Contract Value
+    format: currency
+measures:
+  - name: booking_count
+    expr: COUNT(booking_id)
+    comment: Count of booking transaction records.
+    display_name: Booking Count
+    format: integer
+  - name: distinct_order_count
+    expr: COUNT(DISTINCT order_number)
+    comment: Count of distinct business orders associated with bookings.
+    display_name: Distinct Order Count
+    format: integer
+  - name: total_quantity_sold
+    expr: SUM(quantity)
+    comment: Total number of units, licenses, or subscriptions included in booking transactions.
+    display_name: Total Quantity Sold
+    format: integer
+  - name: total_booking_amount_usd
+    expr: SUM(booking_amount_usd)
+    comment: Total booked transaction amount in U.S. dollars.
+    display_name: Total Booking Amount USD
+    synonyms:
+      - Booking Revenue
+      - Total Bookings
+    format: currency
+  - name: total_acv_usd
+    expr: SUM(acv_usd)
+    comment: Total annual contract value in U.S. dollars.
+    display_name: Total ACV USD
+    synonyms:
+      - Total ACV
+      - Annual Contract Value
+    format: currency
+  - name: total_tcv_usd
+    expr: SUM(tcv_usd)
+    comment: Total contract value in U.S. dollars.
+    display_name: Total TCV USD
+    synonyms:
+      - Total TCV
+      - Total Contract Value
+    format: currency
+  - name: average_discount_pct
+    expr: AVG(discount_pct)
+    comment: Average discount rate applied to booking transactions.
+    display_name: Average Discount Percentage
+    format: percent
+  - name: average_selling_price_usd
+    expr: SUM(booking_amount_usd) / NULLIF(SUM(quantity), 0)
+    comment: Average selling price per unit in U.S. dollars based on total booking amount divided by total quantity sold.
+    display_name: Average Selling Price USD
+    format: currency
+  - name: renewal_booking_amount_usd
+    expr: SUM(CASE WHEN is_renewal = 1 THEN booking_amount_usd ELSE 0 END)
+    comment: Total booked transaction amount in U.S. dollars for renewal bookings.
+    display_name: Renewal Booking Amount USD
+    format: currency
+  - name: net_new_booking_amount_usd
+    expr: SUM(CASE WHEN is_renewal = 0 THEN booking_amount_usd ELSE 0 END)
+    comment: Total booked transaction amount in U.S. dollars for non-renewal bookings.
+    display_name: Net New Booking Amount USD
+    format: currency
+  - name: average_booking_value_usd
+    expr: SUM(booking_amount_usd) / NULLIF(COUNT(DISTINCT booking_id), 0)
+    comment: Average booking value in U.S. dollars based on total booking amount divided by distinct booking transaction count.
+    display_name: Average Booking Value USD
+    format: currency
+joins:
+  - name: dates
+    source: quotetobooking.dim_date
+    on: fact_bookings.date_key = dates.date_key
+  - name: customers
+    source: quotetobooking.dim_customer
+    on: fact_bookings.customer_key = customers.customer_key
+  - name: products
+    source: quotetobooking.dim_product
+    on: fact_bookings.product_key = products.product_key
+  - name: partners
+    source: quotetobooking.dim_partner
+    on: fact_bookings.partner_key = partners.partner_key
+  - name: geographies
+    source: quotetobooking.dim_geography
+    on: fact_bookings.geography_key = geographies.geography_key
+  - name: sales_representatives
+    source: quotetobooking.dim_sales_rep
+    on: fact_bookings.sales_rep_key = sales_representatives.sales_rep_key
+  - name: contracts
+    source: quotetobooking.dim_contract
+    on: fact_bookings.contract_key = contracts.contract_key
