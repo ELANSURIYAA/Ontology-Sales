@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Database Name | PostgreSQL |
+| Database Name | PostgreSQL 16.14 |
 | Table Name | quotetobooking.dim_contract |
 | Row Count | 6 |
 
@@ -51,11 +51,12 @@
 
 | Column Name | Min Date | Max Date | Distinct Count |
 | --- | --- | --- | --- |
+|  |  |  |  |
 
 # Text Statistics
 
 | Column Name | Min Length | Max Length | Average Length |
 | --- | --- | --- | --- |
+| auto_renew_flag | 1 | 1 | 1.0 |
 | contract_type | 16 | 22 | 18.33 |
-| auto_renew_flag | 1 | 1 | 1.00 |
-| coverage_level | 2 | 8 | 5.00 |
+| coverage_level | 2 | 8 | 5.0 |
