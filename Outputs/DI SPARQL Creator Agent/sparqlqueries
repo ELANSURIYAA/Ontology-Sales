@@ -1,0 +1,4 @@
+{
+  "status": "failure",
+  "error": "SPARQL query generation could not be completed because the Turtle ontology is unavailable or incomplete. The GitHub retrieval for 'Outputs/DI OWL To TTL Converter Agent /EnterpriseOntology.ttl' in 'ELANSURIYAA/Ontology-Sales' (branch 'main') returned 404 Not Found, and prior steps indicate the OWL-to-Turtle conversion produced only a truncated ontology header rather than a full, valid TTL serialization. Without the complete TTL content, it is impossible to reliably extract actual namespaces, classes, properties, individuals, and their relationships as required. Generating SPARQL using invented or guessed ontology elements would violate the constraint to use ONLY entities that exist in the TTL. Please rerun the OWL-to-TTL conversion to obtain the full EnterpriseOntology.ttl, commit it to the specified path in the repository, and then retry this workflow so that validated, GraphDB-compatible SPARQL 1.1 queries can be produced."
+}
