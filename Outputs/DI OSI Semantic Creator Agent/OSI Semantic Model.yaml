@@ -1,191 +1,183 @@
 version: "1.0"
-semantic_models:
-  - name: sales_bookings_and_revenue_analytics
-    description: Sales bookings and revenue analytics semantic model for completed customer booking transactions across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
+semantic_model:
+  - name: quote_to_booking
+    description: Sales bookings and revenue analytics semantic model for completed booking transactions across customers, products, partners, geographies, sales representatives, contracts, and fiscal periods.
     ai_context:
-      instructions: >
-        Use this semantic model for sales booking and revenue analysis at the booking transaction grain.
-        The primary fact dataset is bookings, which stores individual completed sales booking transactions.
-        Use booking_date for time-based analysis and join bookings to customer, product, partner,
-        geography, sales representative, contract, and date dimensions through the defined relationships.
-        Use total_booking_amount_usd for booking revenue analysis, total_acv_usd for annual contract value,
-        total_tcv_usd for total contract value, booking_count for transaction counts, distinct_order_count
-        for order counts, total_quantity_sold for unit volume, renewal_booking_amount_usd for renewal revenue,
-        net_new_booking_amount_usd for new booking revenue, average_discount_pct for average discount rate,
-        average_selling_price_usd for average selling price, and average_booking_value_usd for average booking value.
+      instructions: >-
+        Use this semantic model for sales bookings and revenue analysis. The primary transaction grain is an individual booking transaction record identified by booking_id, with supporting order and order-line attributes. fact_bookings is the transactional dataset and the related dimensions provide descriptive business context for customer, product, partner, geography, sales representative, contract, and date analysis. Use booking_amount_usd for booked revenue analysis, acv_usd for annual contract value analysis, tcv_usd for total contract value analysis, quantity for unit analysis, and full_date or fiscal attributes for time-based analysis. Use booking_type and is_renewal for renewal and new business analysis.
     datasets:
       - name: contracts
-        description: Contains the business attributes of commercial agreements associated with bookings, including contract type, term, renewal behavior, and service coverage.
-        source: quotetobooking.dim_contract
+        description: Stores the commercial agreement attributes associated with a booking, including contract type, duration, renewal behavior, and coverage level.
+        source: ontology.quotetobooking.dim_contract
         primary_key:
           - contract_key
         fields:
           - name: contract_key
-            description: Surrogate key that uniquely identifies a contract record in the contract dimension.
+            description: Unique surrogate identifier for a contract record used to link contracts to booking transactions.
           - name: contract_type
-            description: Describes the type of commercial agreement or support contract tied to the booking, such as SaaS Subscription or Enterprise Agreement.
-          - name: contract_term_months
-            description: Number of months covered by the contract or subscription term.
+            description: Type of commercial agreement or service contract associated with the booking, such as Enterprise Agreement or SaaS Subscription.
+          - name: term_months
+            description: Number of months covered by the contract term.
           - name: auto_renew_flag
-            description: Indicates whether the contract is configured to renew automatically.
+            description: Indicates whether the contract is set to renew automatically at the end of its term.
           - name: coverage_level
-            description: Describes the service or support coverage level provided under the contract.
+            description: Service or support coverage level provided under the contract.
       - name: customers
-        description: Contains descriptive information about customers that place orders and generate bookings, including segment, industry, account tier, and headquarters location.
-        source: quotetobooking.dim_customer
+        description: Stores customer master data used to analyze bookings by account, segment, industry, and headquarters location.
+        source: ontology.quotetobooking.dim_customer
         primary_key:
           - customer_key
         fields:
           - name: customer_key
-            description: Surrogate key that uniquely identifies a customer record in the customer dimension.
+            description: Unique surrogate identifier for a customer record used to join customers to booking transactions.
           - name: customer_id
             description: Business identifier assigned to the customer account.
           - name: customer_name
-            description: Official name of the customer organization.
-          - name: customer_segment
-            description: Market segment to which the customer belongs, such as Enterprise, Public Sector, or Service Provider.
+            description: Name of the customer account or organization making the purchase.
+          - name: segment
+            description: Market segment to which the customer belongs, such as Enterprise, Service Provider, or Public Sector.
           - name: industry
-            description: Industry classification of the customer organization.
+            description: Primary industry classification of the customer.
           - name: account_tier
-            description: Strategic importance or service tier assigned to the customer account.
-          - name: headquarters_country
-            description: Country where the customer organization's headquarters is located.
-          - name: headquarters_region
-            description: Global region where the customer organization's headquarters is located.
+            description: Strategic tier assigned to the customer account for sales prioritization and coverage.
+          - name: hq_country
+            description: Country where the customer’s headquarters is located.
+          - name: hq_region
+            description: Broad geographic region where the customer’s headquarters is located.
       - name: dates
-        description: Contains calendar and fiscal time attributes used to analyze bookings across reporting periods.
-        source: quotetobooking.dim_date
+        description: Stores calendar and fiscal date attributes used to analyze booking transactions over time.
+        source: ontology.quotetobooking.dim_date
         primary_key:
           - date_key
         fields:
           - name: date_key
-            description: Date identifier used to join booking records to the date dimension.
-          - name: booking_date
+            description: Unique numeric identifier for the date record, typically formatted as YYYYMMDD.
+          - name: full_date
             description: Actual calendar date represented by the date record.
             dimension:
               is_time: true
           - name: month_name
             description: Name of the calendar month for the date.
           - name: calendar_year
-            description: Four-digit calendar year for the date.
+            description: Calendar year associated with the date.
           - name: fiscal_year
-            description: Fiscal year label used for business reporting.
+            description: Fiscal year used for business reporting and performance analysis.
           - name: fiscal_quarter
-            description: Fiscal quarter label used for financial and sales analysis.
-          - name: fiscal_period_sequence
-            description: Sequential position of the fiscal period within the modeled reporting timeline.
+            description: Fiscal quarter used for financial and sales reporting.
+          - name: fiscal_period_seq
+            description: Sequential number representing the fiscal period order within the reporting timeline.
       - name: geographies
-        description: Contains geographic reporting attributes used to analyze bookings by region, theater, and country.
-        source: quotetobooking.dim_geography
+        description: Stores geographic reporting attributes used to analyze bookings by region, theater, and country.
+        source: ontology.quotetobooking.dim_geography
         primary_key:
           - geography_key
         fields:
           - name: geography_key
-            description: Surrogate key that uniquely identifies a geography record in the geography dimension.
+            description: Unique surrogate identifier for a geography record used to join geography to booking transactions.
           - name: region
-            description: High-level global sales region used for reporting, such as Americas, EMEA, or APJC.
+            description: High-level sales region used for reporting and performance analysis.
           - name: theater
-            description: Subregional sales theater within a broader region.
+            description: Intermediate sales geography grouping within a region.
           - name: country
             description: Country associated with the geography record.
       - name: partners
-        description: Contains descriptive information about channel and direct partners involved in fulfilling customer bookings.
-        source: quotetobooking.dim_partner
+        description: Stores channel partner master data used to analyze indirect and direct sales routes, partner roles, and partner performance.
+        source: ontology.quotetobooking.dim_partner
         primary_key:
           - partner_key
         fields:
           - name: partner_key
-            description: Surrogate key that uniquely identifies a partner record in the partner dimension.
+            description: Unique surrogate identifier for a partner record used to join partners to booking transactions.
           - name: partner_id
-            description: Business identifier assigned to the partner.
+            description: Business identifier assigned to the partner account.
           - name: partner_name
-            description: Name of the partner organization associated with the booking.
+            description: Name of the distributor, reseller, systems integrator, or direct partner involved in the sale.
           - name: partner_type
-            description: Classification of the partner, such as distributor, reseller, systems integrator, or direct.
+            description: Classification of the partner based on its business role, such as distributor or value-added reseller.
           - name: partner_tier
-            description: Tier or program level assigned to the partner.
+            description: Tier or accreditation level assigned to the partner.
           - name: route_to_market
             description: Sales channel path through which the product or service is sold, such as Direct, Reseller, or Two-Tier.
       - name: products
-        description: Contains descriptive information about products and subscription offers included in booking transactions.
-        source: quotetobooking.dim_product
+        description: Stores product master data used to analyze bookings across product families, technology domains, offer types, and business entities.
+        source: ontology.quotetobooking.dim_product
         primary_key:
           - product_key
         fields:
           - name: product_key
-            description: Surrogate key that uniquely identifies a product record in the product dimension.
+            description: Unique surrogate identifier for a product record used to join products to booking transactions.
           - name: product_id
-            description: Business identifier or SKU assigned to the product or offer.
+            description: Business identifier or SKU assigned to the product or service offering.
           - name: product_name
-            description: Descriptive name of the product or service offering.
+            description: Descriptive name of the product or service sold.
           - name: product_family
-            description: Product family grouping used to organize related offerings.
+            description: Higher-level grouping of related products within the portfolio.
           - name: technology_domain
             description: Technology area or solution domain to which the product belongs.
           - name: offer_type
             description: Commercial offer model for the product, such as Hardware, SaaS Subscription, or Software Subscription.
           - name: business_entity
-            description: Internal business portfolio or organizational entity associated with the product.
+            description: Internal business portfolio or organizational entity responsible for the product.
       - name: sales_representatives
-        description: Contains descriptive information about sales personnel responsible for managing customer relationships and booking activity.
-        source: quotetobooking.dim_sales_rep
+        description: Stores sales representative attributes used to analyze bookings by seller, sales role, team, and covered segment.
+        source: ontology.quotetobooking.dim_sales_rep
         primary_key:
           - sales_rep_key
         fields:
           - name: sales_rep_key
-            description: Surrogate key that uniquely identifies a sales representative record in the sales representative dimension.
-          - name: sales_representative_id
+            description: Unique surrogate identifier for a sales representative record used to join sellers to booking transactions.
+          - name: rep_id
             description: Business identifier assigned to the sales representative.
-          - name: sales_representative_name
-            description: Full name of the sales representative.
+          - name: rep_name
+            description: Full name of the sales representative managing the customer or opportunity.
           - name: sales_role
-            description: Job role or commercial responsibility of the sales representative.
+            description: Role or title of the sales representative within the sales organization.
           - name: sales_team
-            description: Sales team or organizational unit to which the sales representative belongs.
+            description: Sales team or organizational unit to which the representative belongs.
           - name: segment_covered
-            description: Customer segment primarily covered by the sales representative.
+            description: Customer segment for which the sales representative is responsible.
       - name: bookings
-        description: Stores individual completed sales booking transactions and associated financial measures used for revenue and performance analysis.
-        source: quotetobooking.fact_bookings
+        description: Stores individual completed sales booking transactions and related financial measures for revenue, contract, customer, partner, product, geography, and sales analysis.
+        source: ontology.quotetobooking.fact_bookings
         primary_key:
           - booking_id
         fields:
           - name: booking_id
             description: Unique identifier for an individual booking transaction record.
           - name: order_number
-            description: Business order number associated with the booking transaction.
+            description: Sales order number associated with the booking transaction.
           - name: order_line_number
-            description: Line number within the order that identifies the booked item or service entry.
+            description: Line number within the sales order identifying the specific booked item.
           - name: date_key
             description: Reference to the date dimension representing when the booking was recorded.
           - name: customer_key
             description: Reference to the customer associated with the booking transaction.
           - name: product_key
-            description: Reference to the product or offer included in the booking transaction.
+            description: Reference to the product or service booked in the transaction.
           - name: partner_key
-            description: Reference to the partner involved in the booking transaction.
+            description: Reference to the partner involved in fulfilling or routing the sale.
           - name: geography_key
-            description: Reference to the geography associated with the booking transaction.
+            description: Reference to the geography used for booking reporting and analysis.
           - name: sales_rep_key
             description: Reference to the sales representative responsible for the booking.
           - name: contract_key
-            description: Reference to the contract terms associated with the booking.
+            description: Reference to the contract or commercial agreement associated with the booking.
           - name: booking_type
-            description: Indicates the business type of the booking, such as New or Renewal.
-          - name: renewal_indicator
-            description: Indicates whether the booking transaction is a renewal booking. Observed values are 0 for no and 1 for yes.
-          - name: quantity_sold
-            description: Number of units, licenses, or subscriptions included in the booking transaction.
+            description: Classification of the booking event, such as New or Renewal.
+          - name: is_renewal
+            description: Indicates whether the booking represents a renewal transaction.
+          - name: quantity
+            description: Number of product units, licenses, or service quantities included in the booking.
           - name: unit_list_price_usd
             description: Standard list price per unit in U.S. dollars before discounts.
-          - name: discount_percentage
-            description: Discount rate applied to the list price for the booking transaction.
+          - name: discount_pct
+            description: Discount rate applied to the booked product or service.
           - name: booking_amount_usd
-            description: Total booked transaction amount in U.S. dollars after pricing adjustments.
+            description: Total booked revenue amount in U.S. dollars after applied pricing and discounts.
           - name: acv_usd
             description: Annualized contract value of the booking in U.S. dollars.
           - name: tcv_usd
-            description: Total contract value of the booking across the full contract term in U.S. dollars.
+            description: Total contract value of the booking over the full contract term in U.S. dollars.
     relationships:
       - name: bookings_to_contracts
         left_dataset: bookings
@@ -258,61 +250,61 @@ semantic_models:
             - dialect: ANSI_SQL
               expression: COUNT(bookings.booking_id)
       - name: distinct_order_count
-        description: Count of distinct business orders associated with bookings.
+        description: Count of distinct sales orders associated with bookings.
         expression:
           dialects:
             - dialect: ANSI_SQL
               expression: COUNT(DISTINCT bookings.order_number)
-      - name: total_quantity_sold
-        description: Total number of units, licenses, or subscriptions included in booking transactions.
+      - name: total_quantity
+        description: Total number of product units, licenses, or service quantities included in bookings.
         expression:
           dialects:
             - dialect: ANSI_SQL
-              expression: SUM(bookings.quantity_sold)
+              expression: SUM(bookings.quantity)
       - name: total_booking_amount_usd
-        description: Total booked transaction amount in U.S. dollars.
+        description: Total booked revenue amount in U.S. dollars after applied pricing and discounts.
         expression:
           dialects:
             - dialect: ANSI_SQL
               expression: SUM(bookings.booking_amount_usd)
       - name: total_acv_usd
-        description: Total annual contract value in U.S. dollars.
+        description: Total annualized contract value in U.S. dollars.
         expression:
           dialects:
             - dialect: ANSI_SQL
               expression: SUM(bookings.acv_usd)
       - name: total_tcv_usd
-        description: Total contract value in U.S. dollars.
+        description: Total contract value in U.S. dollars over the full contract term.
         expression:
           dialects:
             - dialect: ANSI_SQL
               expression: SUM(bookings.tcv_usd)
       - name: average_discount_pct
-        description: Average discount rate applied to booking transactions.
+        description: Average discount rate applied to booked products or services.
         expression:
           dialects:
             - dialect: ANSI_SQL
-              expression: AVG(bookings.discount_percentage)
+              expression: AVG(bookings.discount_pct)
       - name: average_selling_price_usd
-        description: Average selling price per unit in U.S. dollars based on total booking amount divided by total quantity sold.
+        description: Average booked revenue per unit sold in U.S. dollars.
         expression:
           dialects:
             - dialect: ANSI_SQL
-              expression: SUM(bookings.booking_amount_usd) / NULLIF(SUM(bookings.quantity_sold), 0)
+              expression: SUM(bookings.booking_amount_usd) / NULLIF(SUM(bookings.quantity), 0)
       - name: renewal_booking_amount_usd
-        description: Total booked transaction amount in U.S. dollars for renewal bookings.
+        description: Total booked revenue amount in U.S. dollars for renewal transactions.
         expression:
           dialects:
             - dialect: ANSI_SQL
-              expression: SUM(CASE WHEN bookings.renewal_indicator = 1 THEN bookings.booking_amount_usd ELSE 0 END)
+              expression: SUM(CASE WHEN bookings.is_renewal = 1 THEN bookings.booking_amount_usd ELSE 0 END)
       - name: net_new_booking_amount_usd
-        description: Total booked transaction amount in U.S. dollars for non-renewal bookings.
+        description: Total booked revenue amount in U.S. dollars for non-renewal transactions.
         expression:
           dialects:
             - dialect: ANSI_SQL
-              expression: SUM(CASE WHEN bookings.renewal_indicator = 0 THEN bookings.booking_amount_usd ELSE 0 END)
+              expression: SUM(CASE WHEN bookings.is_renewal = 0 THEN bookings.booking_amount_usd ELSE 0 END)
       - name: average_booking_value_usd
-        description: Average booking value in U.S. dollars based on total booking amount divided by distinct booking transaction count.
+        description: Average booked revenue amount per distinct booking transaction.
         expression:
           dialects:
             - dialect: ANSI_SQL
