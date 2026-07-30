@@ -1,4 +1,26 @@
 {
-  "status": "failure",
-  "error": "SPARQL query generation could not be completed because the Turtle ontology is unavailable, invalid, malformed, or failed validation."
+  "status": "success",
+  "totalQueries": 5,
+  "queries": [
+    {
+      "question": "What are all classes and their human-readable labels defined in the Enterprise Sales Quote-to-Booking ontology?",
+      "sparql": "PREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX qb1: <http://example.com/ontology/quotetobooking#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?class ?label\nWHERE {\n  ?class a owl:Class .\n  OPTIONAL { ?class rdfs:label ?label . }\n}\nORDER BY ?class"
+    },
+    {
+      "question": "What is the class hierarchy, showing each subclass and its direct superclass in the Quote-to-Booking ontology?",
+      "sparql": "PREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX qb1: <http://example.com/ontology/quotetobooking#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?subClass ?subLabel ?superClass ?superLabel\nWHERE {\n  ?subClass rdfs:subClassOf ?superClass .\n  ?subClass a owl:Class .\n  ?superClass a owl:Class .\n  OPTIONAL { ?subClass rdfs:label ?subLabel . }\n  OPTIONAL { ?superClass rdfs:label ?superLabel . }\n}\nORDER BY ?superClass ?subClass"
+    },
+    {
+      "question": "Which Booking Fact instances exist in the repository, and what are their booking IDs and order numbers?",
+      "sparql": "PREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX qb1: <http://example.com/ontology/quotetobooking#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?booking ?bookingId ?orderNumber\nWHERE {\n  ?booking a qb1:BookingFact .\n  OPTIONAL { ?booking qb1:bookingId ?bookingId . }\n  OPTIONAL { ?booking qb1:orderNumber ?orderNumber . }\n}\nORDER BY ?booking"
+    },
+    {
+      "question": "For each Booking Fact, which customer, product, partner, geography, contract, sales representative, and date dimensions are linked via object properties?",
+      "sparql": "PREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX qb1: <http://example.com/ontology/quotetobooking#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?booking ?customerDim ?productDim ?partnerDim ?geographyDim ?contractDim ?salesRepDim ?dateDim\nWHERE {\n  ?booking a qb1:BookingFact .\n  OPTIONAL { ?booking qb1:hasCustomerDimension ?customerDim . }\n  OPTIONAL { ?booking qb1:hasProductDimension ?productDim . }\n  OPTIONAL { ?booking qb1:hasPartnerDimension ?partnerDim . }\n  OPTIONAL { ?booking qb1:hasGeographyDimension ?geographyDim . }\n  OPTIONAL { ?booking qb1:hasContractDimension ?contractDim . }\n  OPTIONAL { ?booking qb1:hasSalesRepresentativeDimension ?salesRepDim . }\n  OPTIONAL { ?booking qb1:hasDateDimension ?dateDim . }\n}\nORDER BY ?booking"
+    },
+    {
+      "question": "What are the main booking-related numeric and descriptive measures stored for each Booking Fact (amount, quantity, discount, ACV, TCV, booking type)?",
+      "sparql": "PREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX qb1: <http://example.com/ontology/quotetobooking#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?booking ?bookingAmountUSD ?quantity ?discountPercentage ?acvUSD ?tcvUSD ?bookingType\nWHERE {\n  ?booking a qb1:BookingFact .\n  OPTIONAL { ?booking qb1:bookingAmountUSD ?bookingAmountUSD . }\n  OPTIONAL { ?booking qb1:quantity ?quantity . }\n  OPTIONAL { ?booking qb1:discountPercentage ?discountPercentage . }\n  OPTIONAL { ?booking qb1:acvUSD ?acvUSD . }\n  OPTIONAL { ?booking qb1:tcvUSD ?tcvUSD . }\n  OPTIONAL { ?booking qb1:bookingType ?bookingType . }\n}\nORDER BY ?booking"
+    }
+  ]
 }
