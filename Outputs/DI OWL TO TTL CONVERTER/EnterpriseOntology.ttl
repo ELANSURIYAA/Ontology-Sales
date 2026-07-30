@@ -1,0 +1,15 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qb1: <http://example.com/ontology/quotetobooking#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://example.com/ontology/quotetobooking> a owl:Ontology ;
+    rdfs:label "Enterprise Sales Quote-to-Booking Ontology"@en ;
+    qb1:sourceBusinessProcessDocument "Inputs/QuoteToBooking.docx" ;
+    qb1:sourceSemanticModel "Outputs/DI OSI Semantic Creator Agent/OSI Semantic Model.md" ;
+    qb1:validationWarning "Business Process document readability validation failed: the provided .docx file could not be decoded by the reader tool using UTF-8. Ontology generation therefore uses the validated OSI Semantic Model as the authoritative source and preserves only directly inferable constraints.",
+        "No duplicate entities were detected in the OSI Semantic Model.",
+        "No duplicate relationships were detected in the OSI Semantic Model.",
+        "No invalid semantic references were detected among the declared foreign key relationships." ;
+    rdfs:comment "OWL 2 ontology generated from the OSI Semantic Model for the Quote-to-Booking sales domain. The business process document could not be parsed from the provided .docx input, so process-derived enrichments are limited and a validation warning applies. This ontology is designed as a GraphDB-compatible TBox model representing business entities as classes, business relationships as object properties, and business attributes and measures as datatype properties."@en ;
+    owl:versionInfo "1.0.0" .
+
