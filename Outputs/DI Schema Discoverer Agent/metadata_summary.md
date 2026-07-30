@@ -2,7 +2,7 @@
 
 | Metric | Value |
 | --- | --- |
-| Database Type | PostgreSQL 16.14 |
+| Database Type | PostgreSQL |
 | Number of Schemas | 1 |
 | Number of Tables | 8 |
 | Number of Columns | 61 |
@@ -29,88 +29,88 @@
 
 ```sql
 CREATE TABLE quotetobooking.dim_contract (
-  contract_key integer NOT NULL,
-  contract_type character varying(40),
-  term_months integer,
-  auto_renew_flag character(1),
-  coverage_level character varying(20)
+  contract_key INTEGER NOT NULL,
+  contract_type VARCHAR(40),
+  term_months INTEGER,
+  auto_renew_flag CHARACTER(1),
+  coverage_level VARCHAR(20)
 );
 
 CREATE TABLE quotetobooking.dim_customer (
-  customer_key integer NOT NULL,
-  customer_id character varying(20) NOT NULL,
-  customer_name character varying(80),
-  segment character varying(30),
-  industry character varying(40),
-  account_tier character varying(20),
-  hq_country character varying(40),
-  hq_region character varying(20)
+  customer_key INTEGER NOT NULL,
+  customer_id VARCHAR(20) NOT NULL,
+  customer_name VARCHAR(80),
+  segment VARCHAR(30),
+  industry VARCHAR(40),
+  account_tier VARCHAR(20),
+  hq_country VARCHAR(40),
+  hq_region VARCHAR(20)
 );
 
 CREATE TABLE quotetobooking.dim_date (
-  date_key integer NOT NULL,
-  full_date date NOT NULL,
-  month_name character varying(12),
-  calendar_year integer,
-  fiscal_year character varying(6),
-  fiscal_quarter character varying(10),
-  fiscal_period_seq integer
+  date_key INTEGER NOT NULL,
+  full_date DATE NOT NULL,
+  month_name VARCHAR(12),
+  calendar_year INTEGER,
+  fiscal_year VARCHAR(6),
+  fiscal_quarter VARCHAR(10),
+  fiscal_period_seq INTEGER
 );
 
 CREATE TABLE quotetobooking.dim_geography (
-  geography_key integer NOT NULL,
-  region character varying(20),
-  theater character varying(30),
-  country character varying(40)
+  geography_key INTEGER NOT NULL,
+  region VARCHAR(20),
+  theater VARCHAR(30),
+  country VARCHAR(40)
 );
 
 CREATE TABLE quotetobooking.dim_partner (
-  partner_key integer NOT NULL,
-  partner_id character varying(20) NOT NULL,
-  partner_name character varying(60),
-  partner_type character varying(30),
-  partner_tier character varying(30),
-  route_to_market character varying(20)
+  partner_key INTEGER NOT NULL,
+  partner_id VARCHAR(20) NOT NULL,
+  partner_name VARCHAR(60),
+  partner_type VARCHAR(30),
+  partner_tier VARCHAR(30),
+  route_to_market VARCHAR(20)
 );
 
 CREATE TABLE quotetobooking.dim_product (
-  product_key integer NOT NULL,
-  product_id character varying(30) NOT NULL,
-  product_name character varying(80),
-  product_family character varying(30),
-  technology_domain character varying(40),
-  offer_type character varying(30),
-  business_entity character varying(30)
+  product_key INTEGER NOT NULL,
+  product_id VARCHAR(30) NOT NULL,
+  product_name VARCHAR(80),
+  product_family VARCHAR(30),
+  technology_domain VARCHAR(40),
+  offer_type VARCHAR(30),
+  business_entity VARCHAR(30)
 );
 
 CREATE TABLE quotetobooking.dim_sales_rep (
-  sales_rep_key integer NOT NULL,
-  rep_id character varying(20) NOT NULL,
-  rep_name character varying(60),
-  sales_role character varying(40),
-  sales_team character varying(40),
-  segment_covered character varying(30)
+  sales_rep_key INTEGER NOT NULL,
+  rep_id VARCHAR(20) NOT NULL,
+  rep_name VARCHAR(60),
+  sales_role VARCHAR(40),
+  sales_team VARCHAR(40),
+  segment_covered VARCHAR(30)
 );
 
 CREATE TABLE quotetobooking.fact_bookings (
-  booking_id integer NOT NULL,
-  order_number character varying(20),
-  order_line_number integer,
-  date_key integer,
-  customer_key integer,
-  product_key integer,
-  partner_key integer,
-  geography_key integer,
-  sales_rep_key integer,
-  contract_key integer,
-  booking_type character varying(15),
-  is_renewal integer,
-  quantity integer,
-  unit_list_price_usd numeric(12,2),
-  discount_pct numeric(5,2),
-  booking_amount_usd numeric(14,2),
-  acv_usd numeric(14,2),
-  tcv_usd numeric(14,2)
+  booking_id INTEGER NOT NULL,
+  order_number VARCHAR(20),
+  order_line_number INTEGER,
+  date_key INTEGER,
+  customer_key INTEGER,
+  product_key INTEGER,
+  partner_key INTEGER,
+  geography_key INTEGER,
+  sales_rep_key INTEGER,
+  contract_key INTEGER,
+  booking_type VARCHAR(15),
+  is_renewal INTEGER,
+  quantity INTEGER,
+  unit_list_price_usd NUMERIC(12,2),
+  discount_pct NUMERIC(5,2),
+  booking_amount_usd NUMERIC(14,2),
+  acv_usd NUMERIC(14,2),
+  tcv_usd NUMERIC(14,2)
 );
 
 ALTER TABLE quotetobooking.dim_contract ADD CONSTRAINT dim_contract_pkey PRIMARY KEY (contract_key);
