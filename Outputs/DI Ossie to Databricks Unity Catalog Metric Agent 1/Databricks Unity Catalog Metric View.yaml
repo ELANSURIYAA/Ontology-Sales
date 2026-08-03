@@ -108,23 +108,23 @@ dimensions:
     comment: Country associated with the geography record.
   
   - name: rep_id
-    expr: sales_reps.rep_id
+    expr: sales_representatives.rep_id
     comment: Business identifier assigned to the sales representative.
   
   - name: rep_name
-    expr: sales_reps.rep_name
+    expr: sales_representatives.rep_name
     comment: Full name of the sales representative.
   
   - name: sales_role
-    expr: sales_reps.sales_role
+    expr: sales_representatives.sales_role
     comment: Job role or selling responsibility of the sales representative.
   
   - name: sales_team
-    expr: sales_reps.sales_team
+    expr: sales_representatives.sales_team
     comment: Team or organizational unit the sales representative belongs to.
   
   - name: segment_covered
-    expr: sales_reps.segment_covered
+    expr: sales_representatives.segment_covered
     comment: Customer segment or market segment covered by the sales representative.
   
   - name: contract_type
@@ -243,9 +243,9 @@ joins:
     source: ontology.quotetobooking.dim_geography
     on: source.geography_key = geographies.geography_key
   
-  - name: sales_reps
+  - name: sales_representatives
     source: ontology.quotetobooking.dim_sales_rep
-    on: source.sales_rep_key = sales_reps.sales_rep_key
+    on: source.sales_rep_key = sales_representatives.sales_rep_key
   
   - name: contracts
     source: ontology.quotetobooking.dim_contract
