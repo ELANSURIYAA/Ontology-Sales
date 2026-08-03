@@ -2,11 +2,11 @@
 
 | Metric | Score (%) |
 |---------|-----------|
-| Overall Validation Score | 99 |
+| Overall Validation Score | 95 |
 | Completeness Score | 100 |
-| Accuracy Score | 98 |
-| Efficiency Score | 100 |
-| Databricks Compatibility Score | 98 |
+| Accuracy Score | 96 |
+| Efficiency Score | 98 |
+| Databricks Compatibility Score | 88 |
 | Semantic Consistency Score | 100 |
 | Overall Status | PASS WITH WARNINGS |
 
@@ -14,59 +14,49 @@
 
 | Severity | Area | Issue | Recommendation |
 |----------|------|-------|----------------|
-| Info | Input Validation | OSI Semantic Model YAML and Databricks Unity Catalog Metric View YAML were both available, readable, and syntactically well-formed for validation. | No action required. |
-| Info | Model Metadata Coverage | Source model name, description, source fact table, dimensions, measures, relationships, and business descriptions are represented in the Databricks metric view. | No action required. |
-| Info | Dimension Coverage | All semantic dimension attributes defined for analytics exposure in the OSI model are represented in the Databricks dimensions list. | No action required. |
-| Info | Measure Coverage | All 11 metrics from the OSI semantic model are represented as Databricks measures. | No action required. |
-| Info | Relationship Coverage | All 7 OSI many-to-one relationships from bookings to related dimensions are represented as Databricks joins. | No action required. |
-| Info | Description Coverage | Business descriptions for exposed dimensions and measures are preserved as Databricks comments. | No action required. |
+| Info | Input Coverage | All required OSI semantic model objects identifiable from the supplied input are represented in the Databricks Metric View, including model metadata, dimensions, measures, and joins. | No action required. |
+| Info | Dimension Coverage | All business dimensions defined across bookings, customers, products, partners, geographies, sales representatives, contracts, and dates are present in the Databricks Metric View. | No action required. |
+| Info | Measure Coverage | All 11 metrics from the OSI Semantic Model are represented as Databricks measures. | No action required. |
+| Info | Relationship Coverage | All 7 many-to-one relationships from bookings to conformed dimensions are represented as Databricks joins. | No action required. |
+| Info | Description Coverage | Source descriptions have been preserved as comments for dimensions and measures, and the model description has been preserved as the top-level comment. | No action required. |
 
 # Accuracy Assessment
 
 | Severity | Area | Issue | Recommendation |
 |----------|------|-------|----------------|
-| Warning | Naming Convention Consistency | The OSI dataset name is `sales_representatives`, but the Databricks join alias is `sales_reps`. Field mappings remain semantically correct, but naming is not fully consistent with the source semantic model. | Align the Databricks join alias with the OSI dataset name where platform rules allow, or document the aliasing convention explicitly. |
-| Info | Dimension Mapping Accuracy | Dimension expressions accurately map base booking attributes and joined dimension attributes to their corresponding source fields. | No action required. |
-| Info | Measure Mapping Accuracy | All measure formulas in the Databricks metric view are semantically equivalent to the OSI metric expressions. | No action required. |
-| Info | SQL Expression Accuracy | Aggregation logic, CASE expressions, DISTINCT usage, and NULLIF protections are preserved correctly from the source model. | No action required. |
-| Info | Relationship Accuracy | Join conditions correctly map booking foreign keys to the corresponding dimension surrogate keys. | No action required. |
-| Info | Metadata Accuracy | Comments for model, dimensions, and measures accurately preserve source business meaning. | No action required. |
-| Info | Data Type Consistency | No data type contradictions are evident from the supplied YAML artifacts. | No action required. |
-| Info | Duplicate Detection | No duplicate dimensions, measures, or joins were identified. | No action required. |
-| Info | Unsupported Object Detection | No hallucinated business objects or unsupported semantic constructs were introduced beyond optional Databricks display metadata. | No action required. |
+| Info | Dimension Mapping Accuracy | Dimension names and source expressions align with the corresponding source semantic fields and related datasets. | No action required. |
+| Info | Measure Mapping Accuracy | All metric calculations in the Databricks Metric View are semantically aligned with the source ANSI SQL expressions from the OSI Semantic Model. | No action required. |
+| Info | Relationship Accuracy | Join mappings correctly connect the fact source to each semantic dimension using the corresponding surrogate keys. | No action required. |
+| Warning | SQL Expression Qualification | Measure expressions remove the explicit `bookings.` dataset qualifier used in the source semantic model. This is semantically equivalent for fact-sourced columns but reduces one-to-one textual fidelity with the source model. | Retain source qualification conventions where supported, or document that unqualified fact columns are intentionally resolved against the metric view source. |
+| Info | Naming Convention Consistency | Metric, dimension, and join names are consistently preserved from the source model with only expected Databricks YAML structural adaptation. | No action required. |
 
 # Efficiency Assessment
 
 | Severity | Area | Issue | Recommendation |
 |----------|------|-------|----------------|
-| Info | Duplicate Dimensions | No duplicate dimension definitions were detected. | No action required. |
-| Info | Duplicate Measures | No duplicate measure definitions were detected. | No action required. |
-| Info | Repeated SQL Expressions | Repeated SQL expressions were not found beyond valid reuse of base numeric fields across related metrics. | No action required. |
-| Info | Structural Efficiency | The metric view is structurally concise, with direct mappings and no unnecessary calculated metrics beyond those defined in the source model. | No action required. |
-| Info | Naming Standard Compliance | Naming is broadly consistent, lowercase, and analytics-friendly, with one alias variation noted separately under Accuracy. | No action required. |
-| Info | Metadata Reusability | Descriptive metadata is consistently reused from the source semantic model without redundant restatement. | No action required. |
+| Info | Duplicate Detection | No duplicate dimensions, measures, or joins were detected in the generated Databricks Metric View. | No action required. |
+| Info | Structural Efficiency | The YAML structure is concise and avoids unnecessary calculated metrics or redundant metadata blocks. | No action required. |
+| Info | Metadata Reusability | Shared dimensional context is efficiently modeled through reusable joins rather than repeated embedded logic. | No action required. |
+| Info | Optimization Opportunities | No material redundancy or maintainability concerns were identified from the supplied artifacts. | No action required. |
 
 # Databricks Compatibility Assessment
 
 | Severity | Area | Issue | Recommendation |
 |----------|------|-------|----------------|
-| Info | Version Validation | The Databricks metric view declares `version: 1.1`, matching the requested Unity Catalog Metric View version. | No action required. |
-| Info | Required YAML Structure | Top-level sections `version`, `source`, `comment`, `dimensions`, `measures`, and `joins` are present and structurally coherent. | No action required. |
-| Info | Dimension Structure | All dimensions use supported keys with `name`, `expr`, and `comment`. | No action required. |
-| Info | Measure Structure | All measures include valid `name`, `expr`, and `comment`; additional display metadata is consistently structured. | No action required. |
-| Info | Source Table References | All `source` references are fully qualified three-part names under `ontology.quotetobooking`. | No action required. |
-| Info | Join Syntax | Join predicates consistently qualify base table columns with `source.` and joined columns with the join alias. | No action required. |
-| Warning | Expression Compatibility | Measure expressions reference unqualified base columns rather than `source.`-qualified base columns. The supplied context states this output was previously verified as compliant, so this is not treated as a failure, but qualification expectations can vary by validator and runtime. | Confirm that unqualified base-column references are accepted by the target Databricks deployment runtime; if stricter qualification is required, regenerate using explicit `source.` prefixes. |
-| Info | Unsupported Feature Detection | No unsupported sections such as `fields:` or prohibited `format:` properties were detected. | No action required. |
+| Info | Version Validation | The metric YAML declares `version: 1.1`, matching the requested Databricks Unity Catalog Metric View version. | No action required. |
+| Info | Required YAML Structure | The supplied metric YAML contains the expected top-level sections `version`, `source`, `comment`, `dimensions`, `measures`, and `joins`. | No action required. |
+| Info | Fully Qualified Table Names | Source table references are fully qualified in the Databricks Metric View using the `ontology.quotetobooking` catalog and schema path. | No action required. |
+| Warning | Top-Level Source Qualification | The OSI Semantic Model source dataset is `quotetobooking.fact_bookings`, while the Databricks Metric View uses `ontology.quotetobooking.fact_bookings`. This is likely an environment-specific enhancement, but the additional catalog qualification is not evidenced in the source artifact. | Confirm that `ontology` is the intended catalog in the deployment environment and document the qualification rule in the transformation specification. |
+| Warning | Extended Measure Metadata | The measure `total_booking_amount_usd` includes `synonyms`, and multiple measures include `display_name`. Based solely on the supplied inputs, these attributes cannot be verified against the source semantic model or explicitly confirmed as required by the stated validation inputs. | Verify that all extended measure metadata properties are supported by the target Databricks Metric View Version 1.1 implementation in the deployment environment. |
+| Info | Join Syntax | Join clauses consistently use `source.<key> = <join_name>.<key>` syntax and align structurally with the metric view pattern implied by the supplied artifact. | No action required. |
+| Info | Expression Compatibility | Aggregate and CASE-based SQL expressions use common SQL constructs that appear structurally compatible with Databricks SQL. | No action required. |
 
 # Semantic Consistency Assessment
 
 | Severity | Area | Issue | Recommendation |
 |----------|------|-------|----------------|
-| Info | Business Definition Consistency | The Databricks metric view preserves the business meaning of the source sales bookings and revenue semantic model. | No action required. |
-| Info | Metric Meaning Consistency | All measures retain the intended KPI definitions, including booking amount, ACV, TCV, quantity, discount, renewal, and order analysis metrics. | No action required. |
-| Info | Dimension Meaning Consistency | Dimension business meanings are preserved across customer, product, partner, geography, sales representative, contract, and date subject areas. | No action required. |
-| Info | Relationship Preservation | Source semantic relationships between bookings and all related dimensions are preserved as Databricks joins. | No action required. |
-| Info | Business Rule Preservation | Renewal and net-new booking logic, distinct counting logic, and average calculations are preserved without semantic drift. | No action required. |
-| Info | Semantic Equivalence | The generated Databricks metric view is substantively semantically equivalent to the supplied OSI semantic model. | No action required. |
-| Info | Hallucinated Object Detection | No missing business objects or invented semantic entities were identified in the generated metric view. | No action required. |
+| Info | Business Definition Consistency | Business meanings for bookings, customers, products, partners, geographies, sales representatives, contracts, and dates are preserved through matching comments and field intent. | No action required. |
+| Info | Metric Meaning Consistency | All business metric definitions, including renewal, net new, ACV, TCV, quantity, and booking value measures, are preserved without semantic drift. | No action required. |
+| Info | Relationship Preservation | The source star-schema semantics are preserved through equivalent fact-to-dimension joins in the Databricks Metric View. | No action required. |
+| Info | Hallucinated Object Detection | No unsupported business objects or unexplained additional semantic entities were introduced beyond minor deployment-oriented metadata additions. | No action required. |
+| Warning | Non-Source Metadata Additions | `display_name` and `synonyms` introduce metadata not evidenced in the supplied OSI Semantic Model. These additions do not alter business meaning, but they are not traceable to the source artifact. | Maintain transformation lineage for supplemental metadata and distinguish source-derived metadata from deployment-enrichment metadata. |
