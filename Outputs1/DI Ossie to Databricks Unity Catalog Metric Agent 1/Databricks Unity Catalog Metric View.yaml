@@ -1,0 +1,327 @@
+version: 1.1
+source: ontology.quotetobooking.fact_bookings
+comment: Sales bookings and revenue analytics semantic model for completed booking transactions across customers, products, partners, geographies, sales representatives, contracts, and reporting periods.
+
+dimensions:
+  - name: booking_id
+    expr: booking_id
+    comment: Unique identifier for an individual booking transaction record.
+    display_name: Booking ID
+  
+  - name: order_number
+    expr: order_number
+    comment: Sales order number associated with the booking transaction.
+    display_name: Order Number
+  
+  - name: order_line_number
+    expr: order_line_number
+    comment: Line number within the sales order representing the booked item or service.
+    display_name: Order Line Number
+  
+  - name: booking_type
+    expr: booking_type
+    comment: Type of booking event, such as new business or renewal.
+    display_name: Booking Type
+  
+  - name: is_renewal
+    expr: is_renewal
+    comment: Indicator showing whether the booking transaction is a renewal.
+    display_name: Is Renewal
+  
+  - name: quantity
+    expr: quantity
+    comment: Number of units, licenses, or services booked in the transaction.
+    display_name: Quantity
+  
+  - name: unit_list_price_usd
+    expr: unit_list_price_usd
+    comment: Standard list price per unit in US dollars before discounts.
+    display_name: Unit List Price (USD)
+  
+  - name: discount_pct
+    expr: discount_pct
+    comment: Discount applied to the booked item or service, stored as a fractional percentage of list price.
+    display_name: Discount Percentage
+  
+  - name: booking_amount_usd
+    expr: booking_amount_usd
+    comment: Total booked sales amount in US dollars after pricing and discount adjustments.
+    display_name: Booking Amount (USD)
+  
+  - name: acv_usd
+    expr: acv_usd
+    comment: Annualized contract value of the booking in US dollars.
+    display_name: ACV (USD)
+  
+  - name: tcv_usd
+    expr: tcv_usd
+    comment: Total contract value of the booking over the full contract term in US dollars.
+    display_name: TCV (USD)
+  
+  - name: customer_id
+    expr: customers.customer_id
+    comment: Business identifier assigned to the customer account.
+    display_name: Customer ID
+  
+  - name: customer_name
+    expr: customers.customer_name
+    comment: Official name of the customer organization.
+    display_name: Customer Name
+  
+  - name: segment
+    expr: customers.segment
+    comment: Market segment the customer belongs to, such as Enterprise, Service Provider, or Public Sector.
+    display_name: Customer Segment
+  
+  - name: industry
+    expr: customers.industry
+    comment: Industry classification of the customer organization.
+    display_name: Industry
+  
+  - name: account_tier
+    expr: customers.account_tier
+    comment: Strategic importance or service tier assigned to the customer account.
+    display_name: Account Tier
+  
+  - name: hq_country
+    expr: customers.hq_country
+    comment: Country where the customer organization's headquarters is located.
+    display_name: HQ Country
+  
+  - name: hq_region
+    expr: customers.hq_region
+    comment: Broad geographic region of the customer organization's headquarters.
+    display_name: HQ Region
+  
+  - name: product_id
+    expr: products.product_id
+    comment: Business identifier or SKU assigned to the product or offer.
+    display_name: Product ID
+  
+  - name: product_name
+    expr: products.product_name
+    comment: Descriptive name of the product or service offering.
+    display_name: Product Name
+  
+  - name: product_family
+    expr: products.product_family
+    comment: Higher-level grouping of related products within the portfolio.
+    display_name: Product Family
+  
+  - name: technology_domain
+    expr: products.technology_domain
+    comment: Technology area or solution domain the product belongs to.
+    display_name: Technology Domain
+  
+  - name: offer_type
+    expr: products.offer_type
+    comment: Commercial offer classification, such as hardware, software subscription, or SaaS subscription.
+    display_name: Offer Type
+  
+  - name: business_entity
+    expr: products.business_entity
+    comment: Internal business portfolio or organizational unit associated with the product.
+    display_name: Business Entity
+  
+  - name: partner_id
+    expr: partners.partner_id
+    comment: Business identifier assigned to the partner organization.
+    display_name: Partner ID
+  
+  - name: partner_name
+    expr: partners.partner_name
+    comment: Official name of the partner organization.
+    display_name: Partner Name
+  
+  - name: partner_type
+    expr: partners.partner_type
+    comment: Classification of the partner, such as distributor, reseller, systems integrator, or direct channel.
+    display_name: Partner Type
+  
+  - name: partner_tier
+    expr: partners.partner_tier
+    comment: Program tier or status level assigned to the partner.
+    display_name: Partner Tier
+  
+  - name: route_to_market
+    expr: partners.route_to_market
+    comment: Sales channel path through which the product or service is sold to the customer.
+    display_name: Route to Market
+  
+  - name: region
+    expr: geographies.region
+    comment: High-level geographic region used for sales reporting, such as Americas, EMEA, or APJC.
+    display_name: Region
+  
+  - name: theater
+    expr: geographies.theater
+    comment: Intermediate sales territory grouping within a region.
+    display_name: Theater
+  
+  - name: country
+    expr: geographies.country
+    comment: Country associated with the geography record.
+    display_name: Country
+  
+  - name: rep_id
+    expr: sales_representatives.rep_id
+    comment: Business identifier assigned to the sales representative.
+    display_name: Sales Rep ID
+  
+  - name: rep_name
+    expr: sales_representatives.rep_name
+    comment: Full name of the sales representative.
+    display_name: Sales Rep Name
+  
+  - name: sales_role
+    expr: sales_representatives.sales_role
+    comment: Job role or selling responsibility of the sales representative.
+    display_name: Sales Role
+  
+  - name: sales_team
+    expr: sales_representatives.sales_team
+    comment: Team or organizational unit the sales representative belongs to.
+    display_name: Sales Team
+  
+  - name: segment_covered
+    expr: sales_representatives.segment_covered
+    comment: Customer segment or market segment covered by the sales representative.
+    display_name: Segment Covered
+  
+  - name: contract_type
+    expr: contracts.contract_type
+    comment: Type of commercial agreement or support entitlement, such as Enterprise Agreement, SaaS Subscription, or Solution Support.
+    display_name: Contract Type
+  
+  - name: term_months
+    expr: contracts.term_months
+    comment: Number of months covered by the contract or subscription term.
+    display_name: Term (Months)
+  
+  - name: auto_renew_flag
+    expr: contracts.auto_renew_flag
+    comment: Indicator showing whether the contract is set to renew automatically at the end of its term.
+    display_name: Auto Renew Flag
+  
+  - name: coverage_level
+    expr: contracts.coverage_level
+    comment: Service or support coverage level provided under the contract.
+    display_name: Coverage Level
+  
+  - name: full_date
+    expr: dates.full_date
+    comment: Actual calendar date represented by the date record.
+    display_name: Booking Date
+  
+  - name: month_name
+    expr: dates.month_name
+    comment: Name of the calendar month for the date.
+    display_name: Month Name
+  
+  - name: calendar_year
+    expr: dates.calendar_year
+    comment: Calendar year associated with the date.
+    display_name: Calendar Year
+  
+  - name: fiscal_year
+    expr: dates.fiscal_year
+    comment: Fiscal year used for financial and sales reporting.
+    display_name: Fiscal Year
+  
+  - name: fiscal_quarter
+    expr: dates.fiscal_quarter
+    comment: Fiscal quarter used for period-based reporting and analysis.
+    display_name: Fiscal Quarter
+  
+  - name: fiscal_period_seq
+    expr: dates.fiscal_period_seq
+    comment: Sequential number representing the fiscal reporting period in order.
+    display_name: Fiscal Period Sequence
+
+measures:
+  - name: booking_count
+    expr: COUNT(booking_id)
+    comment: Count of booking transaction records.
+    display_name: Booking Count
+  
+  - name: distinct_order_count
+    expr: COUNT(DISTINCT order_number)
+    comment: Count of distinct sales orders associated with booking transactions.
+    display_name: Distinct Order Count
+  
+  - name: total_quantity
+    expr: SUM(quantity)
+    comment: Total number of units, licenses, or services booked.
+    display_name: Total Quantity
+  
+  - name: total_booking_amount_usd
+    expr: SUM(booking_amount_usd)
+    comment: Total booked sales amount in US dollars after pricing and discount adjustments.
+    display_name: Total Booking Amount (USD)
+    synonyms:
+      - booking revenue
+      - total bookings
+  
+  - name: total_acv_usd
+    expr: SUM(acv_usd)
+    comment: Total annual contract value in US dollars.
+    display_name: Total ACV (USD)
+  
+  - name: total_tcv_usd
+    expr: SUM(tcv_usd)
+    comment: Total contract value in US dollars.
+    display_name: Total TCV (USD)
+  
+  - name: average_discount_pct
+    expr: AVG(discount_pct)
+    comment: Average discount applied to booked items or services, stored as a fractional percentage.
+    display_name: Average Discount Percentage
+  
+  - name: average_selling_price_usd
+    expr: SUM(booking_amount_usd) / NULLIF(SUM(quantity), 0)
+    comment: Average booked revenue per unit sold in US dollars.
+    display_name: Average Selling Price (USD)
+  
+  - name: renewal_booking_amount_usd
+    expr: SUM(CASE WHEN is_renewal = 1 THEN booking_amount_usd ELSE 0 END)
+    comment: Total booked sales amount in US dollars for renewal transactions.
+    display_name: Renewal Booking Amount (USD)
+  
+  - name: net_new_booking_amount_usd
+    expr: SUM(CASE WHEN is_renewal = 0 THEN booking_amount_usd ELSE 0 END)
+    comment: Total booked sales amount in US dollars for non-renewal transactions.
+    display_name: Net New Booking Amount (USD)
+  
+  - name: average_booking_value_usd
+    expr: SUM(booking_amount_usd) / NULLIF(COUNT(DISTINCT booking_id), 0)
+    comment: Average booking value in US dollars per distinct booking transaction.
+    display_name: Average Booking Value (USD)
+
+joins:
+  - name: customers
+    source: ontology.quotetobooking.dim_customer
+    on: source.customer_key = customers.customer_key
+  
+  - name: products
+    source: ontology.quotetobooking.dim_product
+    on: source.product_key = products.product_key
+  
+  - name: partners
+    source: ontology.quotetobooking.dim_partner
+    on: source.partner_key = partners.partner_key
+  
+  - name: geographies
+    source: ontology.quotetobooking.dim_geography
+    on: source.geography_key = geographies.geography_key
+  
+  - name: sales_representatives
+    source: ontology.quotetobooking.dim_sales_rep
+    on: source.sales_rep_key = sales_representatives.sales_rep_key
+  
+  - name: contracts
+    source: ontology.quotetobooking.dim_contract
+    on: source.contract_key = contracts.contract_key
+  
+  - name: dates
+    source: ontology.quotetobooking.dim_date
+    on: source.date_key = dates.date_key
