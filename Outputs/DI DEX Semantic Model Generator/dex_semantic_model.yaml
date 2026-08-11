@@ -1,0 +1,940 @@
+version: "1.0"
+
+semantic_model:
+  - name: customer_experience_semantic_model
+    description: >-
+      Semantic model derived from the Business Data Glossary Summary for the
+      Customer Experience domain, generated 6/8/2026. The model captures
+      customer, order, product, campaign, shipment, store, supplier, employee,
+      exchange rate, and related assignment concepts explicitly documented in
+      the glossary.
+
+    ai_context:
+      instructions: >-
+        Interpret this model using the glossary as the authoritative source.
+        Analyze customer experience through customers, orders, order items,
+        products, stores, campaigns, shipments, suppliers, employees, and
+        exchange rates. Treat identifiers explicitly marked as unique identifiers
+        and primary keys in the glossary as dataset primary keys. Use documented
+        reference fields to understand business relationships, but do not assume
+        physical join behavior beyond the stated references. Time analysis is
+        supported where date or timestamp fields are explicitly documented, such
+        as signup date, order date, ship date, created at, hire date, and rate
+        date. Measures explicitly present in the glossary include monetary
+        amounts, quantities, percentages, ratings, and scores. Computed values
+        such as line revenue usd and line cost usd should be treated as defined
+        business measures because they are documented as calculated values, but
+        no calculation formula should be inferred beyond the glossary wording.
+        PII designations should be respected for customer, employee, and
+        supplier contact attributes.
+
+    datasets:
+      - name: customers
+        business_name: Customers
+        description: >-
+          Stores comprehensive customer profiles, accounts, contact details,
+          communication logs, and associated relationship history.
+        source: Data Glossary Report - TABLE: CUSTOMERS
+        primary_key:
+          - customer_id
+        fields:
+          - name: customer_id
+            business_name: Customer Identifier
+            description: Unique identifier for a customer.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: first_name
+            business_name: First Name
+            description: Given name of the customer.
+            sql_type: VARCHAR(50)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: last_name
+            business_name: Last Name
+            description: Family name of the customer.
+            sql_type: VARCHAR(50)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: email
+            business_name: Email
+            description: Email address used to contact the customer.
+            sql_type: VARCHAR(150)
+            constraints: NOT NULL, UNIQUE
+            dimension: {}
+
+          - name: phone
+            business_name: Phone
+            description: Primary phone number of the customer.
+            sql_type: VARCHAR(20)
+            dimension: {}
+
+          - name: city
+            business_name: City
+            description: City where the customer is located.
+            sql_type: VARCHAR(80)
+            dimension: {}
+
+          - name: country
+            business_name: Country
+            description: Country where the customer is located.
+            sql_type: VARCHAR(80)
+            dimension: {}
+
+          - name: customer_segment
+            business_name: Customer Segment
+            description: Segment classification assigned to the customer.
+            sql_type: VARCHAR(20)
+            constraints: NOT NULL, DEFAULT
+            dimension: {}
+
+          - name: signup_date
+            business_name: Signup Date
+            description: Date when the customer registered or signed up.
+            sql_type: DATE
+            constraints: NOT NULL, DEFAULT
+            dimension:
+              is_time: true
+
+          - name: created_at
+            business_name: Created At
+            description: Timestamp when the customer record was created.
+            sql_type: TIMESTAMP(29,6)
+            constraints: NOT NULL, DEFAULT
+            dimension:
+              is_time: true
+
+      - name: campaigns
+        business_name: Campaigns
+        description: >-
+          Contains schema metadata, system-level attributes, and attribute
+          definitions associated with the campaigns dataset to support indexing
+          and lookup.
+        source: Data Glossary Report - TABLE: CAMPAIGNS
+        primary_key:
+          - campaign_id
+        fields:
+          - name: campaign_id
+            business_name: Campaign Identifier
+            description: Unique identifier for a marketing campaign.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: campaign_name
+            business_name: Campaign Name
+            description: Name of the marketing campaign.
+            sql_type: VARCHAR(120)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: channel
+            business_name: Channel
+            description: Marketing channel used to run the campaign.
+            sql_type: VARCHAR(20)
+            dimension: {}
+
+          - name: target_segment
+            business_name: Target Segment
+            description: Customer segment targeted by the campaign.
+            sql_type: VARCHAR(20)
+            dimension: {}
+
+          - name: start_date
+            business_name: Start Date
+            description: Date when the campaign starts.
+            sql_type: DATE
+            constraints: NOT NULL
+            dimension:
+              is_time: true
+
+          - name: end_date
+            business_name: End Date
+            description: Date when the campaign ends.
+            sql_type: DATE
+            constraints: NOT NULL
+            dimension:
+              is_time: true
+
+          - name: discount_pct
+            business_name: Discount Pct
+            description: Percentage discount offered by the campaign.
+            sql_type: NUMERIC(5,2)
+            constraints: NOT NULL, DEFAULT
+            measure: {}
+
+      - name: customer_account_managers
+        business_name: Customer Account Managers
+        description: >-
+          Stores comprehensive customer profiles, accounts, contact details,
+          communication logs, and associated relationship history.
+        source: Data Glossary Report - TABLE: CUSTOMER_ACCOUNT_MANAGERS
+        primary_key:
+          - assignment_id
+        fields:
+          - name: assignment_id
+            business_name: Assignment Identifier
+            description: Unique identifier for a customer account manager assignment.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: customer_id
+            business_name: Customer Reference
+            description: References the related customer record.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: employee_id
+            business_name: Employee Reference
+            description: References the employee assigned as the account manager.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: valid_from
+            business_name: Valid From
+            description: Date when the account manager assignment becomes effective.
+            sql_type: DATE
+            constraints: NOT NULL
+            dimension:
+              is_time: true
+
+          - name: valid_to
+            business_name: Valid To
+            description: Date when the account manager assignment ends.
+            sql_type: DATE
+            dimension:
+              is_time: true
+
+      - name: employees
+        business_name: Employees
+        description: >-
+          Maintains record cards for internal personnel, including identifiers,
+          departmental assignments, and contract types.
+        source: Data Glossary Report - TABLE: EMPLOYEES
+        primary_key:
+          - employee_id
+        fields:
+          - name: employee_id
+            business_name: Employee Identifier
+            description: Unique identifier for an employee.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: employee_name
+            business_name: Employee Name
+            description: Full name of the employee.
+            sql_type: VARCHAR(100)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: role
+            business_name: Role
+            description: Job role or position of the employee.
+            sql_type: VARCHAR(40)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: manager_id
+            business_name: Manager Reference
+            description: References the employee who manages this employee.
+            sql_type: INT4
+            constraints: FK
+            dimension: {}
+
+          - name: region
+            business_name: Region
+            description: Geographic region assigned to the employee.
+            sql_type: VARCHAR(80)
+            dimension: {}
+
+          - name: hire_date
+            business_name: Hire Date
+            description: Date when the employee was hired.
+            sql_type: DATE
+            constraints: NOT NULL, DEFAULT
+            dimension:
+              is_time: true
+
+      - name: exchange_rates
+        business_name: Exchange Rates
+        description: >-
+          Contains schema metadata, system-level attributes, and attribute
+          definitions associated with the exchange_rates dataset to support
+          indexing and lookup.
+        source: Data Glossary Report - TABLE: EXCHANGE_RATES
+        fields:
+          - name: currency_code
+            business_name: Currency Code
+            description: ISO currency code for the exchange rate.
+            sql_type: VARCHAR(3)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: rate_date
+            business_name: Rate Date
+            description: Date for which the exchange rate applies.
+            sql_type: DATE
+            constraints: NOT NULL
+            dimension:
+              is_time: true
+
+          - name: usd_rate
+            business_name: Usd Rate
+            description: Exchange rate of the currency against USD.
+            sql_type: NUMERIC(12,6)
+            constraints: NOT NULL
+            measure: {}
+
+      - name: order_items
+        business_name: Order Items
+        description: >-
+          Records end-to-end sales transactions, including order line items,
+          transaction dates, customer identifiers, contact details, and monetary sums.
+        source: Data Glossary Report - TABLE: ORDER_ITEMS
+        primary_key:
+          - order_item_id
+        fields:
+          - name: order_item_id
+            business_name: Order Item Identifier
+            description: Unique identifier for an order line item.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: order_id
+            business_name: Order Reference
+            description: References the related order record.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: product_id
+            business_name: Product Reference
+            description: References the product included in the order item.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: quantity
+            business_name: Quantity
+            description: Number of units of the product ordered.
+            sql_type: INT4
+            constraints: NOT NULL
+            measure: {}
+
+          - name: unit_price_usd
+            business_name: Unit Price Usd
+            description: Selling price per unit in USD.
+            sql_type: NUMERIC(10,2)
+            constraints: NOT NULL
+            measure: {}
+
+          - name: unit_cost_usd
+            business_name: Unit Cost Usd
+            description: Cost per unit in USD.
+            sql_type: NUMERIC(10,2)
+            constraints: NOT NULL
+            measure: {}
+
+          - name: discount_pct
+            business_name: Discount Pct
+            description: Percentage discount applied to the order item.
+            sql_type: NUMERIC(5,2)
+            constraints: NOT NULL, DEFAULT
+            measure: {}
+
+          - name: line_revenue_usd
+            business_name: Line Revenue Usd
+            description: Calculated revenue for the order item line in USD after discounts.
+            sql_type: NUMERIC(12,2)
+            constraints: DEFAULT, COMPUTED
+            measure: {}
+
+          - name: line_cost_usd
+            business_name: Line Cost Usd
+            description: Calculated cost for the order item line in USD.
+            sql_type: NUMERIC(12,2)
+            constraints: DEFAULT, COMPUTED
+            measure: {}
+
+      - name: orders
+        business_name: Orders
+        description: >-
+          Records end-to-end sales transactions, including order line items,
+          transaction dates, customer identifiers, contact details, and monetary sums.
+        source: Data Glossary Report - TABLE: ORDERS
+        primary_key:
+          - order_id
+        fields:
+          - name: order_id
+            business_name: Order Identifier
+            description: Unique identifier for a customer order.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: customer_id
+            business_name: Customer Reference
+            description: References the customer who placed the order.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: store_id
+            business_name: Store Reference
+            description: References the store fulfilling the order.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: order_date
+            business_name: Order Date
+            description: Timestamp when the order was placed.
+            sql_type: TIMESTAMP(29,6)
+            constraints: NOT NULL
+            dimension:
+              is_time: true
+
+          - name: order_channel
+            business_name: Order Channel
+            description: Channel through which the order was placed.
+            sql_type: VARCHAR(20)
+            constraints: NOT NULL, DEFAULT
+            dimension: {}
+
+          - name: payment_method
+            business_name: Payment Method
+            description: Method used by the customer to pay for the order.
+            sql_type: VARCHAR(20)
+            constraints: NOT NULL, DEFAULT
+            dimension: {}
+
+          - name: order_status
+            business_name: Order Status
+            description: Current status of the order.
+            sql_type: VARCHAR(20)
+            constraints: NOT NULL, DEFAULT
+            dimension: {}
+
+          - name: is_returned
+            business_name: Is Returned
+            description: Indicates whether the order has been returned.
+            sql_type: BOOL
+            constraints: NOT NULL, DEFAULT
+            dimension: {}
+
+          - name: customer_rating
+            business_name: Customer Rating
+            description: Rating provided by the customer for the order experience.
+            sql_type: INT2
+            measure: {}
+
+          - name: currency_code
+            business_name: Currency Code
+            description: Currency code used for the order amounts.
+            sql_type: VARCHAR(3)
+            constraints: NOT NULL, DEFAULT
+            dimension: {}
+
+          - name: total_amount_usd
+            business_name: Total Amount Usd
+            description: Total order amount in USD.
+            sql_type: NUMERIC(12,2)
+            constraints: NOT NULL, DEFAULT
+            measure: {}
+
+          - name: local_amount
+            business_name: Local Amount
+            description: Total order amount in the local currency.
+            sql_type: NUMERIC(14,2)
+            constraints: NOT NULL, DEFAULT
+            measure: {}
+
+          - name: total_cost_usd
+            business_name: Total Cost Usd
+            description: Total cost of fulfilling the order in USD.
+            sql_type: NUMERIC(12,2)
+            constraints: NOT NULL, DEFAULT
+            measure: {}
+
+      - name: product_categories
+        business_name: Product Categories
+        description: >-
+          Contains definitions and specifications of product stock, catalog items,
+          pricing structures, and inventory levels.
+        source: Data Glossary Report - TABLE: PRODUCT_CATEGORIES
+        primary_key:
+          - category_id
+        fields:
+          - name: category_id
+            business_name: Category Identifier
+            description: Unique identifier for a product category.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: category_name
+            business_name: Category Name
+            description: Name of the product category.
+            sql_type: VARCHAR(100)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: parent_category_id
+            business_name: Parent Category Reference
+            description: References the parent category in the hierarchy.
+            sql_type: INT4
+            constraints: FK
+            dimension: {}
+
+      - name: products
+        business_name: Products
+        description: >-
+          Contains definitions and specifications of product stock, catalog items,
+          pricing structures, and inventory levels.
+        source: Data Glossary Report - TABLE: PRODUCTS
+        primary_key:
+          - product_id
+        fields:
+          - name: product_id
+            business_name: Product Identifier
+            description: Unique identifier for a product.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: product_name
+            business_name: Product Name
+            description: Name or title of the product.
+            sql_type: VARCHAR(150)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: category_id
+            business_name: Category Reference
+            description: References the category to which the product belongs.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: unit_cost_usd
+            business_name: Unit Cost Usd
+            description: Cost to acquire or produce one unit of the product in USD.
+            sql_type: NUMERIC(10,2)
+            constraints: NOT NULL
+            measure: {}
+
+          - name: unit_price_usd
+            business_name: Unit Price Usd
+            description: Selling price per unit of the product in USD.
+            sql_type: NUMERIC(10,2)
+            constraints: NOT NULL
+            measure: {}
+
+          - name: supplier_id
+            business_name: Supplier Reference
+            description: References the supplier providing the product.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: created_at
+            business_name: Created At
+            description: Timestamp when the product record was created.
+            sql_type: TIMESTAMP(29,6)
+            constraints: NOT NULL, DEFAULT
+            dimension:
+              is_time: true
+
+      - name: shipment_items
+        business_name: Shipment Items
+        description: >-
+          Contains definitions and specifications of product stock, catalog items,
+          pricing structures, and inventory levels.
+        source: Data Glossary Report - TABLE: SHIPMENT_ITEMS
+        primary_key:
+          - shipment_item_id
+        fields:
+          - name: shipment_item_id
+            business_name: Shipment Item Identifier
+            description: Unique identifier for a shipment line item.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: shipment_id
+            business_name: Shipment Reference
+            description: References the shipment containing the item.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: product_id
+            business_name: Product Reference
+            description: References the product included in the shipment item.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: quantity
+            business_name: Quantity
+            description: Number of units of the product in the shipment item.
+            sql_type: INT4
+            constraints: NOT NULL
+            measure: {}
+
+      - name: shipments
+        business_name: Shipments
+        description: >-
+          Contains schema metadata, system-level attributes, and attribute
+          definitions associated with the shipments dataset to support indexing
+          and lookup.
+        source: Data Glossary Report - TABLE: SHIPMENTS
+        primary_key:
+          - shipment_id
+        fields:
+          - name: shipment_id
+            business_name: Shipment Identifier
+            description: Unique identifier for a shipment.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: supplier_id
+            business_name: Supplier Reference
+            description: References the supplier responsible for the shipment.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: store_id
+            business_name: Store Reference
+            description: References the destination store for the shipment.
+            sql_type: INT4
+            constraints: FK, NOT NULL
+            dimension: {}
+
+          - name: ship_date
+            business_name: Ship Date
+            description: Timestamp when the shipment departed.
+            sql_type: TIMESTAMP(29,6)
+            constraints: NOT NULL
+            dimension:
+              is_time: true
+
+          - name: expected_arrival
+            business_name: Expected Arrival
+            description: Expected arrival date of the shipment.
+            sql_type: DATE
+            dimension:
+              is_time: true
+
+          - name: actual_arrival
+            business_name: Actual Arrival
+            description: Actual arrival date of the shipment.
+            sql_type: DATE
+            dimension:
+              is_time: true
+
+          - name: freight_cost_usd
+            business_name: Freight Cost Usd
+            description: Freight cost of the shipment in USD.
+            sql_type: NUMERIC(10,2)
+            constraints: NOT NULL, DEFAULT
+            measure: {}
+
+          - name: shipment_status
+            business_name: Shipment Status
+            description: Current status of the shipment.
+            sql_type: VARCHAR(20)
+            constraints: NOT NULL, DEFAULT
+            dimension: {}
+
+      - name: stores
+        business_name: Stores
+        description: >-
+          Contains schema metadata, system-level attributes, and attribute
+          definitions associated with the stores dataset to support indexing and lookup.
+        source: Data Glossary Report - TABLE: STORES
+        primary_key:
+          - store_id
+        fields:
+          - name: store_id
+            business_name: Store Identifier
+            description: Unique identifier for a store.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: store_name
+            business_name: Store Name
+            description: Name of the store.
+            sql_type: VARCHAR(120)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: city
+            business_name: City
+            description: City where the store is located.
+            sql_type: VARCHAR(80)
+            dimension: {}
+
+          - name: country
+            business_name: Country
+            description: Country where the store is located.
+            sql_type: VARCHAR(80)
+            dimension: {}
+
+          - name: store_type
+            business_name: Store Type
+            description: Type or format of the store, such as online or physical.
+            sql_type: VARCHAR(30)
+            dimension: {}
+
+          - name: created_at
+            business_name: Created At
+            description: Timestamp when the store record was created.
+            sql_type: TIMESTAMP(29,6)
+            constraints: NOT NULL, DEFAULT
+            dimension:
+              is_time: true
+
+      - name: suppliers
+        business_name: Suppliers
+        description: >-
+          Contains schema metadata, system-level attributes, and attribute
+          definitions associated with the suppliers dataset to support indexing
+          and lookup.
+        source: Data Glossary Report - TABLE: SUPPLIERS
+        primary_key:
+          - supplier_id
+        fields:
+          - name: supplier_id
+            business_name: Supplier Identifier
+            description: Unique identifier for a supplier.
+            sql_type: serial
+            constraints: PK, NOT NULL, DEFAULT, AUTO_INCREMENT
+            dimension: {}
+
+          - name: supplier_name
+            business_name: Supplier Name
+            description: Name of the supplier organization.
+            sql_type: VARCHAR(120)
+            constraints: NOT NULL
+            dimension: {}
+
+          - name: country
+            business_name: Country
+            description: Country where the supplier is based.
+            sql_type: VARCHAR(80)
+            dimension: {}
+
+          - name: contact_email
+            business_name: Contact Email
+            description: Email address for contacting the supplier.
+            sql_type: VARCHAR(150)
+            dimension: {}
+
+          - name: reliability_score
+            business_name: Reliability Score
+            description: Score indicating the reliability of the supplier.
+            sql_type: NUMERIC(3,2)
+            constraints: DEFAULT
+            measure: {}
+
+          - name: created_at
+            business_name: Created At
+            description: Timestamp when the supplier record was created.
+            sql_type: TIMESTAMP(29,6)
+            constraints: NOT NULL, DEFAULT
+            dimension:
+              is_time: true
+
+    relationships:
+      - name: orders_to_customers
+        join:
+          from_dataset: orders
+          from_field: customer_id
+          to_dataset: customers
+          to_field: customer_id
+          relationship_type: many_to_one
+          description: Orders reference the customer who placed the order.
+
+      - name: orders_to_stores
+        join:
+          from_dataset: orders
+          from_field: store_id
+          to_dataset: stores
+          to_field: store_id
+          relationship_type: many_to_one
+          description: Orders reference the store fulfilling the order.
+
+      - name: order_items_to_orders
+        join:
+          from_dataset: order_items
+          from_field: order_id
+          to_dataset: orders
+          to_field: order_id
+          relationship_type: many_to_one
+          description: Order items reference the related order record.
+
+      - name: order_items_to_products
+        join:
+          from_dataset: order_items
+          from_field: product_id
+          to_dataset: products
+          to_field: product_id
+          relationship_type: many_to_one
+          description: Order items reference the product included in the order item.
+
+      - name: products_to_product_categories
+        join:
+          from_dataset: products
+          from_field: category_id
+          to_dataset: product_categories
+          to_field: category_id
+          relationship_type: many_to_one
+          description: Products reference the category to which the product belongs.
+
+      - name: products_to_suppliers
+        join:
+          from_dataset: products
+          from_field: supplier_id
+          to_dataset: suppliers
+          to_field: supplier_id
+          relationship_type: many_to_one
+          description: Products reference the supplier providing the product.
+
+      - name: shipments_to_suppliers
+        join:
+          from_dataset: shipments
+          from_field: supplier_id
+          to_dataset: suppliers
+          to_field: supplier_id
+          relationship_type: many_to_one
+          description: Shipments reference the supplier responsible for the shipment.
+
+      - name: shipments_to_stores
+        join:
+          from_dataset: shipments
+          from_field: store_id
+          to_dataset: stores
+          to_field: store_id
+          relationship_type: many_to_one
+          description: Shipments reference the destination store for the shipment.
+
+      - name: shipment_items_to_shipments
+        join:
+          from_dataset: shipment_items
+          from_field: shipment_id
+          to_dataset: shipments
+          to_field: shipment_id
+          relationship_type: many_to_one
+          description: Shipment items reference the shipment containing the item.
+
+      - name: shipment_items_to_products
+        join:
+          from_dataset: shipment_items
+          from_field: product_id
+          to_dataset: products
+          to_field: product_id
+          relationship_type: many_to_one
+          description: Shipment items reference the product included in the shipment item.
+
+      - name: customer_account_managers_to_customers
+        join:
+          from_dataset: customer_account_managers
+          from_field: customer_id
+          to_dataset: customers
+          to_field: customer_id
+          relationship_type: many_to_one
+          description: Customer account manager assignments reference the related customer record.
+
+      - name: customer_account_managers_to_employees
+        join:
+          from_dataset: customer_account_managers
+          from_field: employee_id
+          to_dataset: employees
+          to_field: employee_id
+          relationship_type: many_to_one
+          description: Customer account manager assignments reference the employee assigned as the account manager.
+
+      - name: employees_to_employees_manager
+        join:
+          from_dataset: employees
+          from_field: manager_id
+          to_dataset: employees
+          to_field: employee_id
+          relationship_type: many_to_one
+          description: Employees may reference the employee who manages them.
+
+      - name: product_categories_to_product_categories_parent
+        join:
+          from_dataset: product_categories
+          from_field: parent_category_id
+          to_dataset: product_categories
+          to_field: category_id
+          relationship_type: many_to_one
+          description: Product categories may reference the parent category in the hierarchy.
+
+    metrics:
+      - name: line_revenue_usd
+        business_name: Line Revenue Usd
+        description: Calculated revenue for the order item line in USD after discounts.
+        dataset: order_items
+        field: line_revenue_usd
+
+      - name: line_cost_usd
+        business_name: Line Cost Usd
+        description: Calculated cost for the order item line in USD.
+        dataset: order_items
+        field: line_cost_usd
+
+      - name: total_amount_usd
+        business_name: Total Amount Usd
+        description: Total order amount in USD.
+        dataset: orders
+        field: total_amount_usd
+
+      - name: local_amount
+        business_name: Local Amount
+        description: Total order amount in the local currency.
+        dataset: orders
+        field: local_amount
+
+      - name: total_cost_usd
+        business_name: Total Cost Usd
+        description: Total cost of fulfilling the order in USD.
+        dataset: orders
+        field: total_cost_usd
+
+      - name: freight_cost_usd
+        business_name: Freight Cost Usd
+        description: Freight cost of the shipment in USD.
+        dataset: shipments
+        field: freight_cost_usd
+
+      - name: usd_rate
+        business_name: Usd Rate
+        description: Exchange rate of the currency against USD.
+        dataset: exchange_rates
+        field: usd_rate
+
+      - name: reliability_score
+        business_name: Reliability Score
+        description: Score indicating the reliability of the supplier.
+        dataset: suppliers
+        field: reliability_score
+
+      - name: customer_rating
+        business_name: Customer Rating
+        description: Rating provided by the customer for the order experience.
+        dataset: orders
+        field: customer_rating
