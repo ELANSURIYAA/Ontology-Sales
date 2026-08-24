@@ -1,67 +1,93 @@
 ---
 title: Bookings to Contracts
 type: relationship
-description: Links booking transactions to their associated contract terms and conditions
+description: Links booking transactions to contract terms and service coverage
 resource: relationships
 tags: [bookings, contracts, relationship, many-to-one]
-timestamp: 2024-01-15T00:00:00Z
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Bookings to Contracts
 
 ## Business Definition
 
-This relationship links booking transactions to their associated contract terms and conditions, enabling analysis of bookings by contract type, term duration, renewal behavior, and coverage level.
+Links booking transactions to the commercial agreement or service coverage terms associated with the booking, including contract type, duration, renewal behavior, and support coverage level.
+
+This relationship enables analysis of booking performance by contract characteristics and supports contract value and renewal forecasting.
 
 ---
 
-## Relationship Details
+## Relationship Type
 
-**Source Entity**: [Booking Transaction](../entities/bookings.md)  
-**Target Entity**: [Contract](../entities/contracts.md)  
-**Relationship Type**: Many-to-One  
-**Cardinality**: Many bookings can be associated with one contract
+**many-to-one**
+
+Multiple booking transactions can be associated with the same contract terms.
+
+---
+
+## Source Entity
+
+[Bookings](../entities/bookings.md)
+
+---
+
+## Target Entity
+
+[Contracts](../entities/contracts.md)
+
+---
+
+## Cardinality
+
+- Each booking transaction must be associated with exactly one contract record
+- Each contract record can be associated with multiple booking transactions
 
 ---
 
 ## Technical Mapping
 
-**Join Type**: Inner Join  
-**Left Key**: bookings.contract_key  
-**Right Key**: contracts.contract_key
+**Join Condition**: bookings.contract_key = contracts.contract_key
+
+**Left Dataset**: bookings (quotetobooking.fact_bookings)
+
+**Right Dataset**: contracts (quotetobooking.dim_contract)
+
+**Join Keys**:
+- Left: contract_key
+- Right: contract_key
 
 ---
 
-## Business Description
+## Business Purpose
 
-Each booking transaction is associated with a specific contract that defines the commercial agreement terms, including contract type (e.g., Enterprise Agreement, SaaS Subscription), term duration in months, auto-renewal behavior, and service coverage level. Multiple booking transactions can be associated with the same contract.
+This relationship enables:
+- Analysis of bookings by contract type (Enterprise Agreement, SaaS Subscription, Solution Support)
+- Contract term analysis and duration-based segmentation
+- Renewal forecasting based on auto-renew flags
+- Service coverage level analysis
+- ACV and TCV calculations based on contract terms
 
 ---
 
-## Usage
+## Related Measures
 
-This relationship enables analysis such as:
-
-- Bookings by contract type
-- Contract term length analysis
-- Auto-renewal contract performance
-- Coverage level distribution
-- Contract portfolio health metrics
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
+- [Total ACV USD](../measures/total-acv-usd.md)
+- [Total TCV USD](../measures/total-tcv-usd.md)
+- [Renewal Booking Amount USD](../measures/renewal-booking-amount-usd.md)
 
 ---
 
 ## Related Concepts
 
-- [Contract Type](../glossary/contract-type.md)
-- [Term Months](../glossary/term-months.md)
-- [Auto Renew Flag](../glossary/auto-renew-flag.md)
-- [Coverage Level](../glossary/coverage-level.md)
+- [Annual Contract Value](../glossary/annual-contract-value.md)
+- [Total Contract Value](../glossary/total-contract-value.md)
+- [Renewal](../glossary/renewal.md)
 
 ---
 
 ## Navigation
 
 - [Return to Relationships Index](index.md)
-- [View Booking Transaction Entity](../entities/bookings.md)
-- [View Contract Entity](../entities/contracts.md)
-- [View Contracts Domain](../domains/contracts.md)
+- [Return to Main Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
