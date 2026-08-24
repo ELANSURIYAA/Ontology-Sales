@@ -1,35 +1,36 @@
 ---
-title: Geography
+title: Geographies
 type: entity
-description: Geographic sales territory attributes used to analyze bookings by region, theater, and country
+description: Geographic sales territories with region, theater, and country attributes
 resource: entities
-tags: [geography, territory, region, location, dimension]
-timestamp: 2024-01-15T00:00:00Z
+tags: [geographies, dimension, territories]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Geography
+# Geographies
 
 ## Business Definition
 
-The Geography entity stores geographic sales territory attributes used to analyze bookings by region, theater, and country. This entity enables geographic performance analysis and territory management.
+Stores geographic sales territory attributes used to analyze bookings by region, theater, and country.
+
+Geographies represent the sales territories and geographic markets where booking transactions occur.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: quotetobooking.dim_geography  
-**Source Schema**: quotetobooking  
-**Entity Type**: Dimension  
-**Grain**: One row per geography
+**Source Table**: quotetobooking.dim_geography
+
+**Source Columns**: geography_key, region, theater, country
 
 ---
 
 ## Attributes
 
-- geography_key
-- region
-- theater
-- country
+- **geography_key** - Surrogate key that uniquely identifies a geography record in the geography dimension
+- **region** - High-level geographic region used for sales reporting, such as Americas, EMEA, or APJC
+- **theater** - Intermediate sales territory grouping within a region
+- **country** - Country associated with the geography record
 
 ---
 
@@ -53,37 +54,27 @@ None
 
 ## Measures
 
-All booking and revenue measures can be analyzed by geographic attributes:
-
+All booking-related measures can be analyzed by geographic attributes:
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
 - [Total ACV USD](../measures/total-acv-usd.md)
-- [Total TCV USD](../measures/total-tcv-usd.md)
 - [Booking Count](../measures/booking-count.md)
-- [Total Quantity](../measures/total-quantity.md)
 
 ---
 
 ## Related Concepts
 
-- [Region](../glossary/region.md)
-- [Theater](../glossary/theater.md)
-- [Country](../glossary/country.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
 ## Business Rules
 
-### Geographic Hierarchy
-Geography follows a three-level hierarchy: Region → Theater → Country.
-
-### Region Classification
-Regions represent high-level geographic areas such as Americas, EMEA, or APJC.
-
-### Theater Grouping
-Theaters represent intermediate sales territory groupings within a region for operational management.
-
-### Country Assignment
-Country represents the specific country associated with the geography record for detailed market analysis.
+- Each geography must have a unique geography_key
+- Geographies are organized hierarchically: country → theater → region
+- Region represents the highest level of geographic aggregation
+- Theater provides intermediate grouping within regions
+- Country provides the most granular geographic detail
+- Geographic analysis enables market penetration and regional performance tracking
 
 ---
 
@@ -91,4 +82,4 @@ Country represents the specific country associated with the geography record for
 
 - [Return to Entities Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Geographies Domain](../domains/geographies.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
