@@ -1,52 +1,81 @@
 ---
 title: Bookings to Products
 type: relationship
-description: Links booking transactions to the product or offer that was sold
+description: Links booking transactions to products and offers
 resource: relationships
 tags: [bookings, products, relationship, many-to-one]
-timestamp: 2024-01-15T00:00:00Z
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Bookings to Products
 
 ## Business Definition
 
-This relationship links booking transactions to the product or offer that was sold, enabling analysis of bookings by product family, technology domain, offer type, and business entity.
+Links booking transactions to products and offers sold to customers, including product identity, family, technology domain, offer type, and business entity.
+
+This relationship enables analysis of product performance and supports product portfolio optimization and technology domain analysis.
 
 ---
 
-## Relationship Details
+## Relationship Type
 
-**Source Entity**: [Booking Transaction](../entities/bookings.md)  
-**Target Entity**: [Product](../entities/products.md)  
-**Relationship Type**: Many-to-One  
-**Cardinality**: Many bookings can be associated with one product
+**many-to-one**
+
+Multiple booking transactions can be associated with the same product.
+
+---
+
+## Source Entity
+
+[Bookings](../entities/bookings.md)
+
+---
+
+## Target Entity
+
+[Products](../entities/products.md)
+
+---
+
+## Cardinality
+
+- Each booking transaction must be associated with exactly one product record
+- Each product record can be associated with multiple booking transactions
 
 ---
 
 ## Technical Mapping
 
-**Join Type**: Inner Join  
-**Left Key**: bookings.product_key  
-**Right Key**: products.product_key
+**Join Condition**: bookings.product_key = products.product_key
+
+**Left Dataset**: bookings (quotetobooking.fact_bookings)
+
+**Right Dataset**: products (quotetobooking.dim_product)
+
+**Join Keys**:
+- Left: product_key
+- Right: product_key
 
 ---
 
-## Business Description
+## Business Purpose
 
-Each booking transaction is associated with a specific product or offer that was sold. Product attributes include product family (higher-level grouping), technology domain (solution area), offer type (hardware, software subscription, SaaS subscription), and business entity (internal portfolio unit). Multiple booking transactions can be associated with the same product.
+This relationship enables:
+- Product performance and profitability analysis
+- Product family and portfolio analysis
+- Technology domain revenue analysis
+- Offer type analysis (hardware, software subscription, SaaS)
+- Business entity and organizational unit analysis
+- Product mix and cross-sell analysis
 
 ---
 
-## Usage
+## Related Measures
 
-This relationship enables analysis such as:
-
-- Product portfolio performance
-- Product family trends
-- Technology domain analysis
-- Offer type mix (hardware vs software vs SaaS)
-- Business entity contribution
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
+- [Total Quantity](../measures/total-quantity.md)
+- [Average Selling Price USD](../measures/average-selling-price-usd.md)
+- [Booking Count](../measures/booking-count.md)
 
 ---
 
@@ -54,14 +83,12 @@ This relationship enables analysis such as:
 
 - [Product Family](../glossary/product-family.md)
 - [Technology Domain](../glossary/technology-domain.md)
-- [Offer Type](../glossary/offer-type.md)
-- [Business Entity](../glossary/business-entity.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
 ## Navigation
 
 - [Return to Relationships Index](index.md)
-- [View Booking Transaction Entity](../entities/bookings.md)
-- [View Product Entity](../entities/products.md)
-- [View Products Domain](../domains/products.md)
+- [Return to Main Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
