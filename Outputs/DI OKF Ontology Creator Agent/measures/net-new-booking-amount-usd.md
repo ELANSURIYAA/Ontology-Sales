@@ -3,24 +3,17 @@ title: Net New Booking Amount USD
 type: measure
 description: Total booked sales amount in US dollars for non-renewal transactions
 resource: measures
-tags: [net-new, revenue, usd, metric]
-timestamp: 2024-01-15T00:00:00Z
+tags: [net-new, revenue, metric, usd]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Net New Booking Amount USD
 
 ## Business Definition
 
-Total booked sales amount in US dollars for non-renewal transactions. This measure represents revenue from new customer acquisitions and expansions.
+Total booked sales amount in US dollars for non-renewal transactions.
 
----
-
-## Measure Details
-
-**Measure Type**: Conditional Sum  
-**Aggregation**: SUM with CASE  
-**Unit**: USD  
-**Category**: Revenue Metric
+This measure isolates revenue from new business bookings, enabling analysis of new customer acquisition and expansion revenue performance.
 
 ---
 
@@ -32,50 +25,55 @@ SUM(CASE WHEN bookings.is_renewal = 0 THEN bookings.booking_amount_usd ELSE 0 EN
 
 ---
 
+## Aggregation
+
+**Type**: CONDITIONAL SUM
+
+**Grain**: Booking transaction
+
+---
+
 ## Related Entities
 
-- [Booking Transaction](../entities/bookings.md)
+- [Bookings](../entities/bookings.md)
 
 ---
 
 ## Related Domains
 
-- [Bookings Domain](../domains/bookings.md)
-
----
-
-## Usage
-
-This measure is used to:
-
-- Track new business revenue performance
-- Calculate new customer acquisition
-- Analyze growth from new business
-- Monitor sales pipeline effectiveness
-- Compare net new vs renewal business mix
-
----
-
-## Business Context
-
-Net New Booking Amount USD represents revenue from non-renewal transactions (where is_renewal = 0), including new customer acquisitions and expansion deals with existing customers. This metric is critical for understanding business growth from new sources. Together with Renewal Booking Amount USD, it decomposes Total Booking Amount USD into renewal and new business components.
-
----
-
-## Related Measures
-
-- [Renewal Booking Amount USD](renewal-booking-amount-usd.md) - Complementary measure
-- [Total Booking Amount USD](total-booking-amount-usd.md) - Total including renewals and net new
-- [Total ACV USD](total-acv-usd.md) - Annualized view
-- [Total TCV USD](total-tcv-usd.md) - Full contract term view
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Related Concepts
 
-- [Is Renewal](../glossary/is-renewal.md)
-- [Booking Type](../glossary/booking-type.md)
-- [Booking Amount USD](../glossary/booking-amount-usd.md)
+- [Net New Business](../glossary/net-new-business.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
+
+---
+
+## Business Usage
+
+This measure is used to:
+- Track new business revenue performance
+- Analyze customer acquisition effectiveness
+- Monitor expansion and upsell revenue
+- Calculate new business growth rates
+- Support sales pipeline and forecasting
+
+---
+
+## Technical Details
+
+**Dialect**: ANSI_SQL
+
+**Source Fields**: bookings.is_renewal, bookings.booking_amount_usd
+
+**Null Handling**: Treats null or zero is_renewal as non-renewal
+
+**Currency**: US Dollars (USD)
+
+**Filter Condition**: is_renewal = 0
 
 ---
 
@@ -83,4 +81,4 @@ Net New Booking Amount USD represents revenue from non-renewal transactions (whe
 
 - [Return to Measures Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Metrics Summary](../metrics.md)
+- [View Metrics Catalog](../metrics.md)
