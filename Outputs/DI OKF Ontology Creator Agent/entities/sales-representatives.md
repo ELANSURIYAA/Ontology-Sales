@@ -1,9 +1,9 @@
 ---
 title: Sales Representatives
 type: entity
-description: Sales personnel managing customer relationships with role, team, and segment coverage attributes
+description: Stores information about the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage
 resource: entities
-tags: [sales-representatives, dimension, personnel]
+tags: [sales-representatives, dimension, sales-team, sales-role]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,9 +11,7 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Stores information about the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage.
-
-Sales representatives are the individuals who drive sales activities and are accountable for booking performance.
+The Sales Representatives entity represents the dimension table that stores information about sales personnel responsible for managing customer relationships and booking transactions. Each record contains sales representative identity attributes, role classifications, team assignments, and segment coverage designations. This entity enables analysis of booking transactions by sales representative characteristics and supports sales performance management.
 
 ---
 
@@ -21,18 +19,20 @@ Sales representatives are the individuals who drive sales activities and are acc
 
 **Source Table**: quotetobooking.dim_sales_rep
 
-**Source Columns**: sales_rep_key, rep_id, rep_name, sales_role, sales_team, segment_covered
+**Source Schema**: quotetobooking
+
+**Entity Type**: Dimension Table
 
 ---
 
 ## Attributes
 
-- **sales_rep_key** - Surrogate key that uniquely identifies a sales representative record in the sales representative dimension
-- **rep_id** - Business identifier assigned to the sales representative
-- **rep_name** - Full name of the sales representative
-- **sales_role** - Job role or selling responsibility of the sales representative
-- **sales_team** - Team or organizational unit the sales representative belongs to
-- **segment_covered** - Customer segment or market segment covered by the sales representative
+- sales_rep_key
+- rep_id
+- rep_name
+- sales_role
+- sales_team
+- segment_covered
 
 ---
 
@@ -57,33 +57,88 @@ None
 ## Measures
 
 All booking-related measures can be analyzed by sales representative attributes:
+- [Booking Count](../measures/booking-count.md)
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
 - [Total ACV USD](../measures/total-acv-usd.md)
-- [Booking Count](../measures/booking-count.md)
+- [Total TCV USD](../measures/total-tcv-usd.md)
 - [Average Booking Value USD](../measures/average-booking-value-usd.md)
 
 ---
 
 ## Related Concepts
 
-- [Customer Segment](../glossary/customer-segment.md)
 - [Booking Transaction](../glossary/booking-transaction.md)
+- [Customer Segment](../glossary/customer-segment.md)
 
 ---
 
 ## Business Rules
 
-- Each sales representative must have a unique sales_rep_key
-- rep_id serves as the natural business identifier
-- Sales representatives are organized by role, team, and segment coverage
-- segment_covered aligns sales representatives with customer segments
-- Sales performance can be tracked by individual representative, role, team, and segment
-- Enables sales productivity and quota attainment analysis
+1. **Unique Sales Rep Key**: Each sales representative record must have a unique sales_rep_key
+2. **Representative Identifier**: rep_id represents the business identifier for the sales representative
+3. **Sales Role Classification**: Sales representatives are classified by job role or selling responsibility
+4. **Team Assignment**: Sales representatives are assigned to teams or organizational units
+5. **Segment Coverage**: Sales representatives are assigned to cover specific customer segments or market segments
 
 ---
 
-## Navigation
+## Attribute Definitions
 
-- [Return to Entities Index](index.md)
-- [Return to Main Index](../index.md)
-- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
+### sales_rep_key
+Surrogate key that uniquely identifies a sales representative record in the sales representative dimension. Used as the primary key and referenced by the bookings fact table.
+
+### rep_id
+Business identifier assigned to the sales representative. Represents the natural key used in operational systems.
+
+### rep_name
+Full name of the sales representative. Used for reporting and sales representative identification.
+
+### sales_role
+Job role or selling responsibility of the sales representative. Enables role-based analysis and performance tracking.
+
+### sales_team
+Team or organizational unit the sales representative belongs to. Used for team-level reporting and management.
+
+### segment_covered
+Customer segment or market segment covered by the sales representative. Enables segment-based territory analysis and alignment.
+
+---
+
+## Related Domain
+
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+
+---
+
+## Usage Examples
+
+### Sales Role Analysis
+- Analyze booking amount by sales role
+- Compare performance across different roles
+- Track role-specific productivity metrics
+
+### Sales Team Analysis
+- Evaluate team performance and contribution
+- Track team-level booking trends
+- Support team-based incentive programs
+
+### Segment Coverage Analysis
+- Analyze sales representative effectiveness by segment
+- Ensure proper segment coverage and alignment
+- Optimize territory assignments
+
+### Sales Representative Performance
+- Rank sales representatives by booking amount
+- Track individual quota attainment
+- Identify top performers and coaching opportunities
+
+---
+
+## Data Quality Checks
+
+- sales_rep_key is unique and not null
+- rep_id is not null
+- rep_name is not null
+- sales_role is a valid role classification
+- sales_team is a valid team designation
+- segment_covered is a valid segment classification
