@@ -1,38 +1,39 @@
 ---
-title: Date
+title: Dates
 type: entity
-description: Calendar and fiscal time attributes used to analyze bookings across reporting periods, years, quarters, and months
+description: Calendar and fiscal time attributes for reporting periods, years, quarters, and months
 resource: entities
-tags: [date, time, calendar, fiscal, dimension]
-timestamp: 2024-01-15T00:00:00Z
+tags: [dates, dimension, time, calendar, fiscal]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Date
+# Dates
 
 ## Business Definition
 
-The Date entity provides calendar and fiscal time attributes used to analyze bookings across reporting periods, years, quarters, and months. This entity enables time-based analysis and trend reporting.
+Provides calendar and fiscal time attributes used to analyze bookings across reporting periods, years, quarters, and months.
+
+Dates enable time-based analysis and trending of booking transactions across calendar and fiscal reporting periods.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: quotetobooking.dim_date  
-**Source Schema**: quotetobooking  
-**Entity Type**: Dimension  
-**Grain**: One row per date
+**Source Table**: quotetobooking.dim_date
+
+**Source Columns**: date_key, full_date, month_name, calendar_year, fiscal_year, fiscal_quarter, fiscal_period_seq
 
 ---
 
 ## Attributes
 
-- date_key
-- full_date
-- month_name
-- calendar_year
-- fiscal_year
-- fiscal_quarter
-- fiscal_period_seq
+- **date_key** - Intelligent date key in YYYYMMDD form used to join booking records to the date dimension
+- **full_date** - Actual calendar date represented by the date record
+- **month_name** - Name of the calendar month for the date
+- **calendar_year** - Calendar year associated with the date
+- **fiscal_year** - Fiscal year used for financial and sales reporting
+- **fiscal_quarter** - Fiscal quarter used for period-based reporting and analysis
+- **fiscal_period_seq** - Sequential number representing the fiscal reporting period in order
 
 ---
 
@@ -56,40 +57,28 @@ None
 
 ## Measures
 
-All booking and revenue measures can be analyzed across time:
-
+All booking-related measures can be analyzed by time attributes:
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
 - [Total ACV USD](../measures/total-acv-usd.md)
-- [Total TCV USD](../measures/total-tcv-usd.md)
 - [Booking Count](../measures/booking-count.md)
-- [Total Quantity](../measures/total-quantity.md)
-- [Renewal Booking Amount USD](../measures/renewal-booking-amount-usd.md)
-- [Net New Booking Amount USD](../measures/net-new-booking-amount-usd.md)
 
 ---
 
 ## Related Concepts
 
-- [Calendar Year](../glossary/calendar-year.md)
-- [Fiscal Year](../glossary/fiscal-year.md)
-- [Fiscal Quarter](../glossary/fiscal-quarter.md)
-- [Fiscal Period Sequence](../glossary/fiscal-period-seq.md)
+- [Fiscal Period](../glossary/fiscal-period.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
 ## Business Rules
 
-### Date Key Format
-Date key is stored in YYYYMMDD intelligent key format for efficient joining and filtering.
-
-### Calendar vs Fiscal
-Calendar attributes represent standard calendar periods while fiscal attributes align to business reporting cycles.
-
-### Fiscal Period Sequence
-Fiscal period sequence provides a sequential number for chronological ordering of fiscal periods.
-
-### Time Hierarchy
-Date supports multiple time hierarchies: Calendar (Year → Month) and Fiscal (Year → Quarter → Period).
+- Each date must have a unique date_key in YYYYMMDD format
+- date_key serves as an intelligent key for efficient joins
+- Dates support both calendar and fiscal reporting hierarchies
+- fiscal_period_seq enables sequential period-based analysis
+- Time-based analysis uses booking date as the primary time dimension
+- Supports year-over-year, quarter-over-quarter, and month-over-month trending
 
 ---
 
@@ -97,4 +86,4 @@ Date supports multiple time hierarchies: Calendar (Year → Month) and Fiscal (Y
 
 - [Return to Entities Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Dates Domain](../domains/dates.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
