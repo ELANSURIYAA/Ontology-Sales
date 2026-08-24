@@ -4,1088 +4,738 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    xmlns:onto="http://example.org/ontology/sales-bookings#"
-    xml:base="http://example.org/ontology/sales-bookings">
+    xmlns:eo="http://example.org/ontology/enterprise-sales#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#">
 
-  <owl:Ontology rdf:about="http://example.org/ontology/sales-bookings">
-    <rdfs:label xml:lang="en">Enterprise Sales Bookings Ontology</rdfs:label>
-    <rdfs:comment xml:lang="en">OWL 2 ontology for sales bookings and revenue analytics generated from the DI Glossary Creator Agent output. The Business Process, Metrics &amp; Relationships document could not be retrieved from the repository, so ontology content is derived from the glossary only and includes validation warnings as source-traceable annotations.</rdfs:comment>
+  <owl:Ontology rdf:about="http://example.org/ontology/enterprise-sales">
+    <rdfs:label>Enterprise Sales Booking Ontology</rdfs:label>
+    <rdfs:comment>OWL 2 ontology generated primarily from the DI Glossary Creator Agent output for the Sales Bookings and Revenue Analytics domain. The Business Process, Metrics &amp; Relationships document could not be retrieved from the repository path provided, so process-derived relationships, metrics semantics, and additional constraints are included only where logically supported by the glossary source. Validation warning: missing secondary source Inputs/Business Process Metrics Relationships.docx.</rdfs:comment>
     <owl:versionInfo>1.0.0</owl:versionInfo>
-    <skos:definition>Represents business entities, relationships, attributes, measures, and source mappings for the Sales Bookings and Revenue Analytics domain.</skos:definition>
-    <onto:baseURI>http://example.org/ontology/sales-bookings#</onto:baseURI>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
-    <onto:sourceBusinessProcessDocument>Inputs/Business Process Metrics Relationships.docx</onto:sourceBusinessProcessDocument>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:semanticSource>DI Glossary Creator Agent output</onto:semanticSource>
-    <onto:validationWarning>Business Process, Metrics &amp; Relationships document was not retrievable from the repository path provided; cross-source validation and process/metric enrichment could not be completed.</onto:validationWarning>
-    <onto:graphDBCompatibility>Designed as RDF/XML OWL 2 TBox for GraphDB and Protégé import.</onto:graphDBCompatibility>
+    <rdfs:seeAlso>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</rdfs:seeAlso>
+    <rdfs:seeAlso>Inputs/Business Process Metrics Relationships.docx</rdfs:seeAlso>
   </owl:Ontology>
 
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#businessDefinition"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#businessDescription"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#businessDomain"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#businessCategory"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#sourceGlossary"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#sourceBusinessProcessDocument"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#sourceEntity"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#sourceAttribute"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#sourceTable"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#sourceColumn"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#sourceDatatype"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#sourceRelationship"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#metricDefinition"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#semanticSource"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#validationWarning"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#graphDBCompatibility"/>
-  <owl:AnnotationProperty rdf:about="http://example.org/ontology/sales-bookings#baseURI"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#businessDefinition"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#businessDescription"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#businessDomain"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#businessCategory"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#sourceGlossary"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#sourceBusinessProcessDocument"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#sourceTable"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#sourceColumn"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#sourceEntity"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#sourceRelationship"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#metricDefinition"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#validationWarning"/>
+  <owl:AnnotationProperty rdf:about="http://example.org/ontology/enterprise-sales#semanticSource"/>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#DomainConcept">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#DomainConcept">
     <rdfs:label>Domain Concept</rdfs:label>
-    <rdfs:comment>Top-level business concept in the enterprise sales bookings ontology.</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#BusinessEntity">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#BusinessEntity">
     <rdfs:label>Business Entity</rdfs:label>
-    <rdfs:comment>Abstract parent class for business entities identified from the source glossary.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#DomainConcept"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#DomainConcept"/>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Dimension">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Dimension">
     <rdfs:label>Dimension</rdfs:label>
-    <rdfs:comment>Abstract parent class for descriptive analytical dimensions.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#BusinessEntity"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#BusinessEntity"/>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Fact">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Fact">
     <rdfs:label>Fact</rdfs:label>
-    <rdfs:comment>Abstract parent class for transactional fact entities.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#BusinessEntity"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#BusinessEntity"/>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Transaction">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Transaction">
     <rdfs:label>Transaction</rdfs:label>
-    <rdfs:comment>Abstract parent class for business transactions.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Fact"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#BusinessEntity"/>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Contract">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Contract">
     <rdfs:label>Contract</rdfs:label>
     <rdfs:comment>Describes the commercial agreement or service coverage terms associated with a booking, including contract type, duration, renewal behavior, and support coverage level.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Dimension"/>
-    <skos:definition>Describes the commercial agreement or service coverage terms associated with a booking, including contract type, duration, renewal behavior, and support coverage level.</skos:definition>
-    <onto:businessDefinition>Describes the commercial agreement or service coverage terms associated with a booking, including contract type, duration, renewal behavior, and support coverage level.</onto:businessDefinition>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:businessCategory>Contract Management</onto:businessCategory>
-    <onto:sourceEntity>Contract</onto:sourceEntity>
-    <onto:sourceTable>quotetobooking.dim_contract</onto:sourceTable>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Dimension"/>
+    <eo:businessDefinition>Describes the commercial agreement or service coverage terms associated with a booking, including contract type, duration, renewal behavior, and support coverage level.</eo:businessDefinition>
+    <eo:businessDomain>Sales Bookings and Revenue Analytics</eo:businessDomain>
+    <eo:businessCategory>Contract Management</eo:businessCategory>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+    <eo:sourceTable>quotetobooking.dim_contract</eo:sourceTable>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Customer">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Customer">
     <rdfs:label>Customer</rdfs:label>
     <rdfs:comment>Stores descriptive information about customers that place orders, including identity, segment, industry, account tier, and headquarters location.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Dimension"/>
-    <skos:definition>Stores descriptive information about customers that place orders, including identity, segment, industry, account tier, and headquarters location.</skos:definition>
-    <onto:businessDefinition>Stores descriptive information about customers that place orders, including identity, segment, industry, account tier, and headquarters location.</onto:businessDefinition>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:businessCategory>Customer Management</onto:businessCategory>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Dimension"/>
+    <eo:businessDefinition>Stores descriptive information about customers that place orders, including identity, segment, industry, account tier, and headquarters location.</eo:businessDefinition>
+    <eo:businessDomain>Sales Bookings and Revenue Analytics</eo:businessDomain>
+    <eo:businessCategory>Customer Management</eo:businessCategory>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Date">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Date">
     <rdfs:label>Date</rdfs:label>
     <rdfs:comment>Provides calendar and fiscal time attributes used to analyze bookings across reporting periods, years, quarters, and months.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Dimension"/>
-    <skos:definition>Provides calendar and fiscal time attributes used to analyze bookings across reporting periods, years, quarters, and months.</skos:definition>
-    <onto:businessDefinition>Provides calendar and fiscal time attributes used to analyze bookings across reporting periods, years, quarters, and months.</onto:businessDefinition>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:businessCategory>Time Management</onto:businessCategory>
-    <onto:sourceEntity>Date</onto:sourceEntity>
-    <onto:sourceTable>quotetobooking.dim_date</onto:sourceTable>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Dimension"/>
+    <eo:businessDefinition>Provides calendar and fiscal time attributes used to analyze bookings across reporting periods, years, quarters, and months.</eo:businessDefinition>
+    <eo:businessDomain>Sales Bookings and Revenue Analytics</eo:businessDomain>
+    <eo:businessCategory>Time Management</eo:businessCategory>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+    <eo:sourceTable>quotetobooking.dim_date</eo:sourceTable>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Geography">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Geography">
     <rdfs:label>Geography</rdfs:label>
     <rdfs:comment>Stores geographic sales territory attributes used to analyze bookings by region, theater, and country.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Dimension"/>
-    <skos:definition>Stores geographic sales territory attributes used to analyze bookings by region, theater, and country.</skos:definition>
-    <onto:businessDefinition>Stores geographic sales territory attributes used to analyze bookings by region, theater, and country.</onto:businessDefinition>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:businessCategory>Geography</onto:businessCategory>
-    <onto:sourceEntity>Geography</onto:sourceEntity>
-    <onto:sourceTable>quotetobooking.dim_geography</onto:sourceTable>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Dimension"/>
+    <eo:businessDefinition>Stores geographic sales territory attributes used to analyze bookings by region, theater, and country.</eo:businessDefinition>
+    <eo:businessDomain>Sales Bookings and Revenue Analytics</eo:businessDomain>
+    <eo:businessCategory>Geography</eo:businessCategory>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+    <eo:sourceTable>quotetobooking.dim_geography</eo:sourceTable>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Partner">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Partner">
     <rdfs:label>Partner</rdfs:label>
     <rdfs:comment>Stores information about direct and indirect sales partners involved in fulfilling customer bookings, including partner identity, type, tier, and route to market.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Dimension"/>
-    <skos:definition>Stores information about direct and indirect sales partners involved in fulfilling customer bookings, including partner identity, type, tier, and route to market.</skos:definition>
-    <onto:businessDefinition>Stores information about direct and indirect sales partners involved in fulfilling customer bookings, including partner identity, type, tier, and route to market.</onto:businessDefinition>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:businessCategory>Partner Management</onto:businessCategory>
-    <onto:sourceEntity>Partner</onto:sourceEntity>
-    <onto:sourceTable>quotetobooking.dim_partner</onto:sourceTable>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Dimension"/>
+    <eo:businessDefinition>Stores information about direct and indirect sales partners involved in fulfilling customer bookings, including partner identity, type, tier, and route to market.</eo:businessDefinition>
+    <eo:businessDomain>Sales Bookings and Revenue Analytics</eo:businessDomain>
+    <eo:businessCategory>Partner Management</eo:businessCategory>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+    <eo:sourceTable>quotetobooking.dim_partner</eo:sourceTable>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#Product">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#Product">
     <rdfs:label>Product</rdfs:label>
     <rdfs:comment>Stores descriptive information about products and offers sold to customers, including product identity, family, technology domain, offer type, and business entity.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Dimension"/>
-    <skos:definition>Stores descriptive information about products and offers sold to customers, including product identity, family, technology domain, offer type, and business entity.</skos:definition>
-    <onto:businessDefinition>Stores descriptive information about products and offers sold to customers, including product identity, family, technology domain, offer type, and business entity.</onto:businessDefinition>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:businessCategory>Product Management</onto:businessCategory>
-    <onto:sourceEntity>Product</onto:sourceEntity>
-    <onto:sourceTable>quotetobooking.dim_product</onto:sourceTable>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Dimension"/>
+    <eo:businessDefinition>Stores descriptive information about products and offers sold to customers, including product identity, family, technology domain, offer type, and business entity.</eo:businessDefinition>
+    <eo:businessDomain>Sales Bookings and Revenue Analytics</eo:businessDomain>
+    <eo:businessCategory>Product Management</eo:businessCategory>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+    <eo:sourceTable>quotetobooking.dim_product</eo:sourceTable>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#SalesRepresentative">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#SalesRepresentative">
     <rdfs:label>Sales Representative</rdfs:label>
     <rdfs:comment>Stores information about the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Dimension"/>
-    <skos:definition>Stores information about the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage.</skos:definition>
-    <onto:businessDefinition>Stores information about the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage.</onto:businessDefinition>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:businessCategory>Sales Organization</onto:businessCategory>
-    <onto:sourceEntity>Sales Representative</onto:sourceEntity>
-    <onto:sourceTable>quotetobooking.dim_sales_rep</onto:sourceTable>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Dimension"/>
+    <eo:businessDefinition>Stores information about the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage.</eo:businessDefinition>
+    <eo:businessDomain>Sales Bookings and Revenue Analytics</eo:businessDomain>
+    <eo:businessCategory>Sales Organization</eo:businessCategory>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+    <eo:sourceTable>quotetobooking.dim_sales_rep</eo:sourceTable>
   </owl:Class>
 
-  <owl:Class rdf:about="http://example.org/ontology/sales-bookings#BookingTransaction">
+  <owl:Class rdf:about="http://example.org/ontology/enterprise-sales#BookingTransaction">
     <rdfs:label>Booking Transaction</rdfs:label>
     <rdfs:comment>Captures individual completed sales booking transactions and their associated financial measures, quantities, renewal status, and links to related business dimensions.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://example.org/ontology/sales-bookings#Transaction"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Fact"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/enterprise-sales#Transaction"/>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings#hasCustomer"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+        <owl:onProperty rdf:resource="http://example.org/ontology/enterprise-sales#hasCustomer"/>
+        <owl:someValuesFrom rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings#hasProduct"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
+        <owl:onProperty rdf:resource="http://example.org/ontology/enterprise-sales#hasProduct"/>
+        <owl:someValuesFrom rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings#hasBookingDate"/>
-        <owl:someValuesFrom rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
+        <owl:onProperty rdf:resource="http://example.org/ontology/enterprise-sales#hasDate"/>
+        <owl:someValuesFrom rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings#hasCustomer"/>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings#hasProduct"/>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://example.org/ontology/sales-bookings#hasBookingDate"/>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <skos:definition>Captures individual completed sales booking transactions and their associated financial measures, quantities, renewal status, and links to related business dimensions.</skos:definition>
-    <onto:businessDefinition>Captures individual completed sales booking transactions and their associated financial measures, quantities, renewal status, and links to related business dimensions.</onto:businessDefinition>
-    <onto:businessDomain>Sales Bookings and Revenue Analytics</onto:businessDomain>
-    <onto:businessCategory>Sales Performance</onto:businessCategory>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
-    <onto:metricDefinition>booking_amount_usd: Total booked sales amount in US dollars after pricing and discount adjustments.</onto:metricDefinition>
-    <onto:metricDefinition>acv_usd: Annualized contract value of the booking in US dollars.</onto:metricDefinition>
-    <onto:metricDefinition>tcv_usd: Total contract value of the booking over the full contract term in US dollars.</onto:metricDefinition>
+    <eo:businessDefinition>Captures individual completed sales booking transactions and their associated financial measures, quantities, renewal status, and links to related business dimensions.</eo:businessDefinition>
+    <eo:businessDomain>Sales Bookings and Revenue Analytics</eo:businessDomain>
+    <eo:businessCategory>Sales Performance</eo:businessCategory>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:metricDefinition>booking_amount_usd: Total booked sales amount in US dollars after pricing and discount adjustments.</eo:metricDefinition>
+    <eo:metricDefinition>acv_usd: Annualized contract value of the booking in US dollars.</eo:metricDefinition>
+    <eo:metricDefinition>tcv_usd: Total contract value of the booking over the full contract term in US dollars.</eo:metricDefinition>
+    <eo:validationWarning>Business Process, Metrics &amp; Relationships document was not available at the specified path; process-derived relationships, rules, and cardinalities could not be validated cross-source.</eo:validationWarning>
   </owl:Class>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#hasBookingDate">
-    <rdfs:label>has booking date</rdfs:label>
-    <rdfs:comment>Links a booking transaction to the date dimension record used for reporting.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <onto:businessDefinition>Foreign key linking the booking transaction to the reporting date dimension.</onto:businessDefinition>
-    <onto:sourceRelationship>fact_bookings.date_key -&gt; dim_date.date_key</onto:sourceRelationship>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>date_key</onto:sourceColumn>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
-  </owl:ObjectProperty>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://example.org/ontology/enterprise-sales#Contract"/>
+      <rdf:Description rdf:about="http://example.org/ontology/enterprise-sales#Customer"/>
+      <rdf:Description rdf:about="http://example.org/ontology/enterprise-sales#Date"/>
+      <rdf:Description rdf:about="http://example.org/ontology/enterprise-sales#Geography"/>
+      <rdf:Description rdf:about="http://example.org/ontology/enterprise-sales#Partner"/>
+      <rdf:Description rdf:about="http://example.org/ontology/enterprise-sales#Product"/>
+      <rdf:Description rdf:about="http://example.org/ontology/enterprise-sales#SalesRepresentative"/>
+      <rdf:Description rdf:about="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#isBookingDateOf">
-    <rdfs:label>is booking date of</rdfs:label>
-    <rdfs:comment>Inverse relationship from date to booking transaction.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings#hasBookingDate"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#hasCustomer">
+  <owl:ObjectProperty rdf:about="http://example.org/ontology/enterprise-sales#hasCustomer">
     <rdfs:label>has customer</rdfs:label>
-    <rdfs:comment>Links a booking transaction to the customer associated with the booking.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <onto:businessDefinition>Foreign key linking the booking transaction to the customer dimension.</onto:businessDefinition>
-    <onto:sourceRelationship>fact_bookings.customer_key -&gt; dim_customer.customer_key</onto:sourceRelationship>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>customer_key</onto:sourceColumn>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:comment>Links a booking transaction to the customer associated with the transaction.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
+    <eo:sourceRelationship>fact_bookings.customer_key -&gt; dim_customer.customer_key</eo:sourceRelationship>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
   </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#isCustomerOfBooking">
-    <rdfs:label>is customer of booking</rdfs:label>
-    <rdfs:comment>Inverse relationship from customer to booking transaction.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings#hasCustomer"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#hasProduct">
+  <owl:ObjectProperty rdf:about="http://example.org/ontology/enterprise-sales#hasProduct">
     <rdfs:label>has product</rdfs:label>
-    <rdfs:comment>Links a booking transaction to the product booked.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <onto:businessDefinition>Foreign key linking the booking transaction to the product dimension.</onto:businessDefinition>
-    <onto:sourceRelationship>fact_bookings.product_key -&gt; dim_product.product_key</onto:sourceRelationship>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>product_key</onto:sourceColumn>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:comment>Links a booking transaction to the product associated with the transaction.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
+    <eo:sourceRelationship>fact_bookings.product_key -&gt; dim_product.product_key</eo:sourceRelationship>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
   </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#isProductOfBooking">
-    <rdfs:label>is product of booking</rdfs:label>
-    <rdfs:comment>Inverse relationship from product to booking transaction.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <owl:inverseOf rdf:resource="http://example.org/ontology/sales-bookings#hasProduct"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#hasPartner">
+  <owl:ObjectProperty rdf:about="http://example.org/ontology/enterprise-sales#hasPartner">
     <rdfs:label>has partner</rdfs:label>
-    <rdfs:comment>Links a booking transaction to the partner involved in fulfilling the booking.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#Partner"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <onto:businessDefinition>Foreign key linking the booking transaction to the partner dimension.</onto:businessDefinition>
-    <onto:sourceRelationship>fact_bookings.partner_key -&gt; dim_partner.partner_key</onto:sourceRelationship>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>partner_key</onto:sourceColumn>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:comment>Links a booking transaction to the partner involved in the transaction.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/enterprise-sales#Partner"/>
+    <eo:sourceRelationship>fact_bookings.partner_key -&gt; dim_partner.partner_key</eo:sourceRelationship>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
   </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#hasGeography">
+  <owl:ObjectProperty rdf:about="http://example.org/ontology/enterprise-sales#hasGeography">
     <rdfs:label>has geography</rdfs:label>
-    <rdfs:comment>Links a booking transaction to the geography used for territory analysis.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#Geography"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <onto:businessDefinition>Foreign key linking the booking transaction to the geography dimension.</onto:businessDefinition>
-    <onto:sourceRelationship>fact_bookings.geography_key -&gt; dim_geography.geography_key</onto:sourceRelationship>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>geography_key</onto:sourceColumn>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:comment>Links a booking transaction to the geography associated with the transaction.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/enterprise-sales#Geography"/>
+    <eo:sourceRelationship>fact_bookings.geography_key -&gt; dim_geography.geography_key</eo:sourceRelationship>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
   </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#hasSalesRepresentative">
+  <owl:ObjectProperty rdf:about="http://example.org/ontology/enterprise-sales#hasSalesRepresentative">
     <rdfs:label>has sales representative</rdfs:label>
-    <rdfs:comment>Links a booking transaction to the responsible sales representative.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#SalesRepresentative"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <onto:businessDefinition>Foreign key linking the booking transaction to the sales representative dimension.</onto:businessDefinition>
-    <onto:sourceRelationship>fact_bookings.sales_rep_key -&gt; dim_sales_rep.sales_rep_key</onto:sourceRelationship>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>sales_rep_key</onto:sourceColumn>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:comment>Links a booking transaction to the sales representative responsible for the transaction.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/enterprise-sales#SalesRepresentative"/>
+    <eo:sourceRelationship>fact_bookings.sales_rep_key -&gt; dim_sales_rep.sales_rep_key</eo:sourceRelationship>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
   </owl:ObjectProperty>
 
-  <owl:ObjectProperty rdf:about="http://example.org/ontology/sales-bookings#hasContract">
+  <owl:ObjectProperty rdf:about="http://example.org/ontology/enterprise-sales#hasContract">
     <rdfs:label>has contract</rdfs:label>
-    <rdfs:comment>Links a booking transaction to the related contract.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
-    <rdfs:range rdf:resource="http://example.org/ontology/sales-bookings#Contract"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <onto:businessDefinition>Foreign key linking the booking transaction to the contract dimension.</onto:businessDefinition>
-    <onto:sourceRelationship>fact_bookings.contract_key -&gt; dim_contract.contract_key</onto:sourceRelationship>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>contract_key</onto:sourceColumn>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <rdfs:comment>Links a booking transaction to the contract associated with the transaction.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/enterprise-sales#Contract"/>
+    <eo:sourceRelationship>fact_bookings.contract_key -&gt; dim_contract.contract_key</eo:sourceRelationship>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
   </owl:ObjectProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#contractKey">
+  <owl:ObjectProperty rdf:about="http://example.org/ontology/enterprise-sales#hasDate">
+    <rdfs:label>has date</rdfs:label>
+    <rdfs:comment>Links a booking transaction to the reporting date associated with the transaction.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
+    <eo:sourceRelationship>fact_bookings.date_key -&gt; dim_date.date_key</eo:sourceRelationship>
+    <eo:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</eo:sourceGlossary>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#contractKey">
     <rdfs:label>contract key</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Contract"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Contract"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Surrogate key that uniquely identifies a contract record in the contract dimension.</rdfs:comment>
-    <onto:businessDefinition>Surrogate key that uniquely identifies a contract record in the contract dimension.</onto:businessDefinition>
-    <onto:sourceEntity>Contract</onto:sourceEntity>
-    <onto:sourceAttribute>Contract Key</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_contract</onto:sourceTable>
-    <onto:sourceColumn>contract_key</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Surrogate key that uniquely identifies a contract record in the contract dimension.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_contract</eo:sourceTable>
+    <eo:sourceColumn>contract_key</eo:sourceColumn>
   </owl:DatatypeProperty>
-  <owl:FunctionalProperty rdf:about="http://example.org/ontology/sales-bookings#contractKey"/>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#contractType">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#contractType">
     <rdfs:label>contract type</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Contract"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Contract"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Type of commercial agreement or support entitlement, such as Enterprise Agreement, SaaS Subscription, or Solution Support.</rdfs:comment>
-    <onto:businessDefinition>Type of commercial agreement or support entitlement, such as Enterprise Agreement, SaaS Subscription, or Solution Support.</onto:businessDefinition>
-    <onto:sourceEntity>Contract</onto:sourceEntity>
-    <onto:sourceAttribute>Contract Type</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_contract</onto:sourceTable>
-    <onto:sourceColumn>contract_type</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(40)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Type of commercial agreement or support entitlement, such as Enterprise Agreement, SaaS Subscription, or Solution Support.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_contract</eo:sourceTable>
+    <eo:sourceColumn>contract_type</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#termMonths">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#termMonths">
     <rdfs:label>contract term months</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Contract"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Contract"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Number of months covered by the contract or subscription term.</rdfs:comment>
-    <onto:businessDefinition>Number of months covered by the contract or subscription term.</onto:businessDefinition>
-    <onto:sourceEntity>Contract</onto:sourceEntity>
-    <onto:sourceAttribute>Contract Term Months</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_contract</onto:sourceTable>
-    <onto:sourceColumn>term_months</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Number of months covered by the contract or subscription term.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_contract</eo:sourceTable>
+    <eo:sourceColumn>term_months</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#autoRenewFlag">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#autoRenewFlag">
     <rdfs:label>auto renewal flag</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Contract"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Contract"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Indicator showing whether the contract is set to renew automatically at the end of its term.</rdfs:comment>
-    <onto:businessDefinition>Indicator showing whether the contract is set to renew automatically at the end of its term.</onto:businessDefinition>
-    <onto:sourceEntity>Contract</onto:sourceEntity>
-    <onto:sourceAttribute>Auto Renewal Flag</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_contract</onto:sourceTable>
-    <onto:sourceColumn>auto_renew_flag</onto:sourceColumn>
-    <onto:sourceDatatype>character(1)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Indicator showing whether the contract is set to renew automatically at the end of its term.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_contract</eo:sourceTable>
+    <eo:sourceColumn>auto_renew_flag</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#coverageLevel">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#coverageLevel">
     <rdfs:label>coverage level</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Contract"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Contract"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Service or support coverage level provided under the contract.</rdfs:comment>
-    <onto:businessDefinition>Service or support coverage level provided under the contract.</onto:businessDefinition>
-    <onto:sourceEntity>Contract</onto:sourceEntity>
-    <onto:sourceAttribute>Coverage Level</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_contract</onto:sourceTable>
-    <onto:sourceColumn>coverage_level</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Service or support coverage level provided under the contract.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_contract</eo:sourceTable>
+    <eo:sourceColumn>coverage_level</eo:sourceColumn>
   </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#customerKey">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#customerKey">
     <rdfs:label>customer key</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Surrogate key that uniquely identifies a customer record in the customer dimension.</rdfs:comment>
-    <onto:businessDefinition>Surrogate key that uniquely identifies a customer record in the customer dimension.</onto:businessDefinition>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceAttribute>Customer Key</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceColumn>customer_key</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Surrogate key that uniquely identifies a customer record in the customer dimension.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
+    <eo:sourceColumn>customer_key</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#customerId">
-    <rdfs:label>customer id</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#customerId">
+    <rdfs:label>customer ID</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Business identifier assigned to the customer account.</rdfs:comment>
-    <onto:businessDefinition>Business identifier assigned to the customer account.</onto:businessDefinition>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceAttribute>Customer ID</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceColumn>customer_id</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Business identifier assigned to the customer account.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
+    <eo:sourceColumn>customer_id</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#customerName">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#customerName">
     <rdfs:label>customer name</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Official name of the customer organization.</rdfs:comment>
-    <onto:businessDefinition>Official name of the customer organization.</onto:businessDefinition>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceAttribute>Customer Name</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceColumn>customer_name</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(80)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Official name of the customer organization.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
+    <eo:sourceColumn>customer_name</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#segment">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#segment">
     <rdfs:label>customer segment</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Market segment the customer belongs to, such as Enterprise, Service Provider, or Public Sector.</rdfs:comment>
-    <onto:businessDefinition>Market segment the customer belongs to, such as Enterprise, Service Provider, or Public Sector.</onto:businessDefinition>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceAttribute>Customer Segment</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceColumn>segment</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Market segment the customer belongs to, such as Enterprise, Service Provider, or Public Sector.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
+    <eo:sourceColumn>segment</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#industry">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#industry">
     <rdfs:label>industry</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Industry classification of the customer organization.</rdfs:comment>
-    <onto:businessDefinition>Industry classification of the customer organization.</onto:businessDefinition>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceAttribute>Industry</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceColumn>industry</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(40)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Industry classification of the customer organization.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
+    <eo:sourceColumn>industry</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#accountTier">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#accountTier">
     <rdfs:label>account tier</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Strategic importance or service tier assigned to the customer account.</rdfs:comment>
-    <onto:businessDefinition>Strategic importance or service tier assigned to the customer account.</onto:businessDefinition>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceAttribute>Account Tier</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceColumn>account_tier</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Strategic importance or service tier assigned to the customer account.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
+    <eo:sourceColumn>account_tier</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#hqCountry">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#hqCountry">
     <rdfs:label>headquarters country</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Country where the customer organization's headquarters is located.</rdfs:comment>
-    <onto:businessDefinition>Country where the customer organization's headquarters is located.</onto:businessDefinition>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceAttribute>Headquarters Country</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceColumn>hq_country</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(40)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Country where the customer organization's headquarters is located.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
+    <eo:sourceColumn>hq_country</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#hqRegion">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#hqRegion">
     <rdfs:label>headquarters region</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Customer"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Customer"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Broad geographic region of the customer organization's headquarters.</rdfs:comment>
-    <onto:businessDefinition>Broad geographic region of the customer organization's headquarters.</onto:businessDefinition>
-    <onto:sourceEntity>Customer</onto:sourceEntity>
-    <onto:sourceAttribute>Headquarters Region</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_customer</onto:sourceTable>
-    <onto:sourceColumn>hq_region</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Broad geographic region of the customer organization's headquarters.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_customer</eo:sourceTable>
+    <eo:sourceColumn>hq_region</eo:sourceColumn>
   </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#dateKey">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#dateKey">
     <rdfs:label>date key</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Surrogate date key used to join booking records to the date dimension.</rdfs:comment>
-    <onto:businessDefinition>Surrogate date key used to join booking records to the date dimension.</onto:businessDefinition>
-    <onto:sourceEntity>Date</onto:sourceEntity>
-    <onto:sourceAttribute>Date Key</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_date</onto:sourceTable>
-    <onto:sourceColumn>date_key</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Surrogate date key used to join booking records to the date dimension.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_date</eo:sourceTable>
+    <eo:sourceColumn>date_key</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#fullDate">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#fullDate">
     <rdfs:label>full date</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     <rdfs:comment>Actual calendar date represented by the date record.</rdfs:comment>
-    <onto:businessDefinition>Actual calendar date represented by the date record.</onto:businessDefinition>
-    <onto:sourceEntity>Date</onto:sourceEntity>
-    <onto:sourceAttribute>Full Date</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_date</onto:sourceTable>
-    <onto:sourceColumn>full_date</onto:sourceColumn>
-    <onto:sourceDatatype>date</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Actual calendar date represented by the date record.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_date</eo:sourceTable>
+    <eo:sourceColumn>full_date</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#monthName">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#monthName">
     <rdfs:label>month name</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Name of the calendar month for the date.</rdfs:comment>
-    <onto:businessDefinition>Name of the calendar month for the date.</onto:businessDefinition>
-    <onto:sourceEntity>Date</onto:sourceEntity>
-    <onto:sourceAttribute>Month Name</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_date</onto:sourceTable>
-    <onto:sourceColumn>month_name</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(12)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Name of the calendar month for the date.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_date</eo:sourceTable>
+    <eo:sourceColumn>month_name</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#calendarYear">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#calendarYear">
     <rdfs:label>calendar year</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Calendar year associated with the date.</rdfs:comment>
-    <onto:businessDefinition>Calendar year associated with the date.</onto:businessDefinition>
-    <onto:sourceEntity>Date</onto:sourceEntity>
-    <onto:sourceAttribute>Calendar Year</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_date</onto:sourceTable>
-    <onto:sourceColumn>calendar_year</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Calendar year associated with the date.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_date</eo:sourceTable>
+    <eo:sourceColumn>calendar_year</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#fiscalYear">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#fiscalYear">
     <rdfs:label>fiscal year</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Fiscal year used for financial and sales reporting.</rdfs:comment>
-    <onto:businessDefinition>Fiscal year used for financial and sales reporting.</onto:businessDefinition>
-    <onto:sourceEntity>Date</onto:sourceEntity>
-    <onto:sourceAttribute>Fiscal Year</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_date</onto:sourceTable>
-    <onto:sourceColumn>fiscal_year</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(6)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Fiscal year used for financial and sales reporting.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_date</eo:sourceTable>
+    <eo:sourceColumn>fiscal_year</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#fiscalQuarter">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#fiscalQuarter">
     <rdfs:label>fiscal quarter</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Fiscal quarter used for period-based reporting and analysis.</rdfs:comment>
-    <onto:businessDefinition>Fiscal quarter used for period-based reporting and analysis.</onto:businessDefinition>
-    <onto:sourceEntity>Date</onto:sourceEntity>
-    <onto:sourceAttribute>Fiscal Quarter</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_date</onto:sourceTable>
-    <onto:sourceColumn>fiscal_quarter</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(10)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Fiscal quarter used for period-based reporting and analysis.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_date</eo:sourceTable>
+    <eo:sourceColumn>fiscal_quarter</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#fiscalPeriodSequence">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#fiscalPeriodSequence">
     <rdfs:label>fiscal period sequence</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Date"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Date"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Sequential number representing the fiscal reporting period in order.</rdfs:comment>
-    <onto:businessDefinition>Sequential number representing the fiscal reporting period in order.</onto:businessDefinition>
-    <onto:sourceEntity>Date</onto:sourceEntity>
-    <onto:sourceAttribute>Fiscal Period Sequence</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_date</onto:sourceTable>
-    <onto:sourceColumn>fiscal_period_seq</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Sequential number representing the fiscal reporting period in order.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_date</eo:sourceTable>
+    <eo:sourceColumn>fiscal_period_seq</eo:sourceColumn>
   </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#geographyKey">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#geographyKey">
     <rdfs:label>geography key</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Geography"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Geography"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Surrogate key that uniquely identifies a geography record in the geography dimension.</rdfs:comment>
-    <onto:businessDefinition>Surrogate key that uniquely identifies a geography record in the geography dimension.</onto:businessDefinition>
-    <onto:sourceEntity>Geography</onto:sourceEntity>
-    <onto:sourceAttribute>Geography Key</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_geography</onto:sourceTable>
-    <onto:sourceColumn>geography_key</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Surrogate key that uniquely identifies a geography record in the geography dimension.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_geography</eo:sourceTable>
+    <eo:sourceColumn>geography_key</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#region">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#region">
     <rdfs:label>sales region</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Geography"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Geography"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>High-level geographic region used for sales reporting, such as Americas, EMEA, or APJC.</rdfs:comment>
-    <onto:businessDefinition>High-level geographic region used for sales reporting, such as Americas, EMEA, or APJC.</onto:businessDefinition>
-    <onto:sourceEntity>Geography</onto:sourceEntity>
-    <onto:sourceAttribute>Sales Region</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_geography</onto:sourceTable>
-    <onto:sourceColumn>region</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>High-level geographic region used for sales reporting, such as Americas, EMEA, or APJC.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_geography</eo:sourceTable>
+    <eo:sourceColumn>region</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#theater">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#theater">
     <rdfs:label>sales theater</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Geography"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Geography"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Intermediate sales territory grouping within a region.</rdfs:comment>
-    <onto:businessDefinition>Intermediate sales territory grouping within a region.</onto:businessDefinition>
-    <onto:sourceEntity>Geography</onto:sourceEntity>
-    <onto:sourceAttribute>Sales Theater</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_geography</onto:sourceTable>
-    <onto:sourceColumn>theater</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Intermediate sales territory grouping within a region.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_geography</eo:sourceTable>
+    <eo:sourceColumn>theater</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#country">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#country">
     <rdfs:label>country</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Geography"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Geography"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Country associated with the geography record.</rdfs:comment>
-    <onto:businessDefinition>Country associated with the geography record.</onto:businessDefinition>
-    <onto:sourceEntity>Geography</onto:sourceEntity>
-    <onto:sourceAttribute>Country</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_geography</onto:sourceTable>
-    <onto:sourceColumn>country</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(40)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Country associated with the geography record.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_geography</eo:sourceTable>
+    <eo:sourceColumn>country</eo:sourceColumn>
   </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#partnerKey">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#partnerKey">
     <rdfs:label>partner key</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Partner"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Partner"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Surrogate key that uniquely identifies a partner record in the partner dimension.</rdfs:comment>
-    <onto:businessDefinition>Surrogate key that uniquely identifies a partner record in the partner dimension.</onto:businessDefinition>
-    <onto:sourceEntity>Partner</onto:sourceEntity>
-    <onto:sourceAttribute>Partner Key</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_partner</onto:sourceTable>
-    <onto:sourceColumn>partner_key</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Surrogate key that uniquely identifies a partner record in the partner dimension.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_partner</eo:sourceTable>
+    <eo:sourceColumn>partner_key</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#partnerId">
-    <rdfs:label>partner id</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Partner"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#partnerId">
+    <rdfs:label>partner ID</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Partner"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Business identifier assigned to the partner organization.</rdfs:comment>
-    <onto:businessDefinition>Business identifier assigned to the partner organization.</onto:businessDefinition>
-    <onto:sourceEntity>Partner</onto:sourceEntity>
-    <onto:sourceAttribute>Partner ID</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_partner</onto:sourceTable>
-    <onto:sourceColumn>partner_id</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Business identifier assigned to the partner organization.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_partner</eo:sourceTable>
+    <eo:sourceColumn>partner_id</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#partnerName">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#partnerName">
     <rdfs:label>partner name</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Partner"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Partner"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Official name of the partner organization.</rdfs:comment>
-    <onto:businessDefinition>Official name of the partner organization.</onto:businessDefinition>
-    <onto:sourceEntity>Partner</onto:sourceEntity>
-    <onto:sourceAttribute>Partner Name</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_partner</onto:sourceTable>
-    <onto:sourceColumn>partner_name</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(60)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Official name of the partner organization.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_partner</eo:sourceTable>
+    <eo:sourceColumn>partner_name</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#partnerType">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#partnerType">
     <rdfs:label>partner type</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Partner"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Partner"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Classification of the partner, such as distributor, reseller, systems integrator, or direct channel.</rdfs:comment>
-    <onto:businessDefinition>Classification of the partner, such as distributor, reseller, systems integrator, or direct channel.</onto:businessDefinition>
-    <onto:sourceEntity>Partner</onto:sourceEntity>
-    <onto:sourceAttribute>Partner Type</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_partner</onto:sourceTable>
-    <onto:sourceColumn>partner_type</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Classification of the partner, such as distributor, reseller, systems integrator, or direct channel.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_partner</eo:sourceTable>
+    <eo:sourceColumn>partner_type</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#partnerTier">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#partnerTier">
     <rdfs:label>partner tier</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Partner"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Partner"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Program tier or status level assigned to the partner.</rdfs:comment>
-    <onto:businessDefinition>Program tier or status level assigned to the partner.</onto:businessDefinition>
-    <onto:sourceEntity>Partner</onto:sourceEntity>
-    <onto:sourceAttribute>Partner Tier</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_partner</onto:sourceTable>
-    <onto:sourceColumn>partner_tier</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Program tier or status level assigned to the partner.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_partner</eo:sourceTable>
+    <eo:sourceColumn>partner_tier</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#routeToMarket">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#routeToMarket">
     <rdfs:label>route to market</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Partner"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Partner"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Sales channel path through which the product or service is sold to the customer.</rdfs:comment>
-    <onto:businessDefinition>Sales channel path through which the product or service is sold to the customer.</onto:businessDefinition>
-    <onto:sourceEntity>Partner</onto:sourceEntity>
-    <onto:sourceAttribute>Route to Market</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_partner</onto:sourceTable>
-    <onto:sourceColumn>route_to_market</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Sales channel path through which the product or service is sold to the customer.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_partner</eo:sourceTable>
+    <eo:sourceColumn>route_to_market</eo:sourceColumn>
   </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#productKey">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#productKey">
     <rdfs:label>product key</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Surrogate key that uniquely identifies a product record in the product dimension.</rdfs:comment>
-    <onto:businessDefinition>Surrogate key that uniquely identifies a product record in the product dimension.</onto:businessDefinition>
-    <onto:sourceEntity>Product</onto:sourceEntity>
-    <onto:sourceAttribute>Product Key</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_product</onto:sourceTable>
-    <onto:sourceColumn>product_key</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Surrogate key that uniquely identifies a product record in the product dimension.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_product</eo:sourceTable>
+    <eo:sourceColumn>product_key</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#productId">
-    <rdfs:label>product id</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#productId">
+    <rdfs:label>product ID</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Business identifier or SKU assigned to the product or offer.</rdfs:comment>
-    <onto:businessDefinition>Business identifier or SKU assigned to the product or offer.</onto:businessDefinition>
-    <onto:sourceEntity>Product</onto:sourceEntity>
-    <onto:sourceAttribute>Product ID</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_product</onto:sourceTable>
-    <onto:sourceColumn>product_id</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Business identifier or SKU assigned to the product or offer.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_product</eo:sourceTable>
+    <eo:sourceColumn>product_id</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#productName">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#productName">
     <rdfs:label>product name</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Descriptive name of the product or service offering.</rdfs:comment>
-    <onto:businessDefinition>Descriptive name of the product or service offering.</onto:businessDefinition>
-    <onto:sourceEntity>Product</onto:sourceEntity>
-    <onto:sourceAttribute>Product Name</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_product</onto:sourceTable>
-    <onto:sourceColumn>product_name</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(80)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Descriptive name of the product or service offering.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_product</eo:sourceTable>
+    <eo:sourceColumn>product_name</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#productFamily">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#productFamily">
     <rdfs:label>product family</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Higher-level grouping of related products within the portfolio.</rdfs:comment>
-    <onto:businessDefinition>Higher-level grouping of related products within the portfolio.</onto:businessDefinition>
-    <onto:sourceEntity>Product</onto:sourceEntity>
-    <onto:sourceAttribute>Product Family</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_product</onto:sourceTable>
-    <onto:sourceColumn>product_family</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Higher-level grouping of related products within the portfolio.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_product</eo:sourceTable>
+    <eo:sourceColumn>product_family</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#technologyDomain">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#technologyDomain">
     <rdfs:label>technology domain</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Technology area or solution domain the product belongs to.</rdfs:comment>
-    <onto:businessDefinition>Technology area or solution domain the product belongs to.</onto:businessDefinition>
-    <onto:sourceEntity>Product</onto:sourceEntity>
-    <onto:sourceAttribute>Technology Domain</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_product</onto:sourceTable>
-    <onto:sourceColumn>technology_domain</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(40)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Technology area or solution domain the product belongs to.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_product</eo:sourceTable>
+    <eo:sourceColumn>technology_domain</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#offerType">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#offerType">
     <rdfs:label>offer type</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Commercial offer classification, such as hardware, software subscription, or SaaS subscription.</rdfs:comment>
-    <onto:businessDefinition>Commercial offer classification, such as hardware, software subscription, or SaaS subscription.</onto:businessDefinition>
-    <onto:sourceEntity>Product</onto:sourceEntity>
-    <onto:sourceAttribute>Offer Type</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_product</onto:sourceTable>
-    <onto:sourceColumn>offer_type</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Commercial offer classification, such as hardware, software subscription, or SaaS subscription.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_product</eo:sourceTable>
+    <eo:sourceColumn>offer_type</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#businessEntityName">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#businessEntityName">
     <rdfs:label>business entity</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#Product"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#Product"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Internal business portfolio or organizational unit associated with the product.</rdfs:comment>
-    <onto:businessDefinition>Internal business portfolio or organizational unit associated with the product.</onto:businessDefinition>
-    <onto:sourceEntity>Product</onto:sourceEntity>
-    <onto:sourceAttribute>Business Entity</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_product</onto:sourceTable>
-    <onto:sourceColumn>business_entity</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Internal business portfolio or organizational unit associated with the product.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_product</eo:sourceTable>
+    <eo:sourceColumn>business_entity</eo:sourceColumn>
   </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#salesRepKey">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#salesRepKey">
     <rdfs:label>sales representative key</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#SalesRepresentative"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#SalesRepresentative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Surrogate key that uniquely identifies a sales representative record in the sales representative dimension.</rdfs:comment>
-    <onto:businessDefinition>Surrogate key that uniquely identifies a sales representative record in the sales representative dimension.</onto:businessDefinition>
-    <onto:sourceEntity>Sales Representative</onto:sourceEntity>
-    <onto:sourceAttribute>Sales Representative Key</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_sales_rep</onto:sourceTable>
-    <onto:sourceColumn>sales_rep_key</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Surrogate key that uniquely identifies a sales representative record in the sales representative dimension.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_sales_rep</eo:sourceTable>
+    <eo:sourceColumn>sales_rep_key</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#repId">
-    <rdfs:label>sales representative id</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#SalesRepresentative"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#repId">
+    <rdfs:label>sales representative ID</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#SalesRepresentative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Business identifier assigned to the sales representative.</rdfs:comment>
-    <onto:businessDefinition>Business identifier assigned to the sales representative.</onto:businessDefinition>
-    <onto:sourceEntity>Sales Representative</onto:sourceEntity>
-    <onto:sourceAttribute>Sales Representative ID</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_sales_rep</onto:sourceTable>
-    <onto:sourceColumn>rep_id</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Business identifier assigned to the sales representative.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_sales_rep</eo:sourceTable>
+    <eo:sourceColumn>rep_id</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#repName">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#repName">
     <rdfs:label>sales representative name</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#SalesRepresentative"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#SalesRepresentative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Full name of the sales representative.</rdfs:comment>
-    <onto:businessDefinition>Full name of the sales representative.</onto:businessDefinition>
-    <onto:sourceEntity>Sales Representative</onto:sourceEntity>
-    <onto:sourceAttribute>Sales Representative Name</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_sales_rep</onto:sourceTable>
-    <onto:sourceColumn>rep_name</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(60)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Full name of the sales representative.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_sales_rep</eo:sourceTable>
+    <eo:sourceColumn>rep_name</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#salesRole">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#salesRole">
     <rdfs:label>sales role</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#SalesRepresentative"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#SalesRepresentative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Job role or selling responsibility of the sales representative.</rdfs:comment>
-    <onto:businessDefinition>Job role or selling responsibility of the sales representative.</onto:businessDefinition>
-    <onto:sourceEntity>Sales Representative</onto:sourceEntity>
-    <onto:sourceAttribute>Sales Role</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_sales_rep</onto:sourceTable>
-    <onto:sourceColumn>sales_role</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(40)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Job role or selling responsibility of the sales representative.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_sales_rep</eo:sourceTable>
+    <eo:sourceColumn>sales_role</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#salesTeam">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#salesTeam">
     <rdfs:label>sales team</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#SalesRepresentative"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#SalesRepresentative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Team or organizational unit the sales representative belongs to.</rdfs:comment>
-    <onto:businessDefinition>Team or organizational unit the sales representative belongs to.</onto:businessDefinition>
-    <onto:sourceEntity>Sales Representative</onto:sourceEntity>
-    <onto:sourceAttribute>Sales Team</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_sales_rep</onto:sourceTable>
-    <onto:sourceColumn>sales_team</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(40)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Team or organizational unit the sales representative belongs to.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_sales_rep</eo:sourceTable>
+    <eo:sourceColumn>sales_team</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#segmentCovered">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#segmentCovered">
     <rdfs:label>segment covered</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#SalesRepresentative"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#SalesRepresentative"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Customer segment or market segment covered by the sales representative.</rdfs:comment>
-    <onto:businessDefinition>Customer segment or market segment covered by the sales representative.</onto:businessDefinition>
-    <onto:sourceEntity>Sales Representative</onto:sourceEntity>
-    <onto:sourceAttribute>Segment Covered</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.dim_sales_rep</onto:sourceTable>
-    <onto:sourceColumn>segment_covered</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(30)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Customer segment or market segment covered by the sales representative.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.dim_sales_rep</eo:sourceTable>
+    <eo:sourceColumn>segment_covered</eo:sourceColumn>
   </owl:DatatypeProperty>
 
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#bookingId">
-    <rdfs:label>booking id</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#bookingId">
+    <rdfs:label>booking ID</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Unique identifier for an individual booking transaction record.</rdfs:comment>
-    <onto:businessDefinition>Unique identifier for an individual booking transaction record.</onto:businessDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Booking ID</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>booking_id</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Unique identifier for an individual booking transaction record.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>booking_id</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#orderNumber">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#orderNumber">
     <rdfs:label>order number</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Sales order number associated with the booking transaction.</rdfs:comment>
-    <onto:businessDefinition>Sales order number associated with the booking transaction.</onto:businessDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Order Number</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>order_number</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(20)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Sales order number associated with the booking transaction.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>order_number</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#orderLineNumber">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#orderLineNumber">
     <rdfs:label>order line number</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Line number within the sales order representing the booked item or service.</rdfs:comment>
-    <onto:businessDefinition>Line number within the sales order representing the booked item or service.</onto:businessDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Order Line Number</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>order_line_number</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Line number within the sales order representing the booked item or service.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>order_line_number</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#bookingType">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#bookingType">
     <rdfs:label>booking type</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Type of booking event, such as new business or renewal.</rdfs:comment>
-    <onto:businessDefinition>Type of booking event, such as new business or renewal.</onto:businessDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Booking Type</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>booking_type</onto:sourceColumn>
-    <onto:sourceDatatype>character varying(15)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Type of booking event, such as new business or renewal.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>booking_type</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#isRenewal">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#isRenewal">
     <rdfs:label>renewal indicator</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Indicator showing whether the booking transaction is a renewal.</rdfs:comment>
-    <onto:businessDefinition>Indicator showing whether the booking transaction is a renewal.</onto:businessDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Renewal Indicator</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>is_renewal</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Indicator showing whether the booking transaction is a renewal.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>is_renewal</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#quantity">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#quantity">
     <rdfs:label>quantity sold</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:comment>Number of units, licenses, or services booked in the transaction.</rdfs:comment>
-    <onto:businessDefinition>Number of units, licenses, or services booked in the transaction.</onto:businessDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Quantity Sold</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>quantity</onto:sourceColumn>
-    <onto:sourceDatatype>integer</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Number of units, licenses, or services booked in the transaction.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>quantity</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#unitListPriceUSD">
-    <rdfs:label>unit list price usd</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#unitListPriceUSD">
+    <rdfs:label>unit list price USD</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <rdfs:comment>Standard list price per unit in US dollars before discounts.</rdfs:comment>
-    <onto:businessDefinition>Standard list price per unit in US dollars before discounts.</onto:businessDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Unit List Price USD</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>unit_list_price_usd</onto:sourceColumn>
-    <onto:sourceDatatype>numeric(12,2)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Standard list price per unit in US dollars before discounts.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>unit_list_price_usd</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#discountPct">
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#discountPct">
     <rdfs:label>discount percentage</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <rdfs:comment>Discount applied to the booked item or service, expressed as a percentage of list price.</rdfs:comment>
-    <onto:businessDefinition>Discount applied to the booked item or service, expressed as a percentage of list price.</onto:businessDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Discount Percentage</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>discount_pct</onto:sourceColumn>
-    <onto:sourceDatatype>numeric(5,2)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Discount applied to the booked item or service, expressed as a percentage of list price.</eo:businessDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>discount_pct</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#bookingAmountUSD">
-    <rdfs:label>booking amount usd</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#bookingAmountUSD">
+    <rdfs:label>booking amount USD</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <rdfs:comment>Total booked sales amount in US dollars after pricing and discount adjustments.</rdfs:comment>
-    <onto:businessDefinition>Total booked sales amount in US dollars after pricing and discount adjustments.</onto:businessDefinition>
-    <onto:metricDefinition>Total booked sales amount in US dollars after pricing and discount adjustments.</onto:metricDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Booking Amount USD</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>booking_amount_usd</onto:sourceColumn>
-    <onto:sourceDatatype>numeric(14,2)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Total booked sales amount in US dollars after pricing and discount adjustments.</eo:businessDefinition>
+    <eo:metricDefinition>Total booked sales amount in US dollars after pricing and discount adjustments.</eo:metricDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>booking_amount_usd</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#acvUSD">
-    <rdfs:label>annual contract value usd</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#acvUSD">
+    <rdfs:label>annual contract value USD</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <rdfs:comment>Annualized contract value of the booking in US dollars.</rdfs:comment>
-    <onto:businessDefinition>Annualized contract value of the booking in US dollars.</onto:businessDefinition>
-    <onto:metricDefinition>Annualized contract value of the booking in US dollars.</onto:metricDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Annual Contract Value USD</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>acv_usd</onto:sourceColumn>
-    <onto:sourceDatatype>numeric(14,2)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Annualized contract value of the booking in US dollars.</eo:businessDefinition>
+    <eo:metricDefinition>Annualized contract value of the booking in US dollars.</eo:metricDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>acv_usd</eo:sourceColumn>
   </owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="http://example.org/ontology/sales-bookings#tcvUSD">
-    <rdfs:label>total contract value usd</rdfs:label>
-    <rdfs:domain rdf:resource="http://example.org/ontology/sales-bookings#BookingTransaction"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/ontology/enterprise-sales#tcvUSD">
+    <rdfs:label>total contract value USD</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/ontology/enterprise-sales#BookingTransaction"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <rdfs:comment>Total contract value of the booking over the full contract term in US dollars.</rdfs:comment>
-    <onto:businessDefinition>Total contract value of the booking over the full contract term in US dollars.</onto:businessDefinition>
-    <onto:metricDefinition>Total contract value of the booking over the full contract term in US dollars.</onto:metricDefinition>
-    <onto:sourceEntity>Booking Transaction</onto:sourceEntity>
-    <onto:sourceAttribute>Total Contract Value USD</onto:sourceAttribute>
-    <onto:sourceTable>quotetobooking.fact_bookings</onto:sourceTable>
-    <onto:sourceColumn>tcv_usd</onto:sourceColumn>
-    <onto:sourceDatatype>numeric(14,2)</onto:sourceDatatype>
-    <onto:sourceGlossary>Outputs/DI Glossary Creator Agent/business_glossary_data_dictionary.md</onto:sourceGlossary>
+    <eo:businessDefinition>Total contract value of the booking over the full contract term in US dollars.</eo:businessDefinition>
+    <eo:metricDefinition>Total contract value of the booking over the full contract term in US dollars.</eo:metricDefinition>
+    <eo:sourceTable>quotetobooking.fact_bookings</eo:sourceTable>
+    <eo:sourceColumn>tcv_usd</eo:sourceColumn>
   </owl:DatatypeProperty>
 
 </rdf:RDF>
