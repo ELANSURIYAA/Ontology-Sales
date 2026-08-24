@@ -1,66 +1,91 @@
 ---
 title: Bookings to Geographies
 type: relationship
-description: Links booking transactions to the geographic territory where the sale occurred
+description: Links booking transactions to geographic sales territories
 resource: relationships
 tags: [bookings, geographies, relationship, many-to-one]
-timestamp: 2024-01-15T00:00:00Z
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Bookings to Geographies
 
 ## Business Definition
 
-This relationship links booking transactions to the geographic territory where the sale occurred, enabling analysis of bookings by region, theater, and country.
+Links booking transactions to geographic sales territory attributes used to analyze bookings by region, theater, and country.
+
+This relationship enables geographic analysis of booking performance and supports market penetration and regional sales effectiveness analysis.
 
 ---
 
-## Relationship Details
+## Relationship Type
 
-**Source Entity**: [Booking Transaction](../entities/bookings.md)  
-**Target Entity**: [Geography](../entities/geographies.md)  
-**Relationship Type**: Many-to-One  
-**Cardinality**: Many bookings can be associated with one geography
+**many-to-one**
+
+Multiple booking transactions can be associated with the same geography.
+
+---
+
+## Source Entity
+
+[Bookings](../entities/bookings.md)
+
+---
+
+## Target Entity
+
+[Geographies](../entities/geographies.md)
+
+---
+
+## Cardinality
+
+- Each booking transaction must be associated with exactly one geography record
+- Each geography record can be associated with multiple booking transactions
 
 ---
 
 ## Technical Mapping
 
-**Join Type**: Inner Join  
-**Left Key**: bookings.geography_key  
-**Right Key**: geographies.geography_key
+**Join Condition**: bookings.geography_key = geographies.geography_key
+
+**Left Dataset**: bookings (quotetobooking.fact_bookings)
+
+**Right Dataset**: geographies (quotetobooking.dim_geography)
+
+**Join Keys**:
+- Left: geography_key
+- Right: geography_key
 
 ---
 
-## Business Description
+## Business Purpose
 
-Each booking transaction is associated with a specific geographic territory that represents where the sale occurred. Geography attributes include region (Americas, EMEA, APJC), theater (intermediate territory grouping), and country. Multiple booking transactions can be associated with the same geography.
+This relationship enables:
+- Regional performance analysis (Americas, EMEA, APJC)
+- Theater-level sales territory analysis
+- Country-specific market analysis
+- Geographic market penetration tracking
+- Regional quota and target management
+- Cross-regional performance comparisons
 
 ---
 
-## Usage
+## Related Measures
 
-This relationship enables analysis such as:
-
-- Regional sales performance
-- Theater-level territory analysis
-- Country-specific booking trends
-- Geographic market penetration
-- International vs domestic sales mix
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
+- [Total ACV USD](../measures/total-acv-usd.md)
+- [Booking Count](../measures/booking-count.md)
 
 ---
 
 ## Related Concepts
 
-- [Region](../glossary/region.md)
-- [Theater](../glossary/theater.md)
-- [Country](../glossary/country.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
 ## Navigation
 
 - [Return to Relationships Index](index.md)
-- [View Booking Transaction Entity](../entities/bookings.md)
-- [View Geography Entity](../entities/geographies.md)
-- [View Geographies Domain](../domains/geographies.md)
+- [Return to Main Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
