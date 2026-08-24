@@ -3,24 +3,17 @@ title: Total ACV USD
 type: measure
 description: Total annual contract value in US dollars
 resource: measures
-tags: [acv, revenue, annual, metric]
-timestamp: 2024-01-15T00:00:00Z
+tags: [acv, revenue, metric, usd, contract]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Total ACV USD
 
 ## Business Definition
 
-Total annual contract value in US dollars. This measure represents the annualized value of bookings, used for subscription and recurring revenue analysis.
+Total annual contract value in US dollars.
 
----
-
-## Measure Details
-
-**Measure Type**: Sum  
-**Aggregation**: SUM  
-**Unit**: USD  
-**Category**: Revenue Metric
+This measure represents the annualized revenue value of booking transactions, normalizing contract values to an annual basis for consistent comparison and forecasting.
 
 ---
 
@@ -32,50 +25,56 @@ SUM(bookings.acv_usd)
 
 ---
 
+## Aggregation
+
+**Type**: SUM
+
+**Grain**: Booking transaction
+
+---
+
 ## Related Entities
 
-- [Booking Transaction](../entities/bookings.md)
+- [Bookings](../entities/bookings.md)
+- [Contracts](../entities/contracts.md)
 
 ---
 
 ## Related Domains
 
-- [Bookings Domain](../domains/bookings.md)
-
----
-
-## Usage
-
-This measure is used to:
-
-- Track annualized recurring revenue
-- Analyze subscription business performance
-- Calculate annual run rate
-- Compare multi-year deals on an annual basis
-- Monitor subscription growth trends
-
----
-
-## Business Context
-
-Total ACV USD represents the annualized contract value of bookings. For multi-year contracts, ACV normalizes the revenue to an annual basis, enabling consistent comparison across contracts with different term lengths. This is a critical metric for subscription and recurring revenue business models.
-
----
-
-## Related Measures
-
-- [Total TCV USD](total-tcv-usd.md) - Full contract term value
-- [Total Booking Amount USD](total-booking-amount-usd.md) - Total booking value
-- [Renewal Booking Amount USD](renewal-booking-amount-usd.md) - Renewal component
-- [Net New Booking Amount USD](net-new-booking-amount-usd.md) - Net new component
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Related Concepts
 
-- [ACV USD](../glossary/acv-usd.md)
-- [Contract Type](../glossary/contract-type.md)
-- [Term Months](../glossary/term-months.md)
+- [Annual Contract Value](../glossary/annual-contract-value.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
+
+---
+
+## Business Usage
+
+This measure is used to:
+- Track annualized revenue performance
+- Normalize multi-year contracts to annual values
+- Support recurring revenue analysis
+- Enable consistent period-over-period comparisons
+- Forecast annual revenue run rates
+
+---
+
+## Technical Details
+
+**Dialect**: ANSI_SQL
+
+**Source Field**: bookings.acv_usd
+
+**Null Handling**: Sums only non-null acv_usd values
+
+**Currency**: US Dollars (USD)
+
+**Calculation**: Annualized value based on contract terms
 
 ---
 
@@ -83,4 +82,4 @@ Total ACV USD represents the annualized contract value of bookings. For multi-ye
 
 - [Return to Measures Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Metrics Summary](../metrics.md)
+- [View Metrics Catalog](../metrics.md)
