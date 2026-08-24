@@ -1,64 +1,90 @@
 ---
 title: Customer Segment
 type: glossary
-description: Market segment the customer belongs to, such as Enterprise, Service Provider, or Public Sector
+description: Market segment classification of customer organizations
 resource: glossary
-tags: [customer-segment, segment, classification]
-timestamp: 2024-01-15T00:00:00Z
+tags: [customer, segment, market, classification]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Customer Segment
 
 ## Business Definition
 
-Market segment the customer belongs to, such as Enterprise, Service Provider, or Public Sector. This classification groups customers by market type.
+Market segment classification of customer organizations.
+
+Customer segments group customers into strategic categories based on size, industry vertical, or business model characteristics.
 
 ---
 
 ## Business Meaning
 
-Customer Segment classifies customers into distinct market segments based on their business characteristics, size, and market focus. Common segments include Enterprise (large commercial organizations), Service Provider (telecommunications and service companies), Public Sector (government and education), and Small/Medium Business. This segmentation enables targeted analysis and strategy development.
+Customer segments represent strategic groupings of customer organizations that share similar characteristics, needs, or buying behaviors. Common segment classifications include:
+- Enterprise (large organizations)
+- Service Provider (telecommunications, cloud providers)
+- Public Sector (government, education, healthcare)
+- Commercial (mid-market businesses)
+- Small Business (SMB)
+
+Customer segmentation is critical for:
+- Tailoring sales and marketing strategies
+- Allocating resources and coverage models
+- Setting pricing and packaging strategies
+- Analyzing performance by market segment
+- Supporting go-to-market planning
+- Evaluating segment profitability
 
 ---
 
 ## Technical Mapping
 
-**Source Field**: customers.segment  
-**Data Type**: String/Category  
-**Dimension**: Yes
+**Source Entity**: [Customers](../entities/customers.md)
+
+**Source Field**: segment
 
 ---
 
 ## Synonyms
 
-- Market Segment
-- Customer Type
-- Business Segment
-- Customer Category
+- Market segment
+- Customer category
+- Customer classification
+- Business segment
+- Account segment
 
 ---
 
 ## Related Concepts
 
-- [Industry](industry.md)
-- [Account Tier](account-tier.md)
-- [Customer](../entities/customers.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
-## Usage Context
+## Related Entities
 
-Customer Segment is used in:
-- Market segmentation analysis
-- Targeted sales strategies
-- Segment-specific performance tracking
-- Customer profiling
-- Revenue analysis by segment
+- [Customers](../entities/customers.md)
+- [Sales Representatives](../entities/sales-representatives.md)
+
+---
+
+## Related Measures
+
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
+- [Booking Count](../measures/booking-count.md)
+
+---
+
+## Usage Examples
+
+- "Analyze booking performance by customer segment"
+- "Compare Enterprise vs Service Provider revenue"
+- "Track segment penetration and growth"
+- "Calculate average deal size by segment"
 
 ---
 
 ## Navigation
 
 - [Return to Glossary Index](index.md)
-- [View Customer Entity](../entities/customers.md)
-- [View Customers Domain](../domains/customers.md)
+- [Return to Main Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
