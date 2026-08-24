@@ -11,73 +11,140 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Total booked sales amount in US dollars after pricing and discount adjustments.
-
-This measure represents the net revenue value of booking transactions and is the primary revenue metric for sales performance analysis.
+Total Booking Amount USD represents the total booked sales amount in US dollars after pricing and discount adjustments. This is the primary revenue metric for the sales bookings and revenue analytics model, representing the total value of all completed booking transactions.
 
 ---
 
 ## Formula
 
-```sql
-SUM(bookings.booking_amount_usd)
-```
+**Expression**: SUM(bookings.booking_amount_usd)
+
+**Dialect**: ANSI_SQL
+
+**Aggregation Type**: SUM
 
 ---
 
-## Aggregation
+## Business Purpose
 
-**Type**: SUM
+This measure enables:
 
-**Grain**: Booking transaction
+- **Revenue Tracking**: Monitor total booked revenue across all dimensions
+- **Performance Analysis**: Evaluate sales performance against targets and quotas
+- **Trend Analysis**: Track revenue trends over time
+- **Segment Analysis**: Compare revenue across customer segments, products, and geographies
+- **Financial Reporting**: Support financial reporting and forecasting
+- **Commission Calculation**: Provide basis for sales commission calculations
 
 ---
 
 ## Related Entities
 
-- [Bookings](../entities/bookings.md)
+**Primary Entity**: [Bookings](../entities/bookings.md)
 
----
-
-## Related Domains
-
-- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
+**Dimensional Analysis**: This measure can be analyzed across all dimension entities:
+- [Customers](../entities/customers.md) - Revenue by customer segment, industry, account tier
+- [Products](../entities/products.md) - Revenue by product family, technology domain, offer type
+- [Partners](../entities/partners.md) - Revenue by partner type, tier, route to market
+- [Geographies](../entities/geographies.md) - Revenue by region, theater, country
+- [Sales Representatives](../entities/sales-representatives.md) - Revenue by sales role, team, segment
+- [Contracts](../entities/contracts.md) - Revenue by contract type, term, coverage level
+- [Dates](../entities/dates.md) - Revenue by fiscal year, quarter, month
 
 ---
 
 ## Related Concepts
 
+- [Booking Amount](../glossary/booking-amount.md)
 - [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
-## Business Usage
+## Calculation Logic
 
-This measure is used to:
-- Track total sales revenue
-- Analyze revenue performance across dimensions
-- Calculate revenue growth and trends
-- Monitor sales targets and quotas
-- Support financial forecasting and planning
+The measure sums the booking_amount_usd field from all booking records. The booking amount represents the net revenue after applying discounts to the list price multiplied by quantity:
 
----
-
-## Technical Details
-
-**Dialect**: ANSI_SQL
-
-**Source Field**: bookings.booking_amount_usd
-
-**Null Handling**: Sums only non-null booking_amount_usd values
-
-**Currency**: US Dollars (USD)
-
-**Calculation**: Reflects net revenue after discounts
+```
+booking_amount_usd = quantity × unit_list_price_usd × (1 - discount_pct)
+```
 
 ---
 
-## Navigation
+## Usage Examples
 
-- [Return to Measures Index](index.md)
-- [Return to Main Index](../index.md)
-- [View Metrics Catalog](../metrics.md)
+### Fiscal Year Revenue
+```sql
+SELECT 
+    dates.fiscal_year,
+    SUM(bookings.booking_amount_usd) as total_booking_amount
+FROM bookings
+JOIN dates ON bookings.date_key = dates.date_key
+GROUP BY dates.fiscal_year
+```
+
+### Revenue by Customer Segment
+```sql
+SELECT 
+    customers.segment,
+    SUM(bookings.booking_amount_usd) as total_booking_amount
+FROM bookings
+JOIN customers ON bookings.customer_key = customers.customer_key
+GROUP BY customers.segment
+ORDER BY total_booking_amount DESC
+```
+
+---
+
+## Business Rules
+
+1. **Non-Negative Values**: Booking amount must be non-negative
+2. **Currency**: All amounts are in US dollars
+3. **Net Amount**: Amount reflects net revenue after discounts
+4. **Additive Measure**: Amounts can be summed across all dimensions
+
+---
+
+## Related Measures
+
+- [Booking Count](./booking-count.md) - Count of booking transactions
+- [Total Quantity](./total-quantity.md) - Total units booked
+- [Total ACV USD](./total-acv-usd.md) - Total annual contract value
+- [Total TCV USD](./total-tcv-usd.md) - Total contract value
+- [Renewal Booking Amount USD](./renewal-booking-amount-usd.md) - Renewal revenue component
+- [Net New Booking Amount USD](./net-new-booking-amount-usd.md) - Net new revenue component
+- [Average Booking Value USD](./average-booking-value-usd.md) - Average value per booking
+- [Average Selling Price USD](./average-selling-price-usd.md) - Average price per unit
+
+---
+
+## Derived Metrics
+
+### Revenue Decomposition
+```
+Total Booking Amount USD = Renewal Booking Amount USD + Net New Booking Amount USD
+```
+
+### Average Booking Value
+```
+Total Booking Amount USD / Booking Count
+```
+
+### Average Selling Price
+```
+Total Booking Amount USD / Total Quantity
+```
+
+---
+
+## Data Quality Considerations
+
+- Ensure booking_amount_usd is non-negative and not null
+- Verify booking amount calculation matches quantity × unit price × (1 - discount)
+- Confirm currency conversion is applied consistently
+- Validate booking amounts are within reasonable ranges
+
+---
+
+## Related Domain
+
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
