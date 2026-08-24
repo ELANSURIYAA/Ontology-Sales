@@ -1,198 +1,153 @@
 ---
-title: Metrics Summary
+title: Metrics Catalog
 type: index
-description: Complete catalog of business measures and KPIs for sales bookings and revenue analytics
+description: Complete catalog of business metrics and measures for sales bookings and revenue analytics
 resource: knowledge_bundle
-tags: [metrics, measures, kpi, analytics, performance]
-timestamp: 2024-01-15T00:00:00Z
+tags: [metrics, measures, catalog, kpi]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Metrics Summary
+# Metrics Catalog
 
 ## Overview
 
-This document catalogs all business measures and key performance indicators (KPIs) defined in the sales bookings and revenue analytics semantic model.
-
----
-
-## Metric Categories
-
-### Volume Metrics
-Measures that quantify transaction counts and quantities
-
-### Revenue Metrics
-Measures that quantify financial performance and contract values
-
-### Average Metrics
-Measures that calculate averages and rates
+This catalog contains all business metrics and measures defined in the sales bookings and revenue analytics semantic model.
 
 ---
 
 ## Volume Metrics
 
-### Booking Count
-**Count of booking transaction records**
+### [Booking Count](measures/booking-count.md)
+Count of booking transaction records.
 
-- **Type**: Count
-- **Aggregation**: COUNT
-- **Grain**: Booking Transaction
-- [View Details](measures/booking-count.md)
+**Expression**: `COUNT(bookings.booking_id)`
 
-### Distinct Order Count
-**Count of distinct sales orders associated with booking transactions**
+**Related Entities**: [Bookings](entities/bookings.md)
 
-- **Type**: Distinct Count
-- **Aggregation**: COUNT DISTINCT
-- **Grain**: Sales Order
-- [View Details](measures/distinct-order-count.md)
+---
 
-### Total Quantity
-**Total number of units, licenses, or services booked**
+### [Distinct Order Count](measures/distinct-order-count.md)
+Count of distinct sales orders associated with booking transactions.
 
-- **Type**: Sum
-- **Aggregation**: SUM
-- **Unit**: Units/Licenses
-- [View Details](measures/total-quantity.md)
+**Expression**: `COUNT(DISTINCT bookings.order_number)`
+
+**Related Entities**: [Bookings](entities/bookings.md)
+
+---
+
+### [Total Quantity](measures/total-quantity.md)
+Total number of units, licenses, or services booked.
+
+**Expression**: `SUM(bookings.quantity)`
+
+**Related Entities**: [Bookings](entities/bookings.md)
 
 ---
 
 ## Revenue Metrics
 
-### Total Booking Amount USD
-**Total booked sales amount in US dollars after pricing and discount adjustments**
+### [Total Booking Amount USD](measures/total-booking-amount-usd.md)
+Total booked sales amount in US dollars after pricing and discount adjustments.
 
-- **Type**: Sum
-- **Aggregation**: SUM
-- **Currency**: USD
-- [View Details](measures/total-booking-amount-usd.md)
+**Expression**: `SUM(bookings.booking_amount_usd)`
 
-### Total ACV USD
-**Total annual contract value in US dollars**
-
-- **Type**: Sum
-- **Aggregation**: SUM
-- **Currency**: USD
-- [View Details](measures/total-acv-usd.md)
-
-### Total TCV USD
-**Total contract value in US dollars**
-
-- **Type**: Sum
-- **Aggregation**: SUM
-- **Currency**: USD
-- [View Details](measures/total-tcv-usd.md)
-
-### Renewal Booking Amount USD
-**Total booked sales amount in US dollars for renewal transactions**
-
-- **Type**: Conditional Sum
-- **Aggregation**: SUM with CASE
-- **Currency**: USD
-- **Filter**: is_renewal = 1
-- [View Details](measures/renewal-booking-amount-usd.md)
-
-### Net New Booking Amount USD
-**Total booked sales amount in US dollars for non-renewal transactions**
-
-- **Type**: Conditional Sum
-- **Aggregation**: SUM with CASE
-- **Currency**: USD
-- **Filter**: is_renewal = 0
-- [View Details](measures/net-new-booking-amount-usd.md)
+**Related Entities**: [Bookings](entities/bookings.md)
 
 ---
 
-## Average Metrics
+### [Total ACV USD](measures/total-acv-usd.md)
+Total annual contract value in US dollars.
 
-### Average Discount Percentage
-**Average discount applied to booked items or services**
+**Expression**: `SUM(bookings.acv_usd)`
 
-- **Type**: Average
-- **Aggregation**: AVG
-- **Unit**: Percentage (fractional)
-- [View Details](measures/average-discount-pct.md)
+**Related Entities**: [Bookings](entities/bookings.md)
 
-### Average Selling Price USD
-**Average booked revenue per unit sold in US dollars**
-
-- **Type**: Calculated Average
-- **Aggregation**: SUM / SUM
-- **Currency**: USD
-- [View Details](measures/average-selling-price-usd.md)
-
-### Average Booking Value USD
-**Average booking value in US dollars per distinct booking transaction**
-
-- **Type**: Calculated Average
-- **Aggregation**: SUM / COUNT DISTINCT
-- **Currency**: USD
-- [View Details](measures/average-booking-value-usd.md)
+**Related Concepts**: [Annual Contract Value](glossary/annual-contract-value.md)
 
 ---
 
-## Metric Relationships
+### [Total TCV USD](measures/total-tcv-usd.md)
+Total contract value in US dollars.
 
-### Revenue Decomposition
-```
-Total Booking Amount USD
-├── Renewal Booking Amount USD
-└── Net New Booking Amount USD
-```
+**Expression**: `SUM(bookings.tcv_usd)`
 
-### Unit Economics
-```
-Average Selling Price USD = Total Booking Amount USD / Total Quantity
-Average Booking Value USD = Total Booking Amount USD / Booking Count
-```
+**Related Entities**: [Bookings](entities/bookings.md)
 
-### Contract Value Analysis
-```
-Total ACV USD - Annualized view
-Total TCV USD - Full contract term view
-```
+**Related Concepts**: [Total Contract Value](glossary/total-contract-value.md)
 
 ---
 
-## Usage Guidelines
+## Pricing Metrics
 
-### Time-Based Analysis
-Use the Date dimension to analyze metrics across:
-- Calendar Year
-- Fiscal Year
-- Fiscal Quarter
-- Fiscal Period
-- Month
+### [Average Discount Pct](measures/average-discount-pct.md)
+Average discount applied to booked items or services, stored as a fractional percentage.
 
-### Dimensional Slicing
-Analyze metrics by:
-- Customer Segment
-- Product Family
-- Geography Region
-- Partner Type
-- Sales Team
-- Contract Type
+**Expression**: `AVG(bookings.discount_pct)`
 
-### Renewal Analysis
-Compare renewal vs net new performance:
-- Renewal Booking Amount USD
-- Net New Booking Amount USD
-- Renewal Rate (calculated)
+**Related Entities**: [Bookings](entities/bookings.md)
 
 ---
 
-## All Measures
+### [Average Selling Price USD](measures/average-selling-price-usd.md)
+Average booked revenue per unit sold in US dollars.
 
-1. [Booking Count](measures/booking-count.md)
-2. [Distinct Order Count](measures/distinct-order-count.md)
-3. [Total Quantity](measures/total-quantity.md)
-4. [Total Booking Amount USD](measures/total-booking-amount-usd.md)
-5. [Total ACV USD](measures/total-acv-usd.md)
-6. [Total TCV USD](measures/total-tcv-usd.md)
-7. [Average Discount Percentage](measures/average-discount-pct.md)
-8. [Average Selling Price USD](measures/average-selling-price-usd.md)
-9. [Renewal Booking Amount USD](measures/renewal-booking-amount-usd.md)
-10. [Net New Booking Amount USD](measures/net-new-booking-amount-usd.md)
-11. [Average Booking Value USD](measures/average-booking-value-usd.md)
+**Expression**: `SUM(bookings.booking_amount_usd) / NULLIF(SUM(bookings.quantity), 0)`
+
+**Related Entities**: [Bookings](entities/bookings.md)
+
+---
+
+### [Average Booking Value USD](measures/average-booking-value-usd.md)
+Average booking value in US dollars per distinct booking transaction.
+
+**Expression**: `SUM(bookings.booking_amount_usd) / NULLIF(COUNT(DISTINCT bookings.booking_id), 0)`
+
+**Related Entities**: [Bookings](entities/bookings.md)
+
+---
+
+## Business Type Metrics
+
+### [Renewal Booking Amount USD](measures/renewal-booking-amount-usd.md)
+Total booked sales amount in US dollars for renewal transactions.
+
+**Expression**: `SUM(CASE WHEN bookings.is_renewal = 1 THEN bookings.booking_amount_usd ELSE 0 END)`
+
+**Related Entities**: [Bookings](entities/bookings.md)
+
+**Related Concepts**: [Renewal](glossary/renewal.md)
+
+---
+
+### [Net New Booking Amount USD](measures/net-new-booking-amount-usd.md)
+Total booked sales amount in US dollars for non-renewal transactions.
+
+**Expression**: `SUM(CASE WHEN bookings.is_renewal = 0 THEN bookings.booking_amount_usd ELSE 0 END)`
+
+**Related Entities**: [Bookings](entities/bookings.md)
+
+**Related Concepts**: [Net New Business](glossary/net-new-business.md)
+
+---
+
+## Metrics by Category
+
+### Volume Analysis
+- [Booking Count](measures/booking-count.md)
+- [Distinct Order Count](measures/distinct-order-count.md)
+- [Total Quantity](measures/total-quantity.md)
+
+### Revenue Analysis
+- [Total Booking Amount USD](measures/total-booking-amount-usd.md)
+- [Total ACV USD](measures/total-acv-usd.md)
+- [Total TCV USD](measures/total-tcv-usd.md)
+- [Renewal Booking Amount USD](measures/renewal-booking-amount-usd.md)
+- [Net New Booking Amount USD](measures/net-new-booking-amount-usd.md)
+
+### Pricing Analysis
+- [Average Discount Pct](measures/average-discount-pct.md)
+- [Average Selling Price USD](measures/average-selling-price-usd.md)
+- [Average Booking Value USD](measures/average-booking-value-usd.md)
 
 ---
 
@@ -200,5 +155,6 @@ Compare renewal vs net new performance:
 
 - [Return to Index](index.md)
 - [View Semantic Summary](semantic_summary.md)
-- [View All Measures](measures/index.md)
-- [View All Entities](entities/index.md)
+- [Browse All Measures](measures/index.md)
+- [Browse Entities](entities/index.md)
+- [Browse Glossary](glossary/index.md)
