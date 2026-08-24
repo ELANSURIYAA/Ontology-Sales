@@ -3,24 +3,17 @@ title: Distinct Order Count
 type: measure
 description: Count of distinct sales orders associated with booking transactions
 resource: measures
-tags: [order-count, volume, distinct-count, metric]
-timestamp: 2024-01-15T00:00:00Z
+tags: [order-count, volume, metric]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Distinct Order Count
 
 ## Business Definition
 
-Count of distinct sales orders associated with booking transactions. This measure provides the total number of unique sales orders, as each order may contain multiple booking line items.
+Count of distinct sales orders associated with booking transactions.
 
----
-
-## Measure Details
-
-**Measure Type**: Distinct Count  
-**Aggregation**: COUNT DISTINCT  
-**Unit**: Count  
-**Category**: Volume Metric
+This measure provides the total number of unique sales orders, enabling analysis of order-level activity independent of the number of line items per order.
 
 ---
 
@@ -32,47 +25,50 @@ COUNT(DISTINCT bookings.order_number)
 
 ---
 
+## Aggregation
+
+**Type**: COUNT DISTINCT
+
+**Grain**: Sales order
+
+---
+
 ## Related Entities
 
-- [Booking Transaction](../entities/bookings.md)
+- [Bookings](../entities/bookings.md)
 
 ---
 
 ## Related Domains
 
-- [Bookings Domain](../domains/bookings.md)
-
----
-
-## Usage
-
-This measure is used to:
-
-- Track the total number of unique sales orders
-- Distinguish between order-level and line-level analysis
-- Calculate average lines per order
-- Analyze order complexity
-- Monitor order processing volume
-
----
-
-## Business Context
-
-Distinct Order Count represents the number of unique sales orders. Since each order can have multiple line items (booking transactions), this measure will typically be lower than Booking Count. The ratio between Booking Count and Distinct Order Count indicates the average number of line items per order.
-
----
-
-## Related Measures
-
-- [Booking Count](booking-count.md) - Total transaction count including all lines
-- [Total Booking Amount USD](total-booking-amount-usd.md) - Revenue by order
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Related Concepts
 
-- [Order Number](../glossary/order-number.md)
-- [Order Line Number](../glossary/order-line-number.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
+
+---
+
+## Business Usage
+
+This measure is used to:
+- Track unique sales order volume
+- Analyze order complexity (lines per order)
+- Monitor order processing efficiency
+- Compare order volumes across dimensions
+- Calculate average values per order
+
+---
+
+## Technical Details
+
+**Dialect**: ANSI_SQL
+
+**Source Field**: bookings.order_number
+
+**Null Handling**: Counts only distinct non-null order_number values
 
 ---
 
@@ -80,4 +76,4 @@ Distinct Order Count represents the number of unique sales orders. Since each or
 
 - [Return to Measures Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Metrics Summary](../metrics.md)
+- [View Metrics Catalog](../metrics.md)
