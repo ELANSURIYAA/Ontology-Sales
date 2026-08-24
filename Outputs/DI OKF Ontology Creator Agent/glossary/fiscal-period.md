@@ -1,9 +1,9 @@
 ---
 title: Fiscal Period
 type: glossary
-description: Financial reporting period used for sales and revenue analysis
+description: Fiscal reporting period used for financial and sales analysis
 resource: glossary
-tags: [fiscal, period, time, reporting]
+tags: [fiscal-period, time, reporting]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,29 +11,25 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Financial reporting period used for sales and revenue analysis.
-
-Fiscal periods define the time-based structure for financial and sales reporting, which may differ from calendar periods.
+Fiscal Period is a fiscal reporting period used for financial and sales analysis. Fiscal periods align with the organization's fiscal calendar and are used for period-based reporting, planning, and performance measurement.
 
 ---
 
 ## Business Meaning
 
-Fiscal periods represent the time intervals used for financial reporting, planning, and performance measurement. Organizations define fiscal periods to align with their business cycles, regulatory requirements, and planning processes.
+Fiscal Period is used to:
+- Align reporting with the organization's fiscal calendar
+- Support period-based performance measurement
+- Enable fiscal year and quarter reporting
+- Support budgeting and forecasting cycles
+- Track performance against fiscal targets
+- Enable period-over-period comparisons
 
-Key fiscal period concepts include:
-- **Fiscal Year**: 12-month financial reporting period (may differ from calendar year)
-- **Fiscal Quarter**: 3-month period within the fiscal year (Q1, Q2, Q3, Q4)
-- **Fiscal Month**: Monthly period within the fiscal year
-- **Fiscal Period Sequence**: Sequential numbering of periods for trending
-
-Fiscal periods are critical for:
-- Financial reporting and compliance
-- Sales quota and target setting
-- Period-over-period performance analysis
-- Budget planning and forecasting
-- Compensation and incentive calculations
-- Board and investor reporting
+Fiscal periods typically include:
+- **Fiscal Year**: 12-month fiscal reporting year
+- **Fiscal Quarter**: 3-month fiscal reporting quarter (Q1, Q2, Q3, Q4)
+- **Fiscal Month**: Monthly fiscal reporting period
+- **Fiscal Period Sequence**: Sequential numbering for trend analysis
 
 ---
 
@@ -47,45 +43,68 @@ Fiscal periods are critical for:
 
 ## Synonyms
 
-- Reporting period
-- Financial period
-- Fiscal reporting period
-- Accounting period
+- Reporting Period
+- Financial Period
+- Fiscal Reporting Period
+- Accounting Period
+- FY Period
 
 ---
 
 ## Related Concepts
 
-- [Booking Transaction](booking-transaction.md)
+- [Booking Transaction](./booking-transaction.md) - Transactions analyzed by fiscal period
 
 ---
 
 ## Related Entities
 
-- [Dates](../entities/dates.md)
-- [Bookings](../entities/bookings.md)
+- [Dates](../entities/dates.md) - Contains fiscal period attributes
 
 ---
 
 ## Related Measures
 
+All booking measures can be analyzed by fiscal period:
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
-- [Total ACV USD](../measures/total-acv-usd.md)
 - [Booking Count](../measures/booking-count.md)
+- [Total ACV USD](../measures/total-acv-usd.md)
 
 ---
 
-## Usage Examples
+## Usage Context
 
-- "Analyze bookings by fiscal quarter"
-- "Track fiscal year-over-year growth"
-- "Calculate fiscal period revenue trends"
-- "Compare fiscal vs calendar period performance"
+Fiscal Period is used for:
+- Financial reporting and compliance
+- Quota and target setting
+- Performance measurement
+- Budget planning and tracking
+- Forecasting and projections
+- Period-over-period analysis
+- Year-end and quarter-end reporting
 
 ---
 
-## Navigation
+## Business Rules
 
-- [Return to Glossary Index](index.md)
-- [Return to Main Index](../index.md)
-- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
+1. Fiscal periods align with the organization's fiscal calendar
+2. Fiscal year may differ from calendar year
+3. Fiscal quarters are typically 3 months each
+4. Fiscal period sequence enables chronological ordering
+5. All transactions are attributed to fiscal periods for reporting
+
+---
+
+## Fiscal Calendar Example
+
+**Fiscal Year 2024:**
+- Q1: February - April
+- Q2: May - July
+- Q3: August - October
+- Q4: November - January
+
+---
+
+## Related Domain
+
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
