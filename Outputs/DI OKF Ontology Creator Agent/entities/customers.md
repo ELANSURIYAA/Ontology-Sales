@@ -1,39 +1,40 @@
 ---
-title: Customer
+title: Customers
 type: entity
-description: Customer organizations that place orders, including identity, segment, industry, account tier, and headquarters location
+description: Customer organizations that place orders with segment, industry, and location attributes
 resource: entities
-tags: [customer, accounts, segment, industry, dimension]
-timestamp: 2024-01-15T00:00:00Z
+tags: [customers, dimension, accounts]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Customer
+# Customers
 
 ## Business Definition
 
-The Customer entity stores descriptive information about customers that place orders, including identity, segment, industry, account tier, and headquarters location. This entity enables customer-centric analysis and segmentation.
+Stores descriptive information about customers that place orders, including identity, segment, industry, account tier, and headquarters location.
+
+Customers represent the organizations or accounts that purchase products and services through booking transactions.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: quotetobooking.dim_customer  
-**Source Schema**: quotetobooking  
-**Entity Type**: Dimension  
-**Grain**: One row per customer
+**Source Table**: quotetobooking.dim_customer
+
+**Source Columns**: customer_key, customer_id, customer_name, segment, industry, account_tier, hq_country, hq_region
 
 ---
 
 ## Attributes
 
-- customer_key
-- customer_id
-- customer_name
-- segment
-- industry
-- account_tier
-- hq_country
-- hq_region
+- **customer_key** - Surrogate key that uniquely identifies a customer record in the customer dimension
+- **customer_id** - Business identifier assigned to the customer account
+- **customer_name** - Official name of the customer organization
+- **segment** - Market segment the customer belongs to, such as Enterprise, Service Provider, or Public Sector
+- **industry** - Industry classification of the customer organization
+- **account_tier** - Strategic importance or service tier assigned to the customer account
+- **hq_country** - Country where the customer organization's headquarters is located
+- **hq_region** - Broad geographic region of the customer organization's headquarters
 
 ---
 
@@ -57,40 +58,27 @@ None
 
 ## Measures
 
-All booking and revenue measures can be analyzed by customer attributes:
-
+All booking-related measures can be analyzed by customer attributes:
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
 - [Total ACV USD](../measures/total-acv-usd.md)
 - [Total TCV USD](../measures/total-tcv-usd.md)
 - [Booking Count](../measures/booking-count.md)
-- [Renewal Booking Amount USD](../measures/renewal-booking-amount-usd.md)
-- [Net New Booking Amount USD](../measures/net-new-booking-amount-usd.md)
 
 ---
 
 ## Related Concepts
 
 - [Customer Segment](../glossary/customer-segment.md)
-- [Industry](../glossary/industry.md)
-- [Account Tier](../glossary/account-tier.md)
-- [Headquarters Country](../glossary/hq-country.md)
-- [Headquarters Region](../glossary/hq-region.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
 ## Business Rules
 
-### Customer Identification
-Each customer is uniquely identified by customer_key (surrogate key) and customer_id (business key).
-
-### Segment Classification
-Customers are classified into market segments such as Enterprise, Service Provider, or Public Sector.
-
-### Account Tier Assignment
-Account tier represents the strategic importance or service tier assigned to the customer account.
-
-### Headquarters Location
-Headquarters location (country and region) represents the primary location of the customer organization.
+- Each customer must have a unique customer_key
+- customer_id serves as the natural business identifier
+- Customers can be analyzed by segment, industry, account tier, and geographic location
+- Customer attributes enable market segmentation and account profitability analysis
 
 ---
 
@@ -98,4 +86,4 @@ Headquarters location (country and region) represents the primary location of th
 
 - [Return to Entities Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Customers Domain](../domains/customers.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
