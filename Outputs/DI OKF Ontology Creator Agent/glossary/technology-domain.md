@@ -1,65 +1,95 @@
 ---
 title: Technology Domain
 type: glossary
-description: Technology area or solution domain the product belongs to
+description: Technology area or solution domain that products belong to
 resource: glossary
-tags: [technology-domain, solution-area, classification]
-timestamp: 2024-01-15T00:00:00Z
+tags: [technology, domain, solution, category]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Technology Domain
 
 ## Business Definition
 
-Technology area or solution domain the product belongs to. This classification groups products by their technology focus or solution area.
+Technology area or solution domain that products belong to.
+
+Technology domains represent the highest-level categorization of products based on their core technology focus or solution area.
 
 ---
 
 ## Business Meaning
 
-Technology Domain represents the technology area or solution domain that a product addresses. Examples include "Network Infrastructure", "Cybersecurity", "Data Analytics", "Cloud Computing", or "Collaboration". This classification enables technology-focused analysis, market positioning, and solution-based sales strategies.
+Technology domains organize products into broad technology or solution categories that reflect strategic business areas and market segments. Technology domains enable:
+- Strategic portfolio planning and investment
+- Technology-based performance analysis
+- Market positioning and competitive strategy
+- Resource allocation across technology areas
+- Innovation and R&D prioritization
+- Cross-domain solution opportunities
+
+Technology domains typically represent the highest level in the product hierarchy:
+- Technology Domain → Product Family → Individual Product
+
+Examples of technology domains might include:
+- Security
+- Networking
+- Cloud Infrastructure
+- Data Analytics
+- Collaboration
+- IoT
 
 ---
 
 ## Technical Mapping
 
-**Source Field**: products.technology_domain  
-**Data Type**: String/Category  
-**Dimension**: Yes
+**Source Entity**: [Products](../entities/products.md)
+
+**Source Field**: technology_domain
 
 ---
 
 ## Synonyms
 
-- Solution Domain
-- Technology Area
-- Solution Category
-- Technology Segment
+- Solution domain
+- Technology area
+- Technology category
+- Solution area
+- Technology portfolio
 
 ---
 
 ## Related Concepts
 
 - [Product Family](product-family.md)
-- [Offer Type](offer-type.md)
-- [Business Entity](business-entity.md)
-- [Product](../entities/products.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
-## Usage Context
+## Related Entities
 
-Technology Domain is used in:
-- Technology-focused analysis
-- Solution portfolio performance
-- Market positioning
-- Technology trend tracking
-- Solution-based selling
+- [Products](../entities/products.md)
+- [Bookings](../entities/bookings.md)
+
+---
+
+## Related Measures
+
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
+- [Total Quantity](../measures/total-quantity.md)
+
+---
+
+## Usage Examples
+
+- "Analyze revenue by technology domain"
+- "Compare technology domain growth rates"
+- "Track technology domain market share"
+- "Calculate technology domain profitability"
 
 ---
 
 ## Navigation
 
 - [Return to Glossary Index](index.md)
-- [View Product Entity](../entities/products.md)
-- [View Products Domain](../domains/products.md)
+- [Return to Main Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
