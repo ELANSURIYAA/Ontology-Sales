@@ -1,64 +1,90 @@
 ---
 title: Route to Market
 type: glossary
-description: Sales channel path through which the product or service is sold to the customer
+description: Sales channel path through which products or services are sold to customers
 resource: glossary
-tags: [route-to-market, channel, sales-path]
-timestamp: 2024-01-15T00:00:00Z
+tags: [route-to-market, channel, sales, distribution]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Route to Market
 
 ## Business Definition
 
-Sales channel path through which the product or service is sold to the customer. This describes the distribution and sales channel used to reach the end customer.
+Sales channel path through which products or services are sold to customers.
+
+Route to market defines the channel strategy and distribution model used to reach and serve customers.
 
 ---
 
 ## Business Meaning
 
-Route to Market represents the sales channel path or distribution method used to deliver products and services to customers. Common routes include Direct Sales (company sales force), Two-Tier Distribution (manufacturer → distributor → reseller → customer), One-Tier Distribution (manufacturer → reseller → customer), Online/E-commerce, and Marketplace. This classification enables channel strategy analysis and go-to-market optimization.
+Route to market represents the sales channel and distribution strategy used to deliver products and services to customers. Common routes to market include:
+- Direct sales (company sales force selling directly to customers)
+- Indirect sales (through partners, distributors, resellers)
+- Two-tier distribution (manufacturer → distributor → reseller → customer)
+- Online/digital channels
+- Hybrid models (combination of direct and indirect)
+
+Route to market is critical for:
+- Channel strategy and optimization
+- Partner program design and management
+- Sales coverage model planning
+- Go-to-market strategy execution
+- Channel conflict management
+- Revenue attribution and partner compensation
 
 ---
 
 ## Technical Mapping
 
-**Source Field**: partners.route_to_market  
-**Data Type**: String/Category  
-**Dimension**: Yes
+**Source Entity**: [Partners](../entities/partners.md)
+
+**Source Field**: route_to_market
 
 ---
 
 ## Synonyms
 
-- Sales Channel
-- Distribution Channel
-- Go-to-Market Path
-- Channel Route
+- Sales channel
+- Distribution channel
+- Go-to-market channel
+- Channel path
+- Sales route
 
 ---
 
 ## Related Concepts
 
-- [Partner Type](partner-type.md)
-- [Partner Tier](partner-tier.md)
-- [Partner](../entities/partners.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
-## Usage Context
+## Related Entities
 
-Route to Market is used in:
-- Channel strategy analysis
-- Distribution model optimization
-- Go-to-market planning
-- Channel efficiency analysis
-- Market coverage assessment
+- [Partners](../entities/partners.md)
+- [Bookings](../entities/bookings.md)
+
+---
+
+## Related Measures
+
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
+- [Booking Count](../measures/booking-count.md)
+
+---
+
+## Usage Examples
+
+- "Analyze revenue by route to market"
+- "Compare direct vs indirect channel performance"
+- "Track channel mix and trends"
+- "Calculate channel profitability"
 
 ---
 
 ## Navigation
 
 - [Return to Glossary Index](index.md)
-- [View Partner Entity](../entities/partners.md)
-- [View Partners Domain](../domains/partners.md)
+- [Return to Main Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
