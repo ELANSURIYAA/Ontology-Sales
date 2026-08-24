@@ -2,34 +2,37 @@
 
 | Metric | Score (%) |
 |---------|-----------|
-| Overall Validation Score | 89 |
-| Accuracy Score | 86 |
-| Efficiency Score | 87 |
-| Completeness Score | 94 |
+| Overall Validation Score | 88 |
+| Accuracy Score | 85 |
+| Efficiency Score | 86 |
+| Completeness Score | 93 |
 | Overall Status | PASS WITH WARNINGS |
 
 # Completeness Assessment
 
 | Severity | Area | Issue | Recommendation |
 |----------|------|-------|----------------|
-| Medium | Mapping Coverage | The OKF bundle does not provide field-level technical mappings for glossary terms, domain index pages, relationship index pages, or measure index pages; coverage is focused on entity and measure detail pages. | Add explicit source-field or source-section mapping references where applicable, or document that index and glossary assets are navigational/semantic artifacts without direct source mappings. |
-| Low | Documentation Coverage | The bundle documents only a selected glossary subset of business concepts from the semantic model and does not separately define several source attributes such as booking_type, account_tier, industry, offer_type, business_entity, partner_type, partner_tier, theater, sales_role, sales_team, coverage_level, and auto_renew_flag. | Expand glossary or concept documentation for additional high-value source attributes if downstream governance or ontology agents require term-level semantic coverage. |
-| Low | Metadata Coverage | The source semantic model version is present in the bundle index only and is not consistently repeated across all detailed artifacts. | Add optional provenance metadata such as source model version or source path to all detailed documents for stronger traceability. |
+| Medium | Attribute Coverage | The OKF bundle documents dataset-level attributes for all 8 entities, but it does not preserve source-level field metadata such as `dimension.is_time` flags from the OSI Semantic Model. | Add source-derived field-level metadata where applicable, especially semantic typing such as time indicators, to improve downstream machine validation. |
+| Low | Metadata Coverage | The OKF bundle includes required YAML frontmatter on all reviewed files, but the bundle-level documentation does not explicitly carry forward the source `ai_context.instructions` outside the semantic summary. | Propagate source AI context or usage guidance into the primary bundle index or a dedicated governance note for stronger traceability. |
+| Low | Mapping Coverage | Technical mappings are present for entity and relationship documents, but glossary terms are business-facing only and do not consistently indicate direct source provenance from the OSI model. | Add explicit provenance notes for glossary terms that are derived from source datasets, fields, or metrics. |
 
 # Accuracy Assessment
 
 | Severity | Area | Issue | Recommendation |
 |----------|------|-------|----------------|
-| Medium | Business Definition Accuracy | Several detailed OKF documents introduce explanatory business statements not explicitly stated in the source OSI semantic model, such as profitability analysis, quota attainment, compensation analysis, market penetration, customer lifetime value, and forecasting uses. | Constrain business-purpose language to source-backed semantics or clearly label extended explanatory text as derived interpretation to avoid overstating source intent. |
-| Medium | Technical Accuracy | The renewal and net-new measure documents state that null is_renewal values are treated as non-renewal, but the source SQL expressions only test equality to 1 or 0 and do not explicitly define null-handling semantics beyond CASE evaluation. | Revise null-handling notes to mirror the source SQL exactly and avoid adding behavioral interpretation not directly documented in the source model. |
-| Low | Naming Convention Consistency | The source metric name average_discount_pct is rendered as the document title Average Discount Pct, replacing the source abbreviation style with title-cased prose. This is readable but not fully source-identical. | Preserve source metric token forms in an alias or canonical-name field to strengthen exact traceability across automated downstream processes. |
-| Low | Relationship Accuracy | Relationship pages state that each booking transaction must be associated with exactly one dimension record, but the source semantic model defines joins and relationship type without explicit mandatory participation constraints. | Rephrase cardinality text to reflect join structure and many-to-one direction only, unless mandatory participation is explicitly specified in the source artifact. |
+| High | Business Definition Accuracy | Several OKF documents introduce business rules and assertions not stated in the OSI Semantic Model, such as mandatory relationship requirements, immutability of bookings, dimension prepopulation requirements, and formula assertions for ACV/TCV. These go beyond the supplied source. | Restrict business rules and technical assertions to statements directly supported by the OSI Semantic Model, or clearly label them as derived assumptions if allowed by governance. |
+| High | Mapping Accuracy | The bundle states that all booking relationships are mandatory and that each booking references exactly one record in each dimension. The OSI Semantic Model defines join structure but does not state nullability or mandatory referential constraints. | Remove mandatory/nullability claims unless they are explicitly present in source metadata. |
+| Medium | Technical Accuracy | The relationship and entity documents infer star-schema implementation semantics and operational behavior, including referential integrity enforcement and dimension independence, that are not explicitly declared in the source YAML. | Keep structural descriptions aligned to the declared relationships only, without adding undeclared implementation guarantees. |
+| Medium | Business Definition Accuracy | The glossary defines Net New Business as including customer expansion, while the source only identifies non-renewal via `is_renewal = 0` and does not specify expansion semantics. | Narrow the definition to non-renewal transactions unless the source model explicitly defines expansion logic. |
+| Medium | Naming Convention Consistency | The source metric name is `average_discount_pct`, but the OKF file and title use “Average Discount Percentage” with file name `average-discount-pct.md`. This is readable but not a fully lossless preservation of source naming. | Include the exact source metric identifier in each measure document to ensure unambiguous traceability between OSI and OKF artifacts. |
+| Low | Duplicate Detection | No direct duplicate entities, relationships, or measures were found, but several concepts are restated with expanded wording across summary, domain, glossary, and metric documents, increasing risk of future semantic drift. | Establish a canonical source statement per concept and reuse it consistently across derived documents. |
 
 # Efficiency Assessment
 
 | Severity | Area | Issue | Recommendation |
 |----------|------|-------|----------------|
-| Low | Repeated Definitions | Many entity, relationship, measure, and glossary pages repeat common navigation blocks and structurally similar explanatory text, increasing maintenance effort if the model changes. | Use shared templates or generated partial sections for repeated navigation, metadata, and standard explanatory blocks. |
-| Low | Redundant Metadata | Identical timestamp patterns, repeated domain references, and recurring source-system statements appear across nearly all documents. | Centralize common provenance and generation metadata in shared indexes or generation templates while retaining only artifact-specific metadata in detail pages. |
-| Low | Structural Efficiency | The bundle creates both metrics.md and measures/index.md, which overlap in purpose as navigational catalogs for the same metric set. | Consolidate the catalogs or clarify distinct roles so downstream consumers do not process overlapping navigation assets redundantly. |
-| Low | Optimization Opportunities | Several glossary pages restate generalized business examples and hypothetical categorizations not required for direct semantic traceability, increasing bundle size without adding source-grounded structure. | Reduce optional illustrative prose and prioritize source-grounded definitions, mappings, and links for leaner downstream ontology processing. |
+| Medium | Repeated Definitions | The bundle repeats long-form descriptions of the same entities, relationships, and measures across index, summary, domain, entity, relationship, and glossary documents. | Centralize canonical definitions and use shorter references in index-style documents to reduce maintenance overhead. |
+| Medium | Unnecessary Complexity | Many documents contain extensive usage examples, derived metrics, and operational guidance that are not required to represent the source semantic model and may complicate downstream validation. | Limit documents intended for downstream automation to source-grounded semantics and move optional guidance to separate reference material if needed. |
+| Low | Structural Efficiency | The bundle contains 50 OKF files for a source model with 1 domain, 8 datasets, 7 relationships, and 11 metrics. The navigation is complete, but the ratio of documentation volume to source complexity is high. | Consider a more compact OKF profile for smaller semantic models while preserving navigability and required metadata. |
+| Low | Redundant Metadata | YAML frontmatter timestamps and common tags are repeated across nearly every file with limited differentiation value. | Standardize shared metadata centrally where possible and reserve file-level tags for concept-specific retrieval value. |
+
