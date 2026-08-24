@@ -3,63 +3,90 @@ title: Product Family
 type: glossary
 description: Higher-level grouping of related products within the portfolio
 resource: glossary
-tags: [product-family, product-group, classification]
-timestamp: 2024-01-15T00:00:00Z
+tags: [product, family, portfolio, grouping]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Product Family
 
 ## Business Definition
 
-Higher-level grouping of related products within the portfolio. This classification organizes individual products into strategic product families.
+Higher-level grouping of related products within the portfolio.
+
+Product families organize individual products into logical collections based on functionality, technology, or market positioning.
 
 ---
 
 ## Business Meaning
 
-Product Family represents a higher-level grouping of related products within the product portfolio. Product families group similar or complementary products for strategic analysis, portfolio management, and go-to-market planning. Examples might include "Networking Products", "Security Solutions", or "Cloud Services". This grouping enables portfolio-level analysis and strategic decision-making.
+Product families represent strategic groupings of related products that share common characteristics, target markets, or technology foundations. Product families enable:
+- Portfolio management and planning
+- Product line performance analysis
+- Cross-sell and bundle strategies
+- Resource allocation and investment decisions
+- Market positioning and messaging
+- Competitive analysis by product category
+
+Product families typically sit above individual products in the product hierarchy:
+- Technology Domain → Product Family → Individual Product
+
+Examples of product families might include:
+- Security Solutions
+- Networking Products
+- Cloud Services
+- Collaboration Tools
 
 ---
 
 ## Technical Mapping
 
-**Source Field**: products.product_family  
-**Data Type**: String/Category  
-**Dimension**: Yes
+**Source Entity**: [Products](../entities/products.md)
+
+**Source Field**: product_family
 
 ---
 
 ## Synonyms
 
-- Product Group
-- Product Line
-- Product Portfolio
-- Product Category
+- Product line
+- Product group
+- Product category
+- Product portfolio segment
 
 ---
 
 ## Related Concepts
 
 - [Technology Domain](technology-domain.md)
-- [Offer Type](offer-type.md)
-- [Business Entity](business-entity.md)
-- [Product](../entities/products.md)
+- [Booking Transaction](booking-transaction.md)
 
 ---
 
-## Usage Context
+## Related Entities
 
-Product Family is used in:
-- Portfolio performance analysis
-- Product line strategy
-- Cross-sell and upsell analysis
-- Product mix optimization
-- Strategic product planning
+- [Products](../entities/products.md)
+- [Bookings](../entities/bookings.md)
+
+---
+
+## Related Measures
+
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
+- [Total Quantity](../measures/total-quantity.md)
+
+---
+
+## Usage Examples
+
+- "Analyze revenue by product family"
+- "Compare product family performance"
+- "Track product family adoption trends"
+- "Calculate product family profitability"
 
 ---
 
 ## Navigation
 
 - [Return to Glossary Index](index.md)
-- [View Product Entity](../entities/products.md)
-- [View Products Domain](../domains/products.md)
+- [Return to Main Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
