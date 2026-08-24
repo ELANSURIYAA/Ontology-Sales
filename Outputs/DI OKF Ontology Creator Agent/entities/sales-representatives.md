@@ -1,37 +1,38 @@
 ---
-title: Sales Representative
+title: Sales Representatives
 type: entity
-description: Sales persons responsible for managing customer relationships and booking transactions, including role, team, and segment coverage
+description: Sales personnel managing customer relationships with role, team, and segment coverage attributes
 resource: entities
-tags: [sales-rep, sales-team, seller, performance, dimension]
-timestamp: 2024-01-15T00:00:00Z
+tags: [sales-representatives, dimension, personnel]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Sales Representative
+# Sales Representatives
 
 ## Business Definition
 
-The Sales Representative entity stores information about the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage. This entity enables sales performance analysis and quota management.
+Stores information about the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage.
+
+Sales representatives are the individuals who drive sales activities and are accountable for booking performance.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: quotetobooking.dim_sales_rep  
-**Source Schema**: quotetobooking  
-**Entity Type**: Dimension  
-**Grain**: One row per sales representative
+**Source Table**: quotetobooking.dim_sales_rep
+
+**Source Columns**: sales_rep_key, rep_id, rep_name, sales_role, sales_team, segment_covered
 
 ---
 
 ## Attributes
 
-- sales_rep_key
-- rep_id
-- rep_name
-- sales_role
-- sales_team
-- segment_covered
+- **sales_rep_key** - Surrogate key that uniquely identifies a sales representative record in the sales representative dimension
+- **rep_id** - Business identifier assigned to the sales representative
+- **rep_name** - Full name of the sales representative
+- **sales_role** - Job role or selling responsibility of the sales representative
+- **sales_team** - Team or organizational unit the sales representative belongs to
+- **segment_covered** - Customer segment or market segment covered by the sales representative
 
 ---
 
@@ -55,11 +56,9 @@ None
 
 ## Measures
 
-All booking and revenue measures can be analyzed by sales representative attributes:
-
+All booking-related measures can be analyzed by sales representative attributes:
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
 - [Total ACV USD](../measures/total-acv-usd.md)
-- [Total TCV USD](../measures/total-tcv-usd.md)
 - [Booking Count](../measures/booking-count.md)
 - [Average Booking Value USD](../measures/average-booking-value-usd.md)
 
@@ -67,25 +66,19 @@ All booking and revenue measures can be analyzed by sales representative attribu
 
 ## Related Concepts
 
-- [Sales Role](../glossary/sales-role.md)
-- [Sales Team](../glossary/sales-team.md)
-- [Segment Covered](../glossary/segment-covered.md)
+- [Customer Segment](../glossary/customer-segment.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
 ## Business Rules
 
-### Sales Representative Identification
-Each sales representative is uniquely identified by sales_rep_key (surrogate key) and rep_id (business key).
-
-### Sales Role Assignment
-Sales role represents the job role or selling responsibility such as Account Executive or Sales Engineer.
-
-### Sales Team Membership
-Sales team represents the team or organizational unit the sales representative belongs to.
-
-### Segment Coverage
-Segment covered represents the customer segment or market segment assigned to the sales representative.
+- Each sales representative must have a unique sales_rep_key
+- rep_id serves as the natural business identifier
+- Sales representatives are organized by role, team, and segment coverage
+- segment_covered aligns sales representatives with customer segments
+- Sales performance can be tracked by individual representative, role, team, and segment
+- Enables sales productivity and quota attainment analysis
 
 ---
 
@@ -93,4 +86,4 @@ Segment covered represents the customer segment or market segment assigned to th
 
 - [Return to Entities Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Sales Representatives Domain](../domains/sales-representatives.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
