@@ -1,9 +1,9 @@
 ---
 title: Total Contract Value
 type: glossary
-description: Total revenue value of a contract over its full term
+description: The full contract value over the entire contract term for long-term revenue planning
 resource: glossary
-tags: [tcv, contract, revenue, lifetime]
+tags: [tcv, contract-value, revenue]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,25 +11,26 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Total revenue value of a contract over its full term.
-
-TCV represents the complete committed revenue from a customer contract, including all years and periods covered by the agreement.
+Total Contract Value (TCV) is the full revenue value of a contract over its entire term. TCV represents the total amount a customer commits to pay over the complete duration of the contract, providing a comprehensive view of long-term revenue commitments.
 
 ---
 
 ## Business Meaning
 
-Total Contract Value (TCV) captures the full revenue commitment from a customer contract over its entire duration. Unlike ACV which normalizes to an annual value, TCV shows the total dollar amount the customer has committed to spend.
+TCV is essential for understanding the full financial impact of customer contracts, especially for multi-year agreements. It captures:
+- The complete revenue commitment from a customer
+- Long-term revenue potential
+- Total deal size regardless of contract length
+- Full value of multi-year agreements
 
-TCV is a critical metric for:
-- Understanding total customer commitments
-- Tracking pipeline and backlog value
-- Evaluating multi-year deal sizes
-- Supporting long-term revenue forecasting
-- Calculating customer lifetime value
-- Assessing sales performance on large deals
+TCV is particularly important for:
+- Long-term revenue planning and forecasting
+- Pipeline and opportunity valuation
+- Deal size analysis
+- Customer lifetime value assessment
+- Strategic account management
 
-For a 3-year contract worth $300,000, the TCV is $300,000 while the ACV would be $100,000.
+For a 3-year contract worth $40,000 per year, the TCV would be $120,000.
 
 ---
 
@@ -39,7 +40,7 @@ For a 3-year contract worth $300,000, the TCV is $300,000 while the ACV would be
 
 **Source Field**: tcv_usd
 
-**Related Entity**: [Contracts](../entities/contracts.md)
+**Calculation**: Annual Contract Value × Contract Term in Years
 
 ---
 
@@ -48,42 +49,82 @@ For a 3-year contract worth $300,000, the TCV is $300,000 while the ACV would be
 - Total Contract Revenue
 - Contract Lifetime Value
 - Full Contract Value
-- Multi-year Contract Value
+- Total Deal Value
 
 ---
 
 ## Related Concepts
 
-- [Annual Contract Value](annual-contract-value.md)
-- [Booking Transaction](booking-transaction.md)
-- [Renewal](renewal.md)
+- [Annual Contract Value](./annual-contract-value.md) - Annualized portion of TCV
+- [Booking Amount](./booking-amount.md) - Total booked revenue
+- [Booking Transaction](./booking-transaction.md) - Transaction containing TCV
 
 ---
 
 ## Related Entities
 
-- [Bookings](../entities/bookings.md)
-- [Contracts](../entities/contracts.md)
+- [Bookings](../entities/bookings.md) - Contains TCV values
+- [Contracts](../entities/contracts.md) - Contract terms used to calculate TCV
 
 ---
 
 ## Related Measures
 
-- [Total TCV USD](../measures/total-tcv-usd.md)
+- [Total TCV USD](../measures/total-tcv-usd.md) - Sum of all TCV values
+- [Total ACV USD](../measures/total-acv-usd.md) - Sum of all ACV values
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md) - Total booking revenue
 
 ---
 
-## Usage Examples
+## Usage Context
 
-- "Calculate total TCV for multi-year contracts"
-- "Track TCV by customer segment"
-- "Analyze average TCV per booking"
-- "Forecast total committed revenue based on TCV"
+TCV is used for:
+- Long-term revenue forecasting
+- Multi-year contract analysis
+- Deal size evaluation
+- Pipeline valuation
+- Customer lifetime value calculation
+- Strategic account planning
+- Contract portfolio management
+- Revenue commitment tracking
 
 ---
 
-## Navigation
+## Business Rules
 
-- [Return to Glossary Index](index.md)
-- [Return to Main Index](../index.md)
-- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
+1. TCV represents the total value over the complete contract term
+2. For annual contracts, TCV equals the booking amount
+3. For multi-year contracts, TCV = ACV × (term_months / 12)
+4. TCV is expressed in US dollars
+5. TCV must be non-negative
+6. TCV is most relevant for multi-year contracts
+
+---
+
+## Calculation Example
+
+**Example 1: Annual Contract**
+- Contract Term: 12 months
+- Annual Contract Value: $50,000
+- TCV: $50,000
+
+**Example 2: Multi-Year Contract**
+- Contract Term: 36 months (3 years)
+- Annual Contract Value: $50,000
+- TCV: $50,000 × 3 = $150,000
+
+---
+
+## Relationship to ACV
+
+TCV and ACV are complementary metrics:
+- **ACV** provides a normalized annual view for comparison
+- **TCV** provides the total commitment for planning
+- **Relationship**: TCV = ACV × Contract Term (in years)
+- **Average Contract Term**: TCV / ACV
+
+---
+
+## Related Domain
+
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
