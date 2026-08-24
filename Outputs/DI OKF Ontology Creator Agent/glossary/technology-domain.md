@@ -1,9 +1,9 @@
 ---
 title: Technology Domain
 type: glossary
-description: Technology area or solution domain that products belong to
+description: Technology area or solution domain the product belongs to
 resource: glossary
-tags: [technology, domain, solution, category]
+tags: [technology-domain, technology, solution]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,32 +11,25 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Technology area or solution domain that products belong to.
-
-Technology domains represent the highest-level categorization of products based on their core technology focus or solution area.
+Technology Domain is the technology area or solution domain that a product belongs to. It represents the underlying technology category, solution space, or technical architecture that defines the product's capabilities and market positioning.
 
 ---
 
 ## Business Meaning
 
-Technology domains organize products into broad technology or solution categories that reflect strategic business areas and market segments. Technology domains enable:
-- Strategic portfolio planning and investment
-- Technology-based performance analysis
-- Market positioning and competitive strategy
-- Resource allocation across technology areas
-- Innovation and R&D prioritization
-- Cross-domain solution opportunities
+Technology Domain is used to:
+- Categorize products by technology area
+- Support technology strategy and investment decisions
+- Enable domain-specific performance analysis
+- Guide research and development priorities
+- Align products with market trends and customer needs
+- Support technical sales and solution architecture
 
-Technology domains typically represent the highest level in the product hierarchy:
-- Technology Domain → Product Family → Individual Product
-
-Examples of technology domains might include:
-- Security
-- Networking
-- Cloud Infrastructure
-- Data Analytics
-- Collaboration
-- IoT
+Technology domains typically represent:
+- Core technology areas (e.g., networking, security, cloud)
+- Solution categories (e.g., collaboration, analytics, infrastructure)
+- Technical architectures (e.g., software-defined, AI-powered)
+- Platform types (e.g., SaaS, on-premises, hybrid)
 
 ---
 
@@ -50,46 +43,58 @@ Examples of technology domains might include:
 
 ## Synonyms
 
-- Solution domain
-- Technology area
-- Technology category
-- Solution area
-- Technology portfolio
+- Technology Area
+- Solution Domain
+- Technology Category
+- Technical Domain
+- Solution Area
 
 ---
 
 ## Related Concepts
 
-- [Product Family](product-family.md)
-- [Booking Transaction](booking-transaction.md)
+- [Product Family](./product-family.md) - Product grouping within portfolio
+- [Booking Transaction](./booking-transaction.md) - Transactions analyzed by technology domain
 
 ---
 
 ## Related Entities
 
-- [Products](../entities/products.md)
-- [Bookings](../entities/bookings.md)
+- [Products](../entities/products.md) - Contains technology domain classification
 
 ---
 
 ## Related Measures
 
+All booking measures can be analyzed by technology domain:
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
 - [Total Quantity](../measures/total-quantity.md)
+- [Total ACV USD](../measures/total-acv-usd.md)
 
 ---
 
-## Usage Examples
+## Usage Context
 
-- "Analyze revenue by technology domain"
-- "Compare technology domain growth rates"
-- "Track technology domain market share"
-- "Calculate technology domain profitability"
+Technology Domain is used for:
+- Technology portfolio analysis
+- Strategic technology investment decisions
+- Market trend analysis
+- Competitive positioning by technology
+- Technical resource allocation
+- Solution architecture planning
+- Technology adoption tracking
 
 ---
 
-## Navigation
+## Business Rules
 
-- [Return to Glossary Index](index.md)
-- [Return to Main Index](../index.md)
-- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
+1. Each product is assigned to a technology domain
+2. Technology domains reflect the primary technology or solution area
+3. Domain classification aligns with industry standards and market categories
+4. Products may evolve across domains as technology advances
+
+---
+
+## Related Domain
+
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
