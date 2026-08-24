@@ -3,24 +3,17 @@ title: Total Booking Amount USD
 type: measure
 description: Total booked sales amount in US dollars after pricing and discount adjustments
 resource: measures
-tags: [booking-amount, revenue, usd, metric]
-timestamp: 2024-01-15T00:00:00Z
+tags: [booking-amount, revenue, metric, usd]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Total Booking Amount USD
 
 ## Business Definition
 
-Total booked sales amount in US dollars after pricing and discount adjustments. This measure represents the primary revenue metric for sales performance analysis.
+Total booked sales amount in US dollars after pricing and discount adjustments.
 
----
-
-## Measure Details
-
-**Measure Type**: Sum  
-**Aggregation**: SUM  
-**Unit**: USD  
-**Category**: Revenue Metric
+This measure represents the net revenue value of booking transactions and is the primary revenue metric for sales performance analysis.
 
 ---
 
@@ -32,52 +25,54 @@ SUM(bookings.booking_amount_usd)
 
 ---
 
+## Aggregation
+
+**Type**: SUM
+
+**Grain**: Booking transaction
+
+---
+
 ## Related Entities
 
-- [Booking Transaction](../entities/bookings.md)
+- [Bookings](../entities/bookings.md)
 
 ---
 
 ## Related Domains
 
-- [Bookings Domain](../domains/bookings.md)
-
----
-
-## Usage
-
-This measure is used to:
-
-- Track total sales revenue
-- Analyze revenue performance across dimensions
-- Calculate revenue growth rates
-- Monitor sales targets and quotas
-- Compare performance across time periods
-
----
-
-## Business Context
-
-Total Booking Amount USD is the primary revenue metric representing the total value of completed sales bookings after applying discounts and pricing adjustments. It is calculated as: (quantity × unit_list_price_usd) × (1 - discount_pct). This measure can be decomposed into Renewal Booking Amount USD and Net New Booking Amount USD.
-
----
-
-## Related Measures
-
-- [Renewal Booking Amount USD](renewal-booking-amount-usd.md) - Renewal component
-- [Net New Booking Amount USD](net-new-booking-amount-usd.md) - Net new component
-- [Total ACV USD](total-acv-usd.md) - Annualized view
-- [Total TCV USD](total-tcv-usd.md) - Full contract term view
-- [Average Booking Value USD](average-booking-value-usd.md) - Per transaction average
-- [Average Selling Price USD](average-selling-price-usd.md) - Per unit average
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Related Concepts
 
-- [Booking Amount USD](../glossary/booking-amount-usd.md)
-- [Unit List Price USD](../glossary/unit-list-price-usd.md)
-- [Discount Percentage](../glossary/discount-pct.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
+
+---
+
+## Business Usage
+
+This measure is used to:
+- Track total sales revenue
+- Analyze revenue performance across dimensions
+- Calculate revenue growth and trends
+- Monitor sales targets and quotas
+- Support financial forecasting and planning
+
+---
+
+## Technical Details
+
+**Dialect**: ANSI_SQL
+
+**Source Field**: bookings.booking_amount_usd
+
+**Null Handling**: Sums only non-null booking_amount_usd values
+
+**Currency**: US Dollars (USD)
+
+**Calculation**: Reflects net revenue after discounts
 
 ---
 
@@ -85,4 +80,4 @@ Total Booking Amount USD is the primary revenue metric representing the total va
 
 - [Return to Measures Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Metrics Summary](../metrics.md)
+- [View Metrics Catalog](../metrics.md)
