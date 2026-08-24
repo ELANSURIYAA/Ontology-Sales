@@ -3,24 +3,17 @@ title: Average Booking Value USD
 type: measure
 description: Average booking value in US dollars per distinct booking transaction
 resource: measures
-tags: [average-booking-value, average, usd, metric]
-timestamp: 2024-01-15T00:00:00Z
+tags: [booking-value, average, metric, usd]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Average Booking Value USD
 
 ## Business Definition
 
-Average booking value in US dollars per distinct booking transaction. This measure calculates the mean revenue value per individual booking.
+Average booking value in US dollars per distinct booking transaction.
 
----
-
-## Measure Details
-
-**Measure Type**: Calculated Average  
-**Aggregation**: SUM / COUNT DISTINCT  
-**Unit**: USD  
-**Category**: Average Metric
+This measure calculates the average revenue value per booking transaction, providing insight into deal size and transaction value patterns.
 
 ---
 
@@ -32,48 +25,54 @@ SUM(bookings.booking_amount_usd) / NULLIF(COUNT(DISTINCT bookings.booking_id), 0
 
 ---
 
+## Aggregation
+
+**Type**: CALCULATED (SUM / COUNT DISTINCT)
+
+**Grain**: Booking transaction
+
+---
+
 ## Related Entities
 
-- [Booking Transaction](../entities/bookings.md)
+- [Bookings](../entities/bookings.md)
 
 ---
 
 ## Related Domains
 
-- [Bookings Domain](../domains/bookings.md)
-
----
-
-## Usage
-
-This measure is used to:
-
-- Calculate average deal size
-- Analyze transaction value trends
-- Compare booking sizes across dimensions
-- Monitor deal size evolution
-- Assess sales effectiveness
-
----
-
-## Business Context
-
-Average Booking Value USD represents the mean revenue per booking transaction, calculated by dividing total booking amount by the count of distinct booking transactions. This metric provides insight into typical deal sizes and can reveal trends in customer purchasing behavior, product mix, and sales effectiveness.
-
----
-
-## Related Measures
-
-- [Total Booking Amount USD](total-booking-amount-usd.md) - Numerator
-- [Booking Count](booking-count.md) - Denominator
-- [Average Selling Price USD](average-selling-price-usd.md) - Per unit average
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Related Concepts
 
-- [Booking Amount USD](../glossary/booking-amount-usd.md)
-- [Booking ID](../glossary/booking-id.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
+
+---
+
+## Business Usage
+
+This measure is used to:
+- Analyze average deal size
+- Track transaction value trends
+- Compare deal sizes across segments and channels
+- Support pricing and packaging strategies
+- Monitor sales effectiveness and deal quality
+
+---
+
+## Technical Details
+
+**Dialect**: ANSI_SQL
+
+**Source Fields**: bookings.booking_amount_usd, bookings.booking_id
+
+**Null Handling**: Uses NULLIF to prevent division by zero
+
+**Currency**: US Dollars (USD)
+
+**Calculation**: Total revenue divided by distinct booking count
 
 ---
 
@@ -81,4 +80,4 @@ Average Booking Value USD represents the mean revenue per booking transaction, c
 
 - [Return to Measures Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Metrics Summary](../metrics.md)
+- [View Metrics Catalog](../metrics.md)
