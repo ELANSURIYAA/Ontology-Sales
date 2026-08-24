@@ -1,68 +1,92 @@
 ---
 title: Bookings to Customers
 type: relationship
-description: Links booking transactions to the customer who placed the order
+description: Links booking transactions to customer organizations
 resource: relationships
 tags: [bookings, customers, relationship, many-to-one]
-timestamp: 2024-01-15T00:00:00Z
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Bookings to Customers
 
 ## Business Definition
 
-This relationship links booking transactions to the customer who placed the order, enabling analysis of bookings by customer segment, industry, account tier, and headquarters location.
+Links booking transactions to customer organizations that place orders, including customer identity, segment, industry, account tier, and headquarters location.
+
+This relationship enables analysis of booking performance by customer characteristics and supports customer profitability and segmentation analysis.
 
 ---
 
-## Relationship Details
+## Relationship Type
 
-**Source Entity**: [Booking Transaction](../entities/bookings.md)  
-**Target Entity**: [Customer](../entities/customers.md)  
-**Relationship Type**: Many-to-One  
-**Cardinality**: Many bookings can be associated with one customer
+**many-to-one**
+
+Multiple booking transactions can be associated with the same customer.
+
+---
+
+## Source Entity
+
+[Bookings](../entities/bookings.md)
+
+---
+
+## Target Entity
+
+[Customers](../entities/customers.md)
+
+---
+
+## Cardinality
+
+- Each booking transaction must be associated with exactly one customer record
+- Each customer record can be associated with multiple booking transactions
 
 ---
 
 ## Technical Mapping
 
-**Join Type**: Inner Join  
-**Left Key**: bookings.customer_key  
-**Right Key**: customers.customer_key
+**Join Condition**: bookings.customer_key = customers.customer_key
+
+**Left Dataset**: bookings (quotetobooking.fact_bookings)
+
+**Right Dataset**: customers (quotetobooking.dim_customer)
+
+**Join Keys**:
+- Left: customer_key
+- Right: customer_key
 
 ---
 
-## Business Description
+## Business Purpose
 
-Each booking transaction is associated with a specific customer organization that placed the order. Customer attributes include segment classification (Enterprise, Service Provider, Public Sector), industry vertical, account tier (strategic importance), and headquarters location (country and region). Multiple booking transactions can be associated with the same customer.
+This relationship enables:
+- Analysis of bookings by customer segment (Enterprise, Service Provider, Public Sector)
+- Industry-based performance analysis
+- Account tier and strategic customer analysis
+- Geographic analysis by customer headquarters location
+- Customer profitability and lifetime value analysis
 
 ---
 
-## Usage
+## Related Measures
 
-This relationship enables analysis such as:
-
-- Bookings by customer segment
-- Industry vertical performance
-- Account tier revenue contribution
-- Customer-level booking trends
-- Geographic customer distribution
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
+- [Total ACV USD](../measures/total-acv-usd.md)
+- [Booking Count](../measures/booking-count.md)
+- [Average Booking Value USD](../measures/average-booking-value-usd.md)
 
 ---
 
 ## Related Concepts
 
 - [Customer Segment](../glossary/customer-segment.md)
-- [Industry](../glossary/industry.md)
-- [Account Tier](../glossary/account-tier.md)
-- [Headquarters Country](../glossary/hq-country.md)
-- [Headquarters Region](../glossary/hq-region.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
 ## Navigation
 
 - [Return to Relationships Index](index.md)
-- [View Booking Transaction Entity](../entities/bookings.md)
-- [View Customer Entity](../entities/customers.md)
-- [View Customers Domain](../domains/customers.md)
+- [Return to Main Index](../index.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
