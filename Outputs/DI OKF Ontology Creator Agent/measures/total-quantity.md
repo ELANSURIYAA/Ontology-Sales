@@ -3,24 +3,17 @@ title: Total Quantity
 type: measure
 description: Total number of units, licenses, or services booked
 resource: measures
-tags: [quantity, volume, units, metric]
-timestamp: 2024-01-15T00:00:00Z
+tags: [quantity, volume, metric]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Total Quantity
 
 ## Business Definition
 
-Total number of units, licenses, or services booked. This measure provides the aggregate quantity of items sold across all booking transactions.
+Total number of units, licenses, or services booked.
 
----
-
-## Measure Details
-
-**Measure Type**: Sum  
-**Aggregation**: SUM  
-**Unit**: Units/Licenses  
-**Category**: Volume Metric
+This measure provides the aggregate quantity of items sold across booking transactions, enabling volume-based analysis independent of revenue values.
 
 ---
 
@@ -32,48 +25,52 @@ SUM(bookings.quantity)
 
 ---
 
+## Aggregation
+
+**Type**: SUM
+
+**Grain**: Booking transaction
+
+---
+
 ## Related Entities
 
-- [Booking Transaction](../entities/bookings.md)
+- [Bookings](../entities/bookings.md)
 
 ---
 
 ## Related Domains
 
-- [Bookings Domain](../domains/bookings.md)
-
----
-
-## Usage
-
-This measure is used to:
-
-- Track total units or licenses sold
-- Calculate average selling price per unit
-- Analyze product adoption rates
-- Monitor license deployment
-- Compare volume across products and time periods
-
----
-
-## Business Context
-
-Total Quantity represents the aggregate number of units, licenses, or services booked. This measure is particularly important for subscription and license-based products where quantity directly impacts revenue and customer adoption metrics.
-
----
-
-## Related Measures
-
-- [Average Selling Price USD](average-selling-price-usd.md) - Uses Total Quantity in calculation
-- [Total Booking Amount USD](total-booking-amount-usd.md) - Revenue counterpart
-- [Booking Count](booking-count.md) - Transaction count
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
 ## Related Concepts
 
-- [Quantity](../glossary/quantity.md)
-- [Unit List Price USD](../glossary/unit-list-price-usd.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
+
+---
+
+## Business Usage
+
+This measure is used to:
+- Track unit sales volume
+- Analyze product adoption and penetration
+- Calculate average selling price per unit
+- Monitor license or subscription quantities
+- Compare volume performance across products and segments
+
+---
+
+## Technical Details
+
+**Dialect**: ANSI_SQL
+
+**Source Field**: bookings.quantity
+
+**Null Handling**: Sums only non-null quantity values
+
+**Unit of Measure**: Units, licenses, or services
 
 ---
 
@@ -81,4 +78,4 @@ Total Quantity represents the aggregate number of units, licenses, or services b
 
 - [Return to Measures Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Metrics Summary](../metrics.md)
+- [View Metrics Catalog](../metrics.md)
