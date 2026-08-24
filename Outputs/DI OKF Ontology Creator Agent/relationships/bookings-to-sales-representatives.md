@@ -1,9 +1,9 @@
 ---
 title: Bookings to Sales Representatives
 type: relationship
-description: Links booking transactions to sales personnel
+description: Links booking transactions to sales representatives
 resource: relationships
-tags: [bookings, sales-representatives, relationship, many-to-one]
+tags: [bookings, sales-representatives, many-to-one, relationship]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,15 +11,13 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Links booking transactions to the sales person responsible for managing customer relationships and booking transactions, including role, team, and segment coverage.
-
-This relationship enables analysis of sales representative performance and supports sales productivity, quota attainment, and compensation analysis.
+The Bookings to Sales Representatives relationship links individual booking transactions to the sales personnel responsible for managing customer relationships and closing deals. This relationship enables analysis of booking performance by sales role, sales team, and segment coverage, supporting sales performance management and territory optimization.
 
 ---
 
 ## Relationship Type
 
-**many-to-one**
+**Many-to-one**
 
 Multiple booking transactions can be associated with the same sales representative.
 
@@ -27,67 +25,135 @@ Multiple booking transactions can be associated with the same sales representati
 
 ## Source Entity
 
-[Bookings](../entities/bookings.md)
+**[Bookings](../entities/bookings.md)**
+
+The fact table containing individual completed sales booking transactions.
 
 ---
 
 ## Target Entity
 
-[Sales Representatives](../entities/sales-representatives.md)
+**[Sales Representatives](../entities/sales-representatives.md)**
+
+The dimension table containing sales representative information.
 
 ---
 
 ## Cardinality
 
-- Each booking transaction must be associated with exactly one sales representative record
-- Each sales representative record can be associated with multiple booking transactions
+**Many Bookings : One Sales Representative**
+
+- Each booking transaction references exactly one sales representative record
+- Multiple booking transactions can be associated with the same sales representative
+- Sales representative records can exist without associated bookings
+
+---
+
+## Join Specification
+
+### Left Join Key
+- **Field**: sales_rep_key
+- **Entity**: Bookings
+- **Type**: Foreign Key
+
+### Right Join Key
+- **Field**: sales_rep_key
+- **Entity**: Sales Representatives
+- **Type**: Primary Key
+
+### Join Condition
+```sql
+bookings.sales_rep_key = sales_representatives.sales_rep_key
+```
 
 ---
 
 ## Technical Mapping
 
-**Join Condition**: bookings.sales_rep_key = sales_representatives.sales_rep_key
+**Source Table**: quotetobooking.fact_bookings
 
-**Left Dataset**: bookings (quotetobooking.fact_bookings)
+**Target Table**: quotetobooking.dim_sales_rep
 
-**Right Dataset**: sales_representatives (quotetobooking.dim_sales_rep)
-
-**Join Keys**:
-- Left: sales_rep_key
-- Right: sales_rep_key
+**Join Column**: sales_rep_key
 
 ---
 
 ## Business Purpose
 
 This relationship enables:
-- Individual sales representative performance tracking
-- Sales role and team performance analysis
-- Segment coverage effectiveness analysis
-- Sales productivity and efficiency metrics
-- Quota attainment and target achievement tracking
-- Sales compensation and incentive analysis
+
+- **Sales Role Analysis**: Analyze booking performance by sales role
+- **Sales Team Analysis**: Track team-level performance and contribution
+- **Segment Coverage Analysis**: Evaluate sales effectiveness by segment coverage
+- **Individual Performance**: Rank sales representatives by booking contribution
+- **Quota Attainment**: Track individual and team quota achievement
+- **Territory Optimization**: Optimize territory assignments and coverage
 
 ---
 
 ## Related Measures
 
+All booking measures can be analyzed by sales representative attributes:
+- [Booking Count](../measures/booking-count.md)
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
 - [Total ACV USD](../measures/total-acv-usd.md)
-- [Booking Count](../measures/booking-count.md)
+- [Total TCV USD](../measures/total-tcv-usd.md)
 - [Average Booking Value USD](../measures/average-booking-value-usd.md)
 
 ---
 
 ## Related Concepts
 
-- [Customer Segment](../glossary/customer-segment.md)
 - [Booking Transaction](../glossary/booking-transaction.md)
+- [Customer Segment](../glossary/customer-segment.md)
 
 ---
 
-## Navigation
+## Business Rules
 
-- [Return to Relationships Index](index.md)
-- [Return to Main Index](../index.md)
-- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
+1. **Mandatory Relationship**: Every booking must reference a valid sales representative
+2. **Referential Integrity**: sales_rep_key in bookings must exist in sales_representatives dimension
+3. **One Sales Rep per Booking**: Each booking references exactly one sales representative record
+4. **Sales Rep Independence**: Sales representatives can exist without bookings (new hires, inactive reps)
+
+---
+
+## Usage Examples
+
+### Sales Role Analysis
+```sql
+SELECT 
+    sales_representatives.sales_role,
+    COUNT(bookings.booking_id) as booking_count,
+    SUM(bookings.booking_amount_usd) as total_booking_amount
+FROM bookings
+JOIN sales_representatives ON bookings.sales_rep_key = sales_representatives.sales_rep_key
+GROUP BY sales_representatives.sales_role
+```
+
+### Top Performers Analysis
+```sql
+SELECT 
+    sales_representatives.rep_name,
+    SUM(bookings.booking_amount_usd) as total_booking_amount
+FROM bookings
+JOIN sales_representatives ON bookings.sales_rep_key = sales_representatives.sales_rep_key
+GROUP BY sales_representatives.rep_name
+ORDER BY total_booking_amount DESC
+LIMIT 10
+```
+
+---
+
+## Data Quality Rules
+
+- sales_rep_key in bookings must not be null
+- sales_rep_key in bookings must reference valid sales_rep_key in sales_representatives
+- No orphaned bookings without sales representative references
+- Sales representative dimension must be populated before booking transactions
+
+---
+
+## Related Domain
+
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
