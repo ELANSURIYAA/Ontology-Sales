@@ -1,9 +1,9 @@
 ---
 title: Net New Business
 type: glossary
-description: Revenue from new customer acquisitions or expansion sales to existing customers
+description: A booking transaction representing new customer acquisition or expansion
 resource: glossary
-tags: [net-new, acquisition, expansion, growth]
+tags: [net-new, growth, acquisition]
 timestamp: 2026-07-28T00:00:00Z
 ---
 
@@ -11,29 +11,32 @@ timestamp: 2026-07-28T00:00:00Z
 
 ## Business Definition
 
-Revenue from new customer acquisitions or expansion sales to existing customers.
-
-Net new business represents growth revenue that is not from contract renewals, including first-time customer purchases and upsell/cross-sell to existing customers.
+Net New Business refers to booking transactions that represent new customer acquisition or expansion into new products and services with existing customers. Net new bookings indicate business growth through new customer relationships or increased spending from current customers.
 
 ---
 
 ## Business Meaning
 
-Net new business captures booking transactions that represent new revenue streams rather than renewals of existing contracts. This includes:
-- New customer acquisitions (first purchase)
-- Expansion sales to existing customers (additional products or services)
-- Upsell transactions (higher-tier offerings)
-- Cross-sell transactions (complementary products)
+Net New Business is a critical indicator of:
+- Business growth and expansion
+- Sales effectiveness in acquiring new customers
+- Market penetration and share growth
+- Product adoption and expansion
+- Sales team performance on new business
 
-Net new business is critical for:
-- Measuring sales growth and market expansion
-- Tracking new customer acquisition effectiveness
-- Evaluating expansion and upsell success
-- Supporting growth forecasting
-- Calculating customer acquisition costs
-- Assessing market penetration
+Net new transactions differ from renewals in that they represent incremental revenue from:
+- Brand new customers (new logos)
+- Existing customers purchasing additional products
+- Existing customers expanding usage or licenses
+- Cross-sell and upsell opportunities
 
-Net new bookings are identified by is_renewal = 0 in the booking transaction data.
+Net new business is essential for:
+- Tracking customer acquisition
+- Measuring market expansion
+- Evaluating new product adoption
+- Assessing sales pipeline effectiveness
+- Supporting growth strategies
+- Balancing revenue mix with renewals
 
 ---
 
@@ -41,52 +44,90 @@ Net new bookings are identified by is_renewal = 0 in the booking transaction dat
 
 **Source Entity**: [Bookings](../entities/bookings.md)
 
-**Source Field**: is_renewal (value = 0)
+**Source Field**: is_renewal (flag = 0)
+
+**Identification**: Booking transactions where is_renewal = 0
 
 ---
 
 ## Synonyms
 
-- New business
-- New bookings
-- Non-renewal business
-- Growth bookings
-- Acquisition revenue
+- New Business
+- New Customer Revenue
+- Net New Revenue
+- New Logo Revenue
+- Expansion Revenue
 
 ---
 
 ## Related Concepts
 
-- [Renewal](renewal.md)
-- [Booking Transaction](booking-transaction.md)
-- [Annual Contract Value](annual-contract-value.md)
+- [Renewal](./renewal.md) - Complementary concept for existing customer retention
+- [Booking Transaction](./booking-transaction.md) - Parent concept
+- [Annual Contract Value](./annual-contract-value.md) - Net new ACV tracking
+- [Booking Amount](./booking-amount.md) - Net new revenue value
 
 ---
 
 ## Related Entities
 
-- [Bookings](../entities/bookings.md)
-- [Customers](../entities/customers.md)
+- [Bookings](../entities/bookings.md) - Contains renewal flag (0 for net new)
+- [Customers](../entities/customers.md) - New and existing customers
+- [Products](../entities/products.md) - Products sold as net new business
 
 ---
 
 ## Related Measures
 
-- [Net New Booking Amount USD](../measures/net-new-booking-amount-usd.md)
+- [Net New Booking Amount USD](../measures/net-new-booking-amount-usd.md) - Total net new revenue
+- [Renewal Booking Amount USD](../measures/renewal-booking-amount-usd.md) - Complementary renewal revenue
+- [Total Booking Amount USD](../measures/total-booking-amount-usd.md) - Total revenue (renewal + net new)
 
 ---
 
-## Usage Examples
+## Usage Context
 
-- "Calculate net new business by customer segment"
-- "Track net new vs renewal revenue mix"
-- "Analyze net new business growth trends"
-- "Forecast new customer acquisition revenue"
+Net New Business is used for:
+- Growth analysis and tracking
+- Customer acquisition metrics
+- Sales pipeline conversion analysis
+- Market expansion assessment
+- Product adoption tracking
+- Revenue mix analysis (net new vs. renewal)
+- Sales compensation and incentives
+- Strategic planning and forecasting
 
 ---
 
-## Navigation
+## Business Rules
 
-- [Return to Glossary Index](index.md)
-- [Return to Main Index](../index.md)
-- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
+1. A booking is classified as net new when is_renewal = 0
+2. Net new represents new customer acquisition or expansion
+3. Each booking is either net new or renewal, not both
+4. Net new classification is mutually exclusive with renewal classification
+5. Net new contributes to growth metrics
+
+---
+
+## Key Metrics
+
+### Net New Rate (by Revenue)
+```
+Net New Booking Amount / Total Booking Amount
+```
+
+### Net New Growth
+```
+(Current Period Net New Amount - Prior Period Net New Amount) / Prior Period Net New Amount
+```
+
+### Revenue Mix
+```
+Total Booking Amount = Renewal Booking Amount + Net New Booking Amount
+```
+
+---
+
+## Related Domain
+
+[Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
