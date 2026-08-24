@@ -3,15 +3,15 @@ title: Sales Bookings and Revenue Analytics Knowledge Bundle
 type: index
 description: Complete OKF knowledge bundle for sales bookings and revenue analytics semantic model
 resource: knowledge_bundle
-tags: [sales, bookings, revenue, analytics, okf, index]
-timestamp: 2024-01-15T00:00:00Z
+tags: [sales, bookings, revenue, analytics, okf]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Sales Bookings and Revenue Analytics Knowledge Bundle
 
 ## Overview
 
-This Open Knowledge Format (OKF) bundle represents the complete semantic model for sales bookings and revenue analytics. It captures completed booking transactions across customers, products, partners, geographies, sales representatives, contracts, and reporting periods.
+This knowledge bundle contains the complete semantic model for sales bookings and revenue analytics. It captures completed booking transactions across customers, products, partners, geographies, sales representatives, contracts, and reporting periods.
 
 ---
 
@@ -19,86 +19,75 @@ This Open Knowledge Format (OKF) bundle represents the complete semantic model f
 
 ### Core Navigation
 - [Semantic Summary](semantic_summary.md) - High-level semantic model overview
-- [Metrics](metrics.md) - Business measures and KPIs
+- [Metrics](metrics.md) - Complete metrics catalog
 
 ### Domains
-- [Domains Index](domains/index.md) - Business domain catalog
+- [Domains Index](domains/index.md)
+  - [Sales Bookings and Revenue Analytics](domains/sales-bookings-and-revenue-analytics.md)
 
 ### Entities
-- [Entities Index](entities/index.md) - Business entity catalog
+- [Entities Index](entities/index.md)
+  - [Bookings](entities/bookings.md)
+  - [Customers](entities/customers.md)
+  - [Products](entities/products.md)
+  - [Partners](entities/partners.md)
+  - [Geographies](entities/geographies.md)
+  - [Sales Representatives](entities/sales-representatives.md)
+  - [Contracts](entities/contracts.md)
+  - [Dates](entities/dates.md)
 
 ### Relationships
-- [Relationships Index](relationships/index.md) - Entity relationship catalog
+- [Relationships Index](relationships/index.md)
+  - [Bookings to Contracts](relationships/bookings-to-contracts.md)
+  - [Bookings to Customers](relationships/bookings-to-customers.md)
+  - [Bookings to Dates](relationships/bookings-to-dates.md)
+  - [Bookings to Geographies](relationships/bookings-to-geographies.md)
+  - [Bookings to Partners](relationships/bookings-to-partners.md)
+  - [Bookings to Products](relationships/bookings-to-products.md)
+  - [Bookings to Sales Representatives](relationships/bookings-to-sales-representatives.md)
 
 ### Measures
-- [Measures Index](measures/index.md) - Business measure catalog
+- [Measures Index](measures/index.md)
+  - [Booking Count](measures/booking-count.md)
+  - [Distinct Order Count](measures/distinct-order-count.md)
+  - [Total Quantity](measures/total-quantity.md)
+  - [Total Booking Amount USD](measures/total-booking-amount-usd.md)
+  - [Total ACV USD](measures/total-acv-usd.md)
+  - [Total TCV USD](measures/total-tcv-usd.md)
+  - [Average Discount Pct](measures/average-discount-pct.md)
+  - [Average Selling Price USD](measures/average-selling-price-usd.md)
+  - [Renewal Booking Amount USD](measures/renewal-booking-amount-usd.md)
+  - [Net New Booking Amount USD](measures/net-new-booking-amount-usd.md)
+  - [Average Booking Value USD](measures/average-booking-value-usd.md)
 
 ### Glossary
-- [Glossary Index](glossary/index.md) - Business terminology catalog
+- [Glossary Index](glossary/index.md)
+  - [Booking Transaction](glossary/booking-transaction.md)
+  - [Annual Contract Value](glossary/annual-contract-value.md)
+  - [Total Contract Value](glossary/total-contract-value.md)
+  - [Renewal](glossary/renewal.md)
+  - [Net New Business](glossary/net-new-business.md)
+  - [Customer Segment](glossary/customer-segment.md)
+  - [Product Family](glossary/product-family.md)
+  - [Technology Domain](glossary/technology-domain.md)
+  - [Route to Market](glossary/route-to-market.md)
+  - [Fiscal Period](glossary/fiscal-period.md)
 
 ---
 
-## Business Context
+## Usage
 
-This semantic model supports sales booking and revenue analysis at the booking transaction grain. Use booking date for time-based analysis and the defined metrics for booking amount, ACV, TCV, quantity, discount, renewal, and order analysis.
+This knowledge bundle is designed for:
+- Business analysts performing sales and revenue analysis
+- Data architects building ontologies
+- AI systems requiring semantic context
+- Downstream ontology generation agents
 
 ---
 
-## Semantic Model Metadata
+## Metadata
 
-- **Model Name**: sales_bookings_and_revenue_analytics
 - **Version**: 0.1
-- **Domains**: 8
-- **Entities**: 8
-- **Relationships**: 7
-- **Measures**: 11
-- **Glossary Terms**: 50+
-
----
-
-## Quick Links
-
-### Business Domains
-- [Bookings](domains/bookings.md)
-- [Customers](domains/customers.md)
-- [Products](domains/products.md)
-- [Partners](domains/partners.md)
-- [Geographies](domains/geographies.md)
-- [Sales Representatives](domains/sales-representatives.md)
-- [Contracts](domains/contracts.md)
-- [Dates](domains/dates.md)
-
-### Key Entities
-- [Booking Transaction](entities/bookings.md)
-- [Customer](entities/customers.md)
-- [Product](entities/products.md)
-- [Partner](entities/partners.md)
-- [Geography](entities/geographies.md)
-- [Sales Representative](entities/sales-representatives.md)
-- [Contract](entities/contracts.md)
-- [Date](entities/dates.md)
-
-### Key Measures
-- [Total Booking Amount USD](measures/total-booking-amount-usd.md)
-- [Total ACV USD](measures/total-acv-usd.md)
-- [Total TCV USD](measures/total-tcv-usd.md)
-- [Booking Count](measures/booking-count.md)
-
----
-
-## Usage Instructions
-
-This knowledge bundle is designed to be:
-- **Human readable** - Clear business documentation
-- **Machine readable** - Structured YAML frontmatter
-- **AI searchable** - Rich semantic metadata
-- **Ontology ready** - Prepared for OWL transformation
-- **Validator compliant** - Passes OKF validation
-
----
-
-## Generated
-
-**Timestamp**: 2024-01-15T00:00:00Z  
-**Source**: OSI Semantic Model v0.1  
-**Generator**: DI OKF Ontology Creator Agent
+- **Generated**: 2026-07-28T00:00:00Z
+- **Source**: OSI Semantic Model
+- **Format**: Open Knowledge Format (OKF)
