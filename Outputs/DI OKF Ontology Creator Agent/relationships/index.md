@@ -1,111 +1,96 @@
 ---
 title: Relationships Index
 type: index
-description: Catalog of all entity relationships in the sales bookings and revenue analytics semantic model
+description: Index of all relationships in the sales bookings and revenue analytics semantic model
 resource: relationships
-tags: [relationships, associations, connections, index]
-timestamp: 2024-01-15T00:00:00Z
+tags: [relationships, index, joins]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Relationships Index
 
 ## Overview
 
-This catalog contains all entity relationships defined in the sales bookings and revenue analytics semantic model. All relationships follow a many-to-one pattern from the Booking Transaction fact entity to dimension entities.
+This index contains all relationships defined in the semantic model. The model follows a star schema pattern with Bookings as the central fact entity.
 
 ---
 
-## Relationship Pattern
-
-**Pattern**: Star Schema  
-**Fact Entity**: Booking Transaction  
-**Relationship Type**: Many-to-One
-
----
-
-## Entity Relationships
+## Fact to Dimension Relationships
 
 ### [Bookings to Contracts](bookings-to-contracts.md)
-Links booking transactions to their associated contract terms and conditions.
+Links booking transactions to contract terms and service coverage.
 
-**Source**: Booking Transaction  
-**Target**: Contract  
-**Type**: Many-to-One  
-**Join Key**: contract_key
+**Type**: many-to-one
+
+**Source**: [Bookings](../entities/bookings.md)
+
+**Target**: [Contracts](../entities/contracts.md)
 
 ---
 
 ### [Bookings to Customers](bookings-to-customers.md)
-Links booking transactions to the customer who placed the order.
+Links booking transactions to customer organizations.
 
-**Source**: Booking Transaction  
-**Target**: Customer  
-**Type**: Many-to-One  
-**Join Key**: customer_key
+**Type**: many-to-one
+
+**Source**: [Bookings](../entities/bookings.md)
+
+**Target**: [Customers](../entities/customers.md)
 
 ---
 
 ### [Bookings to Dates](bookings-to-dates.md)
-Links booking transactions to the date when the booking occurred.
+Links booking transactions to calendar and fiscal time periods.
 
-**Source**: Booking Transaction  
-**Target**: Date  
-**Type**: Many-to-One  
-**Join Key**: date_key
+**Type**: many-to-one
+
+**Source**: [Bookings](../entities/bookings.md)
+
+**Target**: [Dates](../entities/dates.md)
 
 ---
 
 ### [Bookings to Geographies](bookings-to-geographies.md)
-Links booking transactions to the geographic territory where the sale occurred.
+Links booking transactions to geographic sales territories.
 
-**Source**: Booking Transaction  
-**Target**: Geography  
-**Type**: Many-to-One  
-**Join Key**: geography_key
+**Type**: many-to-one
+
+**Source**: [Bookings](../entities/bookings.md)
+
+**Target**: [Geographies](../entities/geographies.md)
 
 ---
 
 ### [Bookings to Partners](bookings-to-partners.md)
-Links booking transactions to the partner involved in fulfilling the sale.
+Links booking transactions to sales partners and channels.
 
-**Source**: Booking Transaction  
-**Target**: Partner  
-**Type**: Many-to-One  
-**Join Key**: partner_key
+**Type**: many-to-one
+
+**Source**: [Bookings](../entities/bookings.md)
+
+**Target**: [Partners](../entities/partners.md)
 
 ---
 
 ### [Bookings to Products](bookings-to-products.md)
-Links booking transactions to the product or offer that was sold.
+Links booking transactions to products and offers.
 
-**Source**: Booking Transaction  
-**Target**: Product  
-**Type**: Many-to-One  
-**Join Key**: product_key
+**Type**: many-to-one
+
+**Source**: [Bookings](../entities/bookings.md)
+
+**Target**: [Products](../entities/products.md)
 
 ---
 
 ### [Bookings to Sales Representatives](bookings-to-sales-representatives.md)
-Links booking transactions to the sales representative who closed the deal.
+Links booking transactions to sales personnel.
 
-**Source**: Booking Transaction  
-**Target**: Sales Representative  
-**Type**: Many-to-One  
-**Join Key**: sales_rep_key
+**Type**: many-to-one
 
----
+**Source**: [Bookings](../entities/bookings.md)
 
-## Relationship Summary
-
-| Relationship | Source | Target | Cardinality | Join Key |
-|--------------|--------|--------|-------------|----------|
-| Bookings to Contracts | Booking Transaction | Contract | Many-to-One | contract_key |
-| Bookings to Customers | Booking Transaction | Customer | Many-to-One | customer_key |
-| Bookings to Dates | Booking Transaction | Date | Many-to-One | date_key |
-| Bookings to Geographies | Booking Transaction | Geography | Many-to-One | geography_key |
-| Bookings to Partners | Booking Transaction | Partner | Many-to-One | partner_key |
-| Bookings to Products | Booking Transaction | Product | Many-to-One | product_key |
-| Bookings to Sales Representatives | Booking Transaction | Sales Representative | Many-to-One | sales_rep_key |
+**Target**: [Sales Representatives](../entities/sales-representatives.md)
 
 ---
 
@@ -113,5 +98,7 @@ Links booking transactions to the sales representative who closed the deal.
 
 - [Return to Index](../index.md)
 - [View Semantic Summary](../semantic_summary.md)
-- [View All Entities](../entities/index.md)
-- [View All Domains](../domains/index.md)
+- [Browse Domains](../domains/index.md)
+- [Browse Entities](../entities/index.md)
+- [Browse Measures](../measures/index.md)
+- [Browse Glossary](../glossary/index.md)
