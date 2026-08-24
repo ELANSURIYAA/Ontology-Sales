@@ -1,38 +1,39 @@
 ---
-title: Product
+title: Products
 type: entity
-description: Products and offers sold to customers, including product identity, family, technology domain, offer type, and business entity
+description: Products and offers sold to customers with family, technology domain, and offer type attributes
 resource: entities
-tags: [product, offers, portfolio, technology, dimension]
-timestamp: 2024-01-15T00:00:00Z
+tags: [products, dimension, offerings]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
-# Product
+# Products
 
 ## Business Definition
 
-The Product entity stores descriptive information about products and offers sold to customers, including product identity, family, technology domain, offer type, and business entity. This entity enables product portfolio analysis and performance tracking.
+Stores descriptive information about products and offers sold to customers, including product identity, family, technology domain, offer type, and business entity.
+
+Products represent the goods, services, software, and solutions that are sold through booking transactions.
 
 ---
 
 ## Technical Mapping
 
-**Source Table**: quotetobooking.dim_product  
-**Source Schema**: quotetobooking  
-**Entity Type**: Dimension  
-**Grain**: One row per product
+**Source Table**: quotetobooking.dim_product
+
+**Source Columns**: product_key, product_id, product_name, product_family, technology_domain, offer_type, business_entity
 
 ---
 
 ## Attributes
 
-- product_key
-- product_id
-- product_name
-- product_family
-- technology_domain
-- offer_type
-- business_entity
+- **product_key** - Surrogate key that uniquely identifies a product record in the product dimension
+- **product_id** - Business identifier or SKU assigned to the product or offer
+- **product_name** - Descriptive name of the product or service offering
+- **product_family** - Higher-level grouping of related products within the portfolio
+- **technology_domain** - Technology area or solution domain the product belongs to
+- **offer_type** - Commercial offer classification, such as hardware, software subscription, or SaaS subscription
+- **business_entity** - Internal business portfolio or organizational unit associated with the product
 
 ---
 
@@ -56,14 +57,11 @@ None
 
 ## Measures
 
-All booking and revenue measures can be analyzed by product attributes:
-
+All booking-related measures can be analyzed by product attributes:
 - [Total Booking Amount USD](../measures/total-booking-amount-usd.md)
-- [Total ACV USD](../measures/total-acv-usd.md)
-- [Total TCV USD](../measures/total-tcv-usd.md)
 - [Total Quantity](../measures/total-quantity.md)
-- [Booking Count](../measures/booking-count.md)
 - [Average Selling Price USD](../measures/average-selling-price-usd.md)
+- [Booking Count](../measures/booking-count.md)
 
 ---
 
@@ -71,24 +69,17 @@ All booking and revenue measures can be analyzed by product attributes:
 
 - [Product Family](../glossary/product-family.md)
 - [Technology Domain](../glossary/technology-domain.md)
-- [Offer Type](../glossary/offer-type.md)
-- [Business Entity](../glossary/business-entity.md)
+- [Booking Transaction](../glossary/booking-transaction.md)
 
 ---
 
 ## Business Rules
 
-### Product Identification
-Each product is uniquely identified by product_key (surrogate key) and product_id (business key/SKU).
-
-### Product Family Grouping
-Products are grouped into product families for higher-level portfolio analysis.
-
-### Technology Domain Classification
-Products are classified by technology domain or solution area for market positioning.
-
-### Offer Type Classification
-Products are classified by commercial offer type such as hardware, software subscription, or SaaS subscription.
+- Each product must have a unique product_key
+- product_id serves as the natural business identifier or SKU
+- Products are organized hierarchically: product → product_family → technology_domain
+- offer_type determines the commercial model (hardware, software, subscription, SaaS)
+- Products can be analyzed by family, technology domain, offer type, and business entity
 
 ---
 
@@ -96,4 +87,4 @@ Products are classified by commercial offer type such as hardware, software subs
 
 - [Return to Entities Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Products Domain](../domains/products.md)
+- [View Domain](../domains/sales-bookings-and-revenue-analytics.md)
