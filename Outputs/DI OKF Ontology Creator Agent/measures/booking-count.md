@@ -3,24 +3,17 @@ title: Booking Count
 type: measure
 description: Count of booking transaction records
 resource: measures
-tags: [booking-count, volume, count, metric]
-timestamp: 2024-01-15T00:00:00Z
+tags: [booking-count, volume, metric]
+timestamp: 2026-07-28T00:00:00Z
 ---
 
 # Booking Count
 
 ## Business Definition
 
-Count of booking transaction records. This measure provides the total number of individual booking transactions in the dataset.
+Count of booking transaction records.
 
----
-
-## Measure Details
-
-**Measure Type**: Count  
-**Aggregation**: COUNT  
-**Unit**: Count  
-**Category**: Volume Metric
+This measure provides the total number of individual booking transactions, enabling volume-based analysis of sales activity.
 
 ---
 
@@ -32,41 +25,50 @@ COUNT(bookings.booking_id)
 
 ---
 
+## Aggregation
+
+**Type**: COUNT
+
+**Grain**: Booking transaction
+
+---
+
 ## Related Entities
 
-- [Booking Transaction](../entities/bookings.md)
+- [Bookings](../entities/bookings.md)
 
 ---
 
 ## Related Domains
 
-- [Bookings Domain](../domains/bookings.md)
+- [Sales Bookings and Revenue Analytics](../domains/sales-bookings-and-revenue-analytics.md)
 
 ---
 
-## Usage
+## Related Concepts
+
+- [Booking Transaction](../glossary/booking-transaction.md)
+
+---
+
+## Business Usage
 
 This measure is used to:
-
-- Track the total number of booking transactions
-- Calculate average booking values
-- Analyze transaction volume trends
-- Compare booking activity across dimensions
-- Monitor sales activity levels
-
----
-
-## Business Context
-
-Booking Count represents the raw transaction volume and is a key indicator of sales activity. It can be analyzed across all dimensions including time, customer, product, geography, partner, sales representative, and contract.
+- Track sales activity volume
+- Analyze booking transaction frequency
+- Monitor sales velocity and throughput
+- Compare transaction volumes across dimensions
+- Calculate average values per transaction
 
 ---
 
-## Related Measures
+## Technical Details
 
-- [Distinct Order Count](distinct-order-count.md) - Count of unique orders
-- [Average Booking Value USD](average-booking-value-usd.md) - Uses Booking Count in calculation
-- [Total Booking Amount USD](total-booking-amount-usd.md) - Revenue counterpart
+**Dialect**: ANSI_SQL
+
+**Source Field**: bookings.booking_id
+
+**Null Handling**: Counts only non-null booking_id values
 
 ---
 
@@ -74,4 +76,4 @@ Booking Count represents the raw transaction volume and is a key indicator of sa
 
 - [Return to Measures Index](index.md)
 - [Return to Main Index](../index.md)
-- [View Metrics Summary](../metrics.md)
+- [View Metrics Catalog](../metrics.md)
